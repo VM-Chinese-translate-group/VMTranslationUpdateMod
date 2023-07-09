@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[38,)"
+license="MIT"
+[[mods]]
+modId="vmupdate"
+version="1.1"
+displayName="VM Chinese Group Update"
+authors="Wulian233"
+description="VM汉化组用于检查汉化补丁更新的MOD"
+[[dependencies.vmupdate]]
+    modId="forge"
+    mandatory=true
+    versionRange="[38,)"
+    ordering="NONE"
+    side="CLIENT"
+[[dependencies.vmupdate]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18,1.19)"
+    ordering="NONE"
+    side="CLIENT"
