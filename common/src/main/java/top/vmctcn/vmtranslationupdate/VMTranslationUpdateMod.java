@@ -2,6 +2,7 @@ package top.vmctcn.vmtranslationupdate;
 
 import dev.architectury.event.events.common.PlayerEvent;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.*;
 import top.vmctcn.vmtranslationupdate.util.ConfigUtil;
@@ -14,17 +15,17 @@ public class VMTranslationUpdateMod {
         PlayerEvent.PLAYER_JOIN.register((player) -> {
             String localVersion = ConfigUtil.getConfig().translationVersion;
             String onlineVersion = DownloadUtil.getOnlineVersion(player);
-            String Downloadurl = DownloadUtil.getDownloadUrl();
+            String downloadUrl = DownloadUtil.getDownloadUrl();
 
             if (onlineVersion != null && !localVersion.equals(onlineVersion)) {
                 player.sendMessage(new TranslatableComponent("vmupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), Util.NIL_UUID);
 
                 Component message = new TranslatableComponent("vmupdate.message.update2")
-                        .append(new TranslatableComponent(Downloadurl).withStyle(
+                        .append(new TranslatableComponent(downloadUrl).withStyle(
                                 Style.EMPTY
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Downloadurl))
+                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl))
                                         .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("vmupdate.message.hover")))
-                                        .withColor(net.minecraft.ChatFormatting.AQUA)
+                                        .withColor(ChatFormatting.AQUA)
                         ))
                         .append(new TranslatableComponent("vmupdate.message.update3"));
 
