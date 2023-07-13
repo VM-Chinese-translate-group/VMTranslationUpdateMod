@@ -1,3 +1,4 @@
+## 这是旧版的1.18.x，请看其他分支！已废弃！
 <div align="center"> 
    <a href="https://vmct-cn.top/img/vmupdate.png"><img height="100px" alt="logo" src="https://vmct-cn.top/img/vmupdate.png"/></a> 
    <p><em>在汉化发布新版本时，在游戏里通知玩家去下载更新。</em></p>
@@ -13,10 +14,7 @@
 --- 
  ## 支持版本
  - [x] Forge
-     - [ ] 1.12.2 无计划
-     - [ ] 1.16.5 计划支持
      - [x] 1.18.x
- - [ ] Fabric 无计划
 
 ## 原理
 很简单，将网络读取txt内容和本地配置里的汉化版本对比。相同则不提示，反之提示。
