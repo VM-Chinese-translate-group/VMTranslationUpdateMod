@@ -23,7 +23,7 @@ side = "BOTH"
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.3,1.19.4]"
+versionRange = "[1.20,)"
 ordering = "NONE"
 side = "BOTH"
 
