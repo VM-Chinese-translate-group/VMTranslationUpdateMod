@@ -2,6 +2,7 @@ package top.vmctcn.vmtranslationupdate.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
+
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdateMod;
 
 @Config(name = VMTranslationUpdateMod.MOD_ID)

@@ -6,6 +6,6 @@
   "vmtranslationupdate.message.hover": "点我到官网下载新版本！",
 
   "text.autoconfig.vmtranslationupdate.option.updateUrl": "更新检测链接",
-  "text.autoconfig.vmtranslationupdate.option.downloadUrl": "下载链接前缀",
+  "text.autoconfig.vmtranslationupdate.option.downloadUrl": "下载链接",
   "text.autoconfig.vmtranslationupdate.option.translationVersion": "整合包翻译版本"
 }

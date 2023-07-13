@@ -1,8 +1,8 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import net.minecraft.Util;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Util;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,7 +11,7 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
 public class DownloadUtil {
-    public static String getOnlineVersion(Player player) {
+    public static String getOnlineVersion(PlayerEntity player) {
         try {
             String urlStr = getUpdateUrl();
             URL url = new URL(urlStr);
@@ -25,7 +25,7 @@ public class DownloadUtil {
                 return reader.readLine();
             }
         } catch (Exception e) {
-            player.sendMessage(new TranslatableComponent("vmupdate.message.error"), Util.NIL_UUID);
+            player.sendSystemMessage(new TranslatableText("vmupdate.message.error"), Util.NIL_UUID);
             return "";
         }
     }

@@ -2,9 +2,10 @@ package top.vmctcn.vmtranslationupdate;
 
 import dev.architectury.event.events.common.PlayerEvent;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
-import net.minecraft.network.chat.*;
+import net.minecraft.text.*;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Util;
+
 import top.vmctcn.vmtranslationupdate.util.ConfigUtil;
 import top.vmctcn.vmtranslationupdate.util.DownloadUtil;
 
@@ -18,18 +19,18 @@ public class VMTranslationUpdateMod {
             String downloadUrl = DownloadUtil.getDownloadUrl();
 
             if (onlineVersion != null && !localVersion.equals(onlineVersion)) {
-                player.sendMessage(new TranslatableComponent("vmtranslationupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), Util.NIL_UUID);
 
-                Component message = new TranslatableComponent("vmtranslationupdate.message.update2")
-                        .append(new TranslatableComponent(downloadUrl).withStyle(
+                Text message = new TranslatableText("vmtranslationupdate.message.update2")
+                        .append(new TranslatableText(downloadUrl).setStyle(
                                 Style.EMPTY
                                         .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("vmtranslationupdate.message.hover")))
-                                        .withColor(ChatFormatting.AQUA)
+                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("vmtranslationupdate.message.hover")))
+                                        .withColor(Formatting.AQUA)
                         ))
-                        .append(new TranslatableComponent("vmtranslationupdate.message.update3"));
+                        .append(new TranslatableText("vmtranslationupdate.message.update3"));
 
-                player.sendMessage(message, Util.NIL_UUID);
+                player.sendSystemMessage(message, Util.NIL_UUID);
             }
         });
     }
