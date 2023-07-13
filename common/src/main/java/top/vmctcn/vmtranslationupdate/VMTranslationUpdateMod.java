@@ -4,7 +4,6 @@ import dev.architectury.event.events.common.PlayerEvent;
 
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Util;
 
 import top.vmctcn.vmtranslationupdate.util.ConfigUtil;
 import top.vmctcn.vmtranslationupdate.util.DownloadUtil;
@@ -19,18 +18,18 @@ public class VMTranslationUpdateMod {
             String downloadUrl = DownloadUtil.getDownloadUrl();
 
             if (onlineVersion != null && !localVersion.equals(onlineVersion)) {
-                player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)));
 
-                Text message = new TranslatableText("vmtranslationupdate.message.update2")
-                        .append(new TranslatableText(downloadUrl).setStyle(
+                Text message = Text.translatable("vmtranslationupdate.message.update2")
+                        .append(Text.translatable(downloadUrl).setStyle(
                                 Style.EMPTY
                                         .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("vmtranslationupdate.message.hover")))
+                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.translatable("vmtranslationupdate.message.hover")))
                                         .withColor(Formatting.AQUA)
                         ))
-                        .append(new TranslatableText("vmtranslationupdate.message.update3"));
+                        .append(Text.translatable("vmtranslationupdate.message.update3"));
 
-                player.sendSystemMessage(message, Util.NIL_UUID);
+                player.sendMessage(message);
             }
         });
     }

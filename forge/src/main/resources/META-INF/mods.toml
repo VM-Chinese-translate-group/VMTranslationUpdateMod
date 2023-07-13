@@ -1,12 +1,12 @@
 modLoader = "javafml"
 loaderVersion = "[40,)"
-#issueTrackerURL = ""
 license = "MIT"
 
 [[mods]]
 modId = "vmtranslationupdate"
 version = "${version}"
 displayName = "VMTranslationUpdateMod"
+displayURL = "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update"
 authors = "Wulian233, TexTrue"
 description = '''
 VM汉化组用于检查汉化补丁更新的MOD

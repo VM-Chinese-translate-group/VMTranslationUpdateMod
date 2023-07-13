@@ -1,8 +1,7 @@
 package top.vmctcn.vmtranslationupdate.util;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Util;
+import net.minecraft.text.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -25,7 +24,7 @@ public class DownloadUtil {
                 return reader.readLine();
             }
         } catch (Exception e) {
-            player.sendSystemMessage(new TranslatableText("vmupdate.message.error"), Util.NIL_UUID);
+            player.sendMessage(Text.translatable("vmupdate.message.error"));
             return "";
         }
     }
