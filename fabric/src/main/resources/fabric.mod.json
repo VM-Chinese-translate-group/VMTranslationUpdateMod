@@ -8,8 +8,8 @@
     "Wulian233", "TexTrue"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/VM-Chinese-translate-group",
+    "sources": "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update"
   },
   "license": "MIT",
   "environment": "*",
@@ -23,7 +23,7 @@
   },
   "depends": {
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": ">=1.16.5",
     "architectury": "*",
     "cloth-config": "*"
   }

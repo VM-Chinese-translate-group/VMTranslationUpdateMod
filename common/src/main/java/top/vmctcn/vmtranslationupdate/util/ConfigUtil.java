@@ -1,6 +1,6 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import dev.architectury.platform.Platform;
+import me.shedaniel.architectury.platform.Platform;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;

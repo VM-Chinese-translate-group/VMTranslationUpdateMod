@@ -1,6 +1,6 @@
 package top.vmctcn.vmtranslationupdate;
 
-import dev.architectury.event.events.common.PlayerEvent;
+import me.shedaniel.architectury.event.events.PlayerEvent;
 
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
