@@ -1,7 +1,7 @@
 {
-  "vmupdate.message.update": "[VM漢化組]：你好%s，當前漢化已過時，請更新你的漢化！當前版本為%s，最新版為%s。",
-  "vmupdate.message.update2": "請點擊右側",
-  "vmupdate.message.update3": "下載新版本。",
-  "vmupdate.message.error": "[VM漢化組]：錯誤！漢化更新檢測出現問題。",
-  "vmupdate.message.hover": "點我到官網下載新版本！"
+  "vmtranslationupdate.message.update": "[VM漢化組]：你好%s，當前漢化已過時，請更新你的漢化！當前版本為%s，最新版為%s。",
+  "vmtranslationupdate.message.update2": "請點擊右側",
+  "vmtranslationupdate.message.update3": "下載新版本。",
+  "vmtranslationupdate.message.error": "[VM漢化組]：錯誤！漢化更新檢測出現問題。",
+  "vmtranslationupdate.message.hover": "點我到官網下載新版本！"
 }

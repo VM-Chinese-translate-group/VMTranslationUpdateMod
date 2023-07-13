@@ -1,11 +1,11 @@
 {
-  "vmupdate.message.update": "[VM Chinese Group]: Hello %s, your Chinese localization patch is outdated! Current version is %s, latest version is %s.",
-  "vmupdate.message.update2": "Please click on the right ",
-  "vmupdate.message.update3": " to download the new version.",
-  "vmupdate.message.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
-  "vmupdate.message.hover": "Click me to download the new version on the official website!",
+  "vmtranslationupdate.message.update": "[VM Chinese Group]: Hello %s, your Chinese localization patch is outdated! Current version is %s, latest version is %s.",
+  "vmtranslationupdate.message.update2": "Please click on the right ",
+  "vmtranslationupdate.message.update3": " to download the new version.",
+  "vmtranslationupdate.message.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
+  "vmtranslationupdate.message.hover": "Click me to download the new version on the official website!",
 
-  "text.autoconfig.vmupdate.option.updateUrl": "Update link",
-  "text.autoconfig.vmupdate.option.downloadUrl": "Download link",
-  "text.autoconfig.vmupdate.option.translationVersion": "Modpack Translation Version"
+  "text.autoconfig.vmtranslationupdate.option.updateUrl": "Update link",
+  "text.autoconfig.vmtranslationupdate.option.downloadUrl": "Download link",
+  "text.autoconfig.vmtranslationupdate.option.translationVersion": "Modpack Translation Version"
 }

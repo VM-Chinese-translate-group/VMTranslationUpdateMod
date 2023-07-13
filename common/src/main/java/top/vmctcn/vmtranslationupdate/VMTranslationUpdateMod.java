@@ -18,16 +18,16 @@ public class VMTranslationUpdateMod {
             String downloadUrl = DownloadUtil.getDownloadUrl();
 
             if (onlineVersion != null && !localVersion.equals(onlineVersion)) {
-                player.sendMessage(new TranslatableComponent("vmupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                player.sendMessage(new TranslatableComponent("vmtranslationupdate.message.update", player.getDisplayName().getString(), localVersion, DownloadUtil.getOnlineVersion(player)), Util.NIL_UUID);
 
-                Component message = new TranslatableComponent("vmupdate.message.update2")
+                Component message = new TranslatableComponent("vmtranslationupdate.message.update2")
                         .append(new TranslatableComponent(downloadUrl).withStyle(
                                 Style.EMPTY
                                         .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("vmupdate.message.hover")))
+                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("vmtranslationupdate.message.hover")))
                                         .withColor(ChatFormatting.AQUA)
                         ))
-                        .append(new TranslatableComponent("vmupdate.message.update3"));
+                        .append(new TranslatableComponent("vmtranslationupdate.message.update3"));
 
                 player.sendMessage(message, Util.NIL_UUID);
             }
