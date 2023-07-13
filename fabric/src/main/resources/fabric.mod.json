@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "vmupdate",
+  "id": "vmtranslationupdate",
   "version": "${version}",
   "name": "VMTranslationUpdateMod",
   "description": "VM汉化组用于检查汉化补丁更新的MOD",

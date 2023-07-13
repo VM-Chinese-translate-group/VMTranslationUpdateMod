@@ -4,7 +4,7 @@ loaderVersion = "[40,)"
 license = "MIT"
 
 [[mods]]
-modId = "vmupdate"
+modId = "vmtranslationupdate"
 version = "${version}"
 displayName = "VMTranslationUpdateMod"
 authors = "Wulian233, TexTrue"
@@ -13,28 +13,28 @@ VM汉化组用于检查汉化补丁更新的MOD
 '''
 #logoFile = ""
 
-[[dependencies.vmupdate]]
+[[dependencies.vmtranslationupdate]]
 modId = "forge"
 mandatory = true
 versionRange = "[40,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.vmupdate]]
+[[dependencies.vmtranslationupdate]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.18,1.18.2]"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.vmupdate]]
+[[dependencies.vmtranslationupdate]]
 modId = "architectury"
 mandatory = true
 versionRange = "[4,)"
 ordering = "AFTER"
 side = "BOTH"
 
-[[dependencies.vmupdate]]
+[[dependencies.vmtranslationupdate]]
 modId = "cloth_config"
 mandatory = true
 versionRange = "[6,)"

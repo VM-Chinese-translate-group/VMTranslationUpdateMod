@@ -8,7 +8,7 @@ import top.vmctcn.vmtranslationupdate.util.ConfigUtil;
 import top.vmctcn.vmtranslationupdate.util.DownloadUtil;
 
 public class VMTranslationUpdateMod {
-    public static final String MOD_ID = "vmupdate";
+    public static final String MOD_ID = "vmtranslationupdate";
     
     public static void init() {
         PlayerEvent.PLAYER_JOIN.register((player) -> {
