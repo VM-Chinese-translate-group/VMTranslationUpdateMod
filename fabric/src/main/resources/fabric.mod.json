@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "vmtranslationupdate",
+  "version": "${version}",
+  "name": "VMTranslationUpdateMod",
+  "description": "VM汉化组用于检查汉化补丁更新的MOD",
+  "authors": [
+    "Wulian233", "TexTrue"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateModFabric"
+    ],
+    "client": [
+      "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateModClientFabric"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "architectury": "*",
+    "cloth-config": "*"
+  }
+}
