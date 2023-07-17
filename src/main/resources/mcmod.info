@@ -1,0 +1,11 @@
+[
+{
+  "modid": "vmtranslationupdate",
+  "name": "VM Chinese Group Translation Update",
+  "description": "VM汉化组用于检查汉化补丁更新的MOD",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "authorList": ["Wulian233"],
+  "logoFile": ""
+}
+]
