@@ -42,7 +42,7 @@ public class VmTranslationUpdate {
         String onlineVersion = getOnlineVersion(player);
         String name = player.getDisplayNameString();
         if (name.equals("Zi__Min")) {
-            name = "岷叔~";
+            name = "岷叔";
             player.sendMessage(new TextComponentString("欢迎来到籽岷的Minecraft游戏世界！"));
         }
 
@@ -63,8 +63,8 @@ public class VmTranslationUpdate {
     }
 
     public static void syncConfig() {
-        updateurl = config.get("VM汉化组汉化检测配置", "updateurl", "https://vmct-cn.top/sb3/update.txt", "获取TXT检测更新的url").getString();
-        downloadurl = config.get("VM汉化组汉化检测配置", "downloadurl", "https://vmct-cn.top/sb3/", "提示玩家下载地址的url").getString();
+        updateurl = config.get("VM汉化组汉化检测配置", "updateurl", "https://vmct-cn.top/rad/update.txt", "获取TXT检测更新的url").getString();
+        downloadurl = config.get("VM汉化组汉化检测配置", "downloadurl", "https://vmct-cn.top/rad/", "提示玩家下载地址的url").getString();
         version = config.get("VM汉化组汉化检测配置", "version", "第一版", "当前汉化版本").getString();
         if (config.hasChanged()) {
             config.save();
@@ -78,7 +78,7 @@ public class VmTranslationUpdate {
             URLConnection connection = url.openConnection();
 
             connection.setConnectTimeout(10000);
-            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmUpdate";
+            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmTranslationUpdate";
             connection.setRequestProperty("User-Agent", userAgent);
 
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
@@ -94,7 +94,7 @@ public class VmTranslationUpdate {
     public void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().world != null) {
             tickCounter++;
-            if (tickCounter >= 20 * 60 * 10) { // 每十分钟发送一条消息（20 ticks * 60 seconds * 10 minutes）
+            if (tickCounter >= 20 * 60 * 25) { // 每二十五分钟发送一条消息（20 ticks * 60 seconds * 25 minutes）
                 tickCounter = 0;
                 sendRandomMessage();
             }
