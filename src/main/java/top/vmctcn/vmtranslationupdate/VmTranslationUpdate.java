@@ -24,6 +24,7 @@ import java.nio.charset.StandardCharsets;
 public class VmTranslationUpdate {
     private Random random;
     private int tickCounter;
+    private static int minutes;
     public static Configuration config;
     public static String updateurl,downloadurl,version;
 
@@ -66,6 +67,7 @@ public class VmTranslationUpdate {
         updateurl = config.get("VM汉化组汉化检测配置", "updateurl", "https://vmct-cn.top/rad/update.txt", "获取TXT检测更新的url").getString();
         downloadurl = config.get("VM汉化组汉化检测配置", "downloadurl", "https://vmct-cn.top/rad/", "提示玩家下载地址的url").getString();
         version = config.get("VM汉化组汉化检测配置", "version", "第一版", "当前汉化版本").getString();
+        minutes = config.get("VM汉化组汉化检测配置", "minutes", 25, "发送消息的时间间隔（分钟）").getInt();
         if (config.hasChanged()) {
             config.save();
         }
@@ -78,6 +80,7 @@ public class VmTranslationUpdate {
             URLConnection connection = url.openConnection();
 
             connection.setConnectTimeout(10000);
+            connection.setUseCaches(false);
             String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmTranslationUpdate";
             connection.setRequestProperty("User-Agent", userAgent);
 
@@ -94,12 +97,15 @@ public class VmTranslationUpdate {
     public void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().world != null) {
             tickCounter++;
-            if (tickCounter >= 20 * 60 * 25) { // 每二十五分钟发送一条消息（20 ticks * 60 seconds * 25 minutes）
+            int tickInterval = 20 * 60 * minutes;
+
+            if (tickCounter >= tickInterval) {
                 tickCounter = 0;
                 sendRandomMessage();
             }
         }
     }
+
 
     private void sendRandomMessage() {
         Minecraft minecraft = Minecraft.getMinecraft();
@@ -111,19 +117,20 @@ public class VmTranslationUpdate {
 
     private String getRandomMessage() {
         String[] messages = {
-                "你知道吗：凋零是一种状态效果，凋灵是一种敌对生物。因此绝大多数情况下是凋灵。",
-                "你知道吗：拧字有 3 个读音，向两个方向使劲叫 2 声拧，拧干。一个方向是3声，拧螺丝。",
-                "你知道吗：荧石是一种发光方块，火字底。萤石是氟化钙，虫字底。因此绝大多数情况下是荧石。",
-                "你知道吗：地狱在 1.16 后更名为下界，因此高版本都是下界。",
-                "你知道吗：曲字有 2 个读音，带弯的念 1 声，曲线。乐曲音乐是 3 声，曲艺。",
-                "你知道吗：髓有且只有一个读音！精髓 ！",
-                "你知道吗：看对联最后一个字平仄声。3声4声是上联，贴右边，别贴反啦。",
-                "你知道吗：新版 MC 的菌丝已经改为菌丝体了。",
-                "你知道吗：新版 MC 的速度已经改为迅捷了。",
-                "你知道吗：新版 MC 的末影水晶已经改为末地水晶了。",
-                "你知道吗：新版 MC 的干草块已经改为干草捆了。",
-                "你知道吗：新版 MC 的摔落保护已经改为摔落缓冲了。",
-                "你知道吗：“因为”的“为”念 4 声。"
+                "你知道吗： 凋零是一种状态效果，凋灵是一种敌对生物。因此绝大多数情况下应称为凋灵。",
+                "你知道吗： 拧字有3个读音，向两个方向使劲叫2声拧，拧干。一个方向是3声，拧螺丝。",
+                "你知道吗： 荧石是一种发光方块，火字底。萤石是氟化钙，虫字底。因此绝大多数情况下应称为荧石。",
+                "你知道吗： 地狱在1.16后更名为下界，因此高版本都是下界。",
+                "你知道吗： 曲字有2个读音，带弯的念1声，曲线。乐曲音乐是3声，曲艺。",
+                "你知道吗： 髓有且只有一个读音！读精髓。",
+                "你知道吗： 看对联最后一个字平仄声。3声4声是上联，贴右边，别贴反啦。",
+                "你知道吗： 新版MC的菌丝已经改为菌丝体了。",
+                "你知道吗： 新版MC的速度已经改为迅捷了。",
+                "你知道吗： 新版MC的末影水晶已经改为末地水晶了。",
+                "你知道吗： 新版MC的干草块已经改为干草捆了。",
+                "你知道吗： 新版MC的摔落保护已经改为摔落缓冲了。",
+                "你知道吗： “因为”的“为”念4声。",
+                "你知道吗： 这是VM汉化组汉化更新检测模组发出的一条消息。"
         };
 
         int index = random.nextInt(messages.length);
