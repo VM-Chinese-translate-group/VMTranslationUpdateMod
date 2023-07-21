@@ -10,4 +10,5 @@ public class ConfigScreen implements ConfigData {
     public String updateUrl = "https://vmct-cn.top/sb3/update.txt";
     public String downloadUrl = "https://vmct-cn.top/sb3";
     public String translationVersion = "1.0.0";
+    public static Integer minutes = 25;
 }
