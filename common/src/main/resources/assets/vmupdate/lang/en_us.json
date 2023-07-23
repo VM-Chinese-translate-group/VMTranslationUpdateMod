@@ -5,7 +5,9 @@
   "vmtranslationupdate.message.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
   "vmtranslationupdate.message.hover": "Click me to download the new version on the official website!",
 
+  "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
   "text.autoconfig.vmtranslationupdate.option.updateUrl": "Update link",
   "text.autoconfig.vmtranslationupdate.option.downloadUrl": "Download link",
-  "text.autoconfig.vmtranslationupdate.option.translationVersion": "Modpack Translation Version"
+  "text.autoconfig.vmtranslationupdate.option.translationVersion": "Modpack Translation Version",
+  "text.autoconfig.vmtranslationupdate.option.minutes": "How many minutes between sending knowledge"
 }

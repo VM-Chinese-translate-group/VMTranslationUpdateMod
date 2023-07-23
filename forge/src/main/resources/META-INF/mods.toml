@@ -6,13 +6,13 @@ license = "MIT"
 [[mods]]
 modId = "vmtranslationupdate"
 version = "${version}"
-displayName = "VMTranslationUpdateMod"
+displayName = "VM Translation Update"
 displayURL = "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update"
 authors = "Wulian233, TexTrue"
 description = '''
 VM汉化组用于检查汉化补丁更新的MOD
 '''
-#logoFile = ""
+logoFile = "vmtranslationupdate.png"
 
 [[dependencies.vmtranslationupdate]]
 modId = "forge"

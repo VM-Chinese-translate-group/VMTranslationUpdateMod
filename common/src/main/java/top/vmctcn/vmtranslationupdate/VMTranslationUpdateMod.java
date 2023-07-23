@@ -13,15 +13,13 @@ import top.vmctcn.vmtranslationupdate.util.TipsUtil;
 
 import java.util.Random;
 
-import static top.vmctcn.vmtranslationupdate.util.TipsUtil.sendRandomMessage;
-
 public class VMTranslationUpdateMod {
     public static Random random;
     public static int tickCounter;
     public static Integer minutes = TipsUtil.getMinutes();
     public static final String MOD_ID = "vmtranslationupdate";
     
-    public static Integer init() {
+    public static void init() {
         random = new Random();
 
         ClientTickEvent.CLIENT_POST.register(level -> {
@@ -30,7 +28,7 @@ public class VMTranslationUpdateMod {
 
             if (tickCounter >= tickInterval) {
                 tickCounter = 0;
-                sendRandomMessage();
+                TipsUtil.sendRandomMessage();
             }
         });
 
@@ -38,7 +36,7 @@ public class VMTranslationUpdateMod {
             String localVersion = ConfigUtil.getConfig().translationVersion;
             String onlineVersion = DownloadUtil.getOnlineVersion(player);
             String downloadUrl = DownloadUtil.getDownloadUrl();
-            String name = player.getDisplayName().getString();
+            String name = player.getName().getString();
             if (name.equals("Zi__Min")) {
                 name = "岷叔";
                 player.sendSystemMessage(new TranslatableText("欢迎来到籽岷的Minecraft游戏世界！"),Util.NIL_UUID);
@@ -59,9 +57,5 @@ public class VMTranslationUpdateMod {
                 player.sendSystemMessage(message, Util.NIL_UUID);
             }
         });
-
-        return null;
     }
-
-
 }

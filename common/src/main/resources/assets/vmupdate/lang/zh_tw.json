@@ -5,7 +5,9 @@
   "vmtranslationupdate.message.error": "[VM漢化組]：錯誤！漢化更新檢測出現問題。",
   "vmtranslationupdate.message.hover": "點我到官網下載新版本！",
 
+  "text.autoconfig.vmtranslationupdate.title": "VM漢化組漢化更新檢測配寘",
   "text.autoconfig.vmtranslationupdate.option.updateUrl": "更新檢測鏈接",
   "text.autoconfig.vmtranslationupdate.option.downloadUrl": "下載鏈接",
-  "text.autoconfig.vmtranslationupdate.option.translationVersion": "整合包翻譯版本"
+  "text.autoconfig.vmtranslationupdate.option.translationVersion": "整合包翻譯版本",
+  "text.autoconfig.vmtranslationupdate.option.minutes": "間隔多少分鐘發送知識"
 }
