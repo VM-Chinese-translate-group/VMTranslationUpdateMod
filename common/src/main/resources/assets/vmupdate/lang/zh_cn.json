@@ -4,10 +4,12 @@
   "vmtranslationupdate.message.update3": "下载新版本。",
   "vmtranslationupdate.message.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
   "vmtranslationupdate.message.hover": "点我到官网下载新版本！",
+  "vmtranslationupdate.message.zimin": "欢迎来到籽岷的Minecraft游戏世界！",
 
   "text.autoconfig.vmtranslationupdate.title": "VM汉化组汉化更新检测配置",
   "text.autoconfig.vmtranslationupdate.option.updateUrl": "更新检测链接",
   "text.autoconfig.vmtranslationupdate.option.downloadUrl": "下载链接",
+  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "获取知识内容的链接",
   "text.autoconfig.vmtranslationupdate.option.translationVersion": "整合包翻译版本",
-  "text.autoconfig.vmtranslationupdate.option.minutes": "间隔多少分钟发送知识"
+  "text.autoconfig.vmtranslationupdate.option.minutes": "发送知识的时间间隔（分钟）"
 }

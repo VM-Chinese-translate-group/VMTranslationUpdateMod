@@ -3,6 +3,7 @@ package top.vmctcn.vmtranslationupdate;
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.event.events.common.PlayerEvent;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Util;
@@ -17,6 +18,7 @@ public class VMTranslationUpdateMod {
     public static Random random;
     public static int tickCounter;
     public static Integer minutes = TipsUtil.getMinutes();
+    public static String tipsUrl = TipsUtil.getTipsUrl();
     public static final String MOD_ID = "vmtranslationupdate";
     
     public static void init() {
@@ -25,10 +27,15 @@ public class VMTranslationUpdateMod {
         ClientTickEvent.CLIENT_POST.register(level -> {
             tickCounter++;
             int tickInterval = 20 * 60 * minutes;
-
             if (tickCounter >= tickInterval) {
                 tickCounter = 0;
-                TipsUtil.sendRandomMessage();
+                String randomMessage = TipsUtil.getRandomMessageFromURL(tipsUrl);
+                if (randomMessage != null) {
+                    MinecraftClient minecraft = MinecraftClient.getInstance();
+                    if (minecraft.player != null) {
+                        minecraft.player.sendSystemMessage(new TranslatableText(randomMessage) ,Util.NIL_UUID);
+                    }
+                }
             }
         });
 
@@ -39,7 +46,7 @@ public class VMTranslationUpdateMod {
             String name = player.getName().getString();
             if (name.equals("Zi__Min")) {
                 name = "岷叔";
-                player.sendSystemMessage(new TranslatableText("欢迎来到籽岷的Minecraft游戏世界！"),Util.NIL_UUID);
+                player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.zimin") ,Util.NIL_UUID);
             }
 
             if (onlineVersion != null && !localVersion.equals(onlineVersion)) {
