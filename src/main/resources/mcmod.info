@@ -1,11 +1,15 @@
 [
-{
-  "modid": "vmtranslationupdate",
-  "name": "VM Chinese Group Translation Update",
-  "description": "VM汉化组用于检查汉化补丁更新的MOD",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "authorList": ["Wulian233"],
-  "logoFile": ""
-}
+  {
+    "modid": "vmtranslationupdate",
+    "name": "VM Translation Update",
+    "description": "VM汉化组用于检查汉化补丁更新的MOD",
+    "version": "1.4",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update",
+    "updateUrl": "",
+    "authorList": ["Wulian233"],
+    "logoFile": "vmtranslationupdate.png",
+    "screenshots": [],
+    "dependencies": []
+  }
 ]

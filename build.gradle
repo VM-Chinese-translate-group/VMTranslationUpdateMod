@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.2'
+version = '1.4'
 group = 'top.vmctcn.vmtranslationupdate'
 archivesBaseName = 'vmtranslationupdate'
 
@@ -43,7 +43,7 @@ jar {
         attributes([
             "Specification-Title": "vmtranslationupdate",
             "Specification-Vendor": "Wulian233",
-            "Specification-Version": "1.2",
+            "Specification-Version": "1.4",
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"Wulian233",
