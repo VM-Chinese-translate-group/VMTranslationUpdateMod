@@ -24,7 +24,7 @@ public class DownloadUtil {
                 return reader.readLine();
             }
         } catch (Exception e) {
-            player.sendSystemMessage(new TranslatableText("vmupdate.message.error"), Util.NIL_UUID);
+            player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.error"), Util.NIL_UUID);
             return "";
         }
     }

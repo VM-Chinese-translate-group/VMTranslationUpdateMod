@@ -52,7 +52,7 @@ public class VMTranslationUpdate {
                 player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.zimin") ,Util.NIL_UUID);
             }
 
-            if (onlineVersion != null && !localVersion.equals(onlineVersion)) {
+            if (!localVersion.equals(onlineVersion)) {
                 player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, DownloadUtil.getOnlineVersion(player)), Util.NIL_UUID);
                 Text message = new TranslatableText("vmtranslationupdate.message.update2")
                         .append(new TranslatableText(ConfigUtil.getConfig().downloadUrl).setStyle(
@@ -66,7 +66,8 @@ public class VMTranslationUpdate {
                 player.sendSystemMessage(message, Util.NIL_UUID);
             }
             LocalDate currentDate = LocalDate.now();
-            if (new File(saveDirectory.toFile(), packName).exists() &&!mc.options.resourcePacks.contains(packName) && !mc.options.resourcePacks.contains("file/" + packName) && (currentDate.getDayOfWeek() == DayOfWeek.SATURDAY || currentDate.getDayOfWeek() == DayOfWeek.SUNDAY)) {
+            if (new File(saveDirectory.toFile(), packName).exists() &&!mc.options.resourcePacks.contains(packName) && !mc.options.resourcePacks.contains("file/" + packName) 
+            && (currentDate.getDayOfWeek() == DayOfWeek.SATURDAY || currentDate.getDayOfWeek() == DayOfWeek.SUNDAY)) {
                 Text message = new TranslatableText("vmtranslationupdate.message.pack", ConfigUtil.getConfig().packName).setStyle(Style.EMPTY.withColor(Formatting.GOLD));
                 player.sendSystemMessage(message, Util.NIL_UUID);
             }
