@@ -16,8 +16,6 @@ public class PackUtil {
     public static String packName = ConfigUtil.getConfig().packName;
     public static void Download() {
         LocalDate currentDate = LocalDate.now();
-
-        System.out.println(currentDate.getDayOfWeek());
         // 检查今天是否是星期六
         if (currentDate.getDayOfWeek() == DayOfWeek.SATURDAY) {
             try {
