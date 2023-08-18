@@ -13,5 +13,5 @@ public class ConfigScreen implements ConfigData {
     public  String translationVersion = "1.0.0";
     public  Integer minutes = 25;
     public  String packName = "VM汉化组模组汉化包1.18.zip";
-    public  String packUrl= "https://cdn.modrinth.com/data/IDWIdXwS/versions/xCpjJgHS/VM汉化组模组汉化包1.18.zip";
+    public  String packUrl= "https://cdn.modrinth.com/data/IDWIdXwS/versions/xCpjJgHS/VM%E6%B1%89%E5%8C%96%E7%BB%84%E6%A8%A1%E7%BB%84%E6%B1%89%E5%8C%96%E5%8C%851.18.zip";
 }
