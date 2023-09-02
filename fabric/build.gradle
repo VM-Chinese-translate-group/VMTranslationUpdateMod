@@ -7,9 +7,7 @@ architectury {
     fabric()
 }
 
-loom {
-    accessWidenerPath = project(":common").loom.accessWidenerPath
-}
+project.archivesBaseName = rootProject.archivesBaseName + "-fabric"
 
 configurations {
     common
@@ -42,18 +40,17 @@ shadowJar {
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
-    archiveClassifier = "dev-shadow"
+    archiveClassifier.set("dev-shadow")
 }
 
 remapJar {
-    injectAccessWidener = true
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    archiveClassifier = "fabric"
+    archiveClassifier.set(null)
 }
 
 jar {
-    archiveClassifier = "dev"
+    archiveClassifier.set("dev")
 }
 
 sourcesJar {

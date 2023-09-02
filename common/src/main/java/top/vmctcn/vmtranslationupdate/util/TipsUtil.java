@@ -51,6 +51,6 @@ public class TipsUtil {
     }
 
     public static Integer getMinutes() {
-        return ConfigUtil.getConfig().minutes;
+        return ModConfigUtil.getConfig().minutes;
     }
 }
