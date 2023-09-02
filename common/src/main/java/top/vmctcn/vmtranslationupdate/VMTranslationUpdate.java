@@ -28,7 +28,7 @@ public class VMTranslationUpdate {
     public static final Logger LOGGER = LoggerFactory.getLogger(MODNAME);
 
     public static void init() {
-        if (ModConfigUtil.getConfig().autoSwitchLanguage && isStenographerLoaded) {
+        if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded) {
             client.options.language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
         }
 
