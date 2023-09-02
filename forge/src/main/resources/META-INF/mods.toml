@@ -10,9 +10,12 @@ displayName = "VM Translation Update"
 displayURL = "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update"
 authors = "Wulian233, TexTrue, Litchiiiiiii"
 description = '''
+A mod for checking for updates to VMChineseTranslationGroup's localization patches
+and automatically downloading resource packs.
+
 一个用于检查汉化补丁更新和自动下载资源包的模组。
 '''
-logoFile = "vmtranslationupdate.png"
+logoFile = "icon.png"
 
 [[dependencies.vmtranslationupdate]]
 modId = "forge"

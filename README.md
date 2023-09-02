@@ -1,5 +1,8 @@
 <div align="center"> 
-   <a href="https://vmct-cn.top/img/vmupdate.png"><img height="100px" alt="logo" src="https://vmct-cn.top/img/vmupdate.png"/></a> 
+   <img height="100px" alt="logo" src="./common/src/main/resources/icon.png"/> 
+   
+# VM Translation Update
+
 </div> 
 
 ## 功能
@@ -32,10 +35,10 @@
      - [x] 1.19.x
      - [x] 1.20.x
  - [x] Fabric
-   - [x] 1.16.5
-   - [x] 1.18.x
-   - [x] 1.19.x
-   - [x] 1.20.x
+     - [x] 1.16.5
+     - [x] 1.18.x
+     - [x] 1.19.x
+     - [x] 1.20.x
 
 ## 原理
 很简单，将网络读取的txt内容和本地配置里的汉化版本对比。相同则不提示，反之提示。

@@ -7,6 +7,8 @@ architectury {
     forge()
 }
 
+project.archivesBaseName = rootProject.archivesBaseName + "-forge"
+
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
@@ -37,17 +39,17 @@ shadowJar {
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
-    archiveClassifier = "dev-shadow"
+    archiveClassifier.set("dev-shadow")
 }
 
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    archiveClassifier = "forge"
+    archiveClassifier.set(null)
 }
 
 jar {
-    archiveClassifier = "dev"
+    archiveClassifier.set("dev")
 }
 
 sourcesJar {
