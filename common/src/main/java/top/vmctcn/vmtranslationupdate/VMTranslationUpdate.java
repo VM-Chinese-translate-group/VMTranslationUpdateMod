@@ -2,15 +2,19 @@ package top.vmctcn.vmtranslationupdate;
 
 import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.event.events.common.PlayerEvent;
-
 import dev.architectury.platform.Platform;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.*;
+import net.minecraft.text.ClickEvent;
+import net.minecraft.text.HoverEvent;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import top.vmctcn.vmtranslationupdate.util.*;
+import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
+import top.vmctcn.vmtranslationupdate.util.PackDownloadUtil;
+import top.vmctcn.vmtranslationupdate.util.TipsUtil;
+import top.vmctcn.vmtranslationupdate.util.VersionCheckUtil;
 
 import java.io.File;
 import java.util.Locale;
