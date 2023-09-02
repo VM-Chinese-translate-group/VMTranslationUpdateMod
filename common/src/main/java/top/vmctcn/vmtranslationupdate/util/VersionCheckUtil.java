@@ -1,7 +1,7 @@
 package top.vmctcn.vmtranslationupdate.util;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.*;
+import net.minecraft.text.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,10 +9,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
-public class DownloadUtil {
+public class VersionCheckUtil {
     public static String getOnlineVersion(PlayerEntity player) {
         try {
-            URL url = new URL(ConfigUtil.getConfig().updateUrl);
+            URL url = new URL(ModConfigUtil.getConfig().updateUrl);
             URLConnection connection = url.openConnection();
 
             connection.setConnectTimeout(10000);

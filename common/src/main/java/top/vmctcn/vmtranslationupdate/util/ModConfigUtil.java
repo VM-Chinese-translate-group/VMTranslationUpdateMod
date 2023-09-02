@@ -8,8 +8,8 @@ import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.config.ConfigScreen;
 
-public class ConfigUtil {
-    public static ConfigScreen configScreen;
+public class ModConfigUtil {
+    private static ConfigScreen configScreen;
 
     public static ConfigScreen getConfig() {
         if (configScreen == null) {
