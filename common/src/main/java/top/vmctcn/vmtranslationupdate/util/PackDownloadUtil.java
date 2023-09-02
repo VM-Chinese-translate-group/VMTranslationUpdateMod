@@ -67,7 +67,7 @@ public class PackDownloadUtil {
         if (!gameOptions.resourcePacks.contains(resourcePackName)) {
             client.options.resourcePacks.add(resourcePackName);
         } else {
-            List<String> packs = new ArrayList<>(10);
+            List<String> packs = new ArrayList<>(100);
             // 资源包的 index 越小优先级越低（在资源包 GUI 中置于更低层）
             packs.add(resourcePackName);
             packs.addAll(gameOptions.resourcePacks);
