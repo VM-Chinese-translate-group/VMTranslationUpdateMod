@@ -1,5 +1,5 @@
 <div align="center"> 
-   <img height="100px" alt="logo" src="./common/src/main/resources/icon.png"/> 
+   <img height="100px" alt="logo" src="https://raw.githubusercontent.com/VM-Chinese-translate-group/VM-Chinese-Group-Update/1.18.x/common/src/main/resources/icon.png"/> 
    
 # VM Translation Update
 
@@ -9,10 +9,11 @@
 目前，模组有5个功能
 
 1. 对比最新版汉化版本号与本地配置文件中的版本号，在汉化发布新版本时会在游戏里通知玩家去下载更新。
-2. 默认每25分钟在聊天栏发送一条知识。内容包括但不限于汉化组冷知识，汉字易错读音和传统文化等。
-3. 在每周六自动下载VM汉化组通用模组汉化资源包。
-4. 如果玩家已经下载资源包但未启用，且时间为周六日时，会在聊天框提示玩家在选项->资源包中手动启用。
+2. 默认每25分钟在聊天栏发送一条知识。内容包括但不限于汉化组冷知识，汉字易错读音和MC冷知识等。
+3. 每次启动时自动下载VM汉化组通用模组汉化资源包。
+4. 如果玩家已经下载资源包且发生错误未启用，会在聊天框提示玩家在选项->资源包中手动启用。
 5. 如果玩家名是Zi__Min，会在每次进入世界时发送`欢迎来到籽岷的Minecraft游戏世界！`，且称呼改为岷叔。
+6. 当安装Stenographer模组后，自动修改游戏语言。
 
 ## 使用与配置文件
 
@@ -24,8 +25,8 @@
 3. 获取知识内容的链接。例如`https://vmct-cn.top/tips.txt`会读取txt的内容，必须是UTF-8编码且可以直接打开的直链。一行一句，每次会随机选择一行的内容发送在聊天栏。
 4. 整合包翻译版本。例如第一版。需要发布时改的就是这个。
 5. 发送知识的时间间隔（分钟），默认25分钟一次。
-6. 自动下载资源包的链接。例如`https://cdn.modrinth.com/data/IDWIdXwS/versions/xCpjJgHS/VM汉化组模组汉化包1.18.zip`。
-7. 资源包的文件名，例如`VM汉化组模组汉化包1.18.zip`。必须.zip结尾。
+6. 自动下载资源包的链接。例如`https://cdn.modrinth.com/data/IDWIdXwS/versions/xCpjJgHS/VM汉化组模组汉化包1.18`。注：链接需要删除最后的.zip，模组会自己加上。
+7. 资源包的文件名，例如`VM汉化组模组汉化包1.18`。
 --- 
  ## 支持版本
  - [x] Forge
@@ -43,7 +44,7 @@
 ## 原理
 很简单，将网络读取的txt内容和本地配置里的汉化版本对比。相同则不提示，反之提示。
 比如网络上txt里的内容是第二版，本地配置里是第一版，不一样。那么就会提示更新。
+
 ## 其他
 特别感谢TexTrue跨加载器重构，以及Lichiiiiiii修复3个bug！
-## 许可证
-MIT
+许可证使用MIT
