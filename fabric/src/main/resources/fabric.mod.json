@@ -3,7 +3,7 @@
   "id": "vmtranslationupdate",
   "version": "${version}",
   "name": "VM Translation Update",
-  "description": "一个用于检查汉化补丁更新和自动下载资源包的模组。",
+  "description": "A mod for checking for updates to VMChineseTranslationGroup's localization patches and automatically downloading resource packs.",
   "authors": [
     "Wulian233", "TexTrue", "Litchiiiiiii"
   ],
@@ -11,19 +11,17 @@
     "homepage": "https://github.com/VM-Chinese-translate-group",
     "sources": "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update"
   },
+  "icon": "icon.png",
   "license": "MIT",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
-    "main": [
-      "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateFabric"
-    ],
     "client": [
       "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateClientFabric"
     ]
   },
   "depends": {
     "fabric": "*",
-    "minecraft": "1.19.x",
+    "minecraft": ["1.19.3", "1.19.4"],
     "architectury": "*",
     "cloth-config": "*"
   }
