@@ -13,6 +13,6 @@ public class ConfigScreen implements ConfigData {
     public String tipsUrl = "https://vmct-cn.top/tips.txt";
     public String translationVersion = "1.0.0";
     public int minutes = 25;
-    public String packName = "VM汉化组模组汉化包1.18";
-    public String packUrl= "https://cdn.modrinth.com/data/IDWIdXwS/versions/xCpjJgHS/VM%E6%B1%89%E5%8C%96%E7%BB%84%E6%A8%A1%E7%BB%84%E6%B1%89%E5%8C%96%E5%8C%851.18";
+    public String packName = "VM汉化组模组汉化包1.19";
+    public String packUrl= "https://cdn-raw.modrinth.com/data/IDWIdXwS/versions/acZy8zAY/VM%E6%B1%89%E5%8C%96%E7%BB%84%E6%A8%A1%E7%BB%84%E6%B1%89%E5%8C%96%E5%8C%851.19";
 }
