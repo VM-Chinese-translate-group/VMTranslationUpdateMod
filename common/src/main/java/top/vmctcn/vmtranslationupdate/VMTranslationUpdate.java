@@ -53,7 +53,7 @@ public class VMTranslationUpdate {
 
         PlayerEvent.PLAYER_JOIN.register((player) -> {
             String localVersion = ModConfigUtil.getConfig().translationVersion;
-            String onlineVersion = VersionCheckUtil.getOnlineVersion(player).substring(0,5);
+            String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
             String name = player.getName().getString();
 
             if (name.equals("Zi__Min")) {
@@ -75,7 +75,8 @@ public class VMTranslationUpdate {
                 player.sendSystemMessage(message, Util.NIL_UUID);
             }
 
-            if (new File(PackDownloadUtil.resourcePackDir.toFile(), PackDownloadUtil.resourcePackName).exists() &&!client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName) && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
+            if (new File(PackDownloadUtil.resourcePackDir.toFile(), PackDownloadUtil.resourcePackName).exists()
+                    &&!client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName) && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
                 Text message = new TranslatableText("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().packName).setStyle(Style.EMPTY.withColor(Formatting.GOLD));
                 player.sendSystemMessage(message, Util.NIL_UUID);
             }

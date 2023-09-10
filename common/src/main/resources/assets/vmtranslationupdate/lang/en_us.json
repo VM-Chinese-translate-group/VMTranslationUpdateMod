@@ -3,18 +3,19 @@
   "vmtranslationupdate.message.update2": "Please click on the right ",
   "vmtranslationupdate.message.update3": " to download the new version.",
   "vmtranslationupdate.message.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
-  "vmtranslationupdate.message.hover": "Click me to download the new version on the official website!",
+  "vmtranslationupdate.message.hover": "Click me to download the new version!",
   "vmtranslationupdate.message.zimin": "Welcome to ZiMin's Minecraft world!",
-  "vmtranslationupdate.message.pack": "VM Chinese update auto reprint failed! Please enable \"%s\" packages manually in \"Options -> Resource Packs\".",
+  "vmtranslationupdate.message.pack": "VM Chinese Update auto enable localization failed! Please enable \"%s\" pack manually in \"Options -> Resource Packs\".",
 
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
+  "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "Auto switch languages by region",
   "text.autoconfig.vmtranslationupdate.option.updateUrl": "Update link",
   "text.autoconfig.vmtranslationupdate.option.downloadUrl": "Download link",
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "Get knowledge link",
-  "text.autoconfig.vmtranslationupdate.option.translationVersion": "Modpack Version",
+  "text.autoconfig.vmtranslationupdate.option.translationVersion": "Modpack translation version",
   "text.autoconfig.vmtranslationupdate.option.minutes": "Time interval for sending knowledge (minutes)",
   "text.autoconfig.vmtranslationupdate.option.packUrl": "Download resource pack link",
   "text.autoconfig.vmtranslationupdate.option.packName": "File name of the resource pack",
 
-  "modmenu.descriptionTranslation.vmtranslationupdate": "A mod for checking for updates to VMChineseTranslationGroup's localization patches and automatically downloading resource packs."
+  "modmenu.descriptionTranslation.vmtranslationupdate": "A mod for checking for updates to VM Chinese Group's localization patches and automatically downloading resource packs."
 }
