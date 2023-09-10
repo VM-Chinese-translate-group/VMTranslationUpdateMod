@@ -3,7 +3,7 @@
   "id": "vmtranslationupdate",
   "version": "${version}",
   "name": "VM Translation Update",
-  "description": "A mod for checking for updates to VMChineseTranslationGroup's localization patches and automatically downloading resource packs.",
+  "description": "A mod for checking for updates to VM Chinese Group's localization patches and automatically downloading resource packs.",
   "authors": [
     "Wulian233", "TexTrue", "Litchiiiiiii"
   ],

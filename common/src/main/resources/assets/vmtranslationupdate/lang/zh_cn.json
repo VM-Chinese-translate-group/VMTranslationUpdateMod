@@ -5,9 +5,10 @@
   "vmtranslationupdate.message.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
   "vmtranslationupdate.message.hover": "点我到官网下载新版本！",
   "vmtranslationupdate.message.zimin": "欢迎来到籽岷的Minecraft游戏世界！",
-  "vmtranslationupdate.message.pack": "VM汉化更新自动转载失败！请在 “选项 -> 资源包” 中手动启用 “%s” 资源包",
+  "vmtranslationupdate.message.pack": "VM汉化更新自动启用汉化失败！请在 “选项 -> 资源包” 中手动启用 “%s” 资源包",
 
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
+  "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动根据地区切换语言",
   "text.autoconfig.vmtranslationupdate.option.updateUrl": "更新检测链接",
   "text.autoconfig.vmtranslationupdate.option.downloadUrl": "下载链接",
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "获取知识内容的链接",

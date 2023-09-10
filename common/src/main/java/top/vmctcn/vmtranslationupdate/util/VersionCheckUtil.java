@@ -15,9 +15,9 @@ public class VersionCheckUtil {
             URL url = new URL(ModConfigUtil.getConfig().updateUrl);
             URLConnection connection = url.openConnection();
 
-            connection.setConnectTimeout(10000);
             String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmUpdate";
             connection.setRequestProperty("User-Agent", userAgent);
+            connection.setConnectTimeout(10000);
 
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
                 return reader.readLine();
