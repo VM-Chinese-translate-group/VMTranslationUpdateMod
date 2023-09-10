@@ -57,7 +57,7 @@ public class VMTranslationUpdate {
 
         PlayerEvent.PLAYER_JOIN.register((player) -> {
             String localVersion = ModConfigUtil.getConfig().translationVersion;
-            String onlineVersion = VersionCheckUtil.getOnlineVersion(player).substring(0,5);
+            String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
             String name = player.getName().getString();
 
             if (name.equals("Zi__Min")) {
