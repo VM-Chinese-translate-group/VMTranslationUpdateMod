@@ -5,9 +5,10 @@
   "vmtranslationupdate.message.error": "[VM漢化組]：錯誤！漢化更新檢測出現問題。",
   "vmtranslationupdate.message.hover": "點我到官網下載新版本！",
   "vmtranslationupdate.message.zimin": "歡迎來到籽岷的Minecraft遊戲世界！",
-  "vmtranslationupdate.message.pack": "VM漢化更新自動轉載失敗！請在 「選項 -> 資源包」 中手動啟用 「%s」 資源包",
+  "vmtranslationupdate.message.pack": "VM漢化更新自動啟用漢化失敗！請在 「選項 -> 資源包」 中手動啟用 「%s」 資源包",
 
   "text.autoconfig.vmtranslationupdate.title": "VM漢化更新檢測配寘",
+  "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自動根據地區切換語言",
   "text.autoconfig.vmtranslationupdate.option.updateUrl": "更新檢測鏈接",
   "text.autoconfig.vmtranslationupdate.option.downloadUrl": "下載鏈接",
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "獲取知識內容的鏈接",
@@ -16,5 +17,5 @@
   "text.autoconfig.vmtranslationupdate.option.packUrl": "下載資源包的連結",
   "text.autoconfig.vmtranslationupdate.option.packName": "資源包的名字",
 
-  "modmenu.descriptionTranslation.vmtranslationupdate": "一個用於檢查VMChineseTranslationGroup的漢化補丁更新和自動下載資源包的模組。"
+  "modmenu.descriptionTranslation.vmtranslationupdate": "一個用於檢查VM漢化組的漢化補丁更新和自動下載資源包的模組。"
 }
