@@ -5,11 +5,13 @@ import net.minecraftforge.common.config.Configuration;
 public class ModConfig {
     public static Configuration config;
     public static int minutes;
-    public static boolean autoSwitchLanguage;
+    public static boolean autoSwitchLanguage, enableDownloadResPack, autoLoadResPack;
     public static String updateUrl,downloadUrl,tipsUrl,translationVersion,packName,packUrl;
 
     public static void syncConfig() {
         autoSwitchLanguage = config.get("VM汉化更新检测配置", "autoSwitchLanguage", false, "自动根据地区切换语言").getBoolean();
+        enableDownloadResPack = config.get("VM汉化更新检测配置", "enableDownloadPack", true, "是否开启下载汉化包功能").getBoolean();
+        autoLoadResPack = config.get("VM汉化更新检测配置", "autoLoadPack", true, "是否开启自动加载汉化包功能").getBoolean();
         updateUrl = config.get("VM汉化更新检测配置", "updateUrl", "https://vmct-cn.top/rad/update.txt", "更新检测链接").getString();
         downloadUrl = config.get("VM汉化更新检测配置", "downloadUrl", "https://vmct-cn.top/modpacks/rad/", "下载链接").getString();
         tipsUrl = config.get("VM汉化更新检测配置", "tipsUrl", "https://vmct-cn.top/tips.txt", "获取知识内容的链接").getString();

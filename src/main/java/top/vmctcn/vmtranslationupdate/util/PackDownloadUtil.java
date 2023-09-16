@@ -41,15 +41,19 @@ public class PackDownloadUtil {
             e.printStackTrace();
         }
 
-        // 检测下载完成后尝试自动设置资源包
-        if (Files.exists(resPackFilePath)) {
-            try {
-                setResourcePack();
-            } catch (Exception e) {
-                VMTranslationUpdate.LOGGER.warn("Failed to set up \"%s\" resource pack.", resourcePackName.getBytes(StandardCharsets.UTF_8));
-                e.printStackTrace();
+        if (ModConfig.autoLoadResPack) {
+            // 检测下载完成后尝试自动设置资源包
+            if (Files.exists(resPackFilePath)) {
+                try {
+                    setResourcePack();
+                } catch (Exception e) {
+                    VMTranslationUpdate.LOGGER.warn("Failed to set up \"%s\" resource pack.", resourcePackName.getBytes(StandardCharsets.UTF_8));
+                    e.printStackTrace();
+                }
             }
         }
+
+
     }
 
     public static void downloadResPackFile(Path savePath) throws IOException {

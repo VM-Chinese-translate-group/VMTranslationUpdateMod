@@ -31,6 +31,10 @@ public class VMTranslationUpdate {
             client.gameSettings.language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
         }
 
+        if (ModConfig.enableDownloadResPack) {
+            PackDownloadUtil.downloadResPack();
+        }
+
         ModConfig.config = new Configuration(event.getSuggestedConfigurationFile());
         ModConfig.syncConfig();
 
