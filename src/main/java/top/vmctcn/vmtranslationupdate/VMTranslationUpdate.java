@@ -27,7 +27,6 @@ public class VMTranslationUpdate {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        PackDownloadUtil.downloadResPack();
         if (ModConfig.autoSwitchLanguage) {
             client.gameSettings.language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
         }
