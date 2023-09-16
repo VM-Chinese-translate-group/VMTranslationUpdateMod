@@ -2,12 +2,12 @@
   {
     "modid": "vmtranslationupdate",
     "name": "VM Translation Update",
-    "description": "VM汉化组用于检查汉化补丁更新的MOD",
+    "description": "一个用于检查汉化补丁更新和自动下载资源包的模组。",
     "version": "${version}",
     "mcversion": "${mc_version}",
     "url": "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update",
     "updateUrl": "",
-    "authorList": ["Wulian233"],
+    "authorList": ["Wulian233","TexTrue"],
     "logoFile": "icon.png",
     "screenshots": [],
     "dependencies": []

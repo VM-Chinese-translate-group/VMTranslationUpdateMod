@@ -2,6 +2,7 @@ package top.vmctcn.vmtranslationupdate.util;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
 
 import java.io.BufferedReader;
@@ -16,16 +17,15 @@ public class VersionCheckUtil {
             URL url = new URL(ModConfig.updateUrl);
             URLConnection connection = url.openConnection();
 
-            connection.setConnectTimeout(10000);
-            connection.setUseCaches(false);
-            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmTranslationUpdate";
+            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmUpdate";
             connection.setRequestProperty("User-Agent", userAgent);
+            connection.setConnectTimeout(10000);
 
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
                 return reader.readLine();
             }
         } catch (Exception e) {
-            player.sendMessage(new TextComponentString("VM汉化组：错误！汉化更新检测出现问题。"));
+            player.sendMessage(new TextComponentTranslation("vmtranslationupdate.message.error"));
             return "";
         }
     }

@@ -10,7 +10,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
 import top.vmctcn.vmtranslationupdate.event.ModEventHandler;
+import top.vmctcn.vmtranslationupdate.util.PackDownloadUtil;
 
+import java.util.Locale;
 import java.util.Random;
 
 @Mod(modid = VMTranslationUpdate.MOD_ID, name = VMTranslationUpdate.MODNAME, version = VMTranslationUpdate.MOD_VERSION)
@@ -19,12 +21,17 @@ public class VMTranslationUpdate {
     public static int tickCounter;
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
-    public static final String MOD_VERSION = "2.0.1";
+    public static final String MOD_VERSION = "2.1.0";
     public static final Minecraft client = Minecraft.getMinecraft();
     public static final Logger LOGGER = LogManager.getLogger(MODNAME);
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        PackDownloadUtil.downloadResPack();
+        if (ModConfig.autoSwitchLanguage) {
+            client.gameSettings.language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
+        }
+
         ModConfig.config = new Configuration(event.getSuggestedConfigurationFile());
         ModConfig.syncConfig();
 

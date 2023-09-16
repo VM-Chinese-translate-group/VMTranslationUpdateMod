@@ -22,7 +22,7 @@ public class ModEventHandler {
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         EntityPlayer player = event.player;
         String localVersion = ModConfig.translationVersion;
-        String onlineVersion = VersionCheckUtil.getOnlineVersion(player).substring(0,5);
+        String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
         String name = player.getName();
 
         if (name.equals("Zi__Min")) {

@@ -8,6 +8,7 @@ import top.vmctcn.vmtranslationupdate.config.ModConfig;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,6 +54,9 @@ public class PackDownloadUtil {
 
     public static void downloadResPackFile(Path savePath) throws IOException {
         URL url = new URL(ModConfig.packUrl + ".zip");
+        URLConnection connection = url.openConnection();
+        connection.setConnectTimeout(10000);
+
         try (InputStream in = url.openStream()) {
             Files.copy(in, savePath, StandardCopyOption.REPLACE_EXISTING);
         }
