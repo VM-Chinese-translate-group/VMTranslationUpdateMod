@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+
 public class TipsUtil {
     public static final List<String> messagesList = new ArrayList<>();
     public static String getRandomMessageFromURL(String tipsUrl) {
