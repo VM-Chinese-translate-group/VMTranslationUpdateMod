@@ -1,7 +1,6 @@
 package top.vmctcn.vmtranslationupdate.util;
 
 import dev.architectury.event.events.common.PlayerEvent;
-import net.minecraft.util.Util;
 import net.minecraft.text.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -21,9 +20,9 @@ public class NameUtil {
 
             if (name.equals("Zi__Min")) {
                 name = "岷叔";
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.zimin") ,Util.NIL_UUID);
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.zimin"));
                 if (!localVersion.equals(onlineVersion)) {
-                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
                 }
             }else {
                 try {
@@ -45,7 +44,7 @@ public class NameUtil {
                     if (jsonObject.has(name)) {
                         name = jsonObject.get(name).getAsString();
                         if (!localVersion.equals(onlineVersion)) {
-                            player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                            player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
                         }
                     }
                 } catch (Exception e) {
