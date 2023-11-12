@@ -60,11 +60,6 @@ public class VMTranslationUpdate {
             String localVersion = ModConfigUtil.getConfig().translationVersion;
             String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
 
-            if (name.equals("Zi__Min")) {
-                name = "岷叔";
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.zimin"));
-            }
-
             if (!localVersion.equals(onlineVersion)) {
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
                         .append(Text.translatable(ModConfigUtil.getConfig().downloadUrl).setStyle(
