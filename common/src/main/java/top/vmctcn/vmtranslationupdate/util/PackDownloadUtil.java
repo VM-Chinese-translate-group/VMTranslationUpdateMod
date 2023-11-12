@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PackDownloadUtil {
-    private static final MinecraftClient client = MinecraftClient.getInstance();
+    public static final MinecraftClient client = MinecraftClient.getInstance();
     public static final Path resourcePackDir = client.getResourcePackDir().toPath();
     public static String resourcePackName = ModConfigUtil.getConfig().packName + ".zip";
     private static final Path resPackFilePath = resourcePackDir.resolve(resourcePackName);

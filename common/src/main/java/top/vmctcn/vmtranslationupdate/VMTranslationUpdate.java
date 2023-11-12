@@ -50,6 +50,7 @@ public class VMTranslationUpdate {
             }
         });
 
+        NameUtil.init();
         PlayerEvent.PLAYER_JOIN.register((player) -> {
             String localVersion = ModConfigUtil.getConfig().translationVersion;
             String onlineVersion = VersionCheckUtil.getOnlineVersion(player);

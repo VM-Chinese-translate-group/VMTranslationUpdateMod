@@ -16,6 +16,7 @@
   "text.autoconfig.vmtranslationupdate.option.minutes": "Time interval for sending knowledge (minutes)",
   "text.autoconfig.vmtranslationupdate.option.packUrl": "Download resource pack link",
   "text.autoconfig.vmtranslationupdate.option.packName": "File name of the resource pack",
+  "text.autoconfig.vmtranslationupdate.option.nameUrl": "Get player name link",
 
   "modmenu.descriptionTranslation.vmtranslationupdate": "A mod for checking for updates to VM Chinese Group's localization patches and automatically downloading resource packs."
 }
