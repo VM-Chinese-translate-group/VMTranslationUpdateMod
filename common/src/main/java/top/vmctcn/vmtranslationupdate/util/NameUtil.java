@@ -21,7 +21,7 @@ public class NameUtil {
 
             if (name.equals("Zi__Min")) {
                 name = "岷叔";
-                player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.zimin") ,Util.NIL_UUID);
+                player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.zimin"), Util.NIL_UUID);
                 if (!localVersion.equals(onlineVersion)) {
                     player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
                 }
