@@ -21,9 +21,9 @@ public class NameUtil {
 
             if (name.equals("Zi__Min")) {
                 name = "岷叔";
-                player.sendMessage(new TranslatableText("vmtranslationupdate.message.zimin") ,Util.NIL_UUID);
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.zimin") ,Util.NIL_UUID);
                 if (!localVersion.equals(onlineVersion)) {
-                    player.sendMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
                 }
             }else {
                 try {
@@ -45,7 +45,7 @@ public class NameUtil {
                     if (jsonObject.has(name)) {
                         name = jsonObject.get(name).getAsString();
                         if (!localVersion.equals(onlineVersion)) {
-                            player.sendMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                            player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
                         }
                     }
                 } catch (Exception e) {
