@@ -50,18 +50,12 @@ public class VMTranslationUpdate {
             }
         });
 
+        NameUtil.init();
         PlayerEvent.PLAYER_JOIN.register((player) -> {
             String localVersion = ModConfigUtil.getConfig().translationVersion;
             String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
-            String name = player.getName().getString();
-
-            if (name.equals("Zi__Min")) {
-                name = "岷叔";
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.zimin"));
-            }
 
             if (!localVersion.equals(onlineVersion)) {
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
                         .append(Text.translatable(ModConfigUtil.getConfig().downloadUrl).setStyle(
                                 Style.EMPTY

@@ -16,6 +16,7 @@
   "text.autoconfig.vmtranslationupdate.option.minutes": "发送知识的时间间隔（分钟）",
   "text.autoconfig.vmtranslationupdate.option.packUrl": "下载资源包的链接",
   "text.autoconfig.vmtranslationupdate.option.packName": "资源包的文件名",
+  "text.autoconfig.vmtranslationupdate.option.nameUrl": "玩家对应称呼的链接",
 
   "modmenu.descriptionTranslation.vmtranslationupdate": "一个用于检查VM汉化组的汉化补丁更新和自动下载资源包的模组。"
 }

@@ -15,4 +15,5 @@ public class ConfigScreen implements ConfigData {
     public int minutes = 25;
     public String packName = "VM汉化组模组汉化包1.20";
     public String packUrl= "https://cdn-raw.modrinth.com/data/IDWIdXwS/versions/V5YtW17O/VM%E6%B1%89%E5%8C%96%E7%BB%84%E6%A8%A1%E7%BB%84%E6%B1%89%E5%8C%96%E5%8C%851.20";
+    public String nameUrl = "https://vmct-cn.top/name.json";
 }
