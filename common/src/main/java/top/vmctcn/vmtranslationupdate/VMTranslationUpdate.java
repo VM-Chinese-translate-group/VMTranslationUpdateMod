@@ -11,10 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
-import top.vmctcn.vmtranslationupdate.util.PackDownloadUtil;
-import top.vmctcn.vmtranslationupdate.util.TipsUtil;
-import top.vmctcn.vmtranslationupdate.util.VersionCheckUtil;
+import top.vmctcn.vmtranslationupdate.util.*;
 
 import java.io.File;
 import java.util.Locale;
