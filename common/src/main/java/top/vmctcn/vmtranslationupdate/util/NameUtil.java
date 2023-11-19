@@ -22,11 +22,11 @@ public class NameUtil {
                 String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
                 name = "岷叔";
                 player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.zimin"), Util.NIL_UUID);
-                if (!localVersion.equals(onlineVersion) && ModConfigUtil.getConfig().updateUrl.length() > 0) {
+                if (!localVersion.equals(onlineVersion) && !ModConfigUtil.getConfig().updateUrl.isEmpty()) {
                     player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
                 }
-            }else {
-                if (ModConfigUtil.getConfig().updateUrl.length() > 0) {
+            } else {
+                if (!ModConfigUtil.getConfig().updateUrl.isEmpty()) {
                     try {
                         String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
                         URL url = new URL(ModConfigUtil.getConfig().nameUrl);
