@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.vmctcn.vmtranslationupdate.util.*;
 
-import java.io.File;
+import java.io.Files;
 import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
