@@ -9,7 +9,7 @@
 
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "Auto switch languages by region",
-  "text.autoconfig.vmtranslationupdate.option.updateUrl": "Update link",
+  "text.autoconfig.vmtranslationupdate.option.updateUrl": "Detection update link(empty not detection)",
   "text.autoconfig.vmtranslationupdate.option.downloadUrl": "Download link",
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "Get knowledge link",
   "text.autoconfig.vmtranslationupdate.option.translationVersion": "Modpack translation version",

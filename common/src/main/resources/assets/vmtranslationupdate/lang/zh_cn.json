@@ -9,7 +9,7 @@
 
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动根据地区切换语言",
-  "text.autoconfig.vmtranslationupdate.option.updateUrl": "更新检测链接",
+  "text.autoconfig.vmtranslationupdate.option.updateUrl": "更新检测链接（留空不检测）",
   "text.autoconfig.vmtranslationupdate.option.downloadUrl": "下载链接",
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "获取知识内容的链接",
   "text.autoconfig.vmtranslationupdate.option.translationVersion": "整合包翻译版本",

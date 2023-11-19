@@ -51,28 +51,30 @@ public class VMTranslationUpdate {
             }
         });
         NameUtil.init();
-        PlayerEvent.PLAYER_JOIN.register((player) -> {
-            String localVersion = ModConfigUtil.getConfig().translationVersion;
-            String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
+        if (ModConfigUtil.getConfig().updateUrl.length() > 0) {
+            PlayerEvent.PLAYER_JOIN.register((player) -> {
+                String localVersion = ModConfigUtil.getConfig().translationVersion;
+                String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
 
-            if (!localVersion.equals(onlineVersion)) {
-                Text message = new TranslatableText("vmtranslationupdate.message.update2")
-                        .append(new TranslatableText(ModConfigUtil.getConfig().downloadUrl).setStyle(
-                                Style.EMPTY
-                                    .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ModConfigUtil.getConfig().downloadUrl))
-                                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("vmtranslationupdate.message.hover")))
-                                    .withColor(Formatting.AQUA)
-                        ))
-                        .append(new TranslatableText("vmtranslationupdate.message.update3"));
+                if (!localVersion.equals(onlineVersion)) {
+                    Text message = new TranslatableText("vmtranslationupdate.message.update2")
+                            .append(new TranslatableText(ModConfigUtil.getConfig().downloadUrl).setStyle(
+                                    Style.EMPTY
+                                            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ModConfigUtil.getConfig().downloadUrl))
+                                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("vmtranslationupdate.message.hover")))
+                                            .withColor(Formatting.AQUA)
+                            ))
+                            .append(new TranslatableText("vmtranslationupdate.message.update3"));
 
-                player.sendSystemMessage(message, Util.NIL_UUID);
-            }
+                    player.sendSystemMessage(message, Util.NIL_UUID);
+                }
 
-            if (new File(PackDownloadUtil.resourcePackDir.toFile(), PackDownloadUtil.resourcePackName).exists()
-                    &&!client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName) && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
-                Text message = new TranslatableText("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().packName).setStyle(Style.EMPTY.withColor(Formatting.GOLD));
-                player.sendSystemMessage(message, Util.NIL_UUID);
-            }
-        });
+                if (new File(PackDownloadUtil.resourcePackDir.toFile(), PackDownloadUtil.resourcePackName).exists()
+                        && !client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName) && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
+                    Text message = new TranslatableText("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().packName).setStyle(Style.EMPTY.withColor(Formatting.GOLD));
+                    player.sendSystemMessage(message, Util.NIL_UUID);
+                }
+            });
+        }
     }
 }
