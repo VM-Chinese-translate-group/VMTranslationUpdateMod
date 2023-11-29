@@ -44,6 +44,12 @@ jobs:
           name: forge
           path: ${{ github.workspace }}/forge/build/libs
 
+      - name: Upload artifacts (neoforge)
+        uses: actions/upload-artifact@v3
+        with:
+          name: forge
+          path: ${{ github.workspace }}/neoforge/build/libs
+
       - name: Upload artifacts (Forgix merged jar)
         uses: actions/upload-artifact@v3
         with:
