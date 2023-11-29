@@ -26,6 +26,7 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
+
       - name: Upload artifacts (fabric)
         uses: actions/upload-artifact@v3
         with:
@@ -36,3 +37,9 @@ jobs:
         with:
           name: forge
           path: ${{ github.workspace }}/forge/build/libs
+
+      - name: Upload artifacts (Forgix merged jar)
+        uses: actions/upload-artifact@v3
+        with:
+          name: merged
+          path: ${{ github.workspace }}/build/libs/forgix
