@@ -6,7 +6,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 
 @Config(name = VMTranslationUpdate.MOD_ID)
-public class ConfigScreen implements ConfigData {
+public class ModConfigs implements ConfigData {
     public boolean autoSwitchLanguage = false;
     public String updateUrl = "https://vmct-cn.top/sb3/update.txt";
     public String downloadUrl = "https://vmct-cn.top/sb3/";

@@ -1,7 +1,6 @@
 package top.vmctcn.vmtranslationupdate.util;
 
 import dev.architectury.event.events.common.PlayerEvent;
-import net.minecraft.util.Util;
 import net.minecraft.text.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -17,39 +16,41 @@ public class NameUtil {
         PlayerEvent.PLAYER_JOIN.register((player) -> {
             String name = player.getName().getString();
             String localVersion = ModConfigUtil.getConfig().translationVersion;
-            String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
 
             if (name.equals("Zi__Min")) {
+                String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
                 name = "岷叔";
                 player.sendMessage(Text.translatable("vmtranslationupdate.message.zimin"));
-                if (!localVersion.equals(onlineVersion)) {
+                if (!localVersion.equals(onlineVersion) && !ModConfigUtil.getConfig().updateUrl.isEmpty()) {
                     player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
                 }
-            }else {
-                try {
-                    URL url = new URL(ModConfigUtil.getConfig().nameUrl);
-                    URLConnection connection = url.openConnection();
-                    connection.setConnectTimeout(10000);
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String line;
+            } else {
+                if (!ModConfigUtil.getConfig().updateUrl.isEmpty()) {
+                    try {
+                        String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
+                        URL url = new URL(ModConfigUtil.getConfig().nameUrl);
+                        URLConnection connection = url.openConnection();
+                        connection.setConnectTimeout(10000);
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
+                        StringBuilder stringBuilder = new StringBuilder();
+                        String line;
 
-                    while ((line = reader.readLine()) != null) {
-                        stringBuilder.append(line);
-                    }
-                    reader.close();
-
-                    JsonParser parser = new JsonParser();
-                    JsonObject jsonObject = parser.parse(stringBuilder.toString()).getAsJsonObject();
-
-                    if (jsonObject.has(name)) {
-                        name = jsonObject.get(name).getAsString();
-                        if (!localVersion.equals(onlineVersion)) {
-                            player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
+                        while ((line = reader.readLine()) != null) {
+                            stringBuilder.append(line);
                         }
+                        reader.close();
+
+                        JsonObject jsonObject = JsonParser.parseString(stringBuilder.toString()).getAsJsonObject();
+
+                        if (jsonObject.has(name)) {
+                            name = jsonObject.get(name).getAsString();
+                            if (!localVersion.equals(onlineVersion)) {
+                                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         });
