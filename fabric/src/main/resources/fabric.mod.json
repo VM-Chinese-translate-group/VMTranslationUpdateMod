@@ -9,7 +9,8 @@
   ],
   "contact": {
     "homepage": "https://github.com/VM-Chinese-translate-group",
-    "sources": "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update"
+    "sources": "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update",
+    "issues": "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update/issues"
   },
   "icon": "icon.png",
   "license": "MIT",

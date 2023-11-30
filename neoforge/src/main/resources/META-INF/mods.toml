@@ -1,5 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[1,)"
+issueTrackerURL = "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update/issues"
 license = "MIT"
 
 [[mods]]
@@ -15,13 +16,6 @@ and automatically downloading resource packs.
 一个用于检查汉化补丁更新和自动下载资源包的模组。
 '''
 logoFile = "icon.png"
-
-[[dependencies.vmtranslationupdate]]
-modId = "neoforge"
-mandatory = true
-versionRange = "[20,)"
-ordering = "NONE"
-side = "BOTH"
 
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
