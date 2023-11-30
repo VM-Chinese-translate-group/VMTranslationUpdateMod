@@ -15,7 +15,7 @@ jobs:
           distribution: 'temurin'
           java-version: 17
       - name: Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -27,7 +27,7 @@ jobs:
           chmod +x gradlew
           ./gradlew build
 
-      - name: Merge Fabric and Forge JARs
+      - name: Merge Fabric & Forge & NeoForge JARs
         run: |
           chmod +x gradlew
           ./gradlew mergeJars
@@ -47,7 +47,7 @@ jobs:
       - name: Upload artifacts (neoforge)
         uses: actions/upload-artifact@v3
         with:
-          name: forge
+          name: neoforge
           path: ${{ github.workspace }}/neoforge/build/libs
 
       - name: Upload artifacts (Forgix merged jar)
