@@ -6,7 +6,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 
 @Config(name = VMTranslationUpdate.MOD_ID)
-public class ModConfig implements ConfigData {
+public class ModConfigs implements ConfigData {
     public boolean autoSwitchLanguage = false;
     public boolean checkModPackTranslationUpdate = false;
     public boolean autoDownloadVMTranslationPack = false;
