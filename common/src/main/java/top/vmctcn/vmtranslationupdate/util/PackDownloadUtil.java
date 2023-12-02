@@ -18,7 +18,7 @@ import java.util.List;
 public class PackDownloadUtil {
     public static final MinecraftClient client = MinecraftClient.getInstance();
     public static final Path resourcePackDir = client.getResourcePackDir().toAbsolutePath();
-    public static String resourcePackName = ModConfigUtil.getConfig().packName + ".zip";
+    public static String resourcePackName = ModConfigUtil.getConfig().traslationPackName + ".zip";
     private static final Path resPackFilePath = resourcePackDir.resolve(resourcePackName);
 
     public static void downloadResPack() {
@@ -41,7 +41,7 @@ public class PackDownloadUtil {
         }
 
         // 检测下载完成后尝试自动设置资源包
-        if (Files.exists(resPackFilePath)) {
+        if (Files.exists(resPackFilePath) && ModConfigUtil.getConfig().autoInstallVMTranslationPack) {
             try {
                 setResourcePack();
             } catch (Exception e) {
@@ -52,7 +52,7 @@ public class PackDownloadUtil {
     }
 
     public static void downloadResPackFile(Path savePath) throws IOException {
-        URL url = new URL(ModConfigUtil.getConfig().packUrl + ".zip");
+        URL url = new URL(ModConfigUtil.getConfig().traslationPackUrl + ModConfigUtil.getConfig().traslationPackName + ".zip");
         URLConnection connection = url.openConnection();
         connection.setConnectTimeout(10000);
         
