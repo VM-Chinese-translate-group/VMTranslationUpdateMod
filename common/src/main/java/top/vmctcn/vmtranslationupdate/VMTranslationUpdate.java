@@ -17,7 +17,7 @@ import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
 public class VMTranslationUpdate {
-    public static Random random;
+    public static Random random = new Random();
     public static int tickCounter;
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
@@ -31,47 +31,54 @@ public class VMTranslationUpdate {
             client.options.language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
         }
 
-        random = new Random();
-        PackDownloadUtil.downloadResPack();
-        ClientTickEvent.CLIENT_POST.register((client) -> {
+        if (ModConfigUtil.getConfig().autoDownloadVMTranslationPack) {
+            PackDownloadUtil.downloadResPack();
+        }
+
+        if (ModConfigUtil.getConfig().displayTips) {
             if (client.player == null) return;
-            tickCounter++;
-            int tickInterval = 20 * 60 * TipsUtil.getMinutes();
-            if (tickCounter >= tickInterval) {
-                tickCounter = 0;
-                CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfigUtil.getConfig().tipsUrl))
-                        .thenAccept(message -> {
-                            if (message == null) return;
-                            String randomMessage = TipsUtil.getRandomMessageFromURL(ModConfigUtil.getConfig().tipsUrl);
-                            client.player.sendMessage(Text.translatable(randomMessage));
-                        });
-            }
-        });
+            ClientTickEvent.CLIENT_POST.register((client) -> {
+                tickCounter++;
+                int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
+                if (tickCounter >= tickInterval) {
+                    tickCounter = 0;
+                    CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfigUtil.getConfig().tipsUrl))
+                            .thenAccept(message -> {
+                                if (message == null) return;
+                                String randomMessage = TipsUtil.getRandomMessageFromURL(ModConfigUtil.getConfig().tipsUrl);
+                                client.player.sendMessage(Text.translatable(randomMessage));
+                            });
+                }
+            });
+        }
 
         NameUtil.init();
-        if (ModConfigUtil.getConfig().updateUrl.isEmpty()) return;
         PlayerEvent.PLAYER_JOIN.register((player) -> {
-            String localVersion = ModConfigUtil.getConfig().translationVersion;
+            String localVersion = ModConfigUtil.getConfig().modPackTranslationVersion;
             String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
 
-            if (localVersion.equals(onlineVersion)
-                    && Files.exists(PackDownloadUtil.resourcePackDir)
-                    && !client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName)
-                    && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
-                Text message = Text.translatable("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().packName)
-                        .setStyle(Style.EMPTY.withColor(Formatting.GOLD));
-                player.sendMessage(message);
+            if (ModConfigUtil.getConfig().checkModPackTranslationUpdate) {
+                if (localVersion.equals(onlineVersion)
+                        && Files.exists(PackDownloadUtil.resourcePackDir)
+                        && !client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName)
+                        && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
+                    Text message = Text.translatable("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().traslationPackName)
+                            .setStyle(Style.EMPTY.withColor(Formatting.GOLD));
 
-            } else if (!localVersion.equals(onlineVersion)) {
-                Text message = Text.translatable("vmtranslationupdate.message.update2")
-                        .append(Text.translatable(ModConfigUtil.getConfig().downloadUrl)
-                                .setStyle(Style.EMPTY
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ModConfigUtil.getConfig().downloadUrl))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.translatable("vmtranslationupdate.message.hover")))
-                                        .withColor(Formatting.AQUA)
-                                ))
-                        .append(Text.translatable("vmtranslationupdate.message.update3"));
-                player.sendMessage(message);
+                    player.sendMessage(message);
+
+                } else if (!localVersion.equals(onlineVersion)) {
+                    Text message = Text.translatable("vmtranslationupdate.message.update2")
+                            .append(Text.translatable(ModConfigUtil.getConfig().modPackTranslationUrl)
+                                    .setStyle(Style.EMPTY
+                                            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ModConfigUtil.getConfig().modPackTranslationUrl))
+                                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.translatable("vmtranslationupdate.message.hover")))
+                                            .withColor(Formatting.AQUA)
+                                    ))
+                            .append(Text.translatable("vmtranslationupdate.message.update3"));
+
+                    player.sendMessage(message);
+                }
             }
         });
     }

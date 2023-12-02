@@ -15,19 +15,18 @@ public class NameUtil {
     public static void init() {
         PlayerEvent.PLAYER_JOIN.register((player) -> {
             String name = player.getName().getString();
-            String localVersion = ModConfigUtil.getConfig().translationVersion;
+            String localVersion = ModConfigUtil.getConfig().modPackTranslationVersion;
+            String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
 
-            if (name.equals("Zi__Min")) {
-                String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
-                name = "岷叔";
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.zimin"));
-                if (!localVersion.equals(onlineVersion) && !ModConfigUtil.getConfig().updateUrl.isEmpty()) {
-                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
-                }
-            } else {
-                if (!ModConfigUtil.getConfig().updateUrl.isEmpty()) {
+            if (ModConfigUtil.getConfig().playerNameCheck) {
+                if (name.equals("Zi__Min")) {
+                    name = "岷叔";
+                    player.sendMessage(Text.translatable("vmtranslationupdate.message.zimin"));
+                    if (ModConfigUtil.getConfig().checkModPackTranslationUpdate && !localVersion.equals(onlineVersion)) {
+                        player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
+                    }
+                } else {
                     try {
-                        String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
                         URL url = new URL(ModConfigUtil.getConfig().nameUrl);
                         URLConnection connection = url.openConnection();
                         connection.setConnectTimeout(10000);
@@ -40,11 +39,12 @@ public class NameUtil {
                         }
                         reader.close();
 
-                        JsonObject jsonObject = JsonParser.parseString(stringBuilder.toString()).getAsJsonObject();
+                        JsonParser parser = new JsonParser();
+                        JsonObject jsonObject = parser.parse(stringBuilder.toString()).getAsJsonObject();
 
                         if (jsonObject.has(name)) {
                             name = jsonObject.get(name).getAsString();
-                            if (!localVersion.equals(onlineVersion)) {
+                            if (ModConfigUtil.getConfig().checkModPackTranslationUpdate && !localVersion.equals(onlineVersion)) {
                                 player.sendMessage(Text.translatable("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
                             }
                         }

@@ -8,12 +8,17 @@ import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 @Config(name = VMTranslationUpdate.MOD_ID)
 public class ModConfigs implements ConfigData {
     public boolean autoSwitchLanguage = false;
-    public String updateUrl = "https://vmct-cn.top/sb3/update.txt";
-    public String downloadUrl = "https://vmct-cn.top/sb3/";
+    public boolean checkModPackTranslationUpdate = false;
+    public boolean autoDownloadVMTranslationPack = false;
+    public boolean autoInstallVMTranslationPack = false;
+    public boolean displayTips = false;
+    public boolean playerNameCheck = false;
+    public String modPackTranslationUpdateCheckUrl = "https://vmct-cn.top/example/update.txt";
+    public String modPackTranslationUrl = "https://vmct-cn.top/example/";
     public String tipsUrl = "https://vmct-cn.top/tips.txt";
-    public String translationVersion = "1.0.0";
-    public int minutes = 25;
-    public String packName = "VM汉化组模组汉化包1.20";
-    public String packUrl= "https://cdn-raw.modrinth.com/data/IDWIdXwS/versions/V5YtW17O/VM%E6%B1%89%E5%8C%96%E7%BB%84%E6%A8%A1%E7%BB%84%E6%B1%89%E5%8C%96%E5%8C%851.20";
+    public String modPackTranslationVersion = "1.0.0";
+    public int tipsMinutes = 25;
+    public String traslationPackName = "VM汉化组模组汉化包1.20";
+    public String traslationPackUrl= "https://cdn-raw.modrinth.com/data/IDWIdXwS/versions/V5YtW17O/";
     public String nameUrl = "https://vmct-cn.top/name.json";
 }
