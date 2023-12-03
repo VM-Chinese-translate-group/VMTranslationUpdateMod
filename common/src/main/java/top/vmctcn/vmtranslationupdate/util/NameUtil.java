@@ -16,40 +16,42 @@ public class NameUtil {
     public static void init() {
         PlayerEvent.PLAYER_JOIN.register((player) -> {
             String name = player.getName().getString();
-            String localVersion = ModConfigUtil.getConfig().translationVersion;
+            String localVersion = ModConfigUtil.getConfig().modPackTranslationVersion;
             String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
 
-            if (name.equals("Zi__Min")) {
-                name = "岷叔";
-                player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.zimin") ,Util.NIL_UUID);
-                if (!localVersion.equals(onlineVersion)) {
-                    player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
-                }
-            }else {
-                try {
-                    URL url = new URL(ModConfigUtil.getConfig().nameUrl);
-                    URLConnection connection = url.openConnection();
-                    connection.setConnectTimeout(10000);
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String line;
-
-                    while ((line = reader.readLine()) != null) {
-                        stringBuilder.append(line);
+            if (ModConfigUtil.getConfig().playerNameCheck) {
+                if (name.equals("Zi__Min")) {
+                    name = "岷叔";
+                    player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.zimin"), Util.NIL_UUID);
+                    if (ModConfigUtil.getConfig().checkModPackTranslationUpdate && !localVersion.equals(onlineVersion)) {
+                        player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
                     }
-                    reader.close();
+                } else {
+                    try {
+                        URL url = new URL(ModConfigUtil.getConfig().nameUrl);
+                        URLConnection connection = url.openConnection();
+                        connection.setConnectTimeout(10000);
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
+                        StringBuilder stringBuilder = new StringBuilder();
+                        String line;
 
-                    JsonParser parser = new JsonParser();
-                    JsonObject jsonObject = parser.parse(stringBuilder.toString()).getAsJsonObject();
-
-                    if (jsonObject.has(name)) {
-                        name = jsonObject.get(name).getAsString();
-                        if (!localVersion.equals(onlineVersion)) {
-                            player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                        while ((line = reader.readLine()) != null) {
+                            stringBuilder.append(line);
                         }
+                        reader.close();
+
+                        JsonParser parser = new JsonParser();
+                        JsonObject jsonObject = parser.parse(stringBuilder.toString()).getAsJsonObject();
+
+                        if (jsonObject.has(name)) {
+                            name = jsonObject.get(name).getAsString();
+                            if (ModConfigUtil.getConfig().checkModPackTranslationUpdate && !localVersion.equals(onlineVersion)) {
+                                player.sendSystemMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)), Util.NIL_UUID);
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         });

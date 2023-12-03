@@ -53,7 +53,7 @@ public class TipsUtil {
         }
     }
 
-    public static Integer getMinutes() {
-        return ModConfigUtil.getConfig().minutes;
+    public static Integer getTipsMinutes() {
+        return ModConfigUtil.getConfig().tipsMinutes;
     }
 }

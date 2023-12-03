@@ -5,20 +5,20 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
-import top.vmctcn.vmtranslationupdate.config.ConfigScreen;
+import top.vmctcn.vmtranslationupdate.config.ModConfigs;
 
 public class ModConfigUtil {
-    private static ConfigScreen configScreen;
+    private static ModConfigs modConfigs;
 
-    public static ConfigScreen getConfig() {
-        if (configScreen == null) {
-            AutoConfig.register(ConfigScreen.class, Toml4jConfigSerializer::new);
-            configScreen = AutoConfig.getConfigHolder(ConfigScreen.class).getConfig();
+    public static ModConfigs getConfig() {
+        if (modConfigs == null) {
+            AutoConfig.register(ModConfigs.class, Toml4jConfigSerializer::new);
+            modConfigs = AutoConfig.getConfigHolder(ModConfigs.class).getConfig();
         }
-        return configScreen;
+        return modConfigs;
     }
 
     public static void setConfigScreen() {
-        Platform.getMod(VMTranslationUpdate.MOD_ID).registerConfigurationScreen(parent -> AutoConfig.getConfigScreen(ConfigScreen.class, parent).get());
+        Platform.getMod(VMTranslationUpdate.MOD_ID).registerConfigurationScreen(parent -> AutoConfig.getConfigScreen(ModConfigs.class, parent).get());
     }
 }
