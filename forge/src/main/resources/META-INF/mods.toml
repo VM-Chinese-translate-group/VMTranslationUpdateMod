@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[40,)"
+loaderVersion = "[46,)"
 #issueTrackerURL = ""
 license = "MIT"
 
@@ -20,7 +20,7 @@ logoFile = "icon.png"
 [[dependencies.vmtranslationupdate]]
 modId = "forge"
 mandatory = true
-versionRange = "[40,)"
+versionRange = "[46,)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -39,7 +39,7 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.vmtranslationupdate]]
-modId = "cloth_config"
+modId = "cloth-config"
 mandatory = true
 versionRange = "[6,)"
 ordering = "AFTER"
