@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[40,)"
+loaderVersion = "[48,)"
 issueTrackerURL = "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update/issues"
 license = "MIT"
 
@@ -32,7 +32,7 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.vmtranslationupdate]]
-modId = "cloth_config"
+modId = "cloth-config"
 mandatory = true
 versionRange = "*"
 ordering = "AFTER"
