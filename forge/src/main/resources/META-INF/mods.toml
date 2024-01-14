@@ -32,7 +32,7 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.vmtranslationupdate]]
-modId = "cloth-config"
+modId = "cloth_config"
 mandatory = true
 versionRange = "*"
 ordering = "AFTER"
