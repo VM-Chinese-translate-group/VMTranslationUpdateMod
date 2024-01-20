@@ -8,17 +8,17 @@ import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 @Config(name = VMTranslationUpdate.MOD_ID)
 public class ModConfigs implements ConfigData {
     public boolean autoSwitchLanguage = false;
-    public boolean checkModPackTranslationUpdate = false;
-    public boolean autoDownloadVMTranslationPack = false;
-    public boolean autoInstallVMTranslationPack = false;
-    public boolean displayTips = false;
-    public boolean playerNameCheck = false;
-    public String modPackTranslationUpdateCheckUrl = "https://vmct-cn.top/example/update.txt";
-    public String modPackTranslationUrl = "https://vmct-cn.top/example/";
+    public boolean checkModPackTranslationUpdate = true;
+    public boolean autoDownloadVMTranslationPack = true;
+    public boolean autoInstallVMTranslationPack = true;
+    public boolean displayTips = true;
+    public boolean playerNameCheck = true
+    public String modPackTranslationUpdateCheckUrl = "https://vmct-cn.top/modpacks/example/update.txt";
+    public String modPackTranslationUrl = "https://vmct-cn.top/modpacks/example/";
     public String tipsUrl = "https://vmct-cn.top/tips.txt";
     public String modPackTranslationVersion = "1.0.0";
     public int tipsMinutes = 25;
-    public String traslationPackName = "VM汉化组模组汉化包1.20";
-    public String traslationPackUrl= "https://cdn-raw.modrinth.com/data/IDWIdXwS/versions/V5YtW17O/";
+    public String traslationPackName = "VM汉化组模组汉化包1.19";
+    public String traslationPackUrl= "https://cdn.modrinth.com/data/IDWIdXwS/versions/acZy8zAY/VM汉化组模组汉化包1.19";
     public String nameUrl = "https://vmct-cn.top/name.json";
 }
