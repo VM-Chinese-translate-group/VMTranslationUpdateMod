@@ -1,5 +1,5 @@
 <div align="center"> 
-   <img height="100px" alt="logo" src="https://raw.githubusercontent.com/VM-Chinese-translate-group/VM-Chinese-Group-Update/1.18.x/common/src/main/resources/icon.png"/> 
+   <img height="100px" alt="logo" src="https://cdn.modrinth.com/data/wvCSIW08/a1ff154a62300a7e7813008d327a526503ad96f4.png"/> 
    <h1>VM Translation Update</h1>
 </div> 
 
@@ -16,8 +16,8 @@
 **发布汉化时，请特别注意。在汉化更新时改一下模组配置里的版本号！**
 
 模组会在config文件夹创建名为`vmtranslationupdate`的配置文件（1.12.2后缀是.cfg，其他版本为.toml），共有7个配置选项。
-1. 更新检测链接。例如`https://vmct-cn.top/sb3/update.txt`，会读取txt的内容。必须为UTF-8编码且可以直接打开的直链。
-2. 提示玩家下载的链接。例如`https://vmct-cn.top/sb3/`，会在聊天栏展示。
+1. 更新检测链接。例如`https://vmct-cn.top/modpacks/sb3/update.txt`，会读取txt的内容。必须为UTF-8编码且可以直接打开的直链。
+2. 提示玩家下载的链接。例如`https://vmct-cn.top/modpacks/sb3/`，会在聊天栏展示。
 3. 获取知识内容的链接。例如`https://vmct-cn.top/tips.txt`会读取txt的内容，必须是UTF-8编码且可以直接打开的直链。一行一句，每次会随机选择一行的内容发送在聊天栏。
 4. 整合包翻译版本。例如第一版。需要发布时改的就是这个。
 5. 发送知识的时间间隔（分钟），默认25分钟一次。
@@ -30,17 +30,15 @@
      - [x] 1.16.5
      - [x] 1.18.x
      - [x] 1.19.x
-     - [x] 1.20.x
+     - [x] 1.20 - 1.20.2
  - [x] Fabric
      - [x] 1.16.5
      - [x] 1.18.x
      - [x] 1.19.x
-     - [x] 1.20.x
-
-## 原理
-很简单，将网络读取的txt内容和本地配置里的汉化版本对比。相同则不提示，反之提示。
-比如网络上txt里的内容是第二版，本地配置里是第一版，不一样。那么就会提示更新。
+     - [x] 1.20 - 1.20.2
+ - [x] Neoforge
+     - [x] 1.20.2
 
 ## 其他
-特别感谢TexTrue跨加载器重构，以及Lichiiiiiii修复3个bug！
-许可证使用MIT
+特别感谢TexTrue跨加载器重构，以及Lichiiiiiii修复部分bug！
+许可证使用MIT协议
