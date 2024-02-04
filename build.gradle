@@ -24,7 +24,7 @@ allprojects {
     apply plugin: "maven-publish"
 
     archivesBaseName = rootProject.archives_base_name
-    version = "${rootProject.mod_version}-${rootProject.minecraft_version}"
+    version = "${rootProject.mod_version}+mc${rootProject.minecraft_version}"
     group = rootProject.maven_group
 
     repositories {
@@ -47,17 +47,17 @@ allprojects {
 
 forgix {
     group = rootProject.maven_group
-    mergedJarName = "${rootProject.archives_base_name}-${project.version}.jar"
+    mergedJarName = "${rootProject.archives_base_name}-${rootProject.version}.jar"
     outputDir = "build/libs/forgix"
 
     forge {
         projectName = "forge"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-forge-${ rootProject.version }.jar"
+        jarLocation = "build/libs/${rootProject.archives_base_name}-forge-${rootProject.version}.jar"
     }
 
     fabric {
         projectName = "fabric"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${ rootProject.version }.jar"
+        jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${rootProject.version}.jar"
     }
 }
 
