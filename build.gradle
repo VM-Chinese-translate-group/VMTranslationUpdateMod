@@ -75,7 +75,7 @@ publishMods {
             minecraftVersions = ["1.16.4", "1.16.5"]
 
             requires {
-                slug = "architectury-api"
+                slug = ["architectury-api", "cloth-config"]
             }
         }
     }
@@ -90,7 +90,7 @@ publishMods {
         }
 
         requires {
-            slug = "architectury-api"
+            slug = ["architectury-api", "cloth-config"]
         }
     }
 }
