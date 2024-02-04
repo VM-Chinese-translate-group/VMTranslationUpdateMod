@@ -20,7 +20,7 @@ logoFile = "icon.png"
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.2,)"
+versionRange = "[1.20.3,)"
 ordering = "NONE"
 side = "BOTH"
 

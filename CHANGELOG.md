@@ -1,7 +1,5 @@
 ## Changelog
-- Add mod release workflow
-- clean code
+- port to 1.20.4
 
 ## Changelog
-- 添加 mod release workflow
-- 代码清理
+- 支持 1.20.3-1.20.4
