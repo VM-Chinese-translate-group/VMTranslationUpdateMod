@@ -19,6 +19,6 @@ public class ModConfigs implements ConfigData {
     public String modPackTranslationVersion = "1.0.0";
     public int tipsMinutes = 25;
     public String traslationPackName = "VM汉化组模组汉化包1.18";
-    public String traslationPackUrl= "https://cdn.modrinth.com/data/IDWIdXwS/versions/xCpjJgHS/VM汉化组模组汉化包1.18";
+    public String traslationPackUrl= "https://cdn.modrinth.com/data/IDWIdXwS/versions/xCpjJgHS/";
     public String nameUrl = "https://vmct-cn.top/name.json";
 }
