@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.vmctcn.vmtranslationupdate.util.*;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.util.Locale;
 import java.util.Random;
@@ -23,9 +22,8 @@ public class VMTranslationUpdate {
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
     static MinecraftClient client = MinecraftClient.getInstance();
-
-    private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer"); // Stenographer 兼容
     public static final Logger LOGGER = LoggerFactory.getLogger(MODNAME);
+    private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer"); // Stenographer 兼容
 
     public static void init() {
         if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded) {
