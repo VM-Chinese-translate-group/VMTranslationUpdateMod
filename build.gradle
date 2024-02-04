@@ -1,7 +1,8 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
     id "io.github.pacifistmc.forgix" version "1.2.6"
-    id "dev.architectury.loom" version "1.3-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.4-SNAPSHOT" apply false
+    id "me.modmuss50.mod-publish-plugin" version "0.4.5"
 }
 
 architectury {
@@ -23,7 +24,7 @@ allprojects {
     apply plugin: "maven-publish"
 
     archivesBaseName = rootProject.archives_base_name
-    version = "${rootProject.mod_version}-${rootProject.minecraft_version}"
+    version = "${rootProject.mod_version}+mc${rootProject.minecraft_version}"
     group = rootProject.maven_group
 
     repositories {
@@ -46,16 +47,50 @@ allprojects {
 
 forgix {
     group = rootProject.maven_group
-    mergedJarName = "${rootProject.archives_base_name}-${project.version}.jar"
+    mergedJarName = "${rootProject.archives_base_name}-${rootProject.version}.jar"
     outputDir = "build/libs/forgix"
 
     forge {
         projectName = "forge"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-forge-${ rootProject.version }.jar"
+        jarLocation = "build/libs/${rootProject.archives_base_name}-forge-${rootProject.version}.jar"
     }
 
     fabric {
         projectName = "fabric"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${ rootProject.version }.jar"
+        jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${rootProject.version}.jar"
+    }
+}
+
+publishMods {
+    file = file(forgix.getOutputDir() + "/" + forgix.getMergedJarName())
+    changelog = file("CHANGELOG.md").getText('UTF-8')
+    type = STABLE
+    modLoaders = ["fabric", "forge"]
+
+    var CURSEFORGE_TOKEN = project.findProperty("CURSEFORGE_TOKEN") ?: System.getenv("CURSEFORGE_TOKEN")
+    if (CURSEFORGE_TOKEN != null) {
+        curseforge {
+            projectId = rootProject.curseforge_id
+            accessToken = providers.environmentVariable(CURSEFORGE_TOKEN as Provider<String>)
+            minecraftVersions = ["1.19.3", "1.19.4"]
+
+            requires {
+                slug = ["architectury-api", "cloth-config"]
+            }
+        }
+    }
+
+
+    var MODRINTH_TOKEN = project.findProperty("MODRINTH_TOKEN") ?: System.getenv("MODRINTH_TOKEN")
+    if (MODRINTH_TOKEN != null) {
+        modrinth {
+            projectId = rootProject.modrinth_id
+            accessToken = providers.environmentVariable(MODRINTH_TOKEN as Provider<String>)
+            minecraftVersions = ["1.19.3", "1.19.4"]
+        }
+
+        requires {
+            slug = ["architectury-api", "cloth-config"]
+        }
     }
 }
