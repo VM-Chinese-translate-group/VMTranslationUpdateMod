@@ -22,9 +22,8 @@ public class VMTranslationUpdate {
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
     static MinecraftClient client = MinecraftClient.getInstance();
-
-    private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer"); // Stenographer 兼容
     public static final Logger LOGGER = LoggerFactory.getLogger(MODNAME);
+    private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer"); // Stenographer 兼容
 
     public static void init() {
         if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded) {
