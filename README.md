@@ -13,16 +13,26 @@
 
 ## 使用与配置文件
 
+#### 警告：此处文档尚未编写完成，您可以暂时参考旧版文档，不便之处，请您谅解！
+
 **发布汉化时，请特别注意。在汉化更新时改一下模组配置里的版本号！**
 
 模组会在config文件夹创建名为`vmtranslationupdate`的配置文件（1.12.2后缀是.cfg，其他版本为.toml），共有7个配置选项。
-1. 更新检测链接。例如`https://vmct-cn.top/modpacks/sb3/update.txt`，会读取txt的内容。必须为UTF-8编码且可以直接打开的直链。
-2. 提示玩家下载的链接。例如`https://vmct-cn.top/modpacks/sb3/`，会在聊天栏展示。
-3. 获取知识内容的链接。例如`https://vmct-cn.top/tips.txt`会读取txt的内容，必须是UTF-8编码且可以直接打开的直链。一行一句，每次会随机选择一行的内容发送在聊天栏。
-4. 整合包翻译版本。例如第一版。需要发布时改的就是这个。
-5. 发送知识的时间间隔（分钟），默认25分钟一次。
-6. 自动下载资源包的链接。例如`https://cdn.modrinth.com/data/IDWIdXwS/versions/xCpjJgHS/VM汉化组模组汉化包1.20.zip`,需要删除链接最后的VM汉化组模组汉化包1.20.zip，资源包文件名不用在此处填写，后缀名模组已补上。
-7. 资源包的文件名，例如`VM汉化组模组汉化包1.20`。
+1. 自动根据地区切换语言（`autoSwitchLanguage`）：默认禁用，在安装了Stenographer后将禁用。
+2. 自动检测整合包汉化版本更新（`checkModPackTranslationUpdate`）：默认启用，在每次玩家进入世界后检查整合包汉化更新。
+3. 自动下载VM汉化资源包（`autoDownloadVMTranslationPack`）：默认启用，在每次加载游戏时下载VM汉化资源包。
+4. 自动安装VM汉化资源包（`autoInstallVMTranslationPack`）：
+5. 显示知识内容（`displayTips`）：
+6. 检测玩家名称（`playerNameCheck`）：
+7. 更新检测链接（`modPackTranslationUpdateCheckUrl`）：
+8. 下载链接（`modPackTranslationUrl`）：
+9. 获取知识内容的链接（`tipsUrl`）：
+10. 整合包翻译版本（`modPackTranslationVersion`）：
+11. 发送知识的时间间隔（分钟）（`tipsMinutes`）：
+12. 下载资源包的链接（`translationPackUrl`）：
+13. 资源包的文件名（`translationPackName`）：
+14. 玩家对应称呼的链接（`nameUrl`）：
+
 --- 
 ## 支持版本
 - [x] Forge
