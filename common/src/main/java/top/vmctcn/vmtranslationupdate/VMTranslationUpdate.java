@@ -18,13 +18,12 @@ import java.util.concurrent.CompletableFuture;
 
 public class VMTranslationUpdate {
     public static Random random;
-    public static int tickCounter;
+    private static int tickCounter;
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
     static MinecraftClient client = MinecraftClient.getInstance();
-    // Stenographer 兼容
-    private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer");
     public static final Logger LOGGER = LogManager.getLogger(MODNAME);
+    private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer"); // Stenographer 兼容
 
     public static void init() {
         if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded) {
