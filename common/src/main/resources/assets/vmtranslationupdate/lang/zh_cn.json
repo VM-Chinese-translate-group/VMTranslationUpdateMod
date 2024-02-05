@@ -19,8 +19,8 @@
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "获取知识内容的链接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻译版本",
   "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "发送知识的时间间隔（分钟）",
-  "text.autoconfig.vmtranslationupdate.option.traslationPackUrl": "下载资源包的链接",
-  "text.autoconfig.vmtranslationupdate.option.traslationPackName": "资源包的文件名",
+  "text.autoconfig.vmtranslationupdate.option.translationPackUrl": "下载资源包的链接",
+  "text.autoconfig.vmtranslationupdate.option.translationPackName": "资源包的文件名",
   "text.autoconfig.vmtranslationupdate.option.nameUrl": "玩家对应称呼的链接",
 
   "modmenu.descriptionTranslation.vmtranslationupdate": "一个用于检查VM汉化组的汉化补丁更新和自动下载资源包的模组。"
