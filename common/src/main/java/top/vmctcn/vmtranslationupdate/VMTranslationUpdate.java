@@ -26,9 +26,20 @@ public class VMTranslationUpdate {
     private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer"); // Stenographer 兼容
 
     public static void init() {
+        String language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
+
         if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded) {
-            client.options.language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
+            client.options.language = language;
         }
+
+//        if (ModConfigUtil.getConfig().i18nmodCheck && language.equals("zh_cn")) {
+//            try {
+//                Class.forName("i18nupdatemod.I18nUpdateMod");
+//                LOGGER.info("I18nUpdateMod is loaded!");
+//            } catch (ClassNotFoundException ignored) {
+//                LOGGER.warn("I18nUpdateMod is not Loaded!");
+//            }
+//        }
 
         if (ModConfigUtil.getConfig().autoDownloadVMTranslationPack) {
             PackDownloadUtil.downloadResPack();
@@ -61,7 +72,7 @@ public class VMTranslationUpdate {
                         && Files.exists(PackDownloadUtil.resourcePackDir)
                         && !client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName)
                         && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
-                    Text message = new TranslatableText("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().traslationPackName)
+                    Text message = new TranslatableText("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().translationPackName)
                             .setStyle(Style.EMPTY.withColor(Formatting.GOLD));
 
                     player.sendSystemMessage(message, Util.NIL_UUID);
