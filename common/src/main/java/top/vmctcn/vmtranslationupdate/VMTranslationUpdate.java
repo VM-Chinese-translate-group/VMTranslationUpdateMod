@@ -63,7 +63,7 @@ public class VMTranslationUpdate {
                         && Files.exists(PackDownloadUtil.resourcePackDir)
                         && !client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName)
                         && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
-                    Text message = Text.translatable("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().traslationPackName)
+                    Text message = Text.translatable("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().translationPackName)
                             .setStyle(Style.EMPTY.withColor(Formatting.GOLD));
 
                     player.sendMessage(message);

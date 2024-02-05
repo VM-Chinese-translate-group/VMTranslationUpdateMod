@@ -18,7 +18,7 @@ import java.util.List;
 public class PackDownloadUtil {
     public static final MinecraftClient client = MinecraftClient.getInstance();
     public static final Path resourcePackDir = client.getResourcePackDir().toPath();
-    public static String resourcePackName = ModConfigUtil.getConfig().traslationPackName + ".zip";
+    public static String resourcePackName = ModConfigUtil.getConfig().translationPackName + ".zip";
     private static final Path resPackFilePath = resourcePackDir.resolve(resourcePackName);
 
     public static void downloadResPack() {
@@ -52,7 +52,7 @@ public class PackDownloadUtil {
     }
 
     public static void downloadResPackFile(Path savePath) throws IOException {
-        URL url = new URL(ModConfigUtil.getConfig().traslationPackUrl + ModConfigUtil.getConfig().traslationPackName + ".zip");
+        URL url = new URL(ModConfigUtil.getConfig().translationPackUrl + ModConfigUtil.getConfig().translationPackName + ".zip");
         URLConnection connection = url.openConnection();
         connection.setConnectTimeout(10000);
 
