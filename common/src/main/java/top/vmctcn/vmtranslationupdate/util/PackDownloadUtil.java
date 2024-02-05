@@ -52,7 +52,7 @@ public class PackDownloadUtil {
     }
 
     public static void downloadResPackFile(Path savePath) throws IOException {
-        URL url = new URL(ModConfigUtil.getConfig().traslationPackUrl + ModConfigUtil.getConfig().traslationPackName + ".zip");
+        URL url = new URL(ModConfigUtil.getConfig().translationPackUrl + ModConfigUtil.getConfig().translationPackName + ".zip");
         URLConnection connection = url.openConnection();
         connection.setConnectTimeout(10000);
         
