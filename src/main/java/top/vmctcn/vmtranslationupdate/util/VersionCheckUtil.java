@@ -1,7 +1,6 @@
 package top.vmctcn.vmtranslationupdate.util;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
 
@@ -14,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 public class VersionCheckUtil {
     public static String getOnlineVersion(EntityPlayer player) {
         try {
-            URL url = new URL(ModConfig.updateUrl);
+            URL url = new URL(ModConfig.modPackTranslationUpdateCheckUrl);
             URLConnection connection = url.openConnection();
 
             String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmUpdate";

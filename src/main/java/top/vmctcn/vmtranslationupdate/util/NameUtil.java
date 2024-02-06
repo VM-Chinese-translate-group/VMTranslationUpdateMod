@@ -1,35 +1,22 @@
-package top.vmctcn.vmtranslationupdate.event;
+package top.vmctcn.vmtranslationupdate.util;
 
+import net.minecraft.entity.player.EntityPlayer;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.*;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
+import net.minecraft.util.text.TextComponentTranslation;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
-import top.vmctcn.vmtranslationupdate.util.NameUtil;
-import top.vmctcn.vmtranslationupdate.util.TipsUtil;
-import top.vmctcn.vmtranslationupdate.util.VersionCheckUtil;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.CompletableFuture;
 
-public class ModEventHandler {
-    @SubscribeEvent
-    public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        EntityPlayer player = event.player;
+public class NameUtil {
+    public static void getPlayerName(EntityPlayer player) {
+        String name = player.getName();
         String localVersion = ModConfig.modPackTranslationVersion;
         String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
-        String name = player.getName();
-
-        NameUtil.getPlayerName(player);
 
         if (ModConfig.playerNameCheck) {
             if (name.equals("Zi__Min")) {
@@ -64,26 +51,6 @@ public class ModEventHandler {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().world != null) {
-            VMTranslationUpdate.tickCounter++;
-            int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
-            if (VMTranslationUpdate.tickCounter >= tickInterval) {
-                VMTranslationUpdate.tickCounter = 0;
-                CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfig.tipsUrl))
-                        .thenAccept(message -> {
-                            String randomMessage = TipsUtil.getRandomMessageFromURL(ModConfig.tipsUrl);
-                            if (message != null) {
-                                if (VMTranslationUpdate.client.player != null) {
-                                    VMTranslationUpdate.client.player.sendMessage(new TextComponentString(randomMessage));
-                                }
-                            }
-                        });
             }
         }
     }
