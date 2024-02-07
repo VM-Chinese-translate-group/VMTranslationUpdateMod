@@ -81,6 +81,9 @@ publishMods {
 
             requires {
                 slug = "architectury-api"
+            }
+
+            requires {
                 slug = "cloth-config"
             }
         }
@@ -97,6 +100,9 @@ publishMods {
 
         requires {
             slug = "architectury-api"
+        }
+
+        requires {
             slug = "cloth-config"
         }
     }
