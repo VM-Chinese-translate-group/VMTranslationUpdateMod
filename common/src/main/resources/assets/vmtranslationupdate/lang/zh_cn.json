@@ -14,6 +14,7 @@
   "text.autoconfig.vmtranslationupdate.option.autoInstallVMTranslationPack": "自动安装VM汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.displayTips": "显示知识内容",
   "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "检测玩家名称",
+  "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切换语言为",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新检测链接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下载链接",
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "获取知识内容的链接",
