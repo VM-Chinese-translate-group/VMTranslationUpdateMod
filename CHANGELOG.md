@@ -1,11 +1,5 @@
 ## Changelog
-- Add mod release workflow
-- clean code
-- fix config typo
-- update Fabric version
+- fix switch lang issue
 
 ## Changelog
-- 添加 mod release workflow
-- 代码清理
-- 修复config拼写错误
-- 升级Fabric版本
+- 修复自动切换语言的问题
