@@ -29,9 +29,15 @@ jobs:
             .gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'build.gradle') }}
       - uses: gradle/wrapper-validation-action@v1
-      - run: |
+      - name: Merge jars
+        run: |
           chmod +x gradlew
           ./gradlew mergeJars --stacktrace -Porg.gradle.parallel.threads=4
+          ./gradlew publishMods --stacktrace -Porg.gradle.parallel.threads=4
+
+      - name: Publish mod
+        run: |
+          chmod +x gradlew
           ./gradlew publishMods --stacktrace -Porg.gradle.parallel.threads=4
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
