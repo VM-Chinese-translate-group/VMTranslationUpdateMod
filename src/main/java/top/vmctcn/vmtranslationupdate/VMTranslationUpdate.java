@@ -12,7 +12,6 @@ import top.vmctcn.vmtranslationupdate.config.ModConfig;
 import top.vmctcn.vmtranslationupdate.event.ModEventHandler;
 import top.vmctcn.vmtranslationupdate.util.PackDownloadUtil;
 
-import java.util.Locale;
 import java.util.Random;
 
 @Mod(modid = VMTranslationUpdate.MOD_ID, name = VMTranslationUpdate.MODNAME, version = VMTranslationUpdate.MOD_VERSION)
@@ -21,16 +20,14 @@ public class VMTranslationUpdate {
     public static int tickCounter;
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
-    public static final String MOD_VERSION = "2.3.1";
+    public static final String MOD_VERSION = "2.3.2";
     public static final Minecraft client = Minecraft.getMinecraft();
     public static final Logger LOGGER = LogManager.getLogger(MODNAME);
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        String language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
-
-        if (ModConfig.autoSwitchLanguage) {
-            client.gameSettings.language = language;
+        if (ModConfig.autoSwitchLanguage && ModConfig.switchLanguage != null) {
+            client.gameSettings.language = ModConfig.switchLanguage;
         }
 
         if (ModConfig.autoDownloadVMTranslationPack) {
