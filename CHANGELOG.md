@@ -1,7 +1,5 @@
 ## Changelog
-- port to 1.20.4
-- fix config typo
+- fix switch lang issue
 
 ## Changelog
-- 支持 1.20.3-1.20.4
-- 修复config拼写错误
+- 修复自动切换语言的问题
