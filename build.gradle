@@ -76,7 +76,7 @@ publishMods {
     if (CURSEFORGE_TOKEN != null) {
         curseforge {
             projectId = rootProject.curseforge_id
-            accessToken = providers.environmentVariable(CURSEFORGE_TOKEN as Provider<String>)
+            accessToken = providers.environmentVariable(CURSEFORGE_TOKEN.toString())
             minecraftVersions = ["1.20.3", "1.20.4"]
 
             requires {
@@ -90,7 +90,7 @@ publishMods {
     if (MODRINTH_TOKEN != null) {
         modrinth {
             projectId = rootProject.modrinth_id
-            accessToken = providers.environmentVariable(MODRINTH_TOKEN as Provider<String>)
+            accessToken = providers.environmentVariable(MODRINTH_TOKEN.toString())
             minecraftVersions = ["1.20.3", "1.20.4"]
         }
 
