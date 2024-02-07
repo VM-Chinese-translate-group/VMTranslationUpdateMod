@@ -2,7 +2,7 @@ plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
     id "io.github.pacifistmc.forgix" version "1.2.6"
     id "dev.architectury.loom" version "1.4-SNAPSHOT" apply false
-    id "me.modmuss50.mod-publish-plugin" version "0.4.5"
+    id "me.shedaniel.unified-publishing" version "0.1.+"
 }
 
 architectury {
@@ -61,36 +61,43 @@ forgix {
     }
 }
 
-publishMods {
-    file = file(forgix.getOutputDir() + "/" + forgix.getMergedJarName())
-    changelog = file("CHANGELOG.md").getText('UTF-8')
-    type = STABLE
-    modLoaders = ["fabric", "forge"]
+unifiedPublishing {
+    project {
+        displayName = "$rootProject.version"
+        releaseType = "release"
+        changelog = file("CHANGELOG.md").getText('UTF-8')
+        gameVersions = ["1.16.4", "1.16.5"]
+        gameLoaders = ["fabric", "forge"]
 
-    var CURSEFORGE_TOKEN = project.findProperty("CURSEFORGE_TOKEN") ?: System.getenv("CURSEFORGE_TOKEN")
-    if (CURSEFORGE_TOKEN != null) {
-        curseforge {
-            projectId = rootProject.curseforge_id
-            accessToken = providers.environmentVariable(CURSEFORGE_TOKEN as Provider<String>)
-            minecraftVersions = ["1.16.4", "1.16.5"]
+        mainPublication = file("build/libs/forgix/${rootProject.archives_base_name}-${rootProject.version}.jar")
 
-            requires {
-                slug = ["architectury-api", "cloth-config"]
+        relations {
+            depends {
+                curseforge = "architectury-api"
+                modrinth = "architectury-api"
+            }
+
+            depends {
+                curseforge = "cloth-config"
+                modrinth = "cloth-config"
             }
         }
-    }
 
-
-    var MODRINTH_TOKEN = project.findProperty("MODRINTH_TOKEN") ?: System.getenv("MODRINTH_TOKEN")
-    if (MODRINTH_TOKEN != null) {
-        modrinth {
-            projectId = rootProject.modrinth_id
-            accessToken = providers.environmentVariable(MODRINTH_TOKEN as Provider<String>)
-            minecraftVersions = ["1.16.4", "1.16.5"]
+        var CURSEFORGE_TOKEN = project.findProperty("CURSEFORGE_TOKEN") ?: System.getenv("CURSEFORGE_TOKEN")
+        if (CURSEFORGE_TOKEN != null) {
+            curseforge {
+                token = CURSEFORGE_TOKEN
+                id = rootProject.curseforge_id
+            }
         }
 
-        requires {
-            slug = ["architectury-api", "cloth-config"]
+        var MODRINTH_TOKEN = project.findProperty("MODRINTH_TOKEN") ?: System.getenv("MODRINTH_TOKEN")
+        if (MODRINTH_TOKEN != null) {
+            modrinth {
+                token = MODRINTH_TOKEN
+                id = rootProject.modrinth_id
+                version = "$rootProject.version"
+            }
         }
     }
 }
