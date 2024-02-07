@@ -13,7 +13,7 @@ public class ModConfigs implements ConfigData {
     public boolean autoInstallVMTranslationPack = true;
     public boolean displayTips = true;
     public boolean playerNameCheck = true;
-    //public boolean i18nmodCheck = false;
+    public String switchLanguage = "zh_cn";
     public String modPackTranslationUpdateCheckUrl = "https://vmct-cn.top/modpacks/example/update.txt";
     public String modPackTranslationUrl = "https://vmct-cn.top/modpacks/example/";
     public String tipsUrl = "https://vmct-cn.top/tips.txt";

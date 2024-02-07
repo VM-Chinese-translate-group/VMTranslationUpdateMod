@@ -12,7 +12,6 @@ import org.apache.logging.log4j.Logger;
 import top.vmctcn.vmtranslationupdate.util.*;
 
 import java.nio.file.Files;
-import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
@@ -26,20 +25,9 @@ public class VMTranslationUpdate {
     private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer"); // Stenographer 兼容
 
     public static void init() {
-        String language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
-
-        if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded) {
-            client.options.language = language;
+        if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded && ModConfigUtil.getConfig().switchLanguage != null) {
+            client.options.language = ModConfigUtil.getConfig().switchLanguage;
         }
-
-//        if (ModConfigUtil.getConfig().i18nmodCheck && language.equals("zh_cn")) {
-//            try {
-//                Class.forName("i18nupdatemod.I18nUpdateMod");
-//                LOGGER.info("I18nUpdateMod is loaded!");
-//            } catch (ClassNotFoundException ignored) {
-//                LOGGER.warn("I18nUpdateMod is not Loaded!");
-//            }
-//        }
 
         if (ModConfigUtil.getConfig().autoDownloadVMTranslationPack) {
             PackDownloadUtil.downloadResPack();
