@@ -31,7 +31,8 @@ jobs:
       - uses: gradle/wrapper-validation-action@v1
       - run: |
           chmod +x gradlew
-          ./gradlew mergeJars publishMods --stacktrace -Porg.gradle.parallel.threads=4
+          ./gradlew mergeJars --stacktrace -Porg.gradle.parallel.threads=4
+          ./gradlew publishMods --stacktrace -Porg.gradle.parallel.threads=4
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
