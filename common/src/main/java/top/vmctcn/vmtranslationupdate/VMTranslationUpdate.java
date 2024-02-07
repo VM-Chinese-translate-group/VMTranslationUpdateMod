@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import top.vmctcn.vmtranslationupdate.util.*;
 
 import java.nio.file.Files;
-import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
@@ -27,8 +26,8 @@ public class VMTranslationUpdate {
     private static final boolean isStenographerLoaded = Platform.isModLoaded("stenographer"); // Stenographer 兼容
 
     public static void init() {
-        if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded) {
-            client.options.language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
+        if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded && ModConfigUtil.getConfig().switchLanguage != null) {
+            client.options.language = ModConfigUtil.getConfig().switchLanguage;
         }
 
         if (ModConfigUtil.getConfig().autoDownloadVMTranslationPack) {
