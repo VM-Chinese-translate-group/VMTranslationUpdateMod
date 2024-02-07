@@ -67,7 +67,7 @@ forgix {
 }
 
 publishMods {
-    file = file(getProjectDir().toString() + forgix.getOutputDir() + "/" + forgix.getMergedJarName())
+    file = file("build/libs/forgix/${rootProject.archives_base_name}-${rootProject.version}.jar")
     changelog = file("CHANGELOG.md").getText('UTF-8')
     type = STABLE
     modLoaders = ["fabric", "forge", "neoforge"]
