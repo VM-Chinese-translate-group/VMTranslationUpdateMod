@@ -33,7 +33,6 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew mergeJars --stacktrace -Porg.gradle.parallel.threads=4
-          ./gradlew publishMods --stacktrace -Porg.gradle.parallel.threads=4
 
       - name: Publish mod
         run: |
