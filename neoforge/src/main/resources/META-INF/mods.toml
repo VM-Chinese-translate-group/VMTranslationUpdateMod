@@ -25,13 +25,6 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.vmtranslationupdate]]
-modId = "architectury"
-mandatory = true
-versionRange = "*"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies.vmtranslationupdate]]
 modId = "cloth_config"
 mandatory = true
 versionRange = "*"

@@ -1,5 +1,5 @@
 ## Changelog
-- fix switch lang issue
+- use native api
 
 ## Changelog
-- 修复自动切换语言的问题
+- 使用加载器本地API （不再使用Architectury API）

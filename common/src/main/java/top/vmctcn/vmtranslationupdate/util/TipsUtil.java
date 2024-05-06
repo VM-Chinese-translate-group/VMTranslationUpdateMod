@@ -1,6 +1,5 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 
 import java.io.BufferedReader;

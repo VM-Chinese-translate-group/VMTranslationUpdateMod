@@ -1,7 +1,7 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "io.github.pacifistmc.forgix" version "1.2.6"
-    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
+    id "io.github.pacifistmc.forgix" version "1.+"
+    id "dev.architectury.loom" version "1.6-SNAPSHOT" apply false
     id "me.shedaniel.unified-publishing" version "0.1.+"
 }
 
@@ -71,17 +71,12 @@ unifiedPublishing {
         displayName = "$rootProject.version"
         releaseType = "release"
         changelog = file("CHANGELOG.md").getText('UTF-8')
-        gameVersions = ["1.20.3", "1.20.5"]
+        gameVersions = ["1.20.3", "1.20.4"]
         gameLoaders = ["fabric", "forge", "neoforge"]
 
         mainPublication = file("build/libs/forgix/${rootProject.archives_base_name}-${rootProject.version}.jar")
 
         relations {
-            depends {
-                curseforge = "architectury-api"
-                modrinth = "architectury-api"
-            }
-
             depends {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"
