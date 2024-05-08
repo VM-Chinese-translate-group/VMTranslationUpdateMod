@@ -80,7 +80,7 @@ publisher {
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
     displayName = "VM Translation Update 1.20.3/1.20.4 $rootProject.version"
-    gameVersions = ["1.20.3", "1.20.4"]
+    gameVersions = ["1.20.2", "1.20.3", "1.20.4"]
     curseEnvironment = "client"
     loaders = ["fabric", "forge", "neoforge"]
     artifact = forgix.getOutputDir() + "/" + forgix.getMergedJarName()
