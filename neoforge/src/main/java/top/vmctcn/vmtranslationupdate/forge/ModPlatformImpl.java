@@ -1,4 +1,4 @@
-package top.vmctcn.vmtranslationupdate.neoforge;
+package top.vmctcn.vmtranslationupdate.forge;
 
 import net.neoforged.fml.ModList;
 
