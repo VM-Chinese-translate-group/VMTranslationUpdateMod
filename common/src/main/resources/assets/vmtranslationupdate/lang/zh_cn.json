@@ -1,4 +1,10 @@
 {
+  "comment_mod_info": "NeoForge/Fabric 模组信息翻译",
+  "fml.menu.mods.info.displayname.vmtranslationupdate": "VM汉化更新",
+  "fml.menu.mods.info.description.vmtranslationupdate": "一个用于检查VM汉化组的汉化补丁更新和自动下载资源包的模组。",
+  "modmenu.nameTranslation.vmtranslationupdate": "VM汉化更新",
+  "modmenu.descriptionTranslation.vmtranslationupdate": "一个用于检查VM汉化组的汉化补丁更新和自动下载资源包的模组。",
+
   "vmtranslationupdate.message.update": "[VM汉化组]：你好%s，当前汉化已过时，请更新你的汉化！当前版本为%s，最新版为%s。",
   "vmtranslationupdate.message.update2": "请点击右侧",
   "vmtranslationupdate.message.update3": "下载新版本。",
@@ -22,7 +28,5 @@
   "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "发送知识的时间间隔（分钟）",
   "text.autoconfig.vmtranslationupdate.option.translationPackUrl": "下载资源包的链接",
   "text.autoconfig.vmtranslationupdate.option.translationPackName": "资源包的文件名",
-  "text.autoconfig.vmtranslationupdate.option.nameUrl": "玩家对应称呼的链接",
-
-  "modmenu.descriptionTranslation.vmtranslationupdate": "一个用于检查VM汉化组的汉化补丁更新和自动下载资源包的模组。"
+  "text.autoconfig.vmtranslationupdate.option.nameUrl": "玩家对应称呼的链接"
 }
