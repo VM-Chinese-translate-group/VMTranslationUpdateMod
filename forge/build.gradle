@@ -1,7 +1,3 @@
-plugins {
-    id "com.github.johnrengelman.shadow" version "8.1.1"
-}
-
 architectury {
     platformSetupLoomIde()
     forge()
@@ -19,7 +15,6 @@ configurations {
 
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
-    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
     modApi "me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
