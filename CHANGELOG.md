@@ -1,5 +1,7 @@
 ## Changelog
-- fix switch lang issue
+- use native api
+- fix mod publish
 
-## 更新日志
-- 修复自动切换语言的问题
+## Changelog
+- 使用加载器本地API （不再使用Architectury API）
+- 修复模组上传问题

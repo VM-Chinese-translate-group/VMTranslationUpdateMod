@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "top.vmctcn.vmtranslationupdate.fabric.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "minVersion": "0.8",
+  "mixins": [
+    "PlayerManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
