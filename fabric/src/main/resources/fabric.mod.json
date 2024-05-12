@@ -17,12 +17,17 @@
   "entrypoints": {
     "client": [
       "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateClientFabric"
+    ],
+    "modmenu": [
+      "top.vmctcn.vmtranslationupdate.fabric.ModMenuCompat"
     ]
   },
+  "mixins": [
+    "vmtranslationupdate.fabric.mixins.json"
+  ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.16.5",
-    "architectury": "*",
+    "minecraft": "1.16.x",
     "cloth-config": "*"
   }
 }

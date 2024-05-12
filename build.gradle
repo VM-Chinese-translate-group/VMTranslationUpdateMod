@@ -1,8 +1,9 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "io.github.pacifistmc.forgix" version "1.2.6"
-    id "dev.architectury.loom" version "1.4-SNAPSHOT" apply false
-    id "me.shedaniel.unified-publishing" version "0.1.+"
+    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
+    id "com.github.johnrengelman.shadow" version "8.+" apply false
+    id "com.hypherionmc.modutils.modpublisher" version "2.+"
+    id "io.github.pacifistmc.forgix" version "1.+"
 }
 
 architectury {
@@ -11,6 +12,7 @@ architectury {
 
 subprojects {
     apply plugin: "dev.architectury.loom"
+    apply plugin: "com.github.johnrengelman.shadow"
 
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
@@ -61,43 +63,30 @@ forgix {
     }
 }
 
-unifiedPublishing {
-    project {
-        displayName = "$rootProject.version"
-        releaseType = "release"
-        changelog = file("CHANGELOG.md").getText('UTF-8')
-        gameVersions = ["1.16.4", "1.16.5"]
-        gameLoaders = ["fabric", "forge"]
+publisher {
+    apiKeys {
+        curseforge(System.getenv("CURSEFORGE_TOKEN"))
+        modrinth(System.getenv("MODRINTH_TOKEN"))
+    }
 
-        mainPublication = file("build/libs/forgix/${rootProject.archives_base_name}-${rootProject.version}.jar")
+    curseID = rootProject.curseforge_id
+    modrinthID = rootProject.modrinth_id
+    versionType = "release"
+    changelog = file("CHANGELOG.md").getText('UTF-8')
+    version = "$rootProject.version"
+    displayName = "VM Translation Update 1.16.5 $rootProject.version"
+    gameVersions = ["1.16.4", "1.16.5"]
+    curseEnvironment = "client"
+    loaders = ["fabric", "forge"]
+    artifact = forgix.getOutputDir() + "/" + forgix.getMergedJarName()
 
-        relations {
-            depends {
-                curseforge = "architectury-api"
-                modrinth = "architectury-api"
-            }
+    modrinthDepends {
+        required "cloth-config"
+    }
 
-            depends {
-                curseforge = "cloth-config"
-                modrinth = "cloth-config"
-            }
-        }
-
-        var CURSEFORGE_TOKEN = project.findProperty("CURSEFORGE_TOKEN") ?: System.getenv("CURSEFORGE_TOKEN")
-        if (CURSEFORGE_TOKEN != null) {
-            curseforge {
-                token = CURSEFORGE_TOKEN
-                id = rootProject.curseforge_id
-            }
-        }
-
-        var MODRINTH_TOKEN = project.findProperty("MODRINTH_TOKEN") ?: System.getenv("MODRINTH_TOKEN")
-        if (MODRINTH_TOKEN != null) {
-            modrinth {
-                token = MODRINTH_TOKEN
-                id = rootProject.modrinth_id
-                version = "$rootProject.version"
-            }
-        }
+    curseDepends {
+        required "cloth-config"
     }
 }
+
+publishMod.dependsOn(mergeJars)

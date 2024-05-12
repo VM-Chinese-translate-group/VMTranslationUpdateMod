@@ -1,10 +1,8 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import me.shedaniel.architectury.platform.Platform;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 
-import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.config.ModConfigs;
 
 public class ModConfigUtil {
@@ -16,9 +14,5 @@ public class ModConfigUtil {
             modConfigs = AutoConfig.getConfigHolder(ModConfigs.class).getConfig();
         }
         return modConfigs;
-    }
-
-    public static void setConfigScreen() {
-        Platform.getMod(VMTranslationUpdate.MOD_ID).registerConfigurationScreen(parent -> AutoConfig.getConfigScreen(ModConfigs.class, parent).get());
     }
 }
