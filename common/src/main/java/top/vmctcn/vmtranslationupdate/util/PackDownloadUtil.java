@@ -6,7 +6,7 @@ import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
+import java.net.URI;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -52,11 +52,11 @@ public class PackDownloadUtil {
     }
 
     public static void downloadResPackFile(Path savePath) throws IOException {
-        URL url = new URL(ModConfigUtil.getConfig().translationPackUrl + ModConfigUtil.getConfig().translationPackName + ".zip");
-        URLConnection connection = url.openConnection();
+        URI uri = URI.create(ModConfigUtil.getConfig().translationPackUrl + ModConfigUtil.getConfig().translationPackName + ".zip");
+        URLConnection connection = uri.toURL().openConnection();
         connection.setConnectTimeout(10000);
         
-        try (InputStream in = url.openStream()) {
+        try (InputStream in = uri.toURL().openStream()) {
             Files.copy(in, savePath, StandardCopyOption.REPLACE_EXISTING);
         }
     }

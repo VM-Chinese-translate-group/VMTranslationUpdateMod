@@ -4,13 +4,12 @@ import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.IExtensionPoint;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLLoader;
-import net.neoforged.neoforge.client.ConfigScreenHandler;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.TickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import top.vmctcn.vmtranslationupdate.ModEvents;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
@@ -23,22 +22,19 @@ public class VMTranslationUpdateClientNeoForge {
         IEventBus forgeEventBus = NeoForge.EVENT_BUS;
         ModLoadingContext context = ModLoadingContext.get();
 
-        context.registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(() -> IExtensionPoint.DisplayTest.IGNORESERVERONLY, (a, b) -> true));
-        context.registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((client, screen) -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get()));
+        context.registerExtensionPoint(IConfigScreenFactory.class, () -> (client, screen) -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
 
-            forgeEventBus.<TickEvent.ClientTickEvent>addListener(event -> {
+            forgeEventBus.addListener(ClientTickEvent.Post.class, event -> {
                 MinecraftClient client = MinecraftClient.getInstance();
-
-                if (event.phase == TickEvent.Phase.END && ModConfigUtil.getConfig().displayTips) {
-                    if (client.player == null) return;
+                if (ModConfigUtil.getConfig().displayTips) {
                     ModEvents.clientTickEndEvent(client);
                 }
             });
 
-            forgeEventBus.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
+            forgeEventBus.addListener(PlayerEvent.PlayerLoggedInEvent.class, event -> {
                 ModEvents.playerJoinEvent((ServerPlayerEntity) event.getEntity());
             });
         }

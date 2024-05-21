@@ -4,7 +4,7 @@ import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.URL;
+import java.net.URI;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -26,10 +26,10 @@ public class TipsUtil {
 
     public static void loadMessagesFromURL(String tipsUrl) {
         try {
-            URL url = new URL(tipsUrl);
-            URLConnection connection = url.openConnection();
+            URI uri = URI.create(tipsUrl);
+            URLConnection connection = uri.toURL().openConnection();
             connection.setConnectTimeout(10000);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(uri.toURL().openStream(), StandardCharsets.UTF_8));
             String line;
             while ((line = reader.readLine()) != null) {
                 messagesList.add(line);

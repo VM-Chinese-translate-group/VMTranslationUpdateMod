@@ -16,7 +16,10 @@ subprojects {
 
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
-        mappings "net.fabricmc:yarn:${rootProject.yarn_mappings}:v2"
+        mappings loom.layered {
+            mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+            mappings "dev.architectury:yarn-mappings-patch-neoforge:${project.yarn_patch}"
+        }
     }
 }
 
@@ -34,7 +37,7 @@ allprojects {
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
-        options.release = 17
+        options.release = 21
     }
 
     java {
@@ -47,17 +50,12 @@ forgix {
     mergedJarName = "${rootProject.archives_base_name}-${rootProject.version}.jar"
     outputDir = "build/libs/forgix"
 
-    forge {
-        projectName = "forge"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-forge-${rootProject.version}.jar"
-    }
-
     fabric {
         projectName = "fabric"
         jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${rootProject.version}.jar"
     }
 
-    custom {
+    neoforge {
         projectName = "neoforge"
         jarLocation = "build/libs/${rootProject.archives_base_name}-neoforge-${ rootProject.version }.jar"
     }
@@ -74,10 +72,10 @@ publisher {
     versionType = "release"
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
-    displayName = "VM Translation Update 1.20.2 - 1.20.4 $rootProject.version"
-    gameVersions = ["1.20.2", "1.20.3", "1.20.4"]
+    displayName = "VM Translation Update 1.20.5 - 1.20.6 $rootProject.version"
+    gameVersions = ["1.20.5", "1.20.6"]
     curseEnvironment = "client"
-    loaders = ["fabric", "forge", "neoforge"]
+    loaders = ["fabric", "neoforge"]
     artifact = forgix.getOutputDir() + "/" + forgix.getMergedJarName()
 
     modrinthDepends {

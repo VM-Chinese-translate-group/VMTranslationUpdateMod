@@ -13,7 +13,6 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (ModConfigUtil.getConfig().displayTips) {
-                if (client.player == null) return;
                 ModEvents.clientTickEndEvent(client);
             }
         });

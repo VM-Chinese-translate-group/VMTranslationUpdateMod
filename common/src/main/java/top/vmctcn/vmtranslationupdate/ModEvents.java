@@ -10,6 +10,7 @@ import net.minecraft.util.Formatting;
 import top.vmctcn.vmtranslationupdate.util.*;
 
 import java.nio.file.Files;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class ModEvents {
@@ -24,7 +25,7 @@ public class ModEvents {
                     .thenAccept(message -> {
                         if (message == null) return;
                         String randomMessage = TipsUtil.getRandomMessageFromURL(ModConfigUtil.getConfig().tipsUrl);
-                        client.player.sendMessage(Text.translatable(randomMessage));
+                        Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage));
                     });
         }
     }
