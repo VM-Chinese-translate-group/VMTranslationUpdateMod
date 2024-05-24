@@ -1,5 +1,5 @@
 {
-  "comment_mod_info": "NeoForge/Fabric Mod Info Translation",
+  "comment_modinfo": "NeoForge/Fabric Mod Info Translation",
   "fml.menu.mods.info.displayname.vmtranslationupdate": "VM Translation Update",
   "fml.menu.mods.info.description.vmtranslationupdate": "A mod for checking for updates to VM Chinese Group's localization patches and automatically downloading resource packs.",
   "modmenu.nameTranslation.vmtranslationupdate": "VM Translation Update",

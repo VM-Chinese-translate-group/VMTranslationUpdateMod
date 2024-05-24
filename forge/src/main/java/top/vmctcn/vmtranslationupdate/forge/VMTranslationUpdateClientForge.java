@@ -7,6 +7,7 @@ import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.IExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -29,7 +30,7 @@ public class VMTranslationUpdateClientForge {
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
 
-            forgeEventBus.<TickEvent.ClientTickEvent>addListener(event -> {
+            forgeEventBus.<TickEvent.ClientTickEvent>addListener(EventPriority.HIGHEST, event -> {
                 MinecraftClient client = MinecraftClient.getInstance();
 
                 if (event.phase == TickEvent.Phase.END && ModConfigUtil.getConfig().displayTips) {
@@ -38,7 +39,7 @@ public class VMTranslationUpdateClientForge {
                 }
             });
 
-            forgeEventBus.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
+            forgeEventBus.<PlayerEvent.PlayerLoggedInEvent>addListener(EventPriority.HIGHEST, event -> {
                 ModEvents.playerJoinEvent((ServerPlayerEntity) event.getEntity());
             });
         }

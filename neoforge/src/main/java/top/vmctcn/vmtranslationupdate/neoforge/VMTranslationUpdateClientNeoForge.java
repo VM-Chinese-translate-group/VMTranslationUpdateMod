@@ -3,6 +3,7 @@ package top.vmctcn.vmtranslationupdate.neoforge;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.IExtensionPoint;
 import net.neoforged.fml.ModLoadingContext;
@@ -29,7 +30,7 @@ public class VMTranslationUpdateClientNeoForge {
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
 
-            forgeEventBus.<TickEvent.ClientTickEvent>addListener(event -> {
+            forgeEventBus.addListener(EventPriority.HIGHEST, TickEvent.ClientTickEvent.class, event -> {
                 MinecraftClient client = MinecraftClient.getInstance();
 
                 if (event.phase == TickEvent.Phase.END && ModConfigUtil.getConfig().displayTips) {
@@ -38,7 +39,7 @@ public class VMTranslationUpdateClientNeoForge {
                 }
             });
 
-            forgeEventBus.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
+            forgeEventBus.addListener(EventPriority.HIGHEST, PlayerEvent.PlayerLoggedInEvent.class, event -> {
                 ModEvents.playerJoinEvent((ServerPlayerEntity) event.getEntity());
             });
         }

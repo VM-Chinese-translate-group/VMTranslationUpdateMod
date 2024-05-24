@@ -1,5 +1,5 @@
 {
-  "comment_mod_info": "NeoForge/Fabric 模组信息翻译",
+  "comment_modinfo": "NeoForge/Fabric 模组信息翻译",
   "fml.menu.mods.info.displayname.vmtranslationupdate": "VM漢化更新",
   "fml.menu.mods.info.description.vmtranslationupdate": "一個用於檢查VM漢化組的漢化補丁更新和自動下載資源包的模組。",
   "modmenu.nameTranslation.vmtranslationupdate": "VM漢化更新",
