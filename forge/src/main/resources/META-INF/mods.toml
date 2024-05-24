@@ -1,13 +1,13 @@
 modLoader = "javafml"
 loaderVersion = "[36,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
 license = "MIT"
 
 [[mods]]
 modId = "vmtranslationupdate"
 version = "${version}"
 displayName = "VM Translation Update"
-displayURL = "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update"
+displayURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod"
 authors = "Wulian233, TexTrue, Litchiiiiiii"
 description = '''
 A mod for checking for updates to VM Chinese Group's localization patches
