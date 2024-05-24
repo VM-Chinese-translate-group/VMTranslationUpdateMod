@@ -63,6 +63,8 @@ forgix {
     }
 }
 
+mergeJars.dependsOn(build)
+
 publisher {
     apiKeys {
         curseforge(System.getenv("CURSEFORGE_TOKEN"))
@@ -74,11 +76,11 @@ publisher {
     versionType = "release"
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
-    displayName = "VM Translation Update 1.20.2 - 1.20.4 $rootProject.version"
-    gameVersions = ["1.20.2", "1.20.3", "1.20.4"]
+    displayName = "VM Translation Update 1.20~1.20.4 ${rootProject.mod_version}"
+    gameVersions = ["1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4"]
     curseEnvironment = "client"
-    loaders = ["fabric", "forge", "neoforge"]
-    artifact = forgix.getOutputDir() + "/" + forgix.getMergedJarName()
+    loaders = ["fabric", "quilt", "forge", "neoforge"]
+    artifact = (forgix.getOutputDir() + "/" + forgix.getMergedJarName())
 
     modrinthDepends {
         required "cloth-config"

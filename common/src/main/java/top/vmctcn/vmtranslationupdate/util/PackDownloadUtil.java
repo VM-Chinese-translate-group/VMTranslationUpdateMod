@@ -36,7 +36,7 @@ public class PackDownloadUtil {
         try {
             downloadResPackFile(resPackFilePath);
         } catch (Exception e) {
-            VMTranslationUpdate.LOGGER.warn("Failed to download \"%s\" resource pack.", resourcePackName.getBytes(StandardCharsets.UTF_8));
+            VMTranslationUpdate.LOGGER.warn("Failed to download %s resource pack.", resourcePackName.getBytes(StandardCharsets.UTF_8));
             e.printStackTrace();
         }
 
@@ -45,7 +45,7 @@ public class PackDownloadUtil {
             try {
                 setResourcePack();
             } catch (Exception e) {
-                VMTranslationUpdate.LOGGER.warn("Failed to set up \"%s\" resource pack.", resourcePackName.getBytes(StandardCharsets.UTF_8));
+                VMTranslationUpdate.LOGGER.warn("Failed to set up %s resource pack.", resourcePackName.getBytes(StandardCharsets.UTF_8));
                 e.printStackTrace();
             }
         }
