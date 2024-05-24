@@ -74,7 +74,7 @@ publisher {
     versionType = "release"
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
-    displayName = "VM Translation Update 1.18.x $rootProject.version"
+    displayName = "VM Translation Update 1.18.x $rootProject.mod_version"
     gameVersions = ["1.18", "1.18.1", "1.18.2"]
     curseEnvironment = "client"
     loaders = ["fabric", "forge"]
