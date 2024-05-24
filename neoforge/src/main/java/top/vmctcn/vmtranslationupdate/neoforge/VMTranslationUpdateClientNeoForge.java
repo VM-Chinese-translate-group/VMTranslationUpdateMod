@@ -3,6 +3,7 @@ package top.vmctcn.vmtranslationupdate.neoforge;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
@@ -16,7 +17,7 @@ import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.config.ModConfigs;
 import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
 
-@Mod(VMTranslationUpdate.MOD_ID)
+@Mod(value = VMTranslationUpdate.MOD_ID, dist = Dist.CLIENT)
 public class VMTranslationUpdateClientNeoForge {
     public VMTranslationUpdateClientNeoForge() {
         IEventBus forgeEventBus = NeoForge.EVENT_BUS;
