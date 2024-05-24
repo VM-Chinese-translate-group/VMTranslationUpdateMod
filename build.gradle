@@ -77,7 +77,7 @@ publisher {
     displayName = "VM Translation Update 1.18.x $rootProject.mod_version"
     gameVersions = ["1.18", "1.18.1", "1.18.2"]
     curseEnvironment = "client"
-    loaders = ["fabric", "forge"]
+    loaders = ["fabric", "quilt", "forge"]
     artifact = forgix.getOutputDir() + "/" + forgix.getMergedJarName()
 
     modrinthDepends {
