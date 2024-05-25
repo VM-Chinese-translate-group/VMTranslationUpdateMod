@@ -1,8 +1,7 @@
 plugins {
     id "dev.architectury.legacy.loom" version "dev~0.12.0-SNAPSHOT"
+    id "com.hypherionmc.modutils.modpublisher" version "2.+"
 }
-
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
 version = "${project.mod_version}+mc${project.minecraft_version}"
@@ -29,6 +28,11 @@ tasks.withType(JavaCompile) {
 }
 
 java {
+    toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
     withSourcesJar()
 }
 
@@ -44,4 +48,22 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+}
+
+publisher {
+    apiKeys {
+        curseforge(System.getenv("CURSEFORGE_TOKEN"))
+        modrinth(System.getenv("MODRINTH_TOKEN"))
+    }
+
+    curseID = rootProject.curseforge_id
+    modrinthID = rootProject.modrinth_id
+    versionType = "release"
+    changelog = file("CHANGELOG.md").getText('UTF-8')
+    version = "$rootProject.version"
+    displayName = "VM Translation Update 1.12.2 $rootProject.version"
+    gameVersions = ["1.12.2"]
+    curseEnvironment = "client"
+    loaders = ["forge"]
+    artifact = remapJar
 }

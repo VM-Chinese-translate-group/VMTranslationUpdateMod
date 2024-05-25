@@ -1,5 +1,5 @@
 ## Changelog
-- fix switch lang issue
+- new icon
 
 ## Changelog
-- 修复自动切换语言的问题
+- 新图标

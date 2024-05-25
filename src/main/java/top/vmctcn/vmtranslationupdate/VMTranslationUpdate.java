@@ -20,7 +20,7 @@ public class VMTranslationUpdate {
     public static int tickCounter;
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
-    public static final String MOD_VERSION = "2.3.2";
+    public static final String MOD_VERSION = "2.4.0";
     public static final Minecraft client = Minecraft.getMinecraft();
     public static final Logger LOGGER = LogManager.getLogger(MODNAME);
 

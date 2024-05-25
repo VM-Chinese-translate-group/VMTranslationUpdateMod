@@ -5,7 +5,7 @@
     "description": "一个用于检查汉化补丁更新和自动下载资源包的模组。",
     "version": "${version}",
     "mcversion": "${mc_version}",
-    "url": "https://github.com/VM-Chinese-translate-group/VM-Chinese-Group-Update",
+    "url": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod",
     "updateUrl": "",
     "authorList": ["Wulian233","TexTrue"],
     "logoFile": "icon.png",
