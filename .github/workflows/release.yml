@@ -32,7 +32,7 @@ jobs:
       - name: Publish mod
         run: |
           chmod +x gradlew
-          ./gradlew publishMod --stacktrace -Porg.gradle.parallel.threads=4
+          ./gradlew build mergeJars publishMod --stacktrace -Porg.gradle.parallel.threads=4
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
