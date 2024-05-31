@@ -13,6 +13,14 @@
   "vmtranslationupdate.message.zimin": "Welcome to ZiMin's Minecraft world!",
   "vmtranslationupdate.message.pack": "VM Chinese Update auto enable localization failed! Please enable \"%s\" pack manually in \"Options -> Resource Packs\".",
 
+  "vmtranslationupdate.warn.i18nupdatemod.title": "I18nUpdateMod not detected",
+  "vmtranslationupdate.warn.i18nupdatemod.text": "I18nUpdateMod is not yet installed, which may result in incomplete localization of some mods! Please click the button below to jump to the download page.",
+  "vmtranslationupdate.warn.vaultpatcher.title": "VaultPatcher not detected",
+  "vmtranslationupdate.warn.vaultpatcher.text": "VaultPatcher is not yet installed, which may result in some mods being hardcoded and not being able to be localized! Please click the button below to jump to the download page.",
+  "vmtranslationupdate.warn.download.button": "Download mod",
+  "vmtranslationupdate.warn.quit.button": "Quit game",
+
+
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "Auto switch language",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "Auto-detect modpack translation version update",
@@ -20,6 +28,9 @@
   "text.autoconfig.vmtranslationupdate.option.autoInstallVMTranslationPack": "Automatically install the VM Chinese Resource pack",
   "text.autoconfig.vmtranslationupdate.option.displayTips": "Display knowledge",
   "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "Detecting player name",
+  "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "Detecting if I18nUpdateMod is already installed",
+  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "Detect if VaultPatcher is installed",
+
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "Switch language to",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "Update link",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "Download link",

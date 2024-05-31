@@ -13,6 +13,14 @@
   "vmtranslationupdate.message.zimin": "欢迎来到籽岷的Minecraft游戏世界！",
   "vmtranslationupdate.message.pack": "VM汉化更新自动启用汉化失败！请在 “选项 -> 资源包” 中手动启用 “%s” 资源包",
 
+  "vmtranslationupdate.warn.i18nupdatemod.title": "未检测到I18nUpdateMod模组",
+  "vmtranslationupdate.warn.i18nupdatemod.text": "I18nUpdateMod尚未安装，这可能导致某些模组§c汉化不完全§r！请点击下面的按钮跳转到下载页面。",
+  "vmtranslationupdate.warn.vaultpatcher.title": "未检测到VaultPatcher模组",
+  "vmtranslationupdate.warn.vaultpatcher.text": "VaultPatcher尚未安装，这可能导致某些模组§c硬编码无法汉化§r！请点击下面的按钮跳转到下载页面。",
+  "vmtranslationupdate.warn.download.button": "下载模组",
+  "vmtranslationupdate.warn.quit.button": "退出游戏",
+
+
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动切换语言",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
@@ -20,6 +28,9 @@
   "text.autoconfig.vmtranslationupdate.option.autoInstallVMTranslationPack": "自动安装VM汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.displayTips": "显示知识内容",
   "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "检测玩家名称",
+  "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "检测I18nUpdateMod是否已经安装",
+  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "检测VaultPatcher是否已经安装",
+
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切换语言为",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新检测链接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下载链接",

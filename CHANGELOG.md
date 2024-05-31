@@ -3,5 +3,4 @@
 - new icon
 
 ## Changelog
-- 更新至1.20.5/6
-- 新图标
+- 添加I18nUpdateMod和检测
