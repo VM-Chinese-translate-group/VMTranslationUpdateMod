@@ -15,43 +15,11 @@
 
 **发布汉化时，请特别注意。在汉化更新时改一下模组配置里的版本号！**
 
-模组会在config文件夹创建名为`vmtranslationupdate`的配置文件（1.12.2后缀是.cfg，其他版本为.toml），共有7个配置选项。
-1. 自动根据切换语言（`autoSwitchLanguage`）：默认禁用，在安装了Stenographer后将禁用。
-2. 自动检测整合包汉化版本更新（`checkModPackTranslationUpdate`）：默认启用，在每次玩家进入世界后检查整合包汉化更新。
-3. 自动下载VM汉化资源包（`autoDownloadVMTranslationPack`）：默认启用，在每次加载游戏时下载VM汉化资源包。
-4. 自动安装VM汉化资源包（`autoInstallVMTranslationPack`）：默认启用，在每次加载游戏时安装VM汉化资源包。
-5. 显示知识内容（`displayTips`）：默认启用，在玩家进入存档后每25分钟（可配置）在聊天栏发送一条知识。
-6. 检测玩家名称（`playerNameCheck`）：默认启用，在玩家进入存档后检测玩家名称用于称呼。
-7. 选择切换语言为（`switchLanguage`）：默认为`zh_cn`, 选择要切换的语言（当自动根据切换语言被打开时在每次游戏启动时生效），此处应填语言代码
-8. 更新检测链接（`modPackTranslationUpdateCheckUrl`）：只能填写指向一个txt文件的链接，链接的txt文件只能有此整合包翻译版本号。如：https://vmct-cn.top/modpacks/example/update.txt
-9. 下载链接（`modPackTranslationUrl`）：填写一个指向整合包下载页的链接。如：https://vmct-cn.top/modpacks/example/
-10. 获取知识内容的链接（`tipsUrl`）：用于知识显示功能，此链接必须指向一个txt文件。
-11. 整合包翻译版本（`modPackTranslationVersion`）：整合包汉化本地版本号。
-12. 发送知识的时间间隔（分钟）（`tipsMinutes`）：用于知识显示功能，可配置显示的时间间隔，单位为分钟。
-13. 下载资源包的链接（`translationPackUrl`）：填写一个汉化资源包下载链接，但不包括文件名及其后缀。如：https://cdn.modrinth.com/data/IDWIdXwS/versions/V5YtW17O/VM汉化组模组汉化包1.20.zip 你只需要填写 https://cdn.modrinth.com/data/IDWIdXwS/versions/V5YtW17O/
-14. 资源包的文件名（`translationPackName`）：填写汉化资源包名称，不要带文件名后缀。如：VM汉化组模组汉化包1.20
-15. 玩家对应称呼的链接（`nameUrl`）：用于称呼玩家功能，必须为一个指向json文件的链接。如：https://vmct-cn.top/name.json
+详见：[VMTranslationUpdateMod/wiki/Configs](https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/wiki/Configs)
 
 --- 
 ## 支持版本
-- [x] Forge
-    - [x] 1.12.2
-    - [x] 1.16.5
-    - [x] 1.18.x
-    - [x] 1.19.x
-    - [x] 1.20~1.20.2
-    - [x] 1.20.3/4
-- [x] Fabric
-    - [x] 1.16.5
-    - [x] 1.18.x
-    - [x] 1.19.x
-    - [x] 1.20~1.20.2
-    - [x] 1.20.3/4
-    - [x] 1.20.5/6
-- [x] NeoForge
-    - [x] 1.20.2
-    - [x] 1.20.3~1.20.4
-    - [x] 1.20.5/6
+详见：[VMTranslationUpdateMod/wiki/Support-versions](https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/wiki/Support-versions)
 
 ## 其他
 特别感谢TexTrue跨加载器重构，以及Lichiiiiiii修复部分bug！
