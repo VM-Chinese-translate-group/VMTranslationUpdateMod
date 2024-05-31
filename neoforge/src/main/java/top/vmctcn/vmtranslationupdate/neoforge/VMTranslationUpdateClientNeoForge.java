@@ -16,7 +16,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import top.vmctcn.vmtranslationupdate.ModEvents;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.config.ModConfigs;
-import top.vmctcn.vmtranslationupdate.screen.ScreenAfterInitEvent;
+import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
 import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
 
 @Mod(value = VMTranslationUpdate.MOD_ID, dist = Dist.CLIENT)
@@ -42,7 +42,7 @@ public class VMTranslationUpdateClientNeoForge {
             });
 
             forgeEventBus.addListener(ScreenEvent.Init.Pre.class, event -> {
-                ScreenAfterInitEvent.screenAfterInitEvent(event.getScreen());
+                ScreenUtil.screenAfterInitEvent(event.getScreen());
             });
         }
     }

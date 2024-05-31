@@ -1,6 +1,5 @@
 ## Changelog
-- port to 1.20.5/6
-- new icon
+- Add I18nUpdateMod and VaultPatcher detection
 
 ## Changelog
-- 添加I18nUpdateMod和检测
+- 添加I18nUpdateMod和VaultPatcher检测

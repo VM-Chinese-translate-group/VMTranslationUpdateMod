@@ -3,7 +3,7 @@ package top.vmctcn.vmtranslationupdate;
 import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import top.vmctcn.vmtranslationupdate.screen.ScreenAfterInitEvent;
+import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
 import top.vmctcn.vmtranslationupdate.util.*;
 
 import java.util.Random;
@@ -18,7 +18,7 @@ public class VMTranslationUpdate {
     private static final boolean isStenographerLoaded = ModPlatform.isModLoaded("stenographer"); // Stenographer 兼容
 
     public static void init() {
-        ScreenAfterInitEvent.checkModsLoaded();
+        ScreenUtil.checkModsLoaded();
 
         if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded && ModConfigUtil.getConfig().switchLanguage != null) {
             client.options.language = ModConfigUtil.getConfig().switchLanguage;
