@@ -10,6 +10,22 @@ architectury {
     minecraft = rootProject.minecraft_version
 }
 
+forgix {
+    group = rootProject.maven_group
+    mergedJarName = "${rootProject.archives_base_name}-${rootProject.version}.jar"
+    outputDir = "build/libs/forgix"
+
+    fabric {
+        projectName = "fabric"
+        jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${rootProject.version}.jar"
+    }
+
+    neoforge {
+        projectName = "neoforge"
+        jarLocation = "build/libs/${rootProject.archives_base_name}-neoforge-${ rootProject.version }.jar"
+    }
+}
+
 subprojects {
     apply plugin: "dev.architectury.loom"
     apply plugin: "com.github.johnrengelman.shadow"
@@ -45,22 +61,7 @@ allprojects {
     }
 }
 
-forgix {
-    group = rootProject.maven_group
-    mergedJarName = "${rootProject.archives_base_name}-${rootProject.version}.jar"
-    outputDir = "build/libs/forgix"
-
-    fabric {
-        projectName = "fabric"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${rootProject.version}.jar"
-    }
-
-    neoforge {
-        projectName = "neoforge"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-neoforge-${ rootProject.version }.jar"
-    }
-}
-
+tasks.getByName("publishMod").dependsOn(":mergeJars")
 publisher {
     apiKeys {
         curseforge = System.getenv("CURSEFORGE_TOKEN")
@@ -69,14 +70,14 @@ publisher {
 
     curseID = rootProject.curseforge_id
     modrinthID = rootProject.modrinth_id
-    versionType = "release"
+    versionType = "alpha"
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
     displayName = "VM Translation Update 1.20.5 - 1.20.6 $rootProject.version"
     gameVersions = ["1.20.5", "1.20.6"]
     curseEnvironment = "client"
     loaders = ["fabric", "neoforge"]
-    artifact = file(forgix.getOutputDir() + "/" + forgix.getMergedJarName())
+    artifact = (forgix.getOutputDir() + "/" + forgix.getMergedJarName())
 
     modrinthDepends {
         required "cloth-config"
@@ -86,5 +87,3 @@ publisher {
         required "cloth-config"
     }
 }
-
-publishMod.dependsOn(mergeJars)

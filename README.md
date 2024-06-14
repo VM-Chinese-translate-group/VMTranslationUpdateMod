@@ -15,11 +15,11 @@
 
 **发布汉化时，请特别注意。在汉化更新时改一下模组配置里的版本号！**
 
-详见：[VMTranslationUpdateMod/wiki/Configs](https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/wiki/Configs)
+详见：[VMTranslationUpdateMod/wiki/Configs](https://beta.vmct-cn.top/others/vmtu/config)
 
 --- 
 ## 支持版本
-详见：[VMTranslationUpdateMod/wiki/Support-versions](https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/wiki/Support-versions)
+详见：[VMTranslationUpdateMod/wiki/Support-versions](https://beta.vmct-cn.top/others/vmtu/support)
 
 ## 其他
 特别感谢TexTrue跨加载器重构，以及Lichiiiiiii修复部分bug！
