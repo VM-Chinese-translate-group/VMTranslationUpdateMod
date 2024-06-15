@@ -1,5 +1,5 @@
 {
-  "comment_mod_info": "NeoForge/Fabric 模组信息翻译",
+  "comment_mod_info": "NeoForge/Fabric 模組信息翻譯",
   "fml.menu.mods.info.displayname.vmtranslationupdate": "VM漢化更新",
   "fml.menu.mods.info.description.vmtranslationupdate": "一個用於檢查VM漢化組的漢化補丁更新和自動下載資源包的模組。",
   "modmenu.nameTranslation.vmtranslationupdate": "VM漢化更新",
@@ -13,6 +13,11 @@
   "vmtranslationupdate.message.zimin": "歡迎來到籽岷的Minecraft遊戲世界！",
   "vmtranslationupdate.message.pack": "VM漢化更新自動啟用漢化失敗！請在 「選項 -> 資源包」 中手動啟用 「%s」 資源包",
 
+  "vmtranslationupdate.warn.i18nupdatemod.title": "未檢測到 %s 模組",
+  "vmtranslationupdate.warn.i18nupdatemod.text": "%s 尚未安裝，這可能導致某些模組§c漢化不完全§r！請點擊下面的按鈕跳轉到下載頁面。",
+  "vmtranslationupdate.warn.download.button": "下載模組",
+  "vmtranslationupdate.warn.quit.button": "退出遊戲",
+
   "text.autoconfig.vmtranslationupdate.title": "VM漢化更新檢測配寘",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自動切換語言",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自動檢測整合包版本更新",
@@ -20,6 +25,9 @@
   "text.autoconfig.vmtranslationupdate.option.autoInstallVMTranslationPack": "自動安裝VM漢化資源包",
   "text.autoconfig.vmtranslationupdate.option.displayTips": "顯示知識內容",
   "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "檢測玩家名稱",
+  "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "檢測I18nUpdateMod是否已經安裝",
+  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "檢測VaultPatcher是否已經安裝",
+
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切換語言为",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新檢測鏈接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下載鏈接",

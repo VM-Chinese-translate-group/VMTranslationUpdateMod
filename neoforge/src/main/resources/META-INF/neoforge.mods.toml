@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[1,)"
+loaderVersion = "[21,)"
 issueTrackerURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
 license = "MIT"
 
@@ -18,7 +18,7 @@ logoFile = "icon.png"
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.5,)"
+versionRange = "[1.21,)"
 ordering = "NONE"
 side = "BOTH"
 
