@@ -29,14 +29,6 @@ jobs:
             .gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'build.gradle') }}
       - uses: gradle/actions/wrapper-validation@v3
-      - name: Build
-        run: |
-          chmod +x gradlew
-          ./gradlew build
-      - name: Merge jars
-        run: |
-          chmod +x gradlew
-          ./gradlew mergeJars
       - name: Publish mod
         run: |
           chmod +x gradlew
