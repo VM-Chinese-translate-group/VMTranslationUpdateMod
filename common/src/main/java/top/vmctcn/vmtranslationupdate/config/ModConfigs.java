@@ -13,7 +13,7 @@ public class ModConfigs implements ConfigData {
     public boolean autoInstallVMTranslationPack = true;
     public boolean displayTips = true;
     public boolean playerNameCheck = true;
-    public boolean i18nUpdateModCheck = false;
+    public boolean i18nUpdateModCheck = true;
     public boolean vaultPatcherCheck = false;
 
     public String switchLanguage = "zh_cn";
