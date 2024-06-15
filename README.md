@@ -1,14 +1,16 @@
 <div align="center"> 
    <img height="100px" width="100px" alt="logo" src="./common/src/main/resources/icon.png"/> 
    <h1>VM Translation Update</h1>
-</div> 
 
-## 相关链接
-[Modrinth](https://modrinth.com/mod/vmupdate)
-
-[CurseForge](https://www.curseforge.com/minecraft/mc-mods/vmtranslationupdate)
+<a href="https://modrinth.com/project/vmupdate/">
+<img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg">
+</a>
+<a href="https://www.curseforge.com/minecraft/mc-mods/vmtranslationupdate">
+<img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg">
+</a>
 
 [MC百科](https://www.mcmod.cn/class/11203.html)
+</div>
 
 ## 功能
 1. 在汉化发布新版本时会在游戏里通知玩家去下载更新。
