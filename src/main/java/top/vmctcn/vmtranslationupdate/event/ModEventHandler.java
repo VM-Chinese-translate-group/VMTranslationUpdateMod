@@ -2,9 +2,10 @@ package top.vmctcn.vmtranslationupdate.event;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.*;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.TranslatableText;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -24,19 +25,19 @@ import java.util.concurrent.CompletableFuture;
 public class ModEventHandler {
     @SubscribeEvent
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        EntityPlayer player = event.player;
+        PlayerEntity player = event.player;
         String localVersion = ModConfig.modPackTranslationVersion;
         String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
-        String name = player.getName();
+        String name = player.getDisplayNameString();
 
         NameUtil.getPlayerName(player);
 
         if (ModConfig.playerNameCheck) {
             if (name.equals("Zi__Min")) {
                 name = "岷叔";
-                player.sendMessage(new TextComponentTranslation("vmtranslationupdate.message.zimin"));
+                player.sendMessage(new TranslatableText("vmtranslationupdate.message.zimin"));
                 if (ModConfig.checkModPackTranslationUpdate && !localVersion.equals(onlineVersion)) {
-                    player.sendMessage(new TextComponentTranslation("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
+                    player.sendMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
                 }
             } else {
                 try {
@@ -58,7 +59,7 @@ public class ModEventHandler {
                     if (jsonObject.has(name)) {
                         name = jsonObject.get(name).getAsString();
                         if (ModConfig.checkModPackTranslationUpdate && !localVersion.equals(onlineVersion)) {
-                            player.sendMessage(new TextComponentTranslation("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
+                            player.sendMessage(new TranslatableText("vmtranslationupdate.message.update", name, localVersion, VersionCheckUtil.getOnlineVersion(player)));
                         }
                     }
                 } catch (Exception e) {
@@ -70,7 +71,7 @@ public class ModEventHandler {
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && Minecraft.getMinecraft().world != null) {
+        if (event.phase == TickEvent.Phase.END && MinecraftClient.getInstance().world != null) {
             VMTranslationUpdate.tickCounter++;
             int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
             if (VMTranslationUpdate.tickCounter >= tickInterval) {
@@ -80,7 +81,7 @@ public class ModEventHandler {
                             String randomMessage = TipsUtil.getRandomMessageFromURL(ModConfig.tipsUrl);
                             if (message != null) {
                                 if (VMTranslationUpdate.client.player != null) {
-                                    VMTranslationUpdate.client.player.sendMessage(new TextComponentString(randomMessage));
+                                    VMTranslationUpdate.client.player.sendMessage(new LiteralText(randomMessage));
                                 }
                             }
                         });

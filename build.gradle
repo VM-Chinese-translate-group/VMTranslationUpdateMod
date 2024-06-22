@@ -1,5 +1,5 @@
 plugins {
-    id "dev.architectury.legacy.loom" version "dev~0.12.0-SNAPSHOT"
+    id "xyz.wagyourtail.unimined" version "1.2.14-SNAPSHOT"
     id "com.hypherionmc.modutils.modpublisher" version "2.+"
 }
 
@@ -7,10 +7,34 @@ archivesBaseName = project.archives_base_name
 version = "${project.mod_version}+mc${project.minecraft_version}"
 group = project.maven_group
 
+unimined.minecraft {
+    version project.minecraft_version
+
+    mappings {
+        legacyIntermediary()
+        legacyYarn(541)
+
+
+        stub.withMappings("intermediary", ["yarn"]) {
+            c("net/minecraft/class_1202", []) {
+                m("method_3964", "(II)Z", ["chunkExistsVanilla"])
+            }
+            c("net/minecraft/class_2529", []) {
+                m("method_10380", "(Lnet/minecraft/class_1354;)Lnet/minecraft/class_1354;", ["rotateVanilla"])
+                m("method_10381", "(Lnet/minecraft/class_1354;I)I", ["rotateVanilla"])
+            }
+        }
+    }
+
+    minecraftForge {
+        loader forge_version
+    }
+
+    defaultRemapJar = true
+}
+
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "de.oceanlabs.mcp:mcp_${project.mcp_channel}:${project.mcp_version}@zip"
-    forge "net.minecraftforge:forge:${project.forge_version}"
+
 }
 
 processResources {
@@ -24,12 +48,10 @@ processResources {
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
-    //options.release = 8
+    options.release = 8
 }
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(8)
-
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 

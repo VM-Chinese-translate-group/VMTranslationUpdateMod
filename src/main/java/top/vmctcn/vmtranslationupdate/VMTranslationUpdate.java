@@ -1,6 +1,6 @@
 package top.vmctcn.vmtranslationupdate;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.MinecraftClient;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -21,13 +21,13 @@ public class VMTranslationUpdate {
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
     public static final String MOD_VERSION = "2.4.0";
-    public static final Minecraft client = Minecraft.getMinecraft();
+    public static final MinecraftClient client = MinecraftClient.getInstance();
     public static final Logger LOGGER = LogManager.getLogger(MODNAME);
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         if (ModConfig.autoSwitchLanguage && ModConfig.switchLanguage != null) {
-            client.gameSettings.language = ModConfig.switchLanguage;
+            client.options.language = ModConfig.switchLanguage;
         }
 
         if (ModConfig.autoDownloadVMTranslationPack) {

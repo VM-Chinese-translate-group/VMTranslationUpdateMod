@@ -1,7 +1,7 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.TranslatableText;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
 
 import java.io.BufferedReader;
@@ -11,7 +11,7 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
 public class VersionCheckUtil {
-    public static String getOnlineVersion(EntityPlayer player) {
+    public static String getOnlineVersion(PlayerEntity player) {
         try {
             URL url = new URL(ModConfig.modPackTranslationUpdateCheckUrl);
             URLConnection connection = url.openConnection();
@@ -24,7 +24,7 @@ public class VersionCheckUtil {
                 return reader.readLine();
             }
         } catch (Exception e) {
-            player.sendMessage(new TextComponentTranslation("vmtranslationupdate.message.error"));
+            player.sendMessage(new TranslatableText("vmtranslationupdate.message.error"));
             return "";
         }
     }

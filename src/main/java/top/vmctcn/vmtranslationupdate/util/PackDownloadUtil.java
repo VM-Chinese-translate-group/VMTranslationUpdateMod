@@ -1,7 +1,7 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.option.GameOptions;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
 
@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PackDownloadUtil {
-    private static final Minecraft client = Minecraft.getMinecraft();
-    public static final Path resourcePackDir = client.getResourcePackRepository().getDirResourcepacks().toPath();
+    private static final MinecraftClient client = MinecraftClient.getInstance();
+    public static final Path resourcePackDir = client.getResourcePackLoader().getResourcePackDir().toPath();
     public static String resourcePackName = ModConfig.translationPackName + ".zip";
     private static final Path resPackFilePath = resourcePackDir.resolve(resourcePackName);
 
@@ -67,17 +67,17 @@ public class PackDownloadUtil {
     }
 
     public static void setResourcePack() {
-        Minecraft client = Minecraft.getMinecraft();
-        GameSettings gameSettings = client.gameSettings;
-        // 在 gameSettings 中加载资源包
-        if (!gameSettings.resourcePacks.contains(resourcePackName)) {
-            client.gameSettings.resourcePacks.add(resourcePackName);
+        MinecraftClient client = MinecraftClient.getInstance();
+        GameOptions gameOptions = client.options;
+        // 在 gameOptions 中加载资源包
+        if (!gameOptions.resourcePacks.contains(resourcePackName)) {
+            client.options.resourcePacks.add(resourcePackName);
         } else {
             List<String> packs = new ArrayList<>(100);
             // 资源包的 index 越小优先级越低（在资源包 GUI 中置于更低层）
             packs.add(resourcePackName);
-            packs.addAll(gameSettings.resourcePacks);
-            gameSettings.resourcePacks = packs;
+            packs.addAll(gameOptions.resourcePacks);
+            gameOptions.resourcePacks = packs;
         }
     }
 }
