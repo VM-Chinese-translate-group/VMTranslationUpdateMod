@@ -1,3 +1,5 @@
+import xyz.wagyourtail.unimined.api.minecraft.EnvType
+
 plugins {
     id "xyz.wagyourtail.unimined" version "1.2.14-SNAPSHOT"
     id "com.hypherionmc.modutils.modpublisher" version "2.+"
@@ -8,7 +10,7 @@ version = "${project.mod_version}+mc${project.minecraft_version}"
 group = project.maven_group
 
 unimined.minecraft {
-    version project.minecraft_version
+    version("${project.minecraft_version}")
 
     mappings {
         calamus()
@@ -21,9 +23,7 @@ unimined.minecraft {
             }
         }
 
-
-
-        //devFallbackNamespace = "intermediary"
+        devFallbackNamespace("intermediary")
     }
 
     minecraftForge {

@@ -3,14 +3,20 @@ package top.vmctcn.vmtranslationupdate.event;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.entity.living.player.PlayerEntity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
+import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
+import top.vmctcn.vmtranslationupdate.screen.SuggestModScreen;
 import top.vmctcn.vmtranslationupdate.util.NameUtil;
 import top.vmctcn.vmtranslationupdate.util.TipsUtil;
 import top.vmctcn.vmtranslationupdate.util.VersionCheckUtil;
@@ -22,8 +28,9 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
+@Mod.EventBusSubscriber(modid = VMTranslationUpdate.MOD_ID)
 public class ModEventHandler {
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.player;
         String localVersion = ModConfig.modPackTranslationVersion;
@@ -87,5 +94,22 @@ public class ModEventHandler {
                         });
             }
         }
+    }
+
+    public boolean firstTitleScreenShown = false;
+
+    @SubscribeEvent
+    public void screenAfterInitEvent(GuiScreenEvent.InitGuiEvent.Pre event) {
+        Screen screen = event.getGui();
+
+        if (firstTitleScreenShown || !(screen instanceof TitleScreen)) {
+            return;
+        }
+
+        if (event.getGui().minecraft.options.language.equals("zh_cn")) {
+            Minecraft.getInstance().openScreen(new SuggestModScreen(screen));
+        }
+
+        firstTitleScreenShown = true;
     }
 }

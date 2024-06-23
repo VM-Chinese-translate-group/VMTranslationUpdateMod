@@ -14,7 +14,7 @@ import top.vmctcn.vmtranslationupdate.util.PackDownloadUtil;
 
 import java.util.Random;
 
-@Mod(modid = VMTranslationUpdate.MOD_ID, name = VMTranslationUpdate.MODNAME, version = VMTranslationUpdate.MOD_VERSION)
+@Mod(modid = VMTranslationUpdate.MOD_ID, name = VMTranslationUpdate.MODNAME, version = VMTranslationUpdate.MOD_VERSION, clientSideOnly = true)
 public class VMTranslationUpdate {
     public static Random random;
     public static int tickCounter;
