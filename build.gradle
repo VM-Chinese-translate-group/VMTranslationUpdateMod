@@ -11,19 +11,19 @@ unimined.minecraft {
     version project.minecraft_version
 
     mappings {
-        legacyIntermediary()
-        legacyYarn(541)
+        calamus()
+        feather(27)
 
-
+        // calamus = intermediary, feather = yarn
         stub.withMappings("intermediary", ["yarn"]) {
-            c("net/minecraft/class_1202", []) {
-                m("method_3964", "(II)Z", ["chunkExistsVanilla"])
-            }
-            c("net/minecraft/class_2529", []) {
-                m("method_10380", "(Lnet/minecraft/class_1354;)Lnet/minecraft/class_1354;", ["rotateVanilla"])
-                m("method_10381", "(Lnet/minecraft/class_1354;I)I", ["rotateVanilla"])
+            c("net/minecraft/unmapped/C_9482745", []) {
+                m("m_9076954", "()D", ["getMaxSpeedVanilla"])
             }
         }
+
+
+
+        //devFallbackNamespace = "intermediary"
     }
 
     minecraftForge {
@@ -48,7 +48,7 @@ processResources {
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
-    options.release = 8
+    //options.release = 8
 }
 
 java {

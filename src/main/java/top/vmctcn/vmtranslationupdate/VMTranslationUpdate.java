@@ -1,6 +1,6 @@
 package top.vmctcn.vmtranslationupdate;
 
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -21,7 +21,7 @@ public class VMTranslationUpdate {
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
     public static final String MOD_VERSION = "2.4.0";
-    public static final MinecraftClient client = MinecraftClient.getInstance();
+    public static final Minecraft client = Minecraft.getInstance();
     public static final Logger LOGGER = LogManager.getLogger(MODNAME);
 
     @EventHandler

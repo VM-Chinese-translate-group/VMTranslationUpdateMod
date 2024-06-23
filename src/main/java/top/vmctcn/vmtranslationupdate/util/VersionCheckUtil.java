@@ -1,6 +1,6 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.living.player.PlayerEntity;
 import net.minecraft.text.TranslatableText;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
 

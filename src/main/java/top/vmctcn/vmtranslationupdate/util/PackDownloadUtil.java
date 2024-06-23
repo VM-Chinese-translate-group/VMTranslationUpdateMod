@@ -1,7 +1,7 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.GameOptions;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.options.GameOptions;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
 
@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PackDownloadUtil {
-    private static final MinecraftClient client = MinecraftClient.getInstance();
-    public static final Path resourcePackDir = client.getResourcePackLoader().getResourcePackDir().toPath();
+    private static final Minecraft client = Minecraft.getInstance();
+    public static final Path resourcePackDir = client.getResourcePacks().getDirectory().toPath();
     public static String resourcePackName = ModConfig.translationPackName + ".zip";
     private static final Path resPackFilePath = resourcePackDir.resolve(resourcePackName);
 
@@ -67,7 +67,7 @@ public class PackDownloadUtil {
     }
 
     public static void setResourcePack() {
-        MinecraftClient client = MinecraftClient.getInstance();
+        Minecraft client = Minecraft.getInstance();
         GameOptions gameOptions = client.options;
         // 在 gameOptions 中加载资源包
         if (!gameOptions.resourcePacks.contains(resourcePackName)) {

@@ -2,8 +2,8 @@ package top.vmctcn.vmtranslationupdate.event;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.living.player.PlayerEntity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -71,7 +71,7 @@ public class ModEventHandler {
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && MinecraftClient.getInstance().world != null) {
+        if (event.phase == TickEvent.Phase.END && Minecraft.getInstance().world != null) {
             VMTranslationUpdate.tickCounter++;
             int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
             if (VMTranslationUpdate.tickCounter >= tickInterval) {

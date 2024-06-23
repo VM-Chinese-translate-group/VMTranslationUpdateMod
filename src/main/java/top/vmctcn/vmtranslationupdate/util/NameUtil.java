@@ -2,7 +2,7 @@ package top.vmctcn.vmtranslationupdate.util;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.living.player.PlayerEntity;
 import net.minecraft.text.TranslatableText;
 import top.vmctcn.vmtranslationupdate.config.ModConfig;
 
