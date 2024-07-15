@@ -1,7 +1,7 @@
 ## Changelog
-- port to 1.20.5/6 (remove MinecraftForge support)
-- new icon
+- Add I18nUpdateMod and VaultPatcher detection
+- 支持1.21
 
 ## Changelog
-- 更新至1.20.5/6 (不再支持 MinecraftForge)
-- 新图标
+- 添加I18nUpdateMod和VaultPatcher检测
+- 支持1.21
