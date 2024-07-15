@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[1,)"
+loaderVersion = "[20,)"
 issueTrackerURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
 license = "MIT"
 
@@ -16,15 +16,22 @@ and automatically downloading resource packs.
 logoFile = "icon.png"
 
 [[dependencies.vmtranslationupdate]]
+modId = "neoforge"
+type = "required"
+versionRange = "[20,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.vmtranslationupdate]]
 modId = "minecraft"
-mandatory = true
-versionRange = "[1.20.5,)"
+type = "required"
+versionRange = "[1.20.5,1.20.6]"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.vmtranslationupdate]]
 modId = "cloth_config"
-mandatory = true
+type = "required"
 versionRange = "*"
 ordering = "AFTER"
 side = "BOTH"
