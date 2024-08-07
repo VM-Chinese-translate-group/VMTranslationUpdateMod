@@ -32,26 +32,12 @@ jobs:
           chmod +x gradlew
           ./gradlew mergeJars
 
-      - name: Upload artifacts (fabric)
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: fabric
-          path: ${{ github.workspace }}/fabric/build/libs
-
-      - name: Upload artifacts (forge)
-        uses: actions/upload-artifact@v4
-        with:
-          name: forge
-          path: ${{ github.workspace }}/forge/build/libs
-
-      - name: Upload artifacts (neoforge)
-        uses: actions/upload-artifact@v4
-        with:
-          name: neoforge
-          path: ${{ github.workspace }}/neoforge/build/libs
-
-      - name: Upload artifacts (Forgix merged jar)
-        uses: actions/upload-artifact@v4
-        with:
-          name: merged
-          path: ${{ github.workspace }}/build/libs/forgix
+          name: artifacts
+          path: |
+            ${{ github.workspace }}/fabric/build/libs
+            ${{ github.workspace }}/forge/build/libs
+            ${{ github.workspace }}/neoforge/build/libs
+            ${{ github.workspace }}/build/merged

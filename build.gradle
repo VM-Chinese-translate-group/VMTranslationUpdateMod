@@ -3,7 +3,7 @@ plugins {
     id "dev.architectury.loom" version "1.6-SNAPSHOT" apply false
     id "com.github.johnrengelman.shadow" version "8.+" apply false
     id "com.hypherionmc.modutils.modpublisher" version "2.+"
-    id "io.github.pacifistmc.forgix" version "1.+"
+    id "com.hypherionmc.modutils.modfusioner" version "1.0.+"
 }
 
 architectury {
@@ -42,28 +42,22 @@ allprojects {
     }
 }
 
-forgix {
-    group = rootProject.maven_group
-    mergedJarName = "${rootProject.archives_base_name}-${rootProject.version}.jar"
-    outputDir = "build/libs/forgix"
+fusioner {
+    packageGroup = rootProject.maven_group
+    mergedJarName = "${rootProject.archives_base_name}"
+    outputDirectory = "build/merged"
+    jarVersion = rootProject.version
 
-    forge {
-        projectName = "forge"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-forge-${rootProject.version}.jar"
+    neoforge {
+        projectName = "neoforge"
+        inputTaskName = "remapJar"
     }
 
     fabric {
         projectName = "fabric"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${rootProject.version}.jar"
-    }
-
-    custom {
-        projectName = "neoforge"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-neoforge-${ rootProject.version }.jar"
+        inputTaskName = "remapJar"
     }
 }
-
-mergeJars.dependsOn(build)
 
 publisher {
     apiKeys {
@@ -76,11 +70,11 @@ publisher {
     versionType = "release"
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
-    displayName = "VM Translation Update 1.20~1.20.4 ${rootProject.mod_version}"
-    gameVersions = ["1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4"]
+    displayName = "VM Translation Update 1.20.4 ${rootProject.mod_version}"
+    gameVersions = ["1.20.4"]
     curseEnvironment = "client"
-    loaders = ["fabric", "quilt", "forge", "neoforge"]
-    artifact = (forgix.getOutputDir() + "/" + forgix.getMergedJarName())
+    loaders = ["fabric", "quilt", "neoforge"]
+    artifact = fusejars
 
     modrinthDepends {
         required "cloth-config"
@@ -90,5 +84,3 @@ publisher {
         required "cloth-config"
     }
 }
-
-publishMod.dependsOn(mergeJars)
