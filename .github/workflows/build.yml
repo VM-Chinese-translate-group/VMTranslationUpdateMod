@@ -30,7 +30,7 @@ jobs:
       - name: Merge Fabric & Forge & NeoForge JARs
         run: |
           chmod +x gradlew
-          ./gradlew mergeJars
+          ./gradlew fusejars
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
