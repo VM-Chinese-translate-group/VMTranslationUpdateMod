@@ -13,4 +13,4 @@ include("common")
 include("fabric")
 include("neoforge")
 
-rootProject.name = "VMTranslationUpdate"
+rootProject.name = "VMTranslationUpdateMod"
