@@ -23,9 +23,5 @@ public class VMTranslationUpdate {
         if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded && ModConfigUtil.getConfig().switchLanguage != null) {
             client.options.language = ModConfigUtil.getConfig().switchLanguage;
         }
-
-        if (ModConfigUtil.getConfig().autoDownloadVMTranslationPack) {
-            PackDownloadUtil.downloadResPack();
-        }
     }
 }

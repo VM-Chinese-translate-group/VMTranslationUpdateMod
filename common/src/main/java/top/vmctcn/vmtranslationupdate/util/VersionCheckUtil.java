@@ -15,7 +15,7 @@ public class VersionCheckUtil {
             URI uri = URI.create(ModConfigUtil.getConfig().modPackTranslationUpdateCheckUrl);
             URLConnection connection = uri.toURL().openConnection();
 
-            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmUpdate";
+            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0";
             connection.setRequestProperty("User-Agent", userAgent);
             connection.setConnectTimeout(10000);
 

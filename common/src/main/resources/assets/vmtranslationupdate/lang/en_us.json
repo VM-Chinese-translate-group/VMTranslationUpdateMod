@@ -10,7 +10,6 @@
   "vmtranslationupdate.message.update3": " to download the new version.",
   "vmtranslationupdate.message.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
   "vmtranslationupdate.message.hover": "Click me to download the new version!",
-  "vmtranslationupdate.message.pack": "VM Chinese Update auto enable localization failed! Please enable \"%s\" pack manually in \"Options -> Resource Packs\".",
 
   "vmtranslationupdate.warn.title": "%s not detected",
   "vmtranslationupdate.warn.text": "%s is not yet installed, which may result in incomplete localization of some mods! Please click the button below to jump to the download page.",
@@ -21,8 +20,6 @@
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "Auto switch language",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "Auto-detect modpack translation version update",
-  "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "Automatically download VM Chinese Resource pack",
-  "text.autoconfig.vmtranslationupdate.option.autoInstallVMTranslationPack": "Automatically install the VM Chinese Resource pack",
   "text.autoconfig.vmtranslationupdate.option.displayTips": "Display knowledge",
   "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "Detecting player name",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "Detecting if I18nUpdateMod is already installed",
@@ -34,7 +31,5 @@
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "Get knowledge link",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "Modpack translation version",
   "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "Time interval for sending knowledge (minutes)",
-  "text.autoconfig.vmtranslationupdate.option.translationPackUrl": "Download resource pack link",
-  "text.autoconfig.vmtranslationupdate.option.translationPackName": "File name of the resource pack",
   "text.autoconfig.vmtranslationupdate.option.nameUrl": "Get player name link"
 }

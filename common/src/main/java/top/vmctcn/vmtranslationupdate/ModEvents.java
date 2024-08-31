@@ -38,16 +38,7 @@ public class ModEvents {
         String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
 
         if (ModConfigUtil.getConfig().checkModPackTranslationUpdate) {
-            if (localVersion.equals(onlineVersion)
-                    && Files.exists(PackDownloadUtil.resourcePackDir)
-                    && !client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName)
-                    && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
-                Text message = Text.translatable("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().translationPackName)
-                        .setStyle(Style.EMPTY.withColor(Formatting.GOLD));
-
-                player.sendMessage(message);
-
-            } else if (!localVersion.equals(onlineVersion)) {
+            if (!localVersion.equals(onlineVersion)) {
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
                         .append(Text.translatable(ModConfigUtil.getConfig().modPackTranslationUrl)
                                 .setStyle(Style.EMPTY
