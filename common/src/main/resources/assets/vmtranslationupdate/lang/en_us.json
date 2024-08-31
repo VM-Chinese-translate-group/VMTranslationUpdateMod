@@ -10,7 +10,6 @@
   "vmtranslationupdate.message.update3": " to download the new version.",
   "vmtranslationupdate.message.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
   "vmtranslationupdate.message.hover": "Click me to download the new version!",
-  "vmtranslationupdate.message.zimin": "Welcome to ZiMin's Minecraft world!",
   "vmtranslationupdate.message.pack": "VM Chinese Update auto enable localization failed! Please enable \"%s\" pack manually in \"Options -> Resource Packs\".",
 
   "vmtranslationupdate.warn.title": "%s not detected",

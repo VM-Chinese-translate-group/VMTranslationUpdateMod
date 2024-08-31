@@ -17,12 +17,12 @@ public class ModConfigs implements ConfigData {
     public boolean vaultPatcherCheck = false;
 
     public String switchLanguage = "zh_cn";
-    public String modPackTranslationUpdateCheckUrl = "https://vmct-cn.top/modpacks/example/update.txt";
+    public String modPackTranslationUpdateCheckUrl = "https://gitee.com/Wulian233/vmtu/raw/main/update/example.txt";
     public String modPackTranslationUrl = "https://vmct-cn.top/modpacks/example/";
-    public String tipsUrl = "https://vmct-cn.top/tips.txt";
+    public String tipsUrl = "https://gitee.com/Wulian233/vmtu/raw/main/tips.txt";
     public String modPackTranslationVersion = "1.0.0";
     public int tipsMinutes = 25;
-    public String translationPackName = "VM汉化组模组汉化包1.20";
+    public String translationPackName = "VM汉化组模组汉化包1.21";
     public String translationPackUrl= "https://cdn.modrinth.com/data/IDWIdXwS/versions/V5YtW17O/";
-    public String nameUrl = "https://vmct-cn.top/name.json";
+    public String nameUrl = "https://gitee.com/Wulian233/vmtu/raw/main/name.json";
 }
