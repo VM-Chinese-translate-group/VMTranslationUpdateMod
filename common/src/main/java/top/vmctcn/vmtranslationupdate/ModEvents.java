@@ -31,7 +31,7 @@ public class ModEvents {
     }
 
     public static void playerJoinEvent(ServerPlayerEntity player) {
-        NameUtil.playerJoinEvent(player);
+        JoinUtil.playerJoinEvent(player);
 
         MinecraftClient client = MinecraftClient.getInstance();
         String localVersion = ModConfigUtil.getConfig().modPackTranslationVersion;

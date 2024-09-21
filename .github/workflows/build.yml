@@ -38,6 +38,5 @@ jobs:
           name: artifacts
           path: |
             ${{ github.workspace }}/fabric/build/libs
-            ${{ github.workspace }}/forge/build/libs
             ${{ github.workspace }}/neoforge/build/libs
             ${{ github.workspace }}/build/merged

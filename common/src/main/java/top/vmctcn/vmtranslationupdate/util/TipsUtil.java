@@ -1,11 +1,9 @@
 package top.vmctcn.vmtranslationupdate.util;
 
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URLConnection;
+import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class TipsUtil {
     public static final List<String> messagesList = new ArrayList<>();
+
     public static String getRandomMessageFromURL(String tipsUrl) {
         if (messagesList.isEmpty()) {
             loadMessagesFromURL(tipsUrl);
@@ -26,10 +25,8 @@ public class TipsUtil {
 
     public static void loadMessagesFromURL(String tipsUrl) {
         try {
-            URI uri = URI.create(tipsUrl);
-            URLConnection connection = uri.toURL().openConnection();
-            connection.setConnectTimeout(10000);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(uri.toURL().openStream(), StandardCharsets.UTF_8));
+            String content = HttpUtil.getContentFromURL(tipsUrl);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(content.getBytes()), StandardCharsets.UTF_8));
             String line;
             while ((line = reader.readLine()) != null) {
                 messagesList.add(line);

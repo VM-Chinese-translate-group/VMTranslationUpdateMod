@@ -31,9 +31,9 @@ public class SuggestModScreen extends Screen {
 
         this.addDrawableChild(ButtonWidget.builder(ScreenUtil.downloadButtonText, buttonWidget -> {
             if (ModConfigUtil.getConfig().i18nUpdateModCheck && !ScreenUtil.i18nUpdateModPresent) {
-                ScreenUtil.openUrlOnScreen(this.client, this, "https://modrinth.com/mod/i18nupdatemod");
+                ScreenUtil.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
             } else if (ModConfigUtil.getConfig().vaultPatcherCheck && !ScreenUtil.vaultPatcherPresent) {
-                ScreenUtil.openUrlOnScreen(this.client, this, "https://modrinth.com/mod/vault-patcher");
+                ScreenUtil.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
             }
         }).dimensions(centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
         this.addDrawableChild(ButtonWidget.builder(ScreenUtil.quitButtonText, buttonWidget -> this.client.scheduleStop()).dimensions(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
