@@ -28,16 +28,16 @@ public class ScreenUtil {
     }
 
     public static void checkModsLoaded() {
-        i18nUpdateModPresent = isModPresent("i18nupdatemod.I18nUpdateMod");
-        vaultPatcherPresent = isModPresent("me.fengming.vaultpatcher_asm.VaultPatcher");
-    }
-
-    private static boolean isModPresent(String className) {
         try {
-            Class.forName(className);
-            return true;
+            Class.forName("i18nupdatemod.I18nUpdateMod");
+            i18nUpdateModPresent = true;
         } catch (ClassNotFoundException e) {
-            return false;
+            i18nUpdateModPresent = false;
+        } try {
+            Class.forName("me.fengming.vaultpatcher_asm.VaultPatcher");
+            vaultPatcherPresent = true;
+        } catch (ClassNotFoundException e) {
+            vaultPatcherPresent = false;
         }
     }
 
@@ -57,31 +57,28 @@ public class ScreenUtil {
     }
 
     public static Text getSuggestScreenTitle() {
-        return generateWarningText("vmtranslationupdate.warn.title");
+        Text titleText = Text.empty();
+        
+        if (ModConfigUtil.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
+            titleText = Text.translatable("vmtranslationupdate.warn.title", "I18nUpdateMod");
+        } else if (ModConfigUtil.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
+            titleText = Text.translatable("vmtranslationupdate.warn.title", "VaultPatcher");
+        } else if ((ModConfigUtil.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigUtil.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
+            titleText = Text.translatable("vmtranslationupdate.warn.text", "I18nUpdateMod & VaultPatcher");
+        }
+        return titleText;
     }
 
     public static Text getSuggestScreenText() {
-        return generateWarningText("vmtranslationupdate.warn.text");
-    }
+        Text context = Text.empty();
 
-    private static Text generateWarningText(String key) {
-        String missingMods = getMissingModsText();
-        if (!missingMods.isEmpty()) {
-            return Text.translatable(key, missingMods);
+        if (ModConfigUtil.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
+            context = Text.translatable("vmtranslationupdate.warn.text", "I18nUpdateMod");
+        } else if (ModConfigUtil.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
+            context = Text.translatable("vmtranslationupdate.warn.text", "VaultPatcher");
+        } else if ((ModConfigUtil.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigUtil.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
+            context = Text.translatable("vmtranslationupdate.warn.text", "I18nUpdateMod & VaultPatcher");
         }
-        return Text.empty();
-    }
-
-    private static String getMissingModsText() {
-        if (ModConfigUtil.getConfig().i18nUpdateModCheck && ModConfigUtil.getConfig().vaultPatcherCheck) {
-            if (!i18nUpdateModPresent && !vaultPatcherPresent) {
-                return "I18nUpdateMod & VaultPatcher";
-            } else if (!i18nUpdateModPresent) {
-                return "I18nUpdateMod";
-            } else if (!vaultPatcherPresent) {
-                return "VaultPatcher";
-            }
-        }
-        return "";
+        return context;
     }
 }

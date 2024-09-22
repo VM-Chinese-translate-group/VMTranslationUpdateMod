@@ -14,6 +14,7 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class ModEvents {
+    private static boolean isLoadedTips = false; // 标识Tips是否已经从网络加载
     public static void clientTickEndEvent(MinecraftClient client) {
         int tickCounter = VMTranslationUpdate.tickCounter;
 
@@ -21,13 +22,32 @@ public class ModEvents {
         int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
         if (tickCounter >= tickInterval) {
             tickCounter = 0;
-            CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfigUtil.getConfig().tipsUrl))
-                    .thenAccept(message -> {
-                        if (message == null) return;
-                        String randomMessage = TipsUtil.getRandomMessageFromURL(ModConfigUtil.getConfig().tipsUrl);
-                        Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage));
-                    });
+            if (!isLoadedTips) {
+                CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfigUtil.getConfig().tipsUrl))
+                        .thenAccept(message -> {
+                            isLoaded = true;
+                            if (message == null) return;
+                            String randomMessage = getRandomMessageFromCache();
+                            if (randomMessage != null) {
+                                Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage));
+                            }
+                        });
+            } else {
+                // 如果已经加载过提示信息，直接从缓存中获取随机消息
+                String randomMessage = getRandomMessageFromCache();
+                if (randomMessage != null) {
+                    Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage));
+                }
+            }
         }
+    }
+
+    private static String getRandomMessageFromCache() {
+        if (!TipsUtil.messagesList.isEmpty()) {
+            int index = VMTranslationUpdate.random.nextInt(TipsUtil.messagesList.size());
+            return TipsUtil.messagesList.get(index);
+        }
+        return null;
     }
 
     public static void playerJoinEvent(ServerPlayerEntity player) {

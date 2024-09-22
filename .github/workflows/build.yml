@@ -48,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: merged-artifacts
-          path: ${{ github.workspace }}/build/merged
+          path: ${{ github.workspace }}/build/merged/*
