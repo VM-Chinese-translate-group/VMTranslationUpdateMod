@@ -23,15 +23,16 @@ public class ScreenUtil {
         }
 
         MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
+
         firstTitleScreenShown = true;
     }
 
     public static void checkModsLoaded() {
-        i18nUpdateModPresent = isModLoaded("i18nupdatemod.I18nUpdateMod");
-        vaultPatcherPresent = isModLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
+        i18nUpdateModPresent = isModPresent("i18nupdatemod.I18nUpdateMod");
+        vaultPatcherPresent = isModPresent("me.fengming.vaultpatcher_asm.VaultPatcher");
     }
 
-    private static boolean isModLoaded(String className) {
+    private static boolean isModPresent(String className) {
         try {
             Class.forName(className);
             return true;
@@ -56,21 +57,31 @@ public class ScreenUtil {
     }
 
     public static Text getSuggestScreenTitle() {
-        return getWarningText("vmtranslationupdate.warn.title");
+        return generateWarningText("vmtranslationupdate.warn.title");
     }
 
     public static Text getSuggestScreenText() {
-        return getWarningText("vmtranslationupdate.warn.text");
+        return generateWarningText("vmtranslationupdate.warn.text");
     }
 
-    private static Text getWarningText(String key) {
-        if (ModConfigUtil.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent && ModConfigUtil.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
-            return Text.translatable(key, "I18nUpdateMod & VaultPatcher");
-        } else if (ModConfigUtil.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
-            return Text.translatable(key, "I18nUpdateMod");
-        } else if (ModConfigUtil.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
-            return Text.translatable(key, "VaultPatcher");
+    private static Text generateWarningText(String key) {
+        String missingMods = getMissingModsText();
+        if (!missingMods.isEmpty()) {
+            return Text.translatable(key, missingMods);
         }
         return Text.empty();
+    }
+
+    private static String getMissingModsText() {
+        if (ModConfigUtil.getConfig().i18nUpdateModCheck && ModConfigUtil.getConfig().vaultPatcherCheck) {
+            if (!i18nUpdateModPresent && !vaultPatcherPresent) {
+                return "I18nUpdateMod & VaultPatcher";
+            } else if (!i18nUpdateModPresent) {
+                return "I18nUpdateMod";
+            } else if (!vaultPatcherPresent) {
+                return "VaultPatcher";
+            }
+        }
+        return "";
     }
 }

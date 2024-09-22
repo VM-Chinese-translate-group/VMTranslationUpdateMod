@@ -1,9 +1,9 @@
 {
   "comment_mod_info": "NeoForge/Fabric Mod Info Translation",
   "fml.menu.mods.info.displayname.vmtranslationupdate": "VM Translation Update",
-  "fml.menu.mods.info.description.vmtranslationupdate": "A mod for checking for updates to VM Chinese Group's localization patches and automatically downloading resource packs.",
+  "fml.menu.mods.info.description.vmtranslationupdate": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
   "modmenu.nameTranslation.vmtranslationupdate": "VM Translation Update",
-  "modmenu.descriptionTranslation.vmtranslationupdate": "A mod for checking for updates to VM Chinese Group's localization patches and automatically downloading resource packs.",
+  "modmenu.descriptionTranslation.vmtranslationupdate": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
 
   "vmtranslationupdate.message.update": "[VM Chinese Group]: Hello %s, your Chinese localization patch is outdated! Current version is %s, latest version is %s.",
   "vmtranslationupdate.message.update2": "Please click on the right ",

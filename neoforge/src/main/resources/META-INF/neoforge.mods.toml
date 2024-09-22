@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[21,)"
+loaderVersion = "[4,)"
 issueTrackerURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
 license = "MIT"
 
@@ -10,10 +10,16 @@ displayName = "VM Translation Update"
 displayURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod"
 authors = "Wulian233, TexTrue, Litchiiiiiii"
 description = '''
-A mod for checking for updates to VM Chinese Group's localization patches
-and automatically downloading resource packs.
+The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.
 '''
 logoFile = "icon.png"
+
+[[dependencies.vmtranslationupdate]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
+ordering = "NONE"
+side = "BOTH"
 
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
