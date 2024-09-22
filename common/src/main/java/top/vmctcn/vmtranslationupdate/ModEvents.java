@@ -25,7 +25,7 @@ public class ModEvents {
             if (!isLoadedTips) {
                 CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfigUtil.getConfig().tipsUrl))
                         .thenAccept(message -> {
-                            isLoaded = true;
+                            isLoadedTips = true;
                             if (message == null) return;
                             String randomMessage = getRandomMessageFromCache();
                             if (randomMessage != null) {
