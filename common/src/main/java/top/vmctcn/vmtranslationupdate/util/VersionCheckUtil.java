@@ -23,7 +23,7 @@ public class VersionCheckUtil {
                 return reader.readLine();
             }
         } catch (Exception e) {
-            player.sendMessage(Text.translatable("vmtranslationupdate.message.error"));
+            player.sendMessage(Text.translatable("vmtranslationupdate.message.error"), false);
             return "";
         }
     }

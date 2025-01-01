@@ -7,7 +7,7 @@ import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 
 @Config(name = VMTranslationUpdate.MOD_ID)
 public class ModConfigs implements ConfigData {
-    public boolean autoSwitchLanguage = false;
+    public boolean autoSwitchLanguage = true;
     public boolean checkModPackTranslationUpdate = true;
     public boolean displayTips = true;
     public boolean playerNameCheck = true;

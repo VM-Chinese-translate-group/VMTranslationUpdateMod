@@ -1,5 +1,6 @@
 package top.vmctcn.vmtranslationupdate.util;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ConfirmLinkScreen;
@@ -14,15 +15,19 @@ public class ScreenUtil {
     public static boolean i18nUpdateModPresent = false;
     public static boolean vaultPatcherPresent = false;
     public static boolean firstTitleScreenShown = false;
-    public static final Text downloadButtonText = Text.translatable("vmtranslationupdate.warn.download.button");
-    public static final Text quitButtonText = Text.translatable("vmtranslationupdate.warn.quit.button");
+    public static final Text downloadButtonText = Text.translatable("mco.brokenworld.download");
+    public static final Text ignoreButtonText = Text.translatable("selectWorld.backupJoinSkipButton");
 
     public static void screenAfterInitEvent(Screen screen) {
         if (firstTitleScreenShown || !(screen instanceof TitleScreen)) {
             return;
         }
 
-        MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
+        String language = MinecraftClient.getInstance().getLanguageManager().getLanguage();
+
+        if ("zh_cn".equals(language)) {
+            MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
+        }
 
         firstTitleScreenShown = true;
     }
@@ -53,7 +58,7 @@ public class ScreenUtil {
     }
 
     public static void resetShaderColor(DrawContext context) {
-        context.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
     public static Text getSuggestScreenTitle() {

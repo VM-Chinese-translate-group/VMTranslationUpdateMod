@@ -13,8 +13,6 @@
 
   "vmtranslationupdate.warn.title": "未检测到 %s 模组",
   "vmtranslationupdate.warn.text": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！请点击下面的按钮跳转到下载页面。",
-  "vmtranslationupdate.warn.download.button": "下载",
-  "vmtranslationupdate.warn.quit.button": "退出游戏",
 
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动切换语言",

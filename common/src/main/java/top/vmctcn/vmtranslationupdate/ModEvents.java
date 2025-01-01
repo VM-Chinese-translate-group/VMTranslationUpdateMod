@@ -9,7 +9,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import top.vmctcn.vmtranslationupdate.util.*;
 
-import java.nio.file.Files;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
@@ -21,7 +20,6 @@ public class ModEvents {
         tickCounter++;
         int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
         if (tickCounter >= tickInterval) {
-            tickCounter = 0;
             if (!isLoadedTips) {
                 CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfigUtil.getConfig().tipsUrl))
                         .thenAccept(message -> {
@@ -29,14 +27,14 @@ public class ModEvents {
                             if (message == null) return;
                             String randomMessage = getRandomMessageFromCache();
                             if (randomMessage != null) {
-                                Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage));
+                                Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage), false);
                             }
                         });
             } else {
                 // 如果已经加载过提示信息，直接从缓存中获取随机消息
                 String randomMessage = getRandomMessageFromCache();
                 if (randomMessage != null) {
-                    Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage));
+                    Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage), false);
                 }
             }
         }
@@ -53,7 +51,6 @@ public class ModEvents {
     public static void playerJoinEvent(ServerPlayerEntity player) {
         JoinUtil.playerJoinEvent(player);
 
-        MinecraftClient client = MinecraftClient.getInstance();
         String localVersion = ModConfigUtil.getConfig().modPackTranslationVersion;
         String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
 
