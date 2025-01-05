@@ -12,17 +12,6 @@ import java.util.concurrent.CompletableFuture;
 public class TipsUtil {
     public static final List<String> messagesList = new ArrayList<>();
 
-    public static String getRandomMessageFromURL(String tipsUrl) {
-        if (messagesList.isEmpty()) {
-            loadMessagesFromURL(tipsUrl);
-        }
-        if (!messagesList.isEmpty()) {
-            int index = VMTranslationUpdate.random.nextInt(messagesList.size());
-            return messagesList.get(index);
-        }
-        return null;
-    }
-
     public static void loadMessagesFromURL(String tipsUrl) {
         try {
             String content = HttpUtil.getContentFromURL(tipsUrl);

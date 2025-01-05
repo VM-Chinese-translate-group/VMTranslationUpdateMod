@@ -4,12 +4,13 @@
 
 ## 移除
 
+- 移除指定玩家id称呼功能，包括`playerNameCheck`和`nameUrl`配置项
 - 移除下载Modtinth汉化资源包功能
 - 移除籽岷游戏id彩蛋
 
 # 新功能
 
-- 现在自动切换语言（autoSwitchLanguage）默认为开启状态
+- 现在自动切换语言（`autoSwitchLanguage`）默认为开启状态
 - 支持1.21.4，中间版本1.20-1.21.1不支持，1.21.3未测试
 - 未安装推荐模组时模组安装提示屏幕的“退出游戏”按钮改为“我知道我在做什么！”按钮，将不会退出游戏
 - 模组安装提示屏幕现在仅会在简体中文时出现
@@ -25,8 +26,8 @@
 
 ## 核心开发
 
-- 合并模组多平台工具 forgix -> modfusioner
+- 合并模组为多模组加载器版工具 forgix -> modfusioner
 - 更新所有依赖版本
 - 修复GitHub CI 工作流
-- 重命名NameUtil.java -> JoinUtil.java
+- 移除`util/NameUtil.java`合并代码至`ModEvents.java`
 - 简化代码

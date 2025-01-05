@@ -18,7 +18,6 @@
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自動切換語言",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自動檢測模組包版本更新",
   "text.autoconfig.vmtranslationupdate.option.displayTips": "顯示知識內容",
-  "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "檢測玩家名稱",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "檢測I18nUpdateMod是否已經安裝",
   "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "檢測VaultPatcher是否已經安裝",
 
@@ -27,6 +26,5 @@
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下載鏈接",
   "text.autoconfig.vmtranslationupdate.option.tipsUrl": "獲取知識內容的鏈接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻譯版本",
-  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "發送知識的時間間隔（分鐘）",
-  "text.autoconfig.vmtranslationupdate.option.nameUrl": "玩家對應稱呼的連結"
+  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "發送知識的時間間隔（分鐘）"
 }
