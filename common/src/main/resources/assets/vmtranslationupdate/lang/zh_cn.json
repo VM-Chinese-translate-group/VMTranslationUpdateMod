@@ -17,14 +17,14 @@
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动切换语言",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
-  "text.autoconfig.vmtranslationupdate.option.displayTips": "显示知识内容",
+  "text.autoconfig.vmtranslationupdate.option.displayTips": "每隔一段时间发送一条tip",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "检测I18nUpdateMod是否已经安装",
   "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "检测VaultPatcher是否已经安装",
 
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切换语言为",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新检测链接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下载链接",
-  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "获取知识内容的链接",
+  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "获取tip内容的链接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻译版本",
-  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "发送知识的时间间隔（分钟）"
+  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "发送tip的时间间隔（分钟）"
 }

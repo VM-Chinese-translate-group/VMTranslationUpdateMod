@@ -1,8 +1,8 @@
 package top.vmctcn.vmtranslationupdate;
 
 import net.minecraft.client.MinecraftClient;
+import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
 import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
-import top.vmctcn.vmtranslationupdate.util.*;
 
 import java.util.Random;
 

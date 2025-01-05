@@ -11,20 +11,20 @@
   "vmtranslationupdate.message.error": "[VM中文翻譯組]：錯誤！漢化更新檢測出現問題。",
   "vmtranslationupdate.message.hover": "點我到官網下載新版本！",
 
-  "vmtranslationupdate.warn.i18nupdatemod.title": "未檢測到 %s 模組",
-  "vmtranslationupdate.warn.i18nupdatemod.text": "%s 尚未安裝，這可能導致某些模組§c中文更新檔更新不完全§r！請點擊下面的按鈕跳轉到下載頁面。",
+  "vmtranslationupdate.warn.title": "未檢測到 %s 模組",
+  "vmtranslationupdate.warn.text": "%s 尚未安裝，這可能導致某些模組§c中文更新檔更新不完全§r！請點擊下面的按鈕跳轉到下載頁面。",
 
   "text.autoconfig.vmtranslationupdate.title": "VM中文更新檔更新檢測配寘",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自動切換語言",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自動檢測模組包版本更新",
-  "text.autoconfig.vmtranslationupdate.option.displayTips": "顯示知識內容",
+  "text.autoconfig.vmtranslationupdate.option.displayTips": "每隔一段時間發送一條tip",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "檢測I18nUpdateMod是否已經安裝",
   "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "檢測VaultPatcher是否已經安裝",
 
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切換語言为",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新檢測鏈接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下載鏈接",
-  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "獲取知識內容的鏈接",
+  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "獲取tip內容的鏈接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻譯版本",
-  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "發送知識的時間間隔（分鐘）"
+  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "發送tip的時間間隔（分鐘）"
 }

@@ -7,7 +7,9 @@ import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import top.vmctcn.vmtranslationupdate.util.*;
+import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
+import top.vmctcn.vmtranslationupdate.util.TipsUtil;
+import top.vmctcn.vmtranslationupdate.util.VersionCheckUtil;
 
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;

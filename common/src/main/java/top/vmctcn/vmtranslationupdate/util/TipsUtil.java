@@ -1,9 +1,10 @@
 package top.vmctcn.vmtranslationupdate.util;
 
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
+
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.ByteArrayInputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
