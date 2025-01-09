@@ -12,7 +12,7 @@
     "sources": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod",
     "issues": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
   },
-  "icon": "icon.png",
+  "icon": "assets/vmtranslationupdate/icon.png",
   "license": "MIT",
   "environment": "client",
   "entrypoints": {
@@ -27,7 +27,6 @@
     "vmtranslationupdate.fabric.mixins.json"
   ],
   "depends": {
-    "fabric": "*",
     "minecraft": ">=1.21.3",
     "cloth-config": "*"
   }

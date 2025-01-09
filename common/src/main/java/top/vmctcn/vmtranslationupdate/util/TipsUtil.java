@@ -1,17 +1,17 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
 public class TipsUtil {
     public static final List<String> messagesList = new ArrayList<>();
+    public static Random random = new Random();
 
     public static void loadMessagesFromURL(String tipsUrl) {
         try {
@@ -31,11 +31,11 @@ public class TipsUtil {
         if (messagesList.isEmpty()) {
             return CompletableFuture.supplyAsync(() -> {
                 loadMessagesFromURL(tipsUrl);
-                int index = VMTranslationUpdate.random.nextInt(messagesList.size());
+                int index = random.nextInt(messagesList.size());
                 return messagesList.get(index);
             });
         } else {
-            int index = VMTranslationUpdate.random.nextInt(messagesList.size());
+            int index = random.nextInt(messagesList.size());
             return CompletableFuture.completedFuture(messagesList.get(index));
         }
     }

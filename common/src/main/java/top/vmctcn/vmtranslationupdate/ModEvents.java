@@ -12,13 +12,15 @@ import top.vmctcn.vmtranslationupdate.util.TipsUtil;
 import top.vmctcn.vmtranslationupdate.util.VersionCheckUtil;
 
 import java.util.Objects;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
 public class ModEvents {
     private static boolean isLoadedTips = false; // 标识Tips是否已经从网络加载
-    public static void clientTickEndEvent(MinecraftClient client) {
-        int tickCounter = VMTranslationUpdate.tickCounter;
+    public static int tickCounter;
+    public static Random random = new Random();
 
+    public static void clientTickEndEvent(MinecraftClient client) {
         tickCounter++;
         int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
         if (tickCounter >= tickInterval) {
@@ -44,7 +46,7 @@ public class ModEvents {
 
     private static String getRandomMessageFromCache() {
         if (!TipsUtil.messagesList.isEmpty()) {
-            int index = VMTranslationUpdate.random.nextInt(TipsUtil.messagesList.size());
+            int index = random.nextInt(TipsUtil.messagesList.size());
             return TipsUtil.messagesList.get(index);
         }
         return null;
