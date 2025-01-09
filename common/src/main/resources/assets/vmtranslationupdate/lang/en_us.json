@@ -1,5 +1,5 @@
 {
-  "comment_mod_info": "NeoForge/Fabric Mod Info Translation",
+  "comment_modinfo": "NeoForge/Fabric Mod Info Translation",
   "fml.menu.mods.info.displayname.vmtranslationupdate": "VM Translation Update",
   "fml.menu.mods.info.description.vmtranslationupdate": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
   "modmenu.nameTranslation.vmtranslationupdate": "VM Translation Update",
@@ -17,14 +17,11 @@
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "Auto switch language",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "Auto-detect modpack translation version update",
-  "text.autoconfig.vmtranslationupdate.option.displayTips": "Send a tip every once in a while",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "Detecting if I18nUpdateMod is already installed",
   "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "Detect if VaultPatcher is installed",
 
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "Switch language to",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "Update link",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "Download link",
-  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "Get tips link",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "Modpack translation version",
-  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "Time interval for sending tip (minutes)"
+  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "Modpack translation version"
 }

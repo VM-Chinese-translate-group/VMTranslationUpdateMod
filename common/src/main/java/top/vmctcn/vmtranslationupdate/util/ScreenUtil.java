@@ -38,7 +38,9 @@ public class ScreenUtil {
             i18nUpdateModPresent = true;
         } catch (ClassNotFoundException e) {
             i18nUpdateModPresent = false;
-        } try {
+        }
+
+        try {
             Class.forName("me.fengming.vaultpatcher_asm.VaultPatcher");
             vaultPatcherPresent = true;
         } catch (ClassNotFoundException e) {

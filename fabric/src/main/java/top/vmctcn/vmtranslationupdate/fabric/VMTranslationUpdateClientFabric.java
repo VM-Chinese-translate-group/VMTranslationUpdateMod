@@ -13,12 +13,6 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
     public void onInitializeClient() {
         VMTranslationUpdate.init();
 
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (ModConfigUtil.getConfig().displayTips) {
-                ModEvents.clientTickEndEvent(client);
-            }
-        });
-
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
             ScreenUtil.screenAfterInitEvent(screen);
         });

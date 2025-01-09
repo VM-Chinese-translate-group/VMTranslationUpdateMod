@@ -1,6 +1,5 @@
 package top.vmctcn.vmtranslationupdate;
 
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.HoverEvent;
@@ -8,50 +7,10 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
-import top.vmctcn.vmtranslationupdate.util.TipsUtil;
+
 import top.vmctcn.vmtranslationupdate.util.VersionCheckUtil;
 
-import java.util.Objects;
-import java.util.Random;
-import java.util.concurrent.CompletableFuture;
-
 public class ModEvents {
-    private static boolean isLoadedTips = false; // 标识Tips是否已经从网络加载
-    public static int tickCounter;
-    public static Random random = new Random();
-
-    public static void clientTickEndEvent(MinecraftClient client) {
-        tickCounter++;
-        int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
-        if (tickCounter >= tickInterval) {
-            if (!isLoadedTips) {
-                CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfigUtil.getConfig().tipsUrl))
-                        .thenAccept(message -> {
-                            isLoadedTips = true;
-                            if (message == null) return;
-                            String randomMessage = getRandomMessageFromCache();
-                            if (randomMessage != null) {
-                                Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage), false);
-                            }
-                        });
-            } else {
-                // 如果已经加载过提示信息，直接从缓存中获取随机消息
-                String randomMessage = getRandomMessageFromCache();
-                if (randomMessage != null) {
-                    Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage), false);
-                }
-            }
-        }
-    }
-
-    private static String getRandomMessageFromCache() {
-        if (!TipsUtil.messagesList.isEmpty()) {
-            int index = random.nextInt(TipsUtil.messagesList.size());
-            return TipsUtil.messagesList.get(index);
-        }
-        return null;
-    }
-
     public static void playerJoinEvent(ServerPlayerEntity player) {
         String name = player.getName().getString();
         String localVersion = ModConfigUtil.getConfig().modPackTranslationVersion;

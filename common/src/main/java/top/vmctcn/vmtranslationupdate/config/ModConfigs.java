@@ -15,11 +15,6 @@ public class ModConfigs implements ConfigData {
     public String modPackTranslationUrl = "https://vmct-cn.top/modpacks/example/";
 
     public String modPackTranslationVersion = "1.0.0";
-    public boolean displayTips = true;
-    public String tipsUrl = "https://gitee.com/Wulian233/vmtu/raw/main/tips.txt";
-
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 120)
-    public int tipsMinutes = 25;
 
     public boolean i18nUpdateModCheck = true;
     public boolean vaultPatcherCheck = false;
