@@ -4,6 +4,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLLoader;
@@ -18,13 +19,12 @@ import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
 
 @Mod(value = VMTranslationUpdate.MOD_ID, dist = Dist.CLIENT)
 public class VMTranslationUpdateClientNeoForge {
-    public VMTranslationUpdateClientNeoForge() {
+    public VMTranslationUpdateClientNeoForge(ModContainer modContainer) {
         IEventBus forgeEventBus = NeoForge.EVENT_BUS;
-        ModLoadingContext context = ModLoadingContext.get();
-
-        context.registerExtensionPoint(IConfigScreenFactory.class, () -> (client, screen) -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 
         if (FMLLoader.getDist().isClient()) {
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, (client, screen) -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
+
             VMTranslationUpdate.init();
 
             forgeEventBus.addListener(PlayerEvent.PlayerLoggedInEvent.class, event -> {
