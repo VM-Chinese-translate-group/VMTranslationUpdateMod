@@ -5,7 +5,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.client.event.ScreenEvent;
@@ -15,7 +14,6 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import top.vmctcn.vmtranslationupdate.ModEvents;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.config.ModConfigs;
-import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
 
 @Mod(value = VMTranslationUpdate.MOD_ID, dist = Dist.CLIENT)
 public class VMTranslationUpdateClientNeoForge {
@@ -32,7 +30,7 @@ public class VMTranslationUpdateClientNeoForge {
             });
 
             forgeEventBus.addListener(ScreenEvent.Init.Pre.class, event -> {
-                ScreenUtil.screenAfterInitEvent(event.getScreen());
+                ModEvents.screenAfterInitEvent(event.getScreen());
             });
         }
     }
