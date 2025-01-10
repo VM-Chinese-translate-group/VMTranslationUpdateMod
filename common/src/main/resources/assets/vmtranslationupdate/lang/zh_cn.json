@@ -5,7 +5,7 @@
   "modmenu.nameTranslation.vmtranslationupdate": "VM汉化更新",
   "modmenu.descriptionTranslation.vmtranslationupdate": "VM汉化组用于检查汉化更新和一些其他实用功能的模组",
 
-  "vmtranslationupdate.message.update": "[VM汉化组]：你好%s，当前汉化已过时，请更新你的汉化！当前版本为%s，最新版为%s。",
+  "vmtranslationupdate.message.update": "[VM汉化组]：当前汉化已过时，请更新汉化！当前版本为%s，最新版为%s。",
   "vmtranslationupdate.message.update2": "请点击右侧",
   "vmtranslationupdate.message.update3": "下载新版本。",
   "vmtranslationupdate.message.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
