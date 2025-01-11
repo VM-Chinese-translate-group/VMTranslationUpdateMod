@@ -15,16 +15,12 @@
   "vmtranslationupdate.warn.text": "%s is not yet installed, which may result in incomplete localization of some mods! Please click the button below to jump to the download page.",
 
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
+  "text.autoconfig.vmtranslationupdate.option.testMode": "Test Mode",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "Auto switch language",
   "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "Auto download translation pack",
   "text.autoconfig.vmtranslationupdate.option.translationPackSource": "Translation pack source",
   "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "Choose translation pack download source",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "Auto-detect modpack translation version update",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "Detecting if I18nUpdateMod is already installed",
-  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "Detect if VaultPatcher is installed",
-
-  "text.autoconfig.vmtranslationupdate.option.switchLanguage": "Switch language to",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "Update link",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "Download link",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "Modpack translation version"
+  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "Detect if VaultPatcher is installed"
 }

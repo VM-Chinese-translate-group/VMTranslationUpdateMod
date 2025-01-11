@@ -15,15 +15,11 @@
   "vmtranslationupdate.warn.text": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！请点击下面的按钮跳转到下载页面。",
 
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
+  "text.autoconfig.vmtranslationupdate.option.testMode": "开发测试模式",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动切换语言",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "检测I18nUpdateMod是否已经安装",
   "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "检测VaultPatcher是否已经安装",
-
-  "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切换语言为",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新检测链接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下载链接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻译版本",
   "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自动下载汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.translationPackSource": "汉化资源包下载源",
   "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "指定汉化资源包的下载来源"

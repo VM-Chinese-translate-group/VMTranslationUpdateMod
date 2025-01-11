@@ -1,4 +1,4 @@
-package top.vmctcn.vmtranslationupdate.verlayer;
+package top.vmctcn.vmtranslationupdate.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;

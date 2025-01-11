@@ -20,9 +20,11 @@ import top.vmctcn.vmtranslationupdate.respack.GameOptionsSetter;
 public class VMTranslationUpdateClientNeoForge {
     public VMTranslationUpdateClientNeoForge(ModContainer modContainer) {
         if (FMLLoader.getDist().isClient()) {
+            VMTranslationUpdate.init();
+
             GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
 
-            modContainer.registerExtensionPoint(IConfigScreenFactory.class, (client, screen) -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
+            NeoHelper.registerConfigScreen(modContainer, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 
             NeoForge.EVENT_BUS.addListener(PlayerEvent.PlayerLoggedInEvent.class, event -> {
                 ModEvents.playerJoinEvent((ServerPlayerEntity) event.getEntity());

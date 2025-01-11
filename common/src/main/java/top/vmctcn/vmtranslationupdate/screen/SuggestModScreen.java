@@ -9,7 +9,6 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
 import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
-import top.vmctcn.vmtranslationupdate.verlayer.ScreenHelper;
 
 public class SuggestModScreen extends Screen {
     public final Screen lastScreen;

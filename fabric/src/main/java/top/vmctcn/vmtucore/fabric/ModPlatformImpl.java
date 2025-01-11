@@ -1,8 +1,11 @@
 package top.vmctcn.vmtucore.fabric;
 
 import com.google.auto.service.AutoService;
+import net.fabricmc.loader.api.FabricLoader;
 import top.vmctcn.vmtucore.ModPlatform;
 import top.vmctcn.vmtucore.util.ReflectionHelper;
+
+import java.nio.file.Path;
 
 @AutoService(ModPlatform.class)
 public class ModPlatformImpl implements ModPlatform {
@@ -27,5 +30,10 @@ public class ModPlatformImpl implements ModPlatform {
 
         }
         return null;
+    }
+
+    @Override
+    public Path getGameDir() {
+        return FabricLoader.getInstance().getGameDir();
     }
 }
