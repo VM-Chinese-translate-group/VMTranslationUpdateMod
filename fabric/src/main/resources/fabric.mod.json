@@ -27,6 +27,7 @@
     "vmtranslationupdate.fabric.mixins.json"
   ],
   "depends": {
+    "fabric": "*",
     "minecraft": ">=1.21.3",
     "cloth-config": "*"
   }
