@@ -6,8 +6,10 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
 import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
+import top.vmctcn.vmtranslationupdate.verlayer.ScreenHelper;
 
 public class SuggestModScreen extends Screen {
     public final Screen lastScreen;
@@ -46,18 +48,16 @@ public class SuggestModScreen extends Screen {
 
     @Override
     public void renderBackground(DrawContext context, int mouseX, int mouseY, float partial) {
-
         super.renderBackground(context, mouseX, mouseY, partial);
 
         //Render header and footer separators
         RenderSystem.enableBlend();
-        ScreenUtil.resetShaderColor(context);
-//        Identifier identifier = MinecraftClient.getInstance().world == null ? Screen.HEADER_SEPARATOR_TEXTURE : Screen.INWORLD_HEADER_SEPARATOR_TEXTURE;
-//        Identifier identifier2 = MinecraftClient.getInstance().world == null ? Screen.FOOTER_SEPARATOR_TEXTURE : Screen.INWORLD_FOOTER_SEPARATOR_TEXTURE;
-//        context.drawTexture(identifier, 0, 40 - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
-//        context.drawTexture(identifier2, 0, this.height - 50, 0.0F, 0.0F, this.width, 2, 32, 2);
-        ScreenUtil.resetShaderColor(context);
-
+        ScreenHelper.resetShaderColor(context);
+        Identifier headerIdentifier = MinecraftClient.getInstance().world == null ? Screen.HEADER_SEPARATOR_TEXTURE : Screen.INWORLD_HEADER_SEPARATOR_TEXTURE;
+        Identifier footerIdentifier = MinecraftClient.getInstance().world == null ? Screen.FOOTER_SEPARATOR_TEXTURE : Screen.INWORLD_FOOTER_SEPARATOR_TEXTURE;
+        ScreenHelper.drawGuiTexture(context, headerIdentifier, 0, 40 - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
+        ScreenHelper.drawGuiTexture(context, footerIdentifier, 0, this.height - 50, 0.0F, 0.0F, this.width, 2, 32, 2);
+        ScreenHelper.resetShaderColor(context);
     }
 
     @Override

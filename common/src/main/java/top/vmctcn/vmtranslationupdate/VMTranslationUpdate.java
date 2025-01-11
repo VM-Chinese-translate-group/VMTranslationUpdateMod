@@ -1,18 +1,13 @@
 package top.vmctcn.vmtranslationupdate;
 
-import net.minecraft.client.MinecraftClient;
-import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
-import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class VMTranslationUpdate {
     public static final String MOD_ID = "vmtranslationupdate";
-    static MinecraftClient client = MinecraftClient.getInstance();
+    public static final Logger LOGGER = LoggerFactory.getLogger("VMTranslationUpdateMod");
 
     public static void init() {
-        ScreenUtil.checkModsLoaded();
 
-        if (ModConfigUtil.getConfig().autoSwitchLanguage && ModConfigUtil.getConfig().switchLanguage != null) {
-            client.options.language = ModConfigUtil.getConfig().switchLanguage;
-        }
     }
 }
