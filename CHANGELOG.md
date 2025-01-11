@@ -1,11 +1,34 @@
-## Changelog
-- use native api
-- fix mod publish
-- add mod info translation (Only Fabric & NeoForge)
-- new icon
+# v3.0 更新日志
 
-## Changelog
-- 使用加载器本地API （不再使用Architectury API）
-- 修复模组上传问题
-- 添加模组信息翻译 （仅Fabric & NeoForge）
-- 新图标
+## 移除
+
+- 移除指定玩家id称呼功能，包括`playerNameCheck`和`nameUrl`配置项
+- 移除籽岷游戏id彩蛋
+- 移除tips功能
+
+# 新功能
+
+- 现在自动切换语言（`autoSwitchLanguage`）功能默认为开启状态
+- 未安装推荐模组时显示模组安装提示屏幕，仅会在简体中文时出现
+- 重新添加资源包下载装载功能 （下载核心基于I18nUpdateMod3代码修改）
+
+# 修复
+
+- 修复更新检测出现问题时提示两次的问题
+
+# 优化
+
+- 优化一些语言文件的内容表达
+- 繁体中文本地化改进
+- 优化语言切换功能 （基于I18nUpdateMod3代码修改）
+- 优化CoreMod检测方式
+
+## 核心开发
+
+- 合并模组为多模组加载器版工具 forgix -> modfusioner
+- 更新所有依赖版本
+- 修复GitHub CI 工作流
+- 简化代码
+- 添加部分跨版本兼容代码
+- 1.21.4代码backport至1.20.4
+- 添加基于I18nUpdateMod3代码的下载核心

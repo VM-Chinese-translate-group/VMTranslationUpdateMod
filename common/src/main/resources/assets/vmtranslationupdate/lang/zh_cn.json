@@ -5,7 +5,7 @@
   "modmenu.nameTranslation.vmtranslationupdate": "VM汉化更新",
   "modmenu.descriptionTranslation.vmtranslationupdate": "一个用于检查VM汉化组的汉化补丁更新和自动下载资源包的模组。",
 
-  "vmtranslationupdate.message.update": "[VM汉化组]：你好%s，当前汉化已过时，请更新你的汉化！当前版本为%s，最新版为%s。",
+  "vmtranslationupdate.message.update": "[VM汉化组]：当前汉化已过时，请更新你的汉化！当前版本为%s，最新版为%s。",
   "vmtranslationupdate.message.update2": "请点击右侧",
   "vmtranslationupdate.message.update3": "下载新版本。",
   "vmtranslationupdate.message.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
@@ -13,11 +13,15 @@
   "vmtranslationupdate.message.zimin": "欢迎来到籽岷的Minecraft游戏世界！",
   "vmtranslationupdate.message.pack": "VM汉化更新自动启用汉化失败！请在 “选项 -> 资源包” 中手动启用 “%s” 资源包",
 
+  "vmtranslationupdate.warn.title": "未检测到 %s 模组",
+  "vmtranslationupdate.warn.text": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！请点击下面的按钮跳转到下载页面。",
+
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动切换语言",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
   "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自动下载VM汉化资源包",
-  "text.autoconfig.vmtranslationupdate.option.autoInstallVMTranslationPack": "自动安装VM汉化资源包",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource": "汉化资源包下载源",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "选择汉化资源包下载源",
   "text.autoconfig.vmtranslationupdate.option.displayTips": "显示知识内容",
   "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "检测玩家名称",
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切换语言为",

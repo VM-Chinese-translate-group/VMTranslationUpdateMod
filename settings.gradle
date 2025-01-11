@@ -9,9 +9,9 @@ pluginManagement {
     }
 }
 
+include("core")
 include("common")
 include("fabric")
-include("forge")
 include("neoforge")
 
 rootProject.name = "VMTranslationUpdate"
