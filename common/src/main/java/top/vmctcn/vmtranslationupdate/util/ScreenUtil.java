@@ -1,48 +1,24 @@
 package top.vmctcn.vmtranslationupdate.util;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ConfirmLinkScreen;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
 import org.apache.commons.lang3.StringUtils;
-import top.vmctcn.vmtranslationupdate.screen.SuggestModScreen;
 
 public class ScreenUtil {
-    public static boolean i18nUpdateModPresent = false;
-    public static boolean vaultPatcherPresent = false;
-    public static boolean firstTitleScreenShown = false;
+    public static boolean i18nUpdateModPresent = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
+    public static boolean vaultPatcherPresent = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
     public static final Text downloadButtonText = Text.translatable("mco.brokenworld.download");
     public static final Text ignoreButtonText = Text.translatable("selectWorld.backupJoinSkipButton");
 
-    public static void screenAfterInitEvent(Screen screen) {
-        if (firstTitleScreenShown || !(screen instanceof TitleScreen)) {
-            return;
-        }
-
-        String language = MinecraftClient.getInstance().getLanguageManager().getLanguage();
-
-        if ("zh_cn".equals(language)) {
-            MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
-        }
-
-        firstTitleScreenShown = true;
-    }
-
-    public static void checkModsLoaded() {
+    public static boolean isCoreModClassLoaded(String className) {
         try {
-            Class.forName("i18nupdatemod.I18nUpdateMod");
-            i18nUpdateModPresent = true;
+            Class.forName(className);
+            return true; // 类存在，coremod已加载
         } catch (ClassNotFoundException e) {
-            i18nUpdateModPresent = false;
-        } try {
-            Class.forName("me.fengming.vaultpatcher_asm.VaultPatcher");
-            vaultPatcherPresent = true;
-        } catch (ClassNotFoundException e) {
-            vaultPatcherPresent = false;
+            return false; // 类不存在
         }
     }
 
@@ -55,10 +31,6 @@ public class ScreenUtil {
                 client.setScreen(screen);
             }, url, true));
         }
-    }
-
-    public static void resetShaderColor(DrawContext context) {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
     public static Text getSuggestScreenTitle() {
