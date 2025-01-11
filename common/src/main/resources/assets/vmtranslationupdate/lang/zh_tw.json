@@ -23,5 +23,8 @@
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切換語言为",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新檢測鏈接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下載鏈接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻譯版本"
+  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻譯版本",
+  "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自動下載簡體中文模組補充翻譯資源包",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource": "簡體中文模組補充翻譯資源包下載源",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "指定簡體中文模組補充翻譯資源包的下載來源"
 }
