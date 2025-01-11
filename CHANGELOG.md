@@ -12,6 +12,7 @@
 - 未安装推荐模组时模组安装提示屏幕的“退出游戏”按钮改为“我知道我在做什么！”按钮，将不会退出游戏
 - 模组安装提示屏幕现在仅会在简体中文时出现
 - 重新添加资源包下载装载功能 （下载核心基于I18nUpdateMod3代码修改）
+- 新增`modpackinfo.json`，内容详见 [#14](https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues/14)
 
 # 修复
 
@@ -24,6 +25,11 @@
 - 繁体中文本地化改进
 - 优化语言切换功能 （基于I18nUpdateMod3代码修改）
 - 优化CoreMod检测方式
+- 整合包信息从配置文件迁移至`modpackinfo.json`，迁移项如下：
+  - `switchLanguage` -> `modpack`下的`translation`下的`language`
+  - `modPackTranslationUpdateCheckUrl` -> `modpack`下的`translation`下的`updateCheckUrl`
+  - `modPackTranslationUrl` -> `modpack`下的`translation`下的`url`
+  - `modPackTranslationVersion`-> `modpack`下的`translation`下的`version`
 
 ## 核心开发
 
