@@ -77,4 +77,5 @@ vaultPatcherCheck = false # 默认不检查是否安装Vault Patch模组
 作者：Wulian233（捂脸）、TexTrue、Lichiiiiiii
 
 本模组使用MIT许可证
+
 VMTUCore基于I18nUpdateMod3修改，使用AGPL许可证
