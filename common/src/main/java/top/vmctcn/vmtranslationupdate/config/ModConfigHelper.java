@@ -1,10 +1,9 @@
-package top.vmctcn.vmtranslationupdate.util;
+package top.vmctcn.vmtranslationupdate.config;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
-import top.vmctcn.vmtranslationupdate.config.ModConfigs;
 
-public class ModConfigUtil {
+public class ModConfigHelper {
     private static ModConfigs modConfigs;
 
     public static ModConfigs getConfig() {

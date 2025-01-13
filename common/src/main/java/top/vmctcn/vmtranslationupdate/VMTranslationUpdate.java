@@ -4,14 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.vmctcn.vmtranslationupdate.modpack.ModpackInfo;
 import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
-import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
+import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
 public class VMTranslationUpdate {
     public static final String MOD_ID = "vmtranslationupdate";
     public static final Logger LOGGER = LoggerFactory.getLogger("VMTranslationUpdateMod");
 
     public static void init() {
-        if (ModConfigUtil.getConfig().testMode) {
+        if (ModConfigHelper.getConfig().testMode) {
             ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
             ModpackInfo.Translation translation = modpack.getTranslation();
 
