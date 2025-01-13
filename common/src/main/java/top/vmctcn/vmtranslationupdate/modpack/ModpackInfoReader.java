@@ -21,7 +21,7 @@ public class ModpackInfoReader {
         try (Reader reader = new FileReader(gamePath.resolve("modpackinfo.json").toString())) {
             modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
         } catch (Exception e) {
-            VMTranslationUpdate.LOGGER.warn("Error getting index: " + e);
+            VMTranslationUpdate.LOGGER.warn("Error getting modpack info index: " + e);
         }
     }
 
