@@ -18,10 +18,12 @@ public class ModpackInfoReader {
     }
 
     public static void init() {
-        try (Reader reader = new FileReader(gamePath.resolve("modpackinfo.json").toString())) {
-            modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
-        } catch (Exception e) {
-            VMTranslationUpdate.LOGGER.warn("Error getting modpack info index: " + e);
+        if (gamePath.resolve("modpackinfo.json") != null) {
+            try (Reader reader = new FileReader(gamePath.resolve("modpackinfo.json").toString())) {
+                modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
+            } catch (Exception e) {
+                VMTranslationUpdate.LOGGER.warn("Error getting modpack info index: " + e);
+            }
         }
     }
 
