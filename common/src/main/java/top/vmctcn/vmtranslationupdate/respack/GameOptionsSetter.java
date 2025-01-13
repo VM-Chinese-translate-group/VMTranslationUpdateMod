@@ -14,8 +14,9 @@ public class GameOptionsSetter {
     public static void init(Path gamePath) {
         if (ModConfigUtil.getConfig().autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
-                GameOptionsWriter config = new GameOptionsWriter(gamePath.resolve("options.txt"));
-                config.switchLanguage(ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage());
+                GameOptionsWriter writer = new GameOptionsWriter(gamePath.resolve("options.txt"));
+                String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
+                writer.switchLanguage(LanguageHelper.getFixedLanguage(lang));
             } catch (IOException e) {
                 VMTranslationUpdate.LOGGER.warn("Failed to switch language: ", e);
             }
