@@ -7,9 +7,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
-import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
-import top.vmctcn.vmtranslationupdate.verlayer.ScreenHelper;
+import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
 public class SuggestModScreen extends Screen {
     public final Screen lastScreen;
@@ -18,7 +16,7 @@ public class SuggestModScreen extends Screen {
     private static final int FOOTER_HEIGHT = 50;
 
     public SuggestModScreen(Screen lastScreen) {
-        super(ScreenUtil.getSuggestScreenTitle().copy().formatted(Formatting.RED).formatted(Formatting.BOLD));
+        super(SuggestScreenHelper.getSuggestScreenTitle().copy().formatted(Formatting.RED).formatted(Formatting.BOLD));
         this.lastScreen = lastScreen;
     }
 
@@ -28,14 +26,14 @@ public class SuggestModScreen extends Screen {
 
         super.init();
 
-        this.addDrawableChild(ButtonWidget.builder(ScreenUtil.downloadButtonText, buttonWidget -> {
-            if (ModConfigUtil.getConfig().i18nUpdateModCheck && !ScreenUtil.i18nUpdateModPresent) {
-                ScreenUtil.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
-            } else if (ModConfigUtil.getConfig().vaultPatcherCheck && !ScreenUtil.vaultPatcherPresent) {
-                ScreenUtil.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
+        this.addDrawableChild(ButtonWidget.builder(SuggestScreenHelper.downloadButtonText, buttonWidget -> {
+            if (ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestScreenHelper.i18nUpdateModPresent) {
+                ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
+            } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestScreenHelper.vaultPatcherPresent) {
+                ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
             }
         }).dimensions(centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
-        this.addDrawableChild(ButtonWidget.builder(ScreenUtil.ignoreButtonText, buttonWidget -> this.close()).dimensions(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(SuggestScreenHelper.ignoreButtonText, buttonWidget -> this.close()).dimensions(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
     }
 
     @Override
@@ -43,7 +41,7 @@ public class SuggestModScreen extends Screen {
         super.render(context, mouseX, mouseY, delta);
 
         context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
-        context.drawCenteredTextWithShadow(this.textRenderer, ScreenUtil.getSuggestScreenText(), this.width / 2, 70, -1);
+        context.drawCenteredTextWithShadow(this.textRenderer, SuggestScreenHelper.getSuggestScreenText(), this.width / 2, 70, -1);
     }
 
     @Override

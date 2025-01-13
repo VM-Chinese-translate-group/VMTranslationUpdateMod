@@ -14,10 +14,7 @@ public class LanguageHelper {
 
         if (lang.equals(DEFAULT_LANGUAGE) && !lang.equals(language)) { // Only set language if it's English or another language differing from current
 			/*
-			Fix language in case it's not a valid language
-			code(due to some launchers like Prism Launcher),
-			but only works with certain countries.
-			Language codes are from Locale.class.
+			Fix language in case it's not a valid language code, but only works with certain countries. Language codes are from Locale.class.
 			 */
             Locale[] locales = Arrays.stream(Locale.class.getFields()).filter(f -> f.getType().equals(Locale.class)).map(f -> {
                 try {

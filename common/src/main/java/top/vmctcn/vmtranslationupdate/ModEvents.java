@@ -11,18 +11,18 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
 import top.vmctcn.vmtranslationupdate.screen.SuggestModScreen;
-import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
+import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
-import top.vmctcn.vmtranslationupdate.util.VersionCheckUtil;
+import top.vmctcn.vmtranslationupdate.modpack.VersionChecker;
 
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
 
     public static void playerJoinEvent(ServerPlayerEntity player) {
         String localVersion = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getVersion();
-        String onlineVersion = VersionCheckUtil.getOnlineVersion();
+        String onlineVersion = VersionChecker.getOnlineVersion();
 
-        if (ModConfigUtil.getConfig().checkModPackTranslationUpdate) {
+        if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {
             if (onlineVersion.isEmpty()) {
                 player.sendMessage(Text.translatable("vmtranslationupdate.message.error"), false);
                 VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
