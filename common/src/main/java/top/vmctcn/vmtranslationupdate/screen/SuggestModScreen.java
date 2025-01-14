@@ -35,7 +35,7 @@ public class SuggestModScreen extends Screen {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://modrinth.com/mod/vault-patcher");
             }
         }).dimensions(centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
-        this.addDrawableChild(ButtonWidget.builder(SuggestScreenHelper.quitButtonText, buttonWidget -> this.client.scheduleStop()).dimensions(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(SuggestScreenHelper.ignoreButtonText, buttonWidget -> this.close()).dimensions(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
     }
 
     @Override
@@ -60,11 +60,6 @@ public class SuggestModScreen extends Screen {
         ScreenHelper.drawGuiTexture(context, footerIdentifier, 0, this.height - 50, 0.0F, 0.0F, this.width, 2, 32, 2);
         ScreenHelper.resetShaderColor(context);
 
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return this.ticksUntilEnable <= 0;
     }
 
     @Override
