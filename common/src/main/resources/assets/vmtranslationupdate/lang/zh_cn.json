@@ -19,10 +19,6 @@
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "检测I18nUpdateMod是否已经安装",
   "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "检测VaultPatcher是否已经安装",
-  "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切换语言为",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新检测链接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下载链接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻译版本",
   "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自动下载汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.translationPackSource": "汉化资源包下载源",
   "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "指定汉化资源包的下载来源"

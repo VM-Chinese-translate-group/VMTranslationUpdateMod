@@ -21,9 +21,5 @@
   "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "Choose translation pack download source",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "Auto-detect modpack translation version update",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "Detecting if I18nUpdateMod is already installed",
-  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "Detect if VaultPatcher is installed",
-  "text.autoconfig.vmtranslationupdate.option.switchLanguage": "Switch language to",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "Update link",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "Download link",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "Modpack translation version"
+  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "Detect if VaultPatcher is installed"
 }
