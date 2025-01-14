@@ -19,6 +19,8 @@ public class VMTranslationUpdateClientNeoForge {
         NeoHelper.getClientModIgnoredServerOnly(VMTranslationUpdate.MOD_ID);
 
         if (FMLLoader.getDist().isClient()) {
+            VMTranslationUpdate.init();
+
             GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
 
             NeoHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
