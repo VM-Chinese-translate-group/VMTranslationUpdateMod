@@ -27,7 +27,7 @@ jobs:
           chmod +x gradlew
           ./gradlew build
 
-      - name: Merge Fabric & Forge & NeoForge JARs
+      - name: Merge Fabric & NeoForge JARs
         run: |
           chmod +x gradlew
           ./gradlew fusejars
