@@ -1,5 +1,7 @@
 package top.vmctcn.vmtranslationupdate.modpack;
 
+import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
@@ -20,6 +22,7 @@ public class VersionChecker {
                 return reader.readLine();
             }
         } catch (Exception e) {
+            VMTranslationUpdate.LOGGER.warn("Version check failed: ", e);
             return "";
         }
     }

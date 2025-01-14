@@ -15,7 +15,7 @@ public class GameOptionsSetter {
         if (ModConfigHelper.getConfig().autoSwitchLanguage) {
             try {
                 GameOptionsWriter writer = new GameOptionsWriter(gamePath.resolve("options.txt"));
-                var lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
+                String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
                 writer.switchLanguage(LanguageHelper.getFixedLanguage(lang));
                 VMTranslationUpdate.LOGGER.info("Successful to switch language: {}", lang);
             } catch (IOException e) {
@@ -24,9 +24,9 @@ public class GameOptionsSetter {
         }
 
         if (ModConfigHelper.getConfig().autoDownloadVMTranslationPack) {
-            var gameVersion = ModPlatform.INSTANCE.getGameVersion();
-            var resPackSource = ModConfigHelper.getConfig().translationPackSource;
-            var resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
+            String gameVersion = ModPlatform.INSTANCE.getGameVersion();
+            ResPackSource resPackSource = ModConfigHelper.getConfig().translationPackSource;
+            String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
             VMTUCore.init(gamePath, gameVersion, resPackName, resPackSource.getUrl());
         }
     }

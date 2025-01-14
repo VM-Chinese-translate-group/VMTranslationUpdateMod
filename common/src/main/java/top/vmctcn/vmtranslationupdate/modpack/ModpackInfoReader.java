@@ -25,7 +25,6 @@ public class ModpackInfoReader {
                 VMTranslationUpdate.LOGGER.warn("Error getting modpack info index: " + e);
             }
         }
-
     }
 
     public static ModpackInfo getModpackInfo() {
