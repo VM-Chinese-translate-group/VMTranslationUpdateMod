@@ -10,7 +10,6 @@
   "vmtranslationupdate.message.update3": "下载新版本。",
   "vmtranslationupdate.message.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
   "vmtranslationupdate.message.hover": "点我到官网下载新版本！",
-  "vmtranslationupdate.message.zimin": "欢迎来到籽岷的Minecraft游戏世界！",
   "vmtranslationupdate.message.pack": "VM汉化更新自动启用汉化失败！请在 “选项 -> 资源包” 中手动启用 “%s” 资源包",
 
   "vmtranslationupdate.warn.title": "未检测到 %s 模组",
