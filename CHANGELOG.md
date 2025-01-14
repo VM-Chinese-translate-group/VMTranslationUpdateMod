@@ -32,6 +32,7 @@
 ## 核心开发
 
 - 合并模组为多模组加载器版工具 forgix -> modfusioner
+- `com.github.johnrengelman.shadow` -> `com.gradleup.shadow`
 - Architectury Loom 1.7 -> 1.9
 - 更新所有依赖版本
 - 修复GitHub CI 工作流
