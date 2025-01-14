@@ -19,7 +19,6 @@
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自動檢測模組包版本更新",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "檢測I18nUpdateMod是否已經安裝",
   "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "檢測VaultPatcher是否已經安裝",
-
   "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切換語言为",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新檢測鏈接",
   "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下載鏈接",
