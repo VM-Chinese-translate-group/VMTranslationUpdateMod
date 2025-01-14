@@ -42,8 +42,8 @@ public class SuggestModScreen extends Screen {
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
 
-        context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
-        context.drawCenteredTextWithShadow(this.textRenderer, SuggestScreenHelper.getSuggestScreenText(), this.width / 2, 70, -1);
+        ScreenHelper.drawCenteredTextWithShadow(context, this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
+        ScreenHelper.drawCenteredTextWithShadow(context, this.textRenderer, SuggestScreenHelper.getSuggestScreenText(), this.width / 2, 70, -1);
     }
 
     @Override
