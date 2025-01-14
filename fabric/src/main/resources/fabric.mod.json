@@ -20,7 +20,7 @@
       "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateClientFabric"
     ],
     "modmenu": [
-      "top.vmctcn.vmtranslationupdate.fabric.ModMenuCompat"
+      "top.vmctcn.vmtranslationupdate.fabric.ModMenuImpl"
     ]
   },
   "mixins": [
