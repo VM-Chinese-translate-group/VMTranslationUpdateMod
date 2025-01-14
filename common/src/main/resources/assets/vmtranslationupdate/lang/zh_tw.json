@@ -13,10 +13,8 @@
   "vmtranslationupdate.message.zimin": "歡迎來到籽岷的Minecraft遊戲世界！",
   "vmtranslationupdate.message.pack": "VM漢化更新自動啟用漢化失敗！請在 「選項 -> 資源包」 中手動啟用 「%s」 資源包",
 
-  "vmtranslationupdate.warn.i18nupdatemod.title": "未檢測到 %s 模組",
-  "vmtranslationupdate.warn.i18nupdatemod.text": "%s 尚未安裝，這可能導致某些模組§c漢化不完全§r！請點擊下面的按鈕跳轉到下載頁面。",
-  "vmtranslationupdate.warn.download.button": "下載模組",
-  "vmtranslationupdate.warn.quit.button": "退出遊戲",
+  "vmtranslationupdate.warn.title": "未檢測到 %s 模組",
+  "vmtranslationupdate.warn.text": "%s 尚未安裝，這可能導致某些模組§c漢化不完全§r！請點擊下面的按鈕跳轉到下載頁面。",
 
   "text.autoconfig.vmtranslationupdate.title": "VM漢化更新檢測配寘",
   "text.autoconfig.vmtranslationupdate.option.testMode": "開發測試模式",

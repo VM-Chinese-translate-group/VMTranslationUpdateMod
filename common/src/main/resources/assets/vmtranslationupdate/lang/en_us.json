@@ -15,9 +15,6 @@
 
   "vmtranslationupdate.warn.title": "%s not detected",
   "vmtranslationupdate.warn.text": "%s is not yet installed, which may result in incomplete localization of some mods! Please click the button below to jump to the download page.",
-  "vmtranslationupdate.warn.download.button": "Download",
-  "vmtranslationupdate.warn.quit.button": "Quit game",
-
 
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
   "text.autoconfig.vmtranslationupdate.option.testMode": "Test Mode",

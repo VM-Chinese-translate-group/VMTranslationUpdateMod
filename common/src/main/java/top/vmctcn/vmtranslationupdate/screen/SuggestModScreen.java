@@ -11,11 +11,9 @@ import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
 public class SuggestModScreen extends Screen {
     public final Screen lastScreen;
-    private int ticksUntilEnable = 20 * 10;
 
     private static final int HEADER_HEIGHT = 40;
     private static final int FOOTER_HEIGHT = 50;
-    private static final int BORDER = 40;
 
     public SuggestModScreen(Screen lastScreen) {
         super(SuggestScreenHelper.getSuggestScreenTitle().copy().formatted(Formatting.RED).formatted(Formatting.BOLD));
