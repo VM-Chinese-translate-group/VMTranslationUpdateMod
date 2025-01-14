@@ -25,7 +25,8 @@ public class GameOptionsSetter {
         if (ModConfigHelper.getConfig().autoDownloadVMTranslationPack) {
             String gameVersion = ModPlatform.INSTANCE.getGameVersion();
             ResPackSource resPackSource = ModConfigHelper.getConfig().translationPackSource;
-            VMTUCore.init(gamePath, gameVersion, ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName(), resPackSource.getUrl());
+            String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
+            VMTUCore.init(gamePath, gameVersion, resPackName, resPackSource.getUrl());
         }
     }
 }

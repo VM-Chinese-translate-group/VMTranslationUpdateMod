@@ -1,11 +1,6 @@
 package top.vmctcn.vmtranslationupdate.screen;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.ConfirmLinkScreen;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
-import net.minecraft.util.Util;
-import org.apache.commons.lang3.StringUtils;
 import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
 public class SuggestScreenHelper {
@@ -20,17 +15,6 @@ public class SuggestScreenHelper {
             return true; // 类存在，coremod已加载
         } catch (ClassNotFoundException e) {
             return false; // 类不存在
-        }
-    }
-
-    public static void openUrlOnScreen(MinecraftClient client, Screen screen, String url) {
-        if (StringUtils.isNotBlank(url) && client != null) {
-            client.setScreen(new ConfirmLinkScreen(yes -> {
-                if (yes) {
-                    Util.getOperatingSystem().open(url);
-                }
-                client.setScreen(screen);
-            }, url, true));
         }
     }
 
