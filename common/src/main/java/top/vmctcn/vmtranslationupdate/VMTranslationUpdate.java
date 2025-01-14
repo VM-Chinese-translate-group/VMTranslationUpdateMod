@@ -1,28 +1,28 @@
 package top.vmctcn.vmtranslationupdate;
 
-import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import top.vmctcn.vmtranslationupdate.util.*;
-
-import java.util.Random;
+import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
+import top.vmctcn.vmtranslationupdate.modpack.ModpackInfo;
+import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
 
 public class VMTranslationUpdate {
-    public static Random random = new Random();
-    public static int tickCounter;
     public static final String MODNAME = "VMTranslationUpdate";
     public static final String MOD_ID = "vmtranslationupdate";
-    static MinecraftClient client = MinecraftClient.getInstance();
     public static final Logger LOGGER = LoggerFactory.getLogger(MODNAME);
-    private static final boolean isStenographerLoaded = ModPlatform.isModLoaded("stenographer"); // Stenographer 兼容
 
     public static void init() {
-        if (ModConfigUtil.getConfig().autoSwitchLanguage && !isStenographerLoaded && ModConfigUtil.getConfig().switchLanguage != null) {
-            client.options.language = ModConfigUtil.getConfig().switchLanguage;
-        }
+        if (ModConfigHelper.getConfig().testMode) {
+            ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
+            ModpackInfo.Translation translation = modpack.getTranslation();
 
-        if (ModConfigUtil.getConfig().autoDownloadVMTranslationPack) {
-            PackDownloadUtil.downloadResPack();
+            LOGGER.warn("Modpack Name: {}", modpack.getName());
+            LOGGER.warn("Modpack Version: {}", modpack.getVersion());
+            LOGGER.warn("Modpack Translation URL: {}", translation.getUrl());
+            LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            LOGGER.warn("Modpack Translation Language: {}", translation.getLanguage());
+            LOGGER.warn("Modpack Translation Version: {}", translation.getVersion());
+            LOGGER.warn("Modpack Translation Resource Pack Name: {}", translation.getResourcePackName());
         }
     }
 }

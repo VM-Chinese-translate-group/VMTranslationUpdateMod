@@ -20,7 +20,7 @@
       "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateClientFabric"
     ],
     "modmenu": [
-      "top.vmctcn.vmtranslationupdate.fabric.ModMenuCompat"
+      "top.vmctcn.vmtranslationupdate.fabric.ModMenuImpl"
     ]
   },
   "mixins": [
@@ -28,7 +28,7 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": "1.19.x",
+    "minecraft": ">=1.19.2",
     "cloth-config": "*"
   }
 }

@@ -1,28 +1,26 @@
 {
-  "vmtranslationupdate.message.update": "[VM汉化组]：你好%s，当前汉化已过时，请更新你的汉化！当前版本为%s，最新版为%s。",
+  "comment_modinfo": "Fabric 模组信息翻译",
+  "fml.menu.mods.info.displayname.vmtranslationupdate": "VM汉化更新",
+  "fml.menu.mods.info.description.vmtranslationupdate": "VM汉化组用于检查汉化更新和一些其他实用功能的模组",
+  "modmenu.nameTranslation.vmtranslationupdate": "VM汉化更新",
+  "modmenu.descriptionTranslation.vmtranslationupdate": "VM汉化组用于检查汉化更新和一些其他实用功能的模组",
+
+  "vmtranslationupdate.message.update": "[VM汉化组]：当前汉化已过时，请更新汉化！当前版本为%s，最新版为%s。",
   "vmtranslationupdate.message.update2": "请点击右侧",
   "vmtranslationupdate.message.update3": "下载新版本。",
   "vmtranslationupdate.message.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
   "vmtranslationupdate.message.hover": "点我到官网下载新版本！",
-  "vmtranslationupdate.message.zimin": "欢迎来到籽岷的Minecraft游戏世界！",
-  "vmtranslationupdate.message.pack": "VM汉化更新自动启用汉化失败！请在 “选项 -> 资源包” 中手动启用 “%s” 资源包",
+
+  "vmtranslationupdate.warn.title": "未检测到 %s 模组",
+  "vmtranslationupdate.warn.text": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！请点击下面的按钮跳转到下载页面。",
 
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
+  "text.autoconfig.vmtranslationupdate.option.testMode": "开发测试模式",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动切换语言",
-  "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自动检测整合包版本更新",
-  "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自动下载VM汉化资源包",
-  "text.autoconfig.vmtranslationupdate.option.autoInstallVMTranslationPack": "自动安装VM汉化资源包",
-  "text.autoconfig.vmtranslationupdate.option.displayTips": "显示知识内容",
-  "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "检测玩家名称",
-  "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切换语言为",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新检测链接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下载链接",
-  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "获取知识内容的链接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻译版本",
-  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "发送知识的时间间隔（分钟）",
-  "text.autoconfig.vmtranslationupdate.option.translationPackUrl": "下载资源包的链接",
-  "text.autoconfig.vmtranslationupdate.option.translationPackName": "资源包的文件名",
-  "text.autoconfig.vmtranslationupdate.option.nameUrl": "玩家对应称呼的链接",
-
-  "modmenu.descriptionTranslation.vmtranslationupdate": "一个用于检查VM汉化组的汉化补丁更新和自动下载资源包的模组。"
+  "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
+  "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "检测I18nUpdateMod是否已经安装",
+  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "检测VaultPatcher是否已经安装",
+  "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自动下载汉化资源包",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource": "汉化资源包下载源",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "指定汉化资源包的下载来源"
 }
