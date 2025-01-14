@@ -1,64 +1,61 @@
 package top.vmctcn.vmtranslationupdate;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import top.vmctcn.vmtranslationupdate.util.*;
+import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
+import top.vmctcn.vmtranslationupdate.screen.SuggestModScreen;
+import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
-import java.nio.file.Files;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
+import top.vmctcn.vmtranslationupdate.modpack.VersionChecker;
 
 public class ModEvents {
-    public static void clientTickEndEvent(MinecraftClient client) {
-        int tickCounter = VMTranslationUpdate.tickCounter;
-
-        tickCounter++;
-        int tickInterval = 20 * 60 * TipsUtil.getTipsMinutes();
-        if (tickCounter >= tickInterval) {
-            tickCounter = 0;
-            CompletableFuture.supplyAsync(() -> TipsUtil.getRandomMessageFromURLAsync(ModConfigUtil.getConfig().tipsUrl))
-                    .thenAccept(message -> {
-                        if (message == null) return;
-                        String randomMessage = TipsUtil.getRandomMessageFromURL(ModConfigUtil.getConfig().tipsUrl);
-                        Objects.requireNonNull(client.player).sendMessage(Text.translatable(randomMessage));
-                    });
-        }
-    }
+    public static boolean firstTitleScreenShown = false;
 
     public static void playerJoinEvent(ServerPlayerEntity player) {
-        NameUtil.playerJoinEvent(player);
+        String localVersion = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getVersion();
+        String onlineVersion = VersionChecker.getOnlineVersion();
 
-        MinecraftClient client = MinecraftClient.getInstance();
-        String localVersion = ModConfigUtil.getConfig().modPackTranslationVersion;
-        String onlineVersion = VersionCheckUtil.getOnlineVersion(player);
+        if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {
+            if (onlineVersion.isEmpty()) {
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.error"), false);
+                VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
+                return;
+            }
 
-        if (ModConfigUtil.getConfig().checkModPackTranslationUpdate) {
-            if (localVersion.equals(onlineVersion)
-                    && Files.exists(PackDownloadUtil.resourcePackDir)
-                    && !client.options.resourcePacks.contains(PackDownloadUtil.resourcePackName)
-                    && !client.options.resourcePacks.contains("file/" + PackDownloadUtil.resourcePackName)) {
-                Text message = Text.translatable("vmtranslationupdate.message.pack", ModConfigUtil.getConfig().translationPackName)
-                        .setStyle(Style.EMPTY.withColor(Formatting.GOLD));
-
-                player.sendMessage(message);
-
-            } else if (!localVersion.equals(onlineVersion)) {
+            if (!localVersion.equals(onlineVersion)) {
+                String updateUrl = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUrl();
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", localVersion, onlineVersion));
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
-                        .append(Text.translatable(ModConfigUtil.getConfig().modPackTranslationUrl)
+                        .append(Text.translatable(updateUrl)
                                 .setStyle(Style.EMPTY
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ModConfigUtil.getConfig().modPackTranslationUrl))
+                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, updateUrl))
                                         .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.translatable("vmtranslationupdate.message.hover")))
                                         .withColor(Formatting.AQUA)
                                 ))
                         .append(Text.translatable("vmtranslationupdate.message.update3"));
-
                 player.sendMessage(message);
             }
         }
+    }
+
+    public static void screenAfterInitEvent(Screen screen) {
+        if (firstTitleScreenShown || !(screen instanceof TitleScreen)) {
+            return;
+        }
+
+        String language = MinecraftClient.getInstance().getLanguageManager().getLanguage();
+
+        if ("zh_cn".equals(language)) {
+            MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
+        }
+
+        firstTitleScreenShown = true;
     }
 }

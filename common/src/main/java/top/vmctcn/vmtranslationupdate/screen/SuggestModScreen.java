@@ -7,8 +7,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import top.vmctcn.vmtranslationupdate.util.ModConfigUtil;
-import top.vmctcn.vmtranslationupdate.util.ScreenUtil;
+import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
 public class SuggestModScreen extends Screen {
     public final Screen lastScreen;
@@ -19,7 +18,7 @@ public class SuggestModScreen extends Screen {
     private static final int BORDER = 40;
 
     public SuggestModScreen(Screen lastScreen) {
-        super(ScreenUtil.getSuggestScreenTitle().copy().formatted(Formatting.RED).formatted(Formatting.BOLD));
+        super(SuggestScreenHelper.getSuggestScreenTitle().copy().formatted(Formatting.RED).formatted(Formatting.BOLD));
         this.lastScreen = lastScreen;
     }
 
@@ -29,14 +28,14 @@ public class SuggestModScreen extends Screen {
 
         super.init();
 
-        this.addDrawableChild(ButtonWidget.builder(ScreenUtil.downloadButtonText, buttonWidget -> {
-            if (ModConfigUtil.getConfig().i18nUpdateModCheck && !ScreenUtil.i18nUpdateModPresent) {
-                ScreenUtil.openUrlOnScreen(this.client, this, "https://modrinth.com/mod/i18nupdatemod");
-            } else if (ModConfigUtil.getConfig().vaultPatcherCheck && !ScreenUtil.vaultPatcherPresent) {
-                ScreenUtil.openUrlOnScreen(this.client, this, "https://modrinth.com/mod/vault-patcher");
+        this.addDrawableChild(ButtonWidget.builder(SuggestScreenHelper.downloadButtonText, buttonWidget -> {
+            if (ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestScreenHelper.i18nUpdateModPresent) {
+                ScreenHelper.openUrlOnScreen(this.client, this, "https://modrinth.com/mod/i18nupdatemod");
+            } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestScreenHelper.vaultPatcherPresent) {
+                ScreenHelper.openUrlOnScreen(this.client, this, "https://modrinth.com/mod/vault-patcher");
             }
         }).dimensions(centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
-        this.addDrawableChild(ButtonWidget.builder(ScreenUtil.quitButtonText, buttonWidget -> this.client.scheduleStop()).dimensions(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(SuggestScreenHelper.quitButtonText, buttonWidget -> this.client.scheduleStop()).dimensions(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
     }
 
     @Override
@@ -44,7 +43,7 @@ public class SuggestModScreen extends Screen {
         super.render(context, mouseX, mouseY, delta);
 
         context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
-        context.drawCenteredTextWithShadow(this.textRenderer, ScreenUtil.getSuggestScreenText(), this.width / 2, 70, -1);
+        context.drawCenteredTextWithShadow(this.textRenderer, SuggestScreenHelper.getSuggestScreenText(), this.width / 2, 70, -1);
     }
 
     @Override
@@ -54,12 +53,12 @@ public class SuggestModScreen extends Screen {
 
         //Render header and footer separators
         RenderSystem.enableBlend();
-        ScreenUtil.resetShaderColor(context);
-        Identifier identifier = MinecraftClient.getInstance().world == null ? Screen.HEADER_SEPARATOR_TEXTURE : Screen.INWORLD_HEADER_SEPARATOR_TEXTURE;
-        Identifier identifier2 = MinecraftClient.getInstance().world == null ? Screen.FOOTER_SEPARATOR_TEXTURE : Screen.INWORLD_FOOTER_SEPARATOR_TEXTURE;
-        context.drawTexture(identifier, 0, 40 - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
-        context.drawTexture(identifier2, 0, this.height - 50, 0.0F, 0.0F, this.width, 2, 32, 2);
-        ScreenUtil.resetShaderColor(context);
+        ScreenHelper.resetShaderColor(context);
+        Identifier headerIdentifier = MinecraftClient.getInstance().world == null ? Screen.HEADER_SEPARATOR_TEXTURE : Screen.INWORLD_HEADER_SEPARATOR_TEXTURE;
+        Identifier footerIdentifier = MinecraftClient.getInstance().world == null ? Screen.FOOTER_SEPARATOR_TEXTURE : Screen.INWORLD_FOOTER_SEPARATOR_TEXTURE;
+        ScreenHelper.drawGuiTexture(context, headerIdentifier, 0, 40 - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
+        ScreenHelper.drawGuiTexture(context, footerIdentifier, 0, this.height - 50, 0.0F, 0.0F, this.width, 2, 32, 2);
+        ScreenHelper.resetShaderColor(context);
 
     }
 

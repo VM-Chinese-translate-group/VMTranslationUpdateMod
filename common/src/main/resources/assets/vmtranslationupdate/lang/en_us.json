@@ -5,7 +5,7 @@
   "modmenu.nameTranslation.vmtranslationupdate": "VM Translation Update",
   "modmenu.descriptionTranslation.vmtranslationupdate": "A mod for checking for updates to VM Chinese Group's localization patches and automatically downloading resource packs.",
 
-  "vmtranslationupdate.message.update": "[VM Chinese Group]: Hello %s, your Chinese localization patch is outdated! Current version is %s, latest version is %s.",
+  "vmtranslationupdate.message.update": "[VM Chinese Group]: Your Chinese localization patch is outdated! Current version is %s, latest version is %s.",
   "vmtranslationupdate.message.update2": "Please click on the right ",
   "vmtranslationupdate.message.update3": " to download the new version.",
   "vmtranslationupdate.message.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
@@ -20,22 +20,12 @@
 
 
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
+  "text.autoconfig.vmtranslationupdate.option.testMode": "Test Mode",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "Auto switch language",
+  "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "Auto download translation pack",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource": "Translation pack source",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "Choose translation pack download source",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "Auto-detect modpack translation version update",
-  "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "Automatically download VM Chinese Resource pack",
-  "text.autoconfig.vmtranslationupdate.option.autoInstallVMTranslationPack": "Automatically install the VM Chinese Resource pack",
-  "text.autoconfig.vmtranslationupdate.option.displayTips": "Display knowledge",
-  "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "Detecting player name",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "Detecting if I18nUpdateMod is already installed",
-  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "Detect if VaultPatcher is installed",
-
-  "text.autoconfig.vmtranslationupdate.option.switchLanguage": "Switch language to",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "Update link",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "Download link",
-  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "Get knowledge link",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "Modpack translation version",
-  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "Time interval for sending knowledge (minutes)",
-  "text.autoconfig.vmtranslationupdate.option.translationPackUrl": "Download resource pack link",
-  "text.autoconfig.vmtranslationupdate.option.translationPackName": "File name of the resource pack",
-  "text.autoconfig.vmtranslationupdate.option.nameUrl": "Get player name link"
+  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "Detect if VaultPatcher is installed"
 }
