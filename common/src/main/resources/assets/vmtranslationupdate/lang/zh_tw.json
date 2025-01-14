@@ -17,20 +17,12 @@
   "vmtranslationupdate.warn.text": "%s 尚未安裝，這可能導致某些模組§c中文更新檔更新不完全§r！請點擊下面的按鈕跳轉到下載頁面。",
 
   "text.autoconfig.vmtranslationupdate.title": "VM漢化更新檢測配寘",
+  "text.autoconfig.vmtranslationupdate.option.testMode": "開發測試模式",
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自動切換語言",
-  "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自動檢測整合包版本更新",
-  "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自動下載VM漢化資源包",
-  "text.autoconfig.vmtranslationupdate.option.translationPackSource": "漢化資源包下載源",
-  "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "選擇漢化資源包下載源",
-  "text.autoconfig.vmtranslationupdate.option.displayTips": "顯示知識內容",
-  "text.autoconfig.vmtranslationupdate.option.playerNameCheck": "檢測玩家名稱",
-  "text.autoconfig.vmtranslationupdate.option.switchLanguage": "切換語言为",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUpdateCheckUrl": "更新檢測鏈接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationUrl": "下載鏈接",
-  "text.autoconfig.vmtranslationupdate.option.tipsUrl": "獲取知識內容的鏈接",
-  "text.autoconfig.vmtranslationupdate.option.modPackTranslationVersion": "整合包翻譯版本",
-  "text.autoconfig.vmtranslationupdate.option.tipsMinutes": "發送知識的時間間隔（分鐘）",
-  "text.autoconfig.vmtranslationupdate.option.translationPackUrl": "下載資源包的連結",
-  "text.autoconfig.vmtranslationupdate.option.translationPackName": "資源包的名字",
-  "text.autoconfig.vmtranslationupdate.option.nameUrl": "玩家對應稱呼的連結"
+  "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自動檢測模組包版本更新",
+  "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "檢測I18nUpdateMod是否已經安裝",
+  "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "檢測VaultPatcher是否已經安裝",
+  "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自動下載簡體中文模組補充翻譯資源包",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource": "簡體中文模組補充翻譯資源包下載源",
+  "text.autoconfig.vmtranslationupdate.option.translationPackSource.@Tooltip": "指定簡體中文模組補充翻譯資源包的下載來源"
 }

@@ -11,6 +11,7 @@
 - 现在自动切换语言（`autoSwitchLanguage`）功能默认为开启状态
 - 未安装推荐模组时显示模组安装提示屏幕，仅会在简体中文时出现
 - 重新添加资源包下载装载功能 （下载核心基于I18nUpdateMod3代码修改）
+- 新增`modpackinfo.json`，内容详见 [#14](https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues/14)
 
 # 修复
 
@@ -22,10 +23,16 @@
 - 繁体中文本地化改进
 - 优化语言切换功能 （基于I18nUpdateMod3代码修改）
 - 优化CoreMod检测方式
+- 整合包信息从配置文件迁移至`modpackinfo.json`，迁移项如下：
+    - `switchLanguage` -> `modpack`下的`translation`下的`language`
+    - `modPackTranslationUpdateCheckUrl` -> `modpack`下的`translation`下的`updateCheckUrl`
+    - `modPackTranslationUrl` -> `modpack`下的`translation`下的`url`
+    - `modPackTranslationVersion`-> `modpack`下的`translation`下的`version`
 
 ## 核心开发
 
 - 合并模组为多模组加载器版工具 forgix -> modfusioner
+- Architectury Loom 1.7 -> 1.9
 - 更新所有依赖版本
 - 修复GitHub CI 工作流
 - 简化代码

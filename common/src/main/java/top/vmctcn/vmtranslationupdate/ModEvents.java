@@ -9,17 +9,19 @@ import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
+import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
+import top.vmctcn.vmtranslationupdate.modpack.VersionChecker;
 import top.vmctcn.vmtranslationupdate.screen.SuggestModScreen;
-import top.vmctcn.vmtranslationupdate.util.*;
 
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
 
     public static void playerJoinEvent(ServerPlayerEntity player) {
-        String localVersion = ModConfigUtil.getConfig().modPackTranslationVersion;
-        String onlineVersion = VersionCheckUtil.getOnlineVersion();
+        String localVersion = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getVersion();
+        String onlineVersion = VersionChecker.getOnlineVersion();
 
-        if (ModConfigUtil.getConfig().checkModPackTranslationUpdate) {
+        if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {
             if (onlineVersion.isEmpty()) {
                 player.sendMessage(Text.translatable("vmtranslationupdate.message.error"), false);
                 VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
@@ -27,11 +29,12 @@ public class ModEvents {
             }
 
             if (!localVersion.equals(onlineVersion)) {
+                String updateUrl = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUrl();
                 player.sendMessage(Text.translatable("vmtranslationupdate.message.update", localVersion, onlineVersion));
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
-                        .append(Text.translatable(ModConfigUtil.getConfig().modPackTranslationUrl)
+                        .append(Text.translatable(updateUrl)
                                 .setStyle(Style.EMPTY
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ModConfigUtil.getConfig().modPackTranslationUrl))
+                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, updateUrl))
                                         .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.translatable("vmtranslationupdate.message.hover")))
                                         .withColor(Formatting.AQUA)
                                 ))

@@ -3,12 +3,14 @@ package top.vmctcn.vmtucore.neoforge;
 import com.google.auto.service.AutoService;
 import com.google.gson.JsonObject;
 import cpw.mods.modlauncher.Launcher;
+import net.neoforged.fml.loading.FMLPaths;
 import top.vmctcn.vmtucore.ModPlatform;
 import top.vmctcn.vmtucore.VMTUCore;
 import top.vmctcn.vmtucore.util.ReflectionHelper;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
 
 @AutoService(ModPlatform.class)
 public class ModPlatformImpl implements ModPlatform {
@@ -38,5 +40,10 @@ public class ModPlatformImpl implements ModPlatform {
             VMTUCore.LOGGER.warn("Error getting minecraft version: %s", e);
         }
         return null;
+    }
+
+    @Override
+    public Path getGameDir() {
+        return FMLPaths.GAMEDIR.get();
     }
 }
