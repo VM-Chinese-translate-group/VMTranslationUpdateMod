@@ -52,8 +52,8 @@ public class VMTUCore {
 
             //Update resource pack
             List<ResPackDownloader> languagePacks = new ArrayList<>();
-            boolean convertNotNeed = assets.downloads.size() == 1 && assets.downloads.getFirst().targetVersion.equals(gameVersion);
-            String applyFileName = assets.downloads.getFirst().fileName;
+            boolean convertNotNeed = assets.downloads.size() == 1 && assets.downloads.get(0).targetVersion.equals(gameVersion);
+            String applyFileName = assets.downloads.get(0).fileName;
             for (GameAssetDetail.AssetDownloadDetail it : assets.downloads) {
                 FileUtil.setTemporaryDirPath(Paths.get(localStorage, LOCAL_PATH, it.targetVersion));
                 ResPackDownloader languagePack = new ResPackDownloader(it.fileName, convertNotNeed);
@@ -84,7 +84,7 @@ public class VMTUCore {
                 String.format("该包由%s版本合并\n作者：VM汉化组",
                         downloads.stream().map(it -> it.targetVersion).collect(Collectors.joining("和"))) :
                 String.format("该包对应的官方支持版本为%s\n作者：VM汉化组",
-                        downloads.getFirst().targetVersion);
+                        downloads.get(0).targetVersion);
 
     }
 
