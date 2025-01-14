@@ -27,7 +27,7 @@ jobs:
           chmod +x gradlew
           ./gradlew build
 
-      - name: Merge Fabric & Forge & NeoForge JARs
+      - name: Merge Fabric & Forge JARs
         run: |
           chmod +x gradlew
           ./gradlew fusejars
@@ -38,11 +38,11 @@ jobs:
           name: fabric
           path: ${{ github.workspace }}/fabric/build/libs
 
-      - name: Upload artifacts (neoforge)
+      - name: Upload artifacts (forge)
         uses: actions/upload-artifact@v4
         with:
-          name: neoforge
-          path: ${{ github.workspace }}/neoforge/build/libs
+          name: forge
+          path: ${{ github.workspace }}/forge/build/libs
 
       - name: Upload artifacts (ModFusioner merged jar)
         uses: actions/upload-artifact@v4

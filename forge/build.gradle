@@ -1,30 +1,26 @@
 architectury {
     platformSetupLoomIde()
-    neoForge()
+    forge()
 }
 
-project.archivesBaseName = rootProject.archivesBaseName + "-neoforge"
+project.archivesBaseName = rootProject.archivesBaseName + "-forge"
 
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentNeoForge.extendsFrom common
-}
-
-repositories {
-    maven { url "https://maven.neoforged.net/releases/" }
+    developmentForge.extendsFrom common
 }
 
 dependencies {
-    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
-    modApi "me.shedaniel.cloth:cloth-config-neoforge:${rootProject.clothconfig_version}"
+    forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version}"
+    modApi "me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"
     include(project(":core")) { transitive false }
     implementation(project(":core")) { transitive false }
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
 
 processResources {

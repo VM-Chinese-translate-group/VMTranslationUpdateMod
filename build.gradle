@@ -51,8 +51,8 @@ fusioner {
     outputDirectory = "build/merged"
     jarVersion = rootProject.version
 
-    neoforge {
-        projectName = "neoforge"
+    forge {
+        projectName = "forge"
         inputTaskName = "remapJar"
     }
 
@@ -73,10 +73,10 @@ publisher {
     versionType = "release"
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
-    displayName = "VM Translation Update 1.20.2-1.20.4 $rootProject.mod_version"
-    gameVersions = ["1.20.2", "1.20.3", "1.20.4"]
+    displayName = "VM Translation Update 1.20.1 $rootProject.mod_version"
+    gameVersions = ["1.20", "1.20.1"]
     curseEnvironment = "client"
-    loaders = ["fabric", "neoforge"]
+    loaders = ["fabric", "forge"]
     artifact = fusejars
 
     modrinthDepends {

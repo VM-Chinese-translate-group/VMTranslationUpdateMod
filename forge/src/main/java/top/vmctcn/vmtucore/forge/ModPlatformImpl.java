@@ -1,9 +1,9 @@
-package top.vmctcn.vmtucore.neoforge;
+package top.vmctcn.vmtucore.forge;
 
 import com.google.auto.service.AutoService;
 import com.google.gson.JsonObject;
 import cpw.mods.modlauncher.Launcher;
-import net.neoforged.fml.loading.FMLPaths;
+import net.minecraftforge.fml.loading.FMLPaths;
 import top.vmctcn.vmtucore.ModPlatform;
 import top.vmctcn.vmtucore.VMTUCore;
 import top.vmctcn.vmtucore.util.ReflectionHelper;

@@ -44,8 +44,8 @@ public class SuggestModScreen extends Screen {
     }
 
     @Override
-    public void renderBackground(DrawContext context, int mouseX, int mouseY, float partial) {
-        super.renderBackground(context, mouseX, mouseY, partial);
+    public void renderBackground(DrawContext context) {
+        super.renderBackground(context);
 
         //Render header and footer separators
         RenderSystem.enableBlend();
