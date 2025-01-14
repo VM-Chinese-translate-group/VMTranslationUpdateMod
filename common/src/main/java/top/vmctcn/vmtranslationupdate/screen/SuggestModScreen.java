@@ -40,8 +40,8 @@ public class SuggestModScreen extends Screen {
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
 
-        context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
-        context.drawCenteredTextWithShadow(this.textRenderer, SuggestScreenHelper.getSuggestScreenText(), this.width / 2, 70, -1);
+        ScreenHelper.drawCenteredTextWithShadow(context, this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
+        ScreenHelper.drawCenteredTextWithShadow(context, this.textRenderer, SuggestScreenHelper.getSuggestScreenText(), this.width / 2, 70, -1);
     }
 
     @Override
@@ -50,12 +50,12 @@ public class SuggestModScreen extends Screen {
 
         //Render header and footer separators
         RenderSystem.enableBlend();
-        ScreenHelper.resetShaderColor(context);
+        ScreenHelper.resetShaderColor();
         Identifier headerIdentifier = MinecraftClient.getInstance().world == null ? Screen.HEADER_SEPARATOR_TEXTURE : Screen.INWORLD_HEADER_SEPARATOR_TEXTURE;
         Identifier footerIdentifier = MinecraftClient.getInstance().world == null ? Screen.FOOTER_SEPARATOR_TEXTURE : Screen.INWORLD_FOOTER_SEPARATOR_TEXTURE;
         ScreenHelper.drawGuiTexture(context, headerIdentifier, 0, 40 - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
         ScreenHelper.drawGuiTexture(context, footerIdentifier, 0, this.height - 50, 0.0F, 0.0F, this.width, 2, 32, 2);
-        ScreenHelper.resetShaderColor(context);
+        ScreenHelper.resetShaderColor();
     }
 
     @Override
