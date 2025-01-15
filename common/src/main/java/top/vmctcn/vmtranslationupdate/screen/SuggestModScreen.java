@@ -32,7 +32,7 @@ public class SuggestModScreen extends Screen {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://modrinth.com/mod/vault-patcher");
             }
         }));
-        this.addDrawableChild(new ButtonWidget(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, SuggestScreenHelper.quitButtonText, buttonWidget -> this.close()));
+        this.addDrawableChild(new ButtonWidget(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, SuggestScreenHelper.ignoreButtonText, buttonWidget -> this.close()));
     }
 
     @Override

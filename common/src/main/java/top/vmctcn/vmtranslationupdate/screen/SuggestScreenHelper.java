@@ -6,8 +6,8 @@ import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 public class SuggestScreenHelper {
     public static boolean i18nUpdateModPresent = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
     public static boolean vaultPatcherPresent = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
-    public static final Text downloadButtonText = Text.translatable("vmtranslationupdate.warn.download.button");
-    public static final Text quitButtonText = Text.translatable("vmtranslationupdate.warn.quit.button");
+    public static final Text downloadButtonText = Text.translatable("mco.brokenworld.download");
+    public static final Text ignoreButtonText = Text.translatable("selectWorld.backupJoinSkipButton");
 
     public static boolean isCoreModClassLoaded(String className) {
         try {
