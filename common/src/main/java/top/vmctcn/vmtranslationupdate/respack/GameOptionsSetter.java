@@ -11,9 +11,10 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public class GameOptionsSetter {
-    public static void init(Path gamePath) {
+    public static void init() {
         if (ModConfigHelper.getConfig().autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
+                Path gamePath = ModPlatform.INSTANCE.getGameDir();
                 GameOptionsWriter writer = new GameOptionsWriter(gamePath.resolve("options.txt"));
                 String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
                 writer.switchLanguage(LanguageHelper.getFixedLanguage(lang));
@@ -23,6 +24,7 @@ public class GameOptionsSetter {
         }
 
         if (ModConfigHelper.getConfig().autoDownloadVMTranslationPack) {
+            Path gamePath = ModPlatform.INSTANCE.getGameDir();
             String gameVersion = ModPlatform.INSTANCE.getGameVersion();
             ResPackSource resPackSource = ModConfigHelper.getConfig().translationPackSource;
             String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();

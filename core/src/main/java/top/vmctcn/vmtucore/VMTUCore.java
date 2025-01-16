@@ -31,7 +31,7 @@ public class VMTUCore {
     public static final Logger LOGGER = LoggerFactory.getLogger("VMTUCore");
     public static String MOD_VERSION;
     public static final Gson GSON = new Gson();
-    public static final String LOCAL_PATH = "vmtu";
+    public static final String LOCAL_PATH = ".vmtu";
 
     public static void init(Path gamePath, String gameVersion, String packName, String packSource) {
         try (InputStream is = VMTUCore.class.getResourceAsStream("/metadata.json")) {

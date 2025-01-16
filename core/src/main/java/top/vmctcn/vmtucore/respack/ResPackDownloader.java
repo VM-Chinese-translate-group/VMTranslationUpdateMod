@@ -19,10 +19,6 @@ import java.util.concurrent.TimeUnit;
  * @author CFPAOrg/I18nUpdateMod3 (xfl03)
  */
 public class ResPackDownloader {
-    /**
-     * Limit update check frequency
-     */
-    private static final long UPDATE_TIME_GAP = TimeUnit.DAYS.toMillis(1);
     private final String filename;
     private final Path filePath;
     private final Path tmpFilePath;
@@ -41,7 +37,7 @@ public class ResPackDownloader {
         }
     }
 
-    public void checkUpdate(String fileUrl) throws IOException, URISyntaxException, NoSuchAlgorithmException {
+    public void checkUpdate(String fileUrl) throws IOException {
         //In this time, we can only download full file
         downloadFull(fileUrl);
         //In the future, we will download patch file and merge local file

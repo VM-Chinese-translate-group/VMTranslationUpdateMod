@@ -21,7 +21,7 @@ public class VMTranslationUpdateClientForge {
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
 
-            GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
+            GameOptionsSetter.init();
 
             ForgeHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 

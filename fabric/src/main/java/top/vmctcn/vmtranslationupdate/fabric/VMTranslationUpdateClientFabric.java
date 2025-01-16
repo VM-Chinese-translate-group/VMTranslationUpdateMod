@@ -10,9 +10,9 @@ import top.vmctcn.vmtranslationupdate.respack.GameOptionsSetter;
 public class VMTranslationUpdateClientFabric implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        VMTranslationUpdate.init();
+        GameOptionsSetter.init();
 
-        GameOptionsSetter.init(FabricLoader.getInstance().getGameDir());
+        VMTranslationUpdate.init();
 
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
             ModEvents.screenAfterInitEvent(screen);

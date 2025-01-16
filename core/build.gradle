@@ -1,5 +1,5 @@
 project.archivesBaseName = "VMTUCore"
-project.version = "0.1.0+mod$rootProject.version"
+project.version = "0.1.0+$rootProject.version"
 
 dependencies {
 
