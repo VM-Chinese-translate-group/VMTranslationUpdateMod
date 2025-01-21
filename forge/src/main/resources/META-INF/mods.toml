@@ -10,15 +10,14 @@ displayName = "VM Translation Update"
 displayURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod"
 authors = "Wulian233, TexTrue, Litchiiiiiii"
 description = '''
-A mod for checking for updates to VM Chinese Group's localization patches
-and automatically downloading resource packs.
+The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.
 '''
-logoFile = "icon.png"
+logoFile = "assets/vmtranslationupdate/icon.png"
 
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20,)"
+versionRange = "[1.20,1.20.2)"
 ordering = "NONE"
 side = "BOTH"
 
