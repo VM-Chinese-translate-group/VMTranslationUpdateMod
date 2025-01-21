@@ -28,7 +28,7 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.20.2- <1.20.5-",
+    "minecraft": "1.20.2~1.20.4",
     "cloth-config": "*"
   }
 }
