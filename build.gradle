@@ -1,9 +1,9 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
-    id "com.github.johnrengelman.shadow" version "8.+" apply false
+    id "dev.architectury.loom" version "1.9-SNAPSHOT" apply false
+    id "com.gradleup.shadow" version "8.+" apply false
     id "com.hypherionmc.modutils.modpublisher" version "2.+"
-    id "io.github.pacifistmc.forgix" version "1.+"
+    id "com.hypherionmc.modutils.modfusioner" version "1.+"
 }
 
 architectury {
@@ -12,11 +12,14 @@ architectury {
 
 subprojects {
     apply plugin: "dev.architectury.loom"
-    apply plugin: "com.github.johnrengelman.shadow"
+    apply plugin: "com.gradleup.shadow"
 
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
         mappings "net.fabricmc:yarn:${rootProject.yarn_mappings}:v2"
+
+        implementation("com.google.auto.service:auto-service-annotations:1.1.1")
+        annotationProcessor("com.google.auto.service:auto-service:1.1.1")
     }
 }
 
@@ -44,22 +47,26 @@ allprojects {
 
     java {
         withSourcesJar()
+
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
-forgix {
-    group = rootProject.maven_group
-    mergedJarName = "${rootProject.archives_base_name}-${rootProject.version}.jar"
-    outputDir = "build/libs/forgix"
+fusioner {
+    packageGroup = rootProject.maven_group
+    mergedJarName = "${rootProject.archives_base_name}"
+    outputDirectory = "build/merged"
+    jarVersion = rootProject.version
 
     forge {
         projectName = "forge"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-forge-${rootProject.version}.jar"
+        inputTaskName = "remapJar"
     }
 
     fabric {
         projectName = "fabric"
-        jarLocation = "build/libs/${rootProject.archives_base_name}-fabric-${rootProject.version}.jar"
+        inputTaskName = "remapJar"
     }
 }
 
@@ -74,11 +81,11 @@ publisher {
     versionType = "release"
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
-    displayName = "VM Translation Update 1.18.x $rootProject.mod_version"
+    displayName = "VM Translation Update 1.18.x $rootProject.version"
     gameVersions = ["1.18", "1.18.1", "1.18.2"]
     curseEnvironment = "client"
-    loaders = ["fabric", "quilt", "forge"]
-    artifact = forgix.getOutputDir() + "/" + forgix.getMergedJarName()
+    loaders = ["fabric", "forge"]
+    artifact = fusejars
 
     modrinthDepends {
         required "cloth-config"
@@ -88,5 +95,3 @@ publisher {
         required "cloth-config"
     }
 }
-
-publishMod.dependsOn(mergeJars)

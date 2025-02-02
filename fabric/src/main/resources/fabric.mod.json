@@ -3,7 +3,7 @@
   "id": "vmtranslationupdate",
   "version": "${version}",
   "name": "VM Translation Update",
-  "description": "A mod for checking for updates to VM Chinese Group's localization patches and automatically downloading resource packs.",
+  "description": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
   "authors": [
     "Wulian233", "TexTrue", "Litchiiiiiii"
   ],
@@ -20,7 +20,7 @@
       "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateClientFabric"
     ],
     "modmenu": [
-      "top.vmctcn.vmtranslationupdate.fabric.ModMenuCompat"
+      "top.vmctcn.vmtranslationupdate.fabric.ModMenuImpl"
     ]
   },
   "mixins": [
@@ -28,7 +28,7 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": ">=1.18 <=1.18.2",
     "cloth-config": "*"
   }
 }

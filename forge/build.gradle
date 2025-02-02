@@ -14,8 +14,10 @@ configurations {
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:${rootProject.forge_version}"
+    forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version}"
     modApi "me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"
+    include(project(":core")) { transitive false }
+    implementation(project(":core")) { transitive false }
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
