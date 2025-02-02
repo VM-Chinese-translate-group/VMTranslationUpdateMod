@@ -1,0 +1,121 @@
+{
+  "version": "${version}",
+  "games": [
+    {
+      "gameVersions": "[1.11,1.12.2]",
+      "packFormat": 3,
+      "convertFrom": [
+        "1.12.2"
+      ]
+    },
+    {
+      "gameVersions": "[1.16.2,1.16.5]",
+      "packFormat": 6,
+      "convertFrom": [
+        "1.16"
+      ]
+    },
+    {
+      "gameVersions": "[1.18,1.18.2]",
+      "packFormat": 8,
+      "convertFrom": [
+        "1.18"
+      ]
+    },
+    {
+      "gameVersions": "[1.19,1.19.2]",
+      "packFormat": 9,
+      "convertFrom": [
+        "1.19",
+        "1.18"
+      ]
+    },
+    {
+      "gameVersions": "[1.19.3,1.19.3]",
+      "packFormat": 12,
+      "convertFrom": [
+        "1.19",
+        "1.18"
+      ]
+    },
+    {
+      "gameVersions": "[1.19.4,1.19.4]",
+      "packFormat": 13,
+      "convertFrom": [
+        "1.19",
+        "1.18"
+      ]
+    },
+    {
+      "gameVersions": "[1.20,1.20.1]",
+      "packFormat": 15,
+      "convertFrom": [
+        "1.19",
+        "1.18"
+      ]
+    },
+    {
+      "gameVersions": "[1.20.2,1.20.2]",
+      "packFormat": 18,
+      "convertFrom": [
+        "1.19",
+        "1.18"
+      ]
+    },
+    {
+      "gameVersions": "[1.20.3,1.20.4]",
+      "packFormat": 22,
+      "convertFrom": [
+        "1.19",
+        "1.18"
+      ]
+    },
+    {
+      "gameVersions": "[1.20.5,1.20.6]",
+      "packFormat": 32,
+      "convertFrom": [
+        "1.19",
+        "1.18"
+      ]
+    },
+    {
+      "gameVersions": "[1.21,1.21.1]",
+      "packFormat": 34,
+      "convertFrom": [
+        "1.19"
+      ]
+    },
+    {
+      "gameVersions": "[1.21.2,1.21.3]",
+      "packFormat": 42,
+      "convertFrom": [
+        "1.19"
+      ]
+    },
+    {
+      "gameVersions": "[1.21.4,1.21.5]",
+      "packFormat": 46,
+      "convertFrom": [
+        "1.19"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "targetVersion": "1.12.2",
+      "filename": "VM汉化组模组汉化包1.12.zip"
+    },
+    {
+      "targetVersion": "1.16",
+      "filename": "VM汉化组模组汉化包1.16.zip"
+    },
+    {
+      "targetVersion": "1.18",
+      "filename": "VM汉化组模组汉化包1.18.zip"
+    },
+    {
+      "targetVersion": "1.19",
+      "filename": "VM汉化组模组汉化包1.19及以上.zip"
+    }
+  ]
+}
