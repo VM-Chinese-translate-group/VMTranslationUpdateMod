@@ -1,16 +1,17 @@
+
 package top.vmctcn.vmtranslationupdate.modpack;
 
 public class ModpackInfo {
-    private Modpack modpack;
+    Modpack modpack;
 
     public Modpack getModpack() {
         return modpack;
     }
 
     public static class Modpack {
-        private String name;
-        private String version;
-        private Translation translation;
+        String name;
+        String version;
+        Translation translation;
 
         public String getName() {
             return name;
@@ -26,11 +27,11 @@ public class ModpackInfo {
     }
 
     public static class Translation {
-        private String url;
-        private String language;
-        private String version;
-        private String updateCheckUrl;
-        private String resourcePackName;
+        String url;
+        String language;
+        String version;
+        String updateCheckUrl;
+        String resourcePackName;
 
         public String getUrl() {
             return url;
