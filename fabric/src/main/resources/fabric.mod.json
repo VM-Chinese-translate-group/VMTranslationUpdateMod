@@ -12,7 +12,7 @@
     "sources": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod",
     "issues": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
   },
-  "icon": "assets/vmtranslationupdate/icon.png",
+  "icon": "icon.png",
   "license": "MIT",
   "environment": "client",
   "entrypoints": {
