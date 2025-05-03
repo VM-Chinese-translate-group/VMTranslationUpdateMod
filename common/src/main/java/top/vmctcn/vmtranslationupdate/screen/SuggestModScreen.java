@@ -1,6 +1,6 @@
 package top.vmctcn.vmtranslationupdate.screen;
 
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.opengl.GlStateManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -49,7 +49,7 @@ public class SuggestModScreen extends Screen {
         super.renderBackground(context, mouseX, mouseY, partial);
 
         //Render header and footer separators
-        RenderSystem.enableBlend();
+        GlStateManager._enableBlend();
         ScreenHelper.resetShaderColor();
         Identifier headerIdentifier = MinecraftClient.getInstance().world == null ? Screen.HEADER_SEPARATOR_TEXTURE : Screen.INWORLD_HEADER_SEPARATOR_TEXTURE;
         Identifier footerIdentifier = MinecraftClient.getInstance().world == null ? Screen.FOOTER_SEPARATOR_TEXTURE : Screen.INWORLD_FOOTER_SEPARATOR_TEXTURE;

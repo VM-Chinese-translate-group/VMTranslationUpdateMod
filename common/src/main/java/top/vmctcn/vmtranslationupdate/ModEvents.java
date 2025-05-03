@@ -15,6 +15,8 @@ import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
 import top.vmctcn.vmtranslationupdate.modpack.VersionChecker;
 
+import java.net.URI;
+
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
 
@@ -32,15 +34,20 @@ public class ModEvents {
             if (!localVersion.equals(onlineVersion)) {
                 String updateUrl = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUrl();
                 player.sendMessage(Text.translatable("vmtranslationupdate.message.update", localVersion, onlineVersion));
-                Text message = Text.translatable("vmtranslationupdate.message.update2")
-                        .append(Text.translatable(updateUrl)
-                                .setStyle(Style.EMPTY
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, updateUrl))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.translatable("vmtranslationupdate.message.hover")))
-                                        .withColor(Formatting.AQUA)
-                                ))
-                        .append(Text.translatable("vmtranslationupdate.message.update3"));
-                player.sendMessage(message);
+                try {
+                    URI updateUri = new URI(updateUrl);
+                    Text message = Text.translatable("vmtranslationupdate.message.update2")
+                            .append(Text.translatable(updateUrl)
+                                    .setStyle(Style.EMPTY
+                                            .withClickEvent(new ClickEvent.OpenUrl(updateUri))
+                                            .withHoverEvent(new HoverEvent.ShowText(Text.translatable("vmtranslationupdate.message.hover")))
+                                            .withColor(Formatting.AQUA)
+                                    ))
+                            .append(Text.translatable("vmtranslationupdate.message.update3"));
+                    player.sendMessage(message);
+                } catch (Exception e) {
+                    VMTranslationUpdate.LOGGER.error("Invalid URL: {}", updateUrl, e);
+                }
             }
         }
     }

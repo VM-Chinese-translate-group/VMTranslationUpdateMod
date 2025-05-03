@@ -1,6 +1,6 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.9-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.10-SNAPSHOT" apply false
     id "com.gradleup.shadow" version "8.+" apply false
     id "com.hypherionmc.modutils.modpublisher" version "2.+"
     id "com.hypherionmc.modutils.modfusioner" version "1.+"
@@ -76,8 +76,8 @@ publisher {
     versionType = "release"
     changelog = file("CHANGELOG.md").getText('UTF-8')
     version = "$rootProject.version"
-    displayName = "VM Translation Update 1.21.3/4 $rootProject.version"
-    gameVersions = ["1.21.3", "1.21.4"]
+    displayName = "VM Translation Update 1.21.5 $rootProject.version"
+    gameVersions = ["1.21.5"]
     curseEnvironment = "client"
     loaders = ["fabric", "neoforge"]
     artifact = fusejars
