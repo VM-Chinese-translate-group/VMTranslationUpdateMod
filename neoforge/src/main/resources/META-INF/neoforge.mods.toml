@@ -17,7 +17,7 @@ logoFile = "assets/vmtranslationupdate/icon.png"
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.3,1.21.5)"
+versionRange = "[1.21.5,)"
 ordering = "NONE"
 side = "BOTH"
 
