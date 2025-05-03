@@ -36,7 +36,7 @@ public class LanguageHelper {
             }
 
             /* Language should be fixed */
-            VMTranslationUpdate.LOGGER.info("Switching language to " + language + (!fixedFrom.equals(language) ? ", fixed from " + fixedFrom + "." /* Log the unfixed language */ : "..."));
+            VMTranslationUpdate.LOGGER.info("Switching language to {}{}", language, !fixedFrom.equals(language) ? ", fixed from " + fixedFrom + "." /* Log the unfixed language */ : "...");
             return language;
         }
 
