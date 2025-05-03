@@ -51,7 +51,7 @@ public class ModpackInfoReader {
         modpackInfo.modpack.translation.language = "zh_cn";
         modpackInfo.modpack.translation.version = "1.0.0";
         modpackInfo.modpack.translation.updateCheckUrl = "https://gitee.com/Wulian233/vmtu/raw/main/update/example.txt";
-        modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.18";
+        modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.19及以上";
 
         try {
             Files.writeString(modpackInfoPath, GSON.toJson(modpackInfo), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
