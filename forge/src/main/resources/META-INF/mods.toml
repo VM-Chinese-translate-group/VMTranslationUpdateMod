@@ -22,13 +22,6 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.vmtranslationupdate]]
-modId = "forge"
-mandatory = true
-versionRange = "[38,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.vmtranslationupdate]]
 modId = "cloth_config"
 mandatory = true
 versionRange = "*"
