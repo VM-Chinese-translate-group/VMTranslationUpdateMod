@@ -15,16 +15,9 @@ The VM Chinese translate Group mod is used to check Chinese localization patches
 logoFile = "assets/vmtranslationupdate/icon.png"
 
 [[dependencies.vmtranslationupdate]]
-modId = "neoforge"
-type = "required"
-versionRange = "[21,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.vmtranslationupdate]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.3,)"
+versionRange = "[1.21.3,1.21.5)"
 ordering = "NONE"
 side = "BOTH"
 
