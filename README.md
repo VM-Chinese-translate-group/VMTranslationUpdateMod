@@ -19,7 +19,8 @@
 
 ## 功能
 
-模组的所有功能都是可配置的，关于配置文件请看后文。
+模组的所有功能都是可配置的，关于所有功能的详细介绍使用及相关配置文件的教程**请查看我们的模组文档**
+：<https://vmct-cn.top/vmtu/>
 
 1. 可配置在汉化发布新版本时会在游戏里通知玩家去下载更新。
 2. 可配置是否开启自动下载并启用VM模组汉化资源包。
@@ -36,23 +37,23 @@
 ```toml
 autoSwitchLanguage = true   # 自动切换语言
 autoDownloadVMTranslationPack = false # 默认不自动下载VM汉化资源包
-translationPackSource = "GITEE"       # 汉化资源包下载源
+translationPackSource = "GITEE"       # 汉化资源包下载源（目前仅一种）
 checkModPackTranslationUpdate = true  # 默认检查汉化更新
 i18nUpdateModCheck = true # 默认检查是否安装i18nUpdateMod模组
 vaultPatcherCheck = false # 默认不检查是否安装Vault Patch模组
 testMode = false          # 供开发者使用的测试模式，会有更多日志
 ```
 
-`modpackinfo.json`是modpack标识文件，位于游戏根目录（`.minecraft`）内容如下所示：
+`modpackinfo.json`是整合包标识文件，位于游戏根目录（`.minecraft`）内容如下所示：
 ```json5
 {
   "modpack": {
-    "name": "ExampleModpack", // 整合包名称
-    "version": "v0.1.0", // 整合包版本
+    "name": "ExampleModpack", // 整合包名称（未使用）
+    "version": "v0.1.0",      // 整合包版本（未使用）
     "translation": {
-      "url": "https://vmct-cn.top/modpacks/example/", // 汉化信息页面
-      "language": "zh_cn", // 语言，用于语言切换功能
-      "version": "1.0.0", // 汉化版本，用于检测汉化最新版本
+      "url": "https://vmct-cn.top/modpacks/example/", // 汉化下载官网页面
+      "language": "zh_cn",    // 语言，用于语言切换功能
+      "version": "1.0.0",     // 汉化版本，用于检测汉化最新版本
       "updateCheckUrl": "https://gitee.com/Wulian233/vmtu/raw/main/update/example.txt", // 汉化版本标识文件链接，用于检测汉化最新版本
       "resourcePackName": "VM汉化组模组汉化包1.19及以上" // 基础汉化资源包名称
     }
@@ -61,16 +62,6 @@ testMode = false          # 供开发者使用的测试模式，会有更多日�
 ```
 
 > 基础汉化资源包名称指的是需要下载的基础汉化资源包名称
-
---- 
-
-## 支持版本
-
-| 模组加载器    | 支持的Minecraft版本           |
-|----------|--------------------------|
-| Forge    | 1.12/1.16.5/1.18-1.20.1  |
-| NeoForge | 1.20.1-1.21.5            |
-| Fabric   | 1.16.5-1.21.5（支持ModMenu） |
 
 ## 其他
 
