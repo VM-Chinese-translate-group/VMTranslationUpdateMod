@@ -27,11 +27,6 @@ jobs:
           chmod +x gradlew
           ./gradlew build
 
-      - name: Merge Fabric & Forge JARs
-        run: |
-          chmod +x gradlew
-          ./gradlew fusejars
-
       - name: Upload artifacts (fabric)
         uses: actions/upload-artifact@v4
         with:
@@ -43,9 +38,3 @@ jobs:
         with:
           name: forge
           path: ${{ github.workspace }}/forge/build/libs
-
-      - name: Upload artifacts (ModFusioner merged jar)
-        uses: actions/upload-artifact@v4
-        with:
-          name: merged
-          path: ${{ github.workspace }}/build/merged

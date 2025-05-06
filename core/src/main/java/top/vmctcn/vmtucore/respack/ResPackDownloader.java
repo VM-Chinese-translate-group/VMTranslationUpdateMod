@@ -6,12 +6,9 @@ import top.vmctcn.vmtucore.util.FileUtil;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.security.NoSuchAlgorithmException;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Under AGPL License

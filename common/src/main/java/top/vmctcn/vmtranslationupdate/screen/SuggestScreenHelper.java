@@ -1,6 +1,5 @@
 package top.vmctcn.vmtranslationupdate.screen;
 
-import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
