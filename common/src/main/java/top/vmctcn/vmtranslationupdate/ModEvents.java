@@ -27,12 +27,11 @@ public class ModEvents {
             player.sendMessage(new LiteralText("==================== VMTU testMode ===================="), false);
             player.sendMessage(new LiteralText("Modpack Name: " + modpack.getName()), false);
             player.sendMessage(new LiteralText("Modpack Version: " + modpack.getVersion()), false);
-            player.sendMessage(new LiteralText("Modpack Translation URL: " + translation.getUrl()), false);
-            player.sendMessage(new LiteralText("Modpack Translation Update Check URL: " + translation.getUpdateCheckUrl()), false);
+            player.sendMessage(new LiteralText("Modpack Translation URL:§b " + translation.getUrl()), false);
+            player.sendMessage(new LiteralText("Modpack Translation Update Check URL:§b " + translation.getUpdateCheckUrl()), false);
             player.sendMessage(new LiteralText("Modpack Translation Language: " + translation.getLanguage()), false);
             player.sendMessage(new LiteralText("Modpack Translation Version: " + translation.getVersion()), false);
             player.sendMessage(new LiteralText("Modpack Translation Resource Pack Name: " + translation.getResourcePackName()), false);
-            player.sendMessage(new LiteralText("======================================================="), false);
         }
         
         if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {

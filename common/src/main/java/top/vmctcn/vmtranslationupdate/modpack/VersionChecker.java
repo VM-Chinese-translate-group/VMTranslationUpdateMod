@@ -11,10 +11,10 @@ import java.nio.charset.StandardCharsets;
 public class VersionChecker {
     public static String getOnlineVersion() {
         try {
-            URL url = new URL(ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getVersion());
+            URL url = new URL(ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUpdateCheckUrl());
             URLConnection connection = url.openConnection();
 
-            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36 MCMod/VmUpdate";
+            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 MCMod/VmUpdate";
             connection.setRequestProperty("User-Agent", userAgent);
             connection.setConnectTimeout(10000);
             
