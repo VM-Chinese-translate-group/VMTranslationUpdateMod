@@ -2,7 +2,6 @@ package top.vmctcn.vmtranslationupdate.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
-
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
 import top.vmctcn.vmtranslationupdate.respack.ResPackSource;
