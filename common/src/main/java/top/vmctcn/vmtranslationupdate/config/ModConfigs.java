@@ -8,6 +8,8 @@ import top.vmctcn.vmtranslationupdate.respack.ResPackSource;
 
 @Config(name = VMTranslationUpdate.MOD_ID)
 public class ModConfigs implements ConfigData {
+    public boolean testMode = false;
+
     public boolean autoSwitchLanguage = true;
 
     public boolean autoDownloadVMTranslationPack = false;
