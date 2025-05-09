@@ -7,7 +7,7 @@ license = "MIT"
 modId = "vmtranslationupdate"
 version = "${version}"
 displayName = "VM Translation Update"
-displayURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod"
+displayURL = "https://vmct-cn.top/vmtu"
 authors = "Wulian233, TexTrue, Litchiiiiiii"
 description = '''
 The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.

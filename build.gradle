@@ -2,8 +2,6 @@ plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
     id "dev.architectury.loom" version "1.9-SNAPSHOT" apply false
     id "com.gradleup.shadow" version "8.+" apply false
-    id "com.hypherionmc.modutils.modpublisher" version "2.+"
-    id "com.hypherionmc.modutils.modfusioner" version "1.+"
 }
 
 architectury {
@@ -45,48 +43,5 @@ allprojects {
 
     java {
         withSourcesJar()
-    }
-}
-
-fusioner {
-    packageGroup = rootProject.maven_group
-    mergedJarName = "${rootProject.archives_base_name}"
-    outputDirectory = "build/merged"
-    jarVersion = rootProject.version
-
-    neoforge {
-        projectName = "neoforge"
-        inputTaskName = "remapJar"
-    }
-
-    fabric {
-        projectName = "fabric"
-        inputTaskName = "remapJar"
-    }
-}
-
-publisher {
-    apiKeys {
-        curseforge = System.getenv("CURSEFORGE_TOKEN")
-        modrinth = System.getenv("MODRINTH_TOKEN")
-    }
-
-    curseID = rootProject.curseforge_id
-    modrinthID = rootProject.modrinth_id
-    versionType = "release"
-    changelog = file("CHANGELOG.md").getText('UTF-8')
-    version = "$rootProject.version"
-    displayName = "VM Translation Update 1.21.3/4 $rootProject.version"
-    gameVersions = ["1.21.3", "1.21.4"]
-    curseEnvironment = "client"
-    loaders = ["fabric", "neoforge"]
-    artifact = fusejars
-
-    modrinthDepends {
-        required "cloth-config"
-    }
-
-    curseDepends {
-        required "cloth-config"
     }
 }
