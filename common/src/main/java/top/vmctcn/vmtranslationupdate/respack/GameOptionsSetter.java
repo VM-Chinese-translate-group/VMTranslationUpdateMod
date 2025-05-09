@@ -1,8 +1,8 @@
 package top.vmctcn.vmtranslationupdate.respack;
 
 import top.vmctcn.vmtranslationupdate.VMTranslationUpdate;
-import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
 import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
+import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
 import top.vmctcn.vmtucore.ModPlatform;
 import top.vmctcn.vmtucore.VMTUCore;
 import top.vmctcn.vmtucore.respack.GameOptionsWriter;
