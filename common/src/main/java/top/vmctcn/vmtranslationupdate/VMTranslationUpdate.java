@@ -2,9 +2,9 @@ package top.vmctcn.vmtranslationupdate;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 import top.vmctcn.vmtranslationupdate.modpack.ModpackInfo;
 import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
-import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
 public class VMTranslationUpdate {
     public static final String MOD_ID = "vmtranslationupdate";

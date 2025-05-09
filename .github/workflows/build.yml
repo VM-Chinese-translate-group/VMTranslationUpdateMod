@@ -14,6 +14,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 21
+
       - name: Cache
         uses: actions/cache@v4
         with:
@@ -22,6 +23,7 @@ jobs:
             ~/.gradle/wrapper
             .gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'build.gradle') }}
+
       - name: Build with Gradle
         run: |
           chmod +x gradlew
@@ -30,11 +32,11 @@ jobs:
       - name: Upload fabric artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: fabric-artifacts
+          name: fabric
           path: ${{ github.workspace }}/fabric/build/libs
 
       - name: Upload neoforge artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: neoforge-artifacts
+          name: neoforge
           path: ${{ github.workspace }}/neoforge/build/libs

@@ -9,11 +9,12 @@ import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
-import top.vmctcn.vmtranslationupdate.screen.SuggestModScreen;
 import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
-
+import top.vmctcn.vmtranslationupdate.modpack.ModpackInfo;
+import top.vmctcn.vmtranslationupdate.modpack.ModpackInfoReader;
 import top.vmctcn.vmtranslationupdate.modpack.VersionChecker;
+import top.vmctcn.vmtranslationupdate.screen.SuggestModScreen;
+import top.vmctcn.vmtranslationupdate.screen.SuggestScreenHelper;
 
 import java.net.URI;
 
@@ -23,6 +24,20 @@ public class ModEvents {
     public static void playerJoinEvent(ServerPlayerEntity player) {
         String localVersion = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getVersion();
         String onlineVersion = VersionChecker.getOnlineVersion();
+
+        if (ModConfigHelper.getConfig().testMode) {
+            ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
+            ModpackInfo.Translation translation = modpack.getTranslation();
+
+            player.sendMessage(Text.literal("==================== VMTU testMode ===================="), false);
+            player.sendMessage(Text.literal("Modpack Name: " + modpack.getName()), false);
+            player.sendMessage(Text.literal("Modpack Version: " + modpack.getVersion()), false);
+            player.sendMessage(Text.literal("Modpack Translation URL:§b " + translation.getUrl()), false);
+            player.sendMessage(Text.literal("Modpack Translation Update Check URL:§b " + translation.getUpdateCheckUrl()), false);
+            player.sendMessage(Text.literal("Modpack Translation Language: " + translation.getLanguage()), false);
+            player.sendMessage(Text.literal("Modpack Translation Version: " + translation.getVersion()), false);
+            player.sendMessage(Text.literal("Modpack Translation Resource Pack Name: " + translation.getResourcePackName()), false);
+        }
 
         if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {
             if (onlineVersion.isEmpty()) {
@@ -60,7 +75,13 @@ public class ModEvents {
         String language = MinecraftClient.getInstance().getLanguageManager().getLanguage();
 
         if ("zh_cn".equals(language)) {
-            MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
+            boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestScreenHelper.i18nUpdateModPresent;
+            boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestScreenHelper.vaultPatcherPresent;
+
+            // 只要有任何一个模组需要提示，就显示屏幕
+            if (needI18n || needVP) {
+                MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
+            }
         }
 
         firstTitleScreenShown = true;
