@@ -2,8 +2,6 @@ plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
     id "dev.architectury.loom" version "1.9-SNAPSHOT" apply false
     id "com.gradleup.shadow" version "8.+" apply false
-    id "com.hypherionmc.modutils.modpublisher" version "2.+"
-    id "com.hypherionmc.modutils.modfusioner" version "1.+"
 }
 
 architectury {
@@ -35,55 +33,12 @@ allprojects {
     repositories {
     }
 
-    tasks.withType(JavaCompile) {
+    tasks.withType(JavaCompile).configureEach {
         options.encoding = "UTF-8"
         options.release = 17
     }
 
     java {
         withSourcesJar()
-    }
-}
-
-fusioner {
-    packageGroup = rootProject.maven_group
-    mergedJarName = "${rootProject.archives_base_name}"
-    outputDirectory = "build/merged"
-    jarVersion = rootProject.version
-
-    forge {
-        projectName = "forge"
-        inputTaskName = "remapJar"
-    }
-
-    fabric {
-        projectName = "fabric"
-        inputTaskName = "remapJar"
-    }
-}
-
-publisher {
-    apiKeys {
-        curseforge(System.getenv("CURSEFORGE_TOKEN"))
-        modrinth(System.getenv("MODRINTH_TOKEN"))
-    }
-
-    curseID = rootProject.curseforge_id
-    modrinthID = rootProject.modrinth_id
-    versionType = "release"
-    changelog = file("CHANGELOG.md").getText('UTF-8')
-    version = "$rootProject.version"
-    displayName = "VM Translation Update 1.20.1 $rootProject.mod_version"
-    gameVersions = ["1.20", "1.20.1"]
-    curseEnvironment = "client"
-    loaders = ["fabric", "forge"]
-    artifact = fusejars
-
-    modrinthDepends {
-        required "cloth-config"
-    }
-
-    curseDepends {
-        required "cloth-config"
     }
 }

@@ -4,7 +4,7 @@ on: [ pull_request, push, workflow_dispatch ]
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -22,15 +22,11 @@ jobs:
             ~/.gradle/wrapper
             .gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'build.gradle') }}
+
       - name: Build with Gradle
         run: |
           chmod +x gradlew
           ./gradlew build
-
-      - name: Merge Fabric & Forge JARs
-        run: |
-          chmod +x gradlew
-          ./gradlew fusejars
 
       - name: Upload artifacts (fabric)
         uses: actions/upload-artifact@v4
@@ -43,9 +39,3 @@ jobs:
         with:
           name: forge
           path: ${{ github.workspace }}/forge/build/libs
-
-      - name: Upload artifacts (ModFusioner merged jar)
-        uses: actions/upload-artifact@v4
-        with:
-          name: merged
-          path: ${{ github.workspace }}/build/merged
