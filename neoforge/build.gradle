@@ -20,8 +20,9 @@ repositories {
 dependencies {
     neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
     modApi "me.shedaniel.cloth:cloth-config-neoforge:${rootProject.clothconfig_version}"
-    include(project(":core")) { transitive false }
-    implementation(project(":core")) { transitive false }
+
+    compileOnly("com.github.VM-Chinese-translate-group:VMTUCore:main-SNAPSHOT:all")
+    include(forgeRuntimeLibrary("com.github.VM-Chinese-translate-group:VMTUCore:main-SNAPSHOT:all"))
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
