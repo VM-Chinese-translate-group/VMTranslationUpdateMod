@@ -5,6 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import top.vmctcn.vmtranslationupdate.config.ModConfigHelper;
 
@@ -26,7 +27,10 @@ public class SuggestModScreen extends Screen {
         super.init();
 
         this.addDrawableChild(ButtonWidget.builder(SuggestScreenHelper.downloadButtonText, buttonWidget -> {
-            if (ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestScreenHelper.i18nUpdateModPresent) {
+            if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestScreenHelper.i18nUpdateModPresent) && (ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestScreenHelper.vaultPatcherPresent)) {
+                ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
+                ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
+            } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestScreenHelper.i18nUpdateModPresent) {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
             } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestScreenHelper.vaultPatcherPresent) {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
@@ -43,6 +47,7 @@ public class SuggestModScreen extends Screen {
 
         ScreenHelper.drawCenteredTextWithShadow(context, this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
         ScreenHelper.drawCenteredTextWithShadow(context, this.textRenderer, SuggestScreenHelper.getSuggestScreenText(), this.width / 2, 70, -1);
+        ScreenHelper.drawCenteredTextWithShadow(context, this.textRenderer, Text.translatable("vmtranslationupdate.warn.text2"), this.width / 2, 80, -1);
     }
 
     @Override
