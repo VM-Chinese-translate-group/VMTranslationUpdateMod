@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "top.vmctcn.vmtranslationupdate.fabric.mixin",
+  "package": "top.vmctcn.vmtu.mod.fabric.mixin",
   "compatibilityLevel": "JAVA_16",
   "minVersion": "0.8",
   "mixins": [

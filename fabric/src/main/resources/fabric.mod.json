@@ -17,10 +17,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "top.vmctcn.vmtranslationupdate.fabric.VMTranslationUpdateClientFabric"
+      "top.vmctcn.vmtu.mod.fabric.VMTranslationUpdateClientFabric"
     ],
     "modmenu": [
-      "top.vmctcn.vmtranslationupdate.fabric.ModMenuImpl"
+      "top.vmctcn.vmtu.mod.fabric.ModMenuImpl"
     ]
   },
   "mixins": [
