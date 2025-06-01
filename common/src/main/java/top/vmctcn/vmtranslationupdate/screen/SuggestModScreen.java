@@ -37,6 +37,8 @@ public class SuggestModScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        this.renderBackground(context);
+
         super.render(context, mouseX, mouseY, delta);
 
         ScreenHelper.drawCenteredTextWithShadow(context, this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
@@ -50,8 +52,8 @@ public class SuggestModScreen extends Screen {
         //Render header and footer separators
         RenderSystem.enableBlend();
         ScreenHelper.resetShaderColor(context);
-        ScreenHelper.drawGuiTexture(context, 0, 40 - 2, 0, 0, this.width, 2, 32);
-        ScreenHelper.drawGuiTexture(context,0, this.height - 50, 0, 0, this.width, 2, 32);
+        ScreenHelper.drawGuiTexture(context, 0, HEADER_HEIGHT, this.width, HEADER_HEIGHT + 4, 0, -16777216, 0);
+        ScreenHelper.drawGuiTexture(context,0, this.height - FOOTER_HEIGHT - 4, this.width, this.height - FOOTER_HEIGHT, 0, 0, -16777216);
         ScreenHelper.resetShaderColor(context);
     }
 
