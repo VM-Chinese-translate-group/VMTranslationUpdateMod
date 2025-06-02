@@ -19,7 +19,7 @@ subprojects {
             mappings "dev.architectury:yarn-mappings-patch-neoforge:${project.yarn_patch}"
         }
 
-        implementation("com.github.VM-Chinese-translate-group:VMTUCore:main-SNAPSHOT:all")
+        implementation("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
         implementation("com.google.auto.service:auto-service-annotations:1.1.1")
         annotationProcessor("com.google.auto.service:auto-service:1.1.1")
     }
