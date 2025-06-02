@@ -12,7 +12,8 @@
   "vmtranslationupdate.message.hover": "Click me to download the new version!",
 
   "vmtranslationupdate.warn.title": "%s not detected",
-  "vmtranslationupdate.warn.text": "%s is not yet installed, which may result in incomplete localization of some mods! Please click the button below to jump to the download page.",
+  "vmtranslationupdate.warn.text": "%s is not yet installed, which may result in incomplete localization of some mods!",
+  "vmtranslationupdate.warn.text2": "Please click the button below to jump to the download page.",
 
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
   "text.autoconfig.vmtranslationupdate.option.testMode": "Test Mode",
