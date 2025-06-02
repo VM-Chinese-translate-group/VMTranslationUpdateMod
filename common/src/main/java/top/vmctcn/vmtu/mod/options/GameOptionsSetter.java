@@ -13,14 +13,13 @@ import java.nio.file.Path;
 
 public class GameOptionsSetter {
     public static void init(Path gamePath) {
-        if (ModConfigHelper.getConfig().autoSwitchLanguage) {
+        if (ModConfigHelper.getConfig().autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
                 GameOptionsWriter writer = new GameOptionsWriter(gamePath.resolve("options.txt"));
                 String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
                 writer.switchLanguage(LanguageHelper.getFixedLanguage(lang));
-                VMTranslationUpdate.LOGGER.info("Successful to switch language: {}", lang);
             } catch (Exception e) {
-                VMTranslationUpdate.LOGGER.error("Failed to switch language: ", e);
+                VMTranslationUpdate.LOGGER.warn("Failed to switch language: ", e);
             }
         }
 

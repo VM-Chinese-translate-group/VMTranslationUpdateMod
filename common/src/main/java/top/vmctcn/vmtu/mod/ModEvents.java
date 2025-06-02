@@ -43,11 +43,12 @@ public class ModEvents {
             }
 
             if (!localVersion.equals(onlineVersion)) {
+                String updateUrl = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUrl();
                 player.sendMessage(Text.translatable("vmtranslationupdate.message.update", localVersion, onlineVersion));
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
-                        .append(Text.translatable(ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUrl())
+                        .append(Text.translatable(updateUrl)
                                 .setStyle(Style.EMPTY
-                                        .withClickEvent(GameEventHelper.clickOpenUrl(ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUrl()))
+                                        .withClickEvent(GameEventHelper.clickOpenUrl(updateUrl))
                                         .withHoverEvent(GameEventHelper.hoverShowText(Text.translatable("vmtranslationupdate.message.hover")))
                                         .withColor(Formatting.AQUA)
                                 ))
