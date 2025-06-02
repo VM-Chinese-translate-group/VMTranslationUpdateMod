@@ -1,8 +1,9 @@
-package top.vmctcn.vmtu.mod.helper;
+package top.vmctcn.vmtu.mod.options;
 
 import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
+import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 import top.vmctcn.vmtu.mod.modpack.ModpackInfoReader;
 import top.vmctcn.vmtu.core.VMTUCore;
 import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
@@ -10,7 +11,7 @@ import top.vmctcn.vmtu.core.pack.PackSource;
 
 import java.nio.file.Path;
 
-public class GameOptionsHelper {
+public class GameOptionsSetter {
     public static void init(Path gamePath) {
         if (ModConfigHelper.getConfig().autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {

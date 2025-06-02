@@ -11,7 +11,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
-import top.vmctcn.vmtu.mod.helper.GameOptionsHelper;
+import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
 @Mod(VMTranslationUpdate.MOD_ID)
 public class VMTranslationUpdateClientNeoForge {
@@ -21,7 +21,7 @@ public class VMTranslationUpdateClientNeoForge {
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
 
-            GameOptionsHelper.init(FMLPaths.GAMEDIR.get());
+            GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
 
             NeoHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 
