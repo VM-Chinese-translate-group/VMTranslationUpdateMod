@@ -4,17 +4,15 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.ClickEvent;
-import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
+import top.vmctcn.vmtu.mod.helper.GameEventHelper;
 import top.vmctcn.vmtu.mod.modpack.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.modpack.VersionChecker;
 import top.vmctcn.vmtu.mod.screen.SuggestModScreen;
-import top.vmctcn.vmtu.mod.helper.SuggestScreenHelper;
 
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
@@ -50,8 +48,8 @@ public class ModEvents {
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
                         .append(Text.translatable(updateUrl)
                                 .setStyle(Style.EMPTY
-                                        .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, updateUrl))
-                                        .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.translatable("vmtranslationupdate.message.hover")))
+                                        .withClickEvent(GameEventHelper.clickOpenUrl(updateUrl))
+                                        .withHoverEvent(GameEventHelper.hoverShowText(Text.translatable("vmtranslationupdate.message.hover")))
                                         .withColor(Formatting.AQUA)
                                 ))
                         .append(Text.translatable("vmtranslationupdate.message.update3"));
@@ -68,8 +66,8 @@ public class ModEvents {
         String language = MinecraftClient.getInstance().getLanguageManager().getLanguage();
 
         if ("zh_cn".equals(language)) {
-            boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestScreenHelper.i18nUpdateModPresent;
-            boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestScreenHelper.vaultPatcherPresent;
+            boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestModScreen.i18nUpdateModPresent;
+            boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestModScreen.vaultPatcherPresent;
 
             // 只要有任何一个模组需要提示，就显示屏幕
             if (needI18n || needVP) {
