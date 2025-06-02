@@ -69,4 +69,4 @@ testMode = false          # 供开发者使用的测试模式，会有更多日�
 
 本模组使用MIT许可证
 
-VMTUCore基于I18nUpdateMod3修改，使用AGPL许可证
+[VMTUCore](https://github.com/VM-Chinese-translate-group/VMTUCore)基于I18nUpdateMod3修改，使用AGPLv3许可证
