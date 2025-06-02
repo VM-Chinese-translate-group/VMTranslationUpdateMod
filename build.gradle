@@ -16,7 +16,7 @@ subprojects {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
         mappings "net.fabricmc:yarn:${rootProject.yarn_mappings}:v2"
 
-        implementation("com.github.VM-Chinese-translate-group:VMTUCore:main-SNAPSHOT:all")
+        implementation("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
         implementation("com.google.auto.service:auto-service-annotations:1.1.1")
         annotationProcessor("com.google.auto.service:auto-service:1.1.1")
     }
