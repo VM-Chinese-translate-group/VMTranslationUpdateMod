@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.gameoptions;
+package top.vmctcn.vmtu.mod.helper;
 
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 

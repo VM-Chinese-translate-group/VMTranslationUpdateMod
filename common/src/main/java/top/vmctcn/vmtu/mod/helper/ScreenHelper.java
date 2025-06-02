@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.screen;
+package top.vmctcn.vmtu.mod.helper;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;

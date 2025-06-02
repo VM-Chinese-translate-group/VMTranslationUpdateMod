@@ -6,6 +6,7 @@ import top.vmctcn.vmtu.core.pack.PackSource;
 import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
+import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 import top.vmctcn.vmtu.mod.modpack.ModpackInfoReader;
 
 import java.nio.file.Path;

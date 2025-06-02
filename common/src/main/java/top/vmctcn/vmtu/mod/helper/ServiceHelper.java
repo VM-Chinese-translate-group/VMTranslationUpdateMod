@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod;
+package top.vmctcn.vmtu.mod.helper;
 
 import java.util.ServiceLoader;
 
