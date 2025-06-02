@@ -83,12 +83,12 @@ public class SuggestModScreen extends Screen {
     private static Text getSuggestTitle() {
         Text titleText = Text.empty();
 
-        if (ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
+        if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
+            titleText = Text.translatable("vmtranslationupdate.warn.title", "I18nUpdateMod & VaultPatcher");
+        } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
             titleText = Text.translatable("vmtranslationupdate.warn.title", "I18nUpdateMod");
         } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
             titleText = Text.translatable("vmtranslationupdate.warn.title", "VaultPatcher");
-        } else if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
-            titleText = Text.translatable("vmtranslationupdate.warn.text", "I18nUpdateMod & VaultPatcher");
         }
         return titleText;
     }
@@ -96,12 +96,12 @@ public class SuggestModScreen extends Screen {
     private static Text getSuggestText() {
         Text context = Text.empty();
 
-        if (ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
+        if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
+            context = Text.translatable("vmtranslationupdate.warn.text", "I18nUpdateMod & VaultPatcher");
+        } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
             context = Text.translatable("vmtranslationupdate.warn.text", "I18nUpdateMod");
         } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
             context = Text.translatable("vmtranslationupdate.warn.text", "VaultPatcher");
-        } else if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
-            context = Text.translatable("vmtranslationupdate.warn.text", "I18nUpdateMod & VaultPatcher");
         }
         return context;
     }
