@@ -63,10 +63,8 @@ public class SuggestModScreen extends Screen {
         //Render header and footer separators
         RenderSystem.enableBlend();
         ScreenHelper.resetShaderColor(context);
-        Identifier headerIdentifier = MinecraftClient.getInstance().world == null ? Screen.HEADER_SEPARATOR_TEXTURE : Screen.INWORLD_HEADER_SEPARATOR_TEXTURE;
-        Identifier footerIdentifier = MinecraftClient.getInstance().world == null ? Screen.FOOTER_SEPARATOR_TEXTURE : Screen.INWORLD_FOOTER_SEPARATOR_TEXTURE;
-        ScreenHelper.drawGuiTexture(context, headerIdentifier, 0, 40 - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
-        ScreenHelper.drawGuiTexture(context, footerIdentifier, 0, this.height - 50, 0.0F, 0.0F, this.width, 2, 32, 2);
+        ScreenHelper.drawGuiTexture(context, Screen.HEADER_SEPARATOR_TEXTURE, 0, HEADER_HEIGHT - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
+        ScreenHelper.drawGuiTexture(context, Screen.FOOTER_SEPARATOR_TEXTURE, 0, this.height - FOOTER_HEIGHT, 0.0F, 0.0F, this.width, 2, 32, 2);
         ScreenHelper.resetShaderColor(context);
 
     }
