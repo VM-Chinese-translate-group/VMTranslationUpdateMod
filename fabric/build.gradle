@@ -23,6 +23,9 @@ dependencies {
     modApi "me.shedaniel.cloth:cloth-config-fabric:${rootProject.clothconfig_version}"
 
     modApi("com.terraformersmc:modmenu:${rootProject.modmenu_version}") { transitive false }
+    compileOnly("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
+    include("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
+    shadowCommon("org.slf4j:slf4j-api:2.0.17")
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
@@ -39,6 +42,7 @@ processResources {
 shadowJar {
     exclude "architectury.common.json"
 
+    relocate("org.slf4j", "vmtu.include.org.slf4j")
     configurations = [project.configurations.shadowCommon]
     archiveClassifier.set("dev-shadow")
 }

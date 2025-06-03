@@ -17,6 +17,9 @@ dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
     modApi "me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"
 
+    compileOnly("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
+    shadowCommon("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
+
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
@@ -33,6 +36,7 @@ shadowJar {
     exclude "fabric.mod.json"
     exclude "architectury.common.json"
 
+    relocate("top.vmctcn.vmtu.core", "vmtu.include.core")
     configurations = [project.configurations.shadowCommon]
     archiveClassifier.set("dev-shadow")
 }

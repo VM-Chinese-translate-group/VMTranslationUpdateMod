@@ -1,4 +1,4 @@
-package top.vmctcn.vmtranslationupdate.fabric.mixin;
+package top.vmctcn.vmtu.mod.fabric.mixin;
 
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.PlayerManager;
@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import top.vmctcn.vmtranslationupdate.ModEvents;
+import top.vmctcn.vmtu.mod.ModEvents;
 
 @Mixin(PlayerManager.class)
 public class PlayerManagerMixin {

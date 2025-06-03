@@ -1,9 +1,9 @@
-package top.vmctcn.vmtranslationupdate.fabric;
+package top.vmctcn.vmtu.mod.fabric;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.autoconfig.AutoConfig;
-import top.vmctcn.vmtranslationupdate.config.ModConfigs;
+import top.vmctcn.vmtu.mod.config.ModConfigs;
 
 public class ModMenuCompat implements ModMenuApi {
     @Override
