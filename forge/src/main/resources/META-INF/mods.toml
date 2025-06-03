@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[36,)"
+loaderVersion = "[32,)"
 issueTrackerURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
 license = "MIT"
 
@@ -10,19 +10,9 @@ displayName = "VM Translation Update"
 displayURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod"
 authors = "Wulian233, TexTrue, Litchiiiiiii"
 description = '''
-A mod for checking for updates to VM Chinese Group's localization patches
-and automatically downloading resource packs.
-
-一个用于检查汉化补丁更新和自动下载资源包的模组。
+The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.
 '''
-logoFile = "icon.png"
-
-[[dependencies.vmtranslationupdate]]
-modId = "forge"
-mandatory = true
-versionRange = "[36,)"
-ordering = "NONE"
-side = "BOTH"
+logoFile = "assets/vmtranslationupdate/icon.png"
 
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
