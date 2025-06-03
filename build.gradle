@@ -1,8 +1,6 @@
-import xyz.wagyourtail.unimined.api.minecraft.EnvType
-
 plugins {
-    id "xyz.wagyourtail.unimined" version "1.2.14-SNAPSHOT"
-    id "com.hypherionmc.modutils.modpublisher" version "2.+"
+    id "xyz.wagyourtail.unimined" version "1.3.14-SNAPSHOT"
+    id "com.gradleup.shadow" version "8.+"
 }
 
 archivesBaseName = project.archives_base_name
@@ -33,15 +31,41 @@ unimined.minecraft {
     defaultRemapJar = true
 }
 
-dependencies {
+configurations {
+    shade
+}
 
+repositories {
+    maven { url = "https://jitpack.io" }
+}
+
+dependencies {
+    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
+    shade("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
+}
+
+shadowJar {
+    relocate("top.vmctcn.vmtu.core", "vmtu.include.core")
+
+    configurations = [project.configurations.shade]
+    archiveClassifier.set("dev-shadow")
+}
+
+remapJar {
+    inputFile.set(shadowJar.archiveFile)
+    dependsOn shadowJar
+    archiveClassifier.set(null)
+}
+
+jar {
+    archiveClassifier.set("dev")
 }
 
 processResources {
     inputs.property "version", project.mod_version
     inputs.property "mc_version", project.minecraft_version
 
-    filesMatching("mcmod.info") {
+    filesMatching(["mcmod.info", "ModContexts.java"]) {
         expand "version": project.mod_version, "mc_version": project.minecraft_version
     }
 }
@@ -70,22 +94,4 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-}
-
-publisher {
-    apiKeys {
-        curseforge(System.getenv("CURSEFORGE_TOKEN"))
-        modrinth(System.getenv("MODRINTH_TOKEN"))
-    }
-
-    curseID = rootProject.curseforge_id
-    modrinthID = rootProject.modrinth_id
-    versionType = "release"
-    changelog = file("CHANGELOG.md").getText('UTF-8')
-    version = "$rootProject.version"
-    displayName = "VM Translation Update 1.12.2 $rootProject.version"
-    gameVersions = ["1.12.2"]
-    curseEnvironment = "client"
-    loaders = ["forge"]
-    artifact = remapJar
 }
