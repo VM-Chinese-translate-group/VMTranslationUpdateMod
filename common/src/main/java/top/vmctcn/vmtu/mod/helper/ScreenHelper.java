@@ -1,15 +1,15 @@
 package top.vmctcn.vmtu.mod.helper;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ConfirmLinkScreen;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
+import net.minecraft.util.math.ColorHelper;
 import org.apache.commons.lang3.StringUtils;
 
 public class ScreenHelper {
@@ -18,11 +18,11 @@ public class ScreenHelper {
     }
 
     public static void drawGuiTexture(DrawContext context, Identifier sprite, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight) {
-        context.drawTexture(RenderLayer::getGuiTextured, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
+        context.drawTexture(RenderPipelines.GUI_TEXTURED, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
     }
 
     public static void resetShaderColor() {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        int color = ColorHelper.fromFloats(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
     public static void openUrlOnScreen(MinecraftClient client, Screen screen, String url) {
