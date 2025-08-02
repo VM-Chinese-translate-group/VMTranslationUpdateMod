@@ -3,7 +3,7 @@ package top.vmctcn.vmtu.mod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -17,7 +17,11 @@ import top.vmctcn.vmtu.mod.screen.SuggestModScreen;
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
 
-    public static void playerJoinEvent(ServerPlayerEntity player) {
+    public static void playerJoinEvent() {
+        ClientPlayerEntity player = MinecraftClient.getInstance().player;
+
+        if (player == null) return;
+
         String localVersion = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getVersion();
         String onlineVersion = VersionChecker.getOnlineVersion();
 
@@ -44,7 +48,7 @@ public class ModEvents {
 
             if (!localVersion.equals(onlineVersion)) {
                 String updateUrl = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUrl();
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", localVersion, onlineVersion));
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", localVersion, onlineVersion), false);
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
                         .append(Text.translatable(updateUrl)
                                 .setStyle(Style.EMPTY
@@ -53,7 +57,7 @@ public class ModEvents {
                                         .withColor(Formatting.AQUA)
                                 ))
                         .append(Text.translatable("vmtranslationupdate.message.update3"));
-                player.sendMessage(message);
+                player.sendMessage(message, false);
             }
         }
     }

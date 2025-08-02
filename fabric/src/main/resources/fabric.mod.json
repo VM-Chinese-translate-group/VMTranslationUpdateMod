@@ -24,7 +24,7 @@
     ]
   },
   "mixins": [
-    "vmtranslationupdate.fabric.mixins.json"
+    "vmtranslationupdate.mixins.json"
   ],
   "depends": {
     "fabric": "*",
