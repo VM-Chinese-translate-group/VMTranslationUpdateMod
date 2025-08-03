@@ -1,18 +1,21 @@
 package top.vmctcn.vmtu.mod.neoforge;
 
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import me.shedaniel.autoconfig.AutoConfig;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.server.command.ServerCommandSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent.Init.Pre;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
-import top.vmctcn.vmtu.mod.command.ModCommands;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
@@ -38,9 +41,17 @@ public class VMTranslationUpdateClientNeoForge {
                 }
             });
 
-            NeoForge.EVENT_BUS.addListener(RegisterCommandsEvent.class, event -> {;
-                ModCommands.VMTUCommand();
-            });
+            NeoForge.EVENT_BUS.addListener((RegisterClientCommandsEvent event) -> event.getDispatcher().register(
+                    LiteralArgumentBuilder.<ServerCommandSource>literal("vmtu")
+                            .then(LiteralArgumentBuilder.<ServerCommandSource>literal("check")
+                                    .executes(context -> {
+                                        if (MinecraftClient.getInstance().player != null) {
+                                            ModEvents.playerJoinEvent(MinecraftClient.getInstance().player);
+                                        }
+                                        return Command.SINGLE_SUCCESS;
+                                    })
+                            )
+            ));
         }
     }
 }

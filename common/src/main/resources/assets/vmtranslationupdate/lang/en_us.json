@@ -8,7 +8,7 @@
   "vmtranslationupdate.message.update": "[VM Translation Team]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!",
   "vmtranslationupdate.message.update2": "Please click on the right ",
   "vmtranslationupdate.message.update3": " to download the new version.",
-  "vmtranslationupdate.message.update_modpack": "Note: This translation patch update is based on a newer modpack version. Please update the modpack first before reinstalling the translation! Otherwise, compatibility issues may occur" ,
+  "vmtranslationupdate.message.update_modpack": "Note: This translation patch update is based on a newer modpack version. §cPlease update the modpack first before reinstalling the translation!§r Otherwise, compatibility issues may occur" ,
   "vmtranslationupdate.message.update_modpack_hint": "You are currently playing with modpack version %s. Please update to version %s to match the translation patch!",
   "vmtranslationupdate.message.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
   "vmtranslationupdate.message.hover": "Click me to download the new version!",

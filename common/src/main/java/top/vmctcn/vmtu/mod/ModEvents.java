@@ -3,7 +3,6 @@ package top.vmctcn.vmtu.mod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -51,8 +50,11 @@ public class ModEvents {
 
             boolean translationUpdateNeeded = !localTranslationVersion.equals(onlineInfo.translationVersion());
             boolean modpackUpdateNeeded = !onlineInfo.modpackVersion().isEmpty() && !localModpackVersion.equals(onlineInfo.modpackVersion());
+            Text coloredLocalVer = Text.literal(localTranslationVersion).styled(s -> s.withColor(Formatting.YELLOW));
+            Text coloredOnlineVer = Text.literal(onlineInfo.translationVersion()).styled(s -> s.withColor(Formatting.YELLOW));
+
             if (translationUpdateNeeded) {
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", localTranslationVersion, onlineInfo.translationVersion()), false);
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", coloredLocalVer, coloredOnlineVer), false);
                 String updateUrl = translation.getUrl();
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
                         .append(Text.translatable(updateUrl)
@@ -65,8 +67,10 @@ public class ModEvents {
                 player.sendMessage(message, false);
 
                 if (modpackUpdateNeeded){
+                    Text coloredLocalModpackVer = Text.literal(localModpackVersion).styled(s -> s.withColor(Formatting.YELLOW));
+                    Text coloredOnlineModpackVer = Text.literal(onlineInfo.modpackVersion()).styled(s -> s.withColor(Formatting.YELLOW));
                     player.sendMessage(Text.translatable("vmtranslationupdate.message.update_modpack"), false);
-                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update_modpack_hint", localModpackVersion, onlineInfo.modpackVersion()), false);
+                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update_modpack_hint", coloredLocalModpackVer, coloredOnlineModpackVer), false);
                 }
             }
         }

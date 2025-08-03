@@ -5,11 +5,11 @@
   "modmenu.nameTranslation.vmtranslationupdate": "VM汉化更新",
   "modmenu.descriptionTranslation.vmtranslationupdate": "VM汉化组用于检查汉化更新和一些其他实用功能的模组",
 
-  "vmtranslationupdate.message.update": "[VM汉化组]：发现汉化更新，当前为 %s，最新版为 %s。请及时更新您的汉化！",
+  "vmtranslationupdate.message.update": "[VM汉化组]：发现汉化更新，当前汉化版本为%s，最新版为%s。请及时更新您的汉化！",
   "vmtranslationupdate.message.update2": "请点击右侧",
   "vmtranslationupdate.message.update3": "下载新版本。",
-  "vmtranslationupdate.message.update_modpack": "注：本次汉化基于新版整合包适配，请先更新整合包后再重新安装汉化！否则可能造成不兼容问题" ,
-  "vmtranslationupdate.message.update_modpack_hint": "当前游玩的整合包版本为 %s，请把整合包更新到 %s 版本以匹配汉化！",
+  "vmtranslationupdate.message.update_modpack": "注：本次汉化基于新版整合包适配，§c请先更新整合包后再重新安装汉化！§r否则可能造成不兼容问题" ,
+  "vmtranslationupdate.message.update_modpack_hint": "当前游玩的整合包版本为%s，请把整合包更新到%s版本以匹配汉化！",
   "vmtranslationupdate.message.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
   "vmtranslationupdate.message.hover": "点我到官网下载新版本！",
 

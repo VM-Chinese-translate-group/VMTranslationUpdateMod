@@ -1,14 +1,16 @@
 package top.vmctcn.vmtu.mod.fabric;
 
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.MinecraftClient;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
-import top.vmctcn.vmtu.mod.command.ModCommands;
 import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
 public class VMTranslationUpdateClientFabric implements ClientModInitializer {
@@ -17,10 +19,6 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
         VMTranslationUpdate.init();
 
         GameOptionsSetter.init(FabricLoader.getInstance().getGameDir());
-
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-            ModCommands.VMTUCommand();
-        });
 
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
             if (VMTranslationUpdate.isChineseLanguage()) {
@@ -33,5 +31,15 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
                 ModEvents.playerJoinEvent(client.player);
             }
         });
+
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher.register(
+                LiteralArgumentBuilder.<FabricClientCommandSource>literal("vmtu")
+                        .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("check")
+                                .executes(context -> {
+                                    ModEvents.playerJoinEvent(MinecraftClient.getInstance().player);
+                                    return Command.SINGLE_SUCCESS;
+                                })
+                        )
+        ));
     }
 }

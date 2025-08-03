@@ -26,6 +26,12 @@
 2. 可配置是否开启自动下载并启用VM模组汉化资源包。
 3. 可配置自动修改游戏语言。
 4. 可配置是否检测安装i18nUpdateMod或Vault Patch补全汉化模组。如未安装将弹出提示页面引导下载（可按esc退出）
+5. 优化：切换语言时懒加载，不再重载所有游戏资源，仅重载语言文件
+6. 优化：添加备选语言功能，当所选语言无对应翻译时尝试使用备选语言，而非英语（如简中->繁中->港中->英语）
+
+其中，检测模组安装和汉化更新提醒的功能只会在游戏语言为中文环境（简中、繁中、港中、文言文）下启用。
+
+此外还新增了一条仅客户端指令`/vmtu check`，用于手动触发汉化更新检测。
 
 ## 使用与配置文件
 
@@ -41,7 +47,7 @@ translationPackSource = "GITEE"       # 汉化资源包下载源（目前仅一�
 checkModPackTranslationUpdate = true  # 默认检查汉化更新
 i18nUpdateModCheck = true # 默认检查是否安装i18nUpdateMod模组
 vaultPatcherCheck = false # 默认不检查是否安装Vault Patch模组
-testMode = false          # 供开发者使用的测试模式，会有更多日志
+testMode = false          # 供开发者使用的测试模式，会有更多日志，并在游戏聊天栏输出配置信息
 ```
 
 `modpackinfo.json`是整合包标识文件，位于游戏根目录（`.minecraft`）内容如下所示：
@@ -49,7 +55,7 @@ testMode = false          # 供开发者使用的测试模式，会有更多日�
 {
   "modpack": {
     "name": "ExampleModpack", // 整合包名称（未使用）
-    "version": "v0.1.0",      // 整合包版本（未使用）
+    "version": "v0.1.0",      // 整合包版本
     "translation": {
       "url": "https://vmct-cn.top/modpacks/example/", // 汉化下载官网页面
       "language": "zh_cn",    // 语言，用于语言切换功能
@@ -65,7 +71,7 @@ testMode = false          # 供开发者使用的测试模式，会有更多日�
 
 ## 其他
 
-作者：Wulian233（捂脸）、TexTrue、Lichiiiiiii
+作者：Wulian233（捂脸）、TexTrue
 
 本模组使用MIT许可证
 
