@@ -20,7 +20,7 @@ config = "vmtranslationupdate.mixins.json"
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.6,)"
+versionRange = "[1.21.5,1.21.6)"
 ordering = "NONE"
 side = "BOTH"
 
