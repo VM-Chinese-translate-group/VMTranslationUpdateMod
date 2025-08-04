@@ -23,7 +23,7 @@ public class LanguageHelper {
                 try {
                     return (Locale) f.get(Locale.getDefault());
                 } catch (IllegalAccessException e) {
-                    VMTranslationUpdate.LOGGER.error("Failed to get locale from field " + f.getName(), e);
+                    VMTranslationUpdate.LOGGER.error("Failed to get locale from field {}", f.getName(), e);
                     return null;
                 }
             }).filter(Objects::nonNull).filter(l -> !l.getLanguage().isEmpty() && !l.getCountry().isEmpty()).toArray(Locale[]::new); // Get preset locales from java
@@ -36,7 +36,7 @@ public class LanguageHelper {
             }
 
             /* Language should be fixed */
-            VMTranslationUpdate.LOGGER.info("Switching language to " + language + (!fixedFrom.equals(language) ? ", fixed from " + fixedFrom + "." /* Log the unfixed language */ : "..."));
+            VMTranslationUpdate.LOGGER.info("Switching language to {}{}", language, !fixedFrom.equals(language) ? ", fixed from " + fixedFrom + "." /* Log the unfixed language */ : "...");
             return language;
         }
 

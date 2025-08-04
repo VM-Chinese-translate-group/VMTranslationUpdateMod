@@ -3,7 +3,7 @@ package top.vmctcn.vmtu.mod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -17,14 +17,18 @@ import top.vmctcn.vmtu.mod.screen.SuggestModScreen;
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
 
-    public static void playerJoinEvent(ServerPlayerEntity player) {
-        String localVersion = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getVersion();
-        String onlineVersion = VersionChecker.getOnlineVersion();
+    public static void playerJoinEvent(PlayerEntity player) {
+        if (player == null) return;
+
+        ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
+        ModpackInfo.Translation translation = modpack.getTranslation();
+
+        String localTranslationVersion = translation.getVersion();
+        String localModpackVersion = modpack.getVersion();
+
+        VersionChecker.OnlineVersionInfo onlineInfo = VersionChecker.getOnlineVersionInfo();
 
         if (ModConfigHelper.getConfig().testMode) {
-            ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
-            ModpackInfo.Translation translation = modpack.getTranslation();
-
             player.sendMessage(Text.literal("==================== VMTU testMode ===================="), false);
             player.sendMessage(Text.literal("Modpack Name: " + modpack.getName()), false);
             player.sendMessage(Text.literal("Modpack Version: " + modpack.getVersion()), false);
@@ -33,18 +37,25 @@ public class ModEvents {
             player.sendMessage(Text.literal("Modpack Translation Language: " + translation.getLanguage()), false);
             player.sendMessage(Text.literal("Modpack Translation Version: " + translation.getVersion()), false);
             player.sendMessage(Text.literal("Modpack Translation Resource Pack Name: " + translation.getResourcePackName()), false);
+            player.sendMessage(Text.literal("Online Translation Version: " + onlineInfo.translationVersion()), false);
+            player.sendMessage(Text.literal("Online Modpack Version: " + onlineInfo.modpackVersion()), false);
         }
 
         if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {
-            if (onlineVersion.isEmpty()) {
+            if (!onlineInfo.isValid()) {
                 player.sendMessage(Text.translatable("vmtranslationupdate.message.error"), false);
                 VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
                 return;
             }
 
-            if (!localVersion.equals(onlineVersion)) {
-                String updateUrl = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUrl();
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", localVersion, onlineVersion));
+            boolean translationUpdateNeeded = !localTranslationVersion.equals(onlineInfo.translationVersion());
+            boolean modpackUpdateNeeded = !onlineInfo.modpackVersion().isEmpty() && !localModpackVersion.equals(onlineInfo.modpackVersion());
+            Text coloredLocalVer = Text.literal(localTranslationVersion).styled(s -> s.withColor(Formatting.YELLOW));
+            Text coloredOnlineVer = Text.literal(onlineInfo.translationVersion()).styled(s -> s.withColor(Formatting.YELLOW));
+
+            if (translationUpdateNeeded) {
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", coloredLocalVer, coloredOnlineVer), false);
+                String updateUrl = translation.getUrl();
                 Text message = Text.translatable("vmtranslationupdate.message.update2")
                         .append(Text.translatable(updateUrl)
                                 .setStyle(Style.EMPTY
@@ -53,7 +64,14 @@ public class ModEvents {
                                         .withColor(Formatting.AQUA)
                                 ))
                         .append(Text.translatable("vmtranslationupdate.message.update3"));
-                player.sendMessage(message);
+                player.sendMessage(message, false);
+
+                if (modpackUpdateNeeded){
+                    Text coloredLocalModpackVer = Text.literal(localModpackVersion).styled(s -> s.withColor(Formatting.YELLOW));
+                    Text coloredOnlineModpackVer = Text.literal(onlineInfo.modpackVersion()).styled(s -> s.withColor(Formatting.YELLOW));
+                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update_modpack"), false);
+                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update_modpack_hint", coloredLocalModpackVer, coloredOnlineModpackVer), false);
+                }
             }
         }
     }
@@ -63,16 +81,12 @@ public class ModEvents {
             return;
         }
 
-        String language = MinecraftClient.getInstance().getLanguageManager().getLanguage();
+        boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestModScreen.i18nUpdateModPresent;
+        boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestModScreen.vaultPatcherPresent;
 
-        if ("zh_cn".equals(language)) {
-            boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestModScreen.i18nUpdateModPresent;
-            boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestModScreen.vaultPatcherPresent;
-
-            // 只要有任何一个模组需要提示，就显示屏幕
-            if (needI18n || needVP) {
-                MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
-            }
+        // 只要有任何一个模组需要提示，就显示屏幕
+        if (needI18n || needVP) {
+            MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
         }
 
         firstTitleScreenShown = true;
