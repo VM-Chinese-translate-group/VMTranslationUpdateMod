@@ -1,15 +1,19 @@
 package top.vmctcn.vmtu.mod.neoforge;
 
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import me.shedaniel.autoconfig.AutoConfig;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.server.command.ServerCommandSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.fml.loading.FMLPaths;
-import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
+import net.neoforged.neoforge.client.event.ScreenEvent.Init.Pre;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
@@ -25,13 +29,29 @@ public class VMTranslationUpdateClientNeoForge {
 
             NeoHelper.registerConfigScreen(modContainer, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 
-            NeoForge.EVENT_BUS.addListener(PlayerEvent.PlayerLoggedInEvent.class, event -> {
-                ModEvents.playerJoinEvent((ServerPlayerEntity) event.getEntity());
+            NeoForge.EVENT_BUS.addListener(PlayerLoggedInEvent.class, event -> {
+                if (VMTranslationUpdate.isChineseLanguage()) {
+                    ModEvents.playerJoinEvent(event.getEntity());
+                }
             });
 
-            NeoForge.EVENT_BUS.addListener(ScreenEvent.Init.Pre.class, event -> {
-                ModEvents.screenAfterInitEvent(event.getScreen());
+            NeoForge.EVENT_BUS.addListener(Pre.class, event -> {
+                if (VMTranslationUpdate.isChineseLanguage()) {
+                    ModEvents.screenAfterInitEvent(event.getScreen());
+                }
             });
+
+            NeoForge.EVENT_BUS.addListener((RegisterClientCommandsEvent event) -> event.getDispatcher().register(
+                    LiteralArgumentBuilder.<ServerCommandSource>literal("vmtu")
+                            .then(LiteralArgumentBuilder.<ServerCommandSource>literal("check")
+                                    .executes(context -> {
+                                        if (MinecraftClient.getInstance().player != null) {
+                                            ModEvents.playerJoinEvent(MinecraftClient.getInstance().player);
+                                        }
+                                        return Command.SINGLE_SUCCESS;
+                                    })
+                            )
+            ));
         }
     }
 }

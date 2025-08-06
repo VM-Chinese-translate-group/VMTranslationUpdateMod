@@ -8,11 +8,14 @@ modId = "vmtranslationupdate"
 version = "${version}"
 displayName = "VM Translation Update"
 displayURL = "https://vmct-cn.top/vmtu"
-authors = "Wulian233, TexTrue, Litchiiiiiii"
+authors = "Wulian233, TexTrue"
 description = '''
 The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.
 '''
 logoFile = "assets/vmtranslationupdate/icon.png"
+
+[[mixins]]
+config = "vmtranslationupdate.mixins.json"
 
 [[dependencies.vmtranslationupdate]]
 modId = "minecraft"
