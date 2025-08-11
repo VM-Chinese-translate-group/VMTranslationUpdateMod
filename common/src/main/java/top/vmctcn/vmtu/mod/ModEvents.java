@@ -46,6 +46,7 @@ public class ModEvents {
             player.sendMessage(Text.literal("Modpack Translation Resource Pack Name: " + translation.getResourcePackName()), false);
             player.sendMessage(Text.literal("Online Translation Version: " + onlineVersion.translationVersion()), false);
             player.sendMessage(Text.literal("Online Modpack Version: " + onlineVersion.modpackVersion()), false);
+            player.sendMessage(Text.literal("======================================================="), false);
         }
 
         if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {

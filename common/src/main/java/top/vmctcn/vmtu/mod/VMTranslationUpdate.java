@@ -32,6 +32,7 @@ public class VMTranslationUpdate {
             LOGGER.warn("Meta Version: {}", MetadataReader.getMetadata().getMetaVersion());
             LOGGER.warn("Modpack Online Version: {}", meta.getModpackVersion());
             LOGGER.warn("Modpack Online Translation Version: {}", meta.getTranslationVersion());
+            LOGGER.warn("=======================================================");
         }
     }
 }
