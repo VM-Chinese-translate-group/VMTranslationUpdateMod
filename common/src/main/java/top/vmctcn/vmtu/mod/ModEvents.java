@@ -15,8 +15,6 @@ import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.modpack.VersionChecker;
 import top.vmctcn.vmtu.mod.screen.SuggestModScreen;
 
-import java.util.Set;
-
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
 
@@ -89,17 +87,12 @@ public class ModEvents {
             return;
         }
 
-        Set<String> chineseLangs = Set.of("zh_cn", "zh_tw", "zh_hk", "lzh");
-        String language = MinecraftClient.getInstance().getLanguageManager().getLanguage();
+        boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestModScreen.i18nUpdateModPresent;
+        boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestModScreen.vaultPatcherPresent;
 
-        if (chineseLangs.contains(language)) {
-            boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestModScreen.i18nUpdateModPresent;
-            boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestModScreen.vaultPatcherPresent;
-
-            // 只要有任何一个模组需要提示，就显示屏幕
-            if (needI18n || needVP) {
-                MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
-            }
+        // 只要有任何一个模组需要提示，就显示屏幕
+        if (needI18n || needVP) {
+            MinecraftClient.getInstance().setScreen(new SuggestModScreen(screen));
         }
 
         firstTitleScreenShown = true;

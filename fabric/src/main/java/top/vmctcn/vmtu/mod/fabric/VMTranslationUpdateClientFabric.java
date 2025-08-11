@@ -10,6 +10,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.gameoptions.GameOptionsSetter;
+import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 
 public class VMTranslationUpdateClientFabric implements ClientModInitializer {
     @Override
@@ -18,9 +19,10 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
 
         GameOptionsSetter.init(FabricLoader.getInstance().getGameDir());
 
-        ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> ModEvents.screenAfterInitEvent(screen));
-
-        ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> ModEvents.playerJoinEvent(client.player));
+        if (LanguageHelper.isChineseLanguage()) {
+            ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> ModEvents.screenAfterInitEvent(screen));
+            ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> ModEvents.playerJoinEvent(client.player));
+        }
 
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher.register(
                 ClientCommandManager.literal("vmtu")

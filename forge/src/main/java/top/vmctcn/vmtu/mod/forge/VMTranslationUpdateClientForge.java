@@ -14,6 +14,7 @@ import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.gameoptions.GameOptionsSetter;
+import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 
 @Mod(VMTranslationUpdate.MOD_ID)
 public class VMTranslationUpdateClientForge {
@@ -27,8 +28,10 @@ public class VMTranslationUpdateClientForge {
 
             ForgeHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 
-            MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> ModEvents.playerJoinEvent(event.getEntity()));
-            MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> ModEvents.screenAfterInitEvent(event.getScreen()));
+            if (LanguageHelper.isChineseLanguage()) {
+                MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> ModEvents.playerJoinEvent(event.getEntity()));
+                MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> ModEvents.screenAfterInitEvent(event.getScreen()));
+            }
             MinecraftForge.EVENT_BUS.<RegisterClientCommandsEvent>addListener(event -> event.getDispatcher().register(
                     CommandManager.literal("vmtu")
                             .then(CommandManager.literal("check")
