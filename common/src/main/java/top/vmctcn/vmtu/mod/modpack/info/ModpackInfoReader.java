@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.info;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,10 +19,6 @@ public class ModpackInfoReader {
     private static final Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
 
     static {
-        init();
-    }
-
-    public static void init() {
         if (Files.exists(modpackInfoPath)) {
             try (Reader reader = Files.newBufferedReader(modpackInfoPath, StandardCharsets.UTF_8)) {
                 modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
@@ -43,14 +39,13 @@ public class ModpackInfoReader {
     private static void generateDefaultModpackInfo() {
         modpackInfo = new ModpackInfo();
         modpackInfo.modpack = new ModpackInfo.Modpack();
-        modpackInfo.modpack.name = "ExampleModpack";
+        modpackInfo.modpack.name = "example";
         modpackInfo.modpack.version = "v0.1.0";
 
         modpackInfo.modpack.translation = new ModpackInfo.Translation();
         modpackInfo.modpack.translation.url = "https://vmct-cn.top/modpacks/example/";
         modpackInfo.modpack.translation.language = "zh_cn";
         modpackInfo.modpack.translation.version = "1.0.0";
-        modpackInfo.modpack.translation.updateCheckUrl = "https://gitee.com/Wulian233/vmtu/raw/main/update/example.txt";
         modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.19及以上";
 
         try {

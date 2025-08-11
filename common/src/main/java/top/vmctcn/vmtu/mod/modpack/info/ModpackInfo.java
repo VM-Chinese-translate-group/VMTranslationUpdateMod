@@ -1,4 +1,6 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.info;
+
+import org.jetbrains.annotations.Nullable;
 
 public class ModpackInfo {
     Modpack modpack;
@@ -29,7 +31,7 @@ public class ModpackInfo {
         String url;
         String language;
         String version;
-        String updateCheckUrl;
+        @Nullable String updateCheckUrl;
         String resourcePackName;
 
         public String getUrl() {
@@ -44,7 +46,7 @@ public class ModpackInfo {
             return version;
         }
 
-        public String getUpdateCheckUrl() {
+        public @Nullable String getUpdateCheckUrl() {
             return updateCheckUrl;
         }
 

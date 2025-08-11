@@ -2,7 +2,6 @@ package top.vmctcn.vmtu.mod.neoforge;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.command.ServerCommandSource;
 import net.neoforged.api.distmarker.Dist;
@@ -16,7 +15,8 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
-import top.vmctcn.vmtu.mod.config.ModConfigs;
+import top.vmctcn.vmtu.mod.config.ModConfigHelper;
+import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
 @Mod(value = VMTranslationUpdate.MOD_ID, dist = Dist.CLIENT)
@@ -27,16 +27,15 @@ public class VMTranslationUpdateClientNeoForge {
 
             GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
 
-            NeoHelper.registerConfigScreen(modContainer, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
+            NeoHelper.registerConfigScreen(modContainer, ModConfigHelper::setConfigScreen);
 
             NeoForge.EVENT_BUS.addListener(PlayerLoggedInEvent.class, event -> {
-                if (VMTranslationUpdate.isChineseLanguage()) {
+                if (LanguageHelper.isChineseLanguage()) {
                     ModEvents.playerJoinEvent(event.getEntity());
                 }
             });
-
             NeoForge.EVENT_BUS.addListener(Pre.class, event -> {
-                if (VMTranslationUpdate.isChineseLanguage()) {
+                if (LanguageHelper.isChineseLanguage()) {
                     ModEvents.screenAfterInitEvent(event.getScreen());
                 }
             });
@@ -46,7 +45,7 @@ public class VMTranslationUpdateClientNeoForge {
                             .then(LiteralArgumentBuilder.<ServerCommandSource>literal("check")
                                     .executes(context -> {
                                         if (MinecraftClient.getInstance().player != null) {
-                                            ModEvents.playerJoinEvent(MinecraftClient.getInstance().player);
+                                            ModEvents.playerJoinEvent(context.getSource().getPlayer());
                                         }
                                         return Command.SINGLE_SUCCESS;
                                     })
