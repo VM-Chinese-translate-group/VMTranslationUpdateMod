@@ -2,6 +2,8 @@ package top.vmctcn.vmtu.mod.modpack.info;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+
 public class ModpackInfo {
     Modpack modpack;
 
@@ -30,6 +32,7 @@ public class ModpackInfo {
     public static class Translation {
         String url;
         String language;
+        ArrayList<String> supportLanguages;
         String version;
         @Nullable String updateCheckUrl;
         String resourcePackName;
@@ -40,6 +43,10 @@ public class ModpackInfo {
 
         public String getLanguage() {
             return language;
+        }
+
+        public ArrayList<String> getSupportLanguages() {
+            return supportLanguages;
         }
 
         public String getVersion() {

@@ -12,6 +12,7 @@
   "vmtranslationupdate.message.update_modpack_hint": "當前遊玩的模組包版本為%s，請把模組包更新到%s版本以匹配中文更新檔！",
   "vmtranslationupdate.message.error": "[VM翻譯組]：錯誤！漢化更新檢測出現問題。",
   "vmtranslationupdate.message.hover": "點我到官網下載新版本！",
+  "vmtranslationupdate.message.not_support": "漢化補丁不支持當前語言，請切換到以下語言：",
 
   "vmtranslationupdate.warn.title": "未檢測到 %s 模組",
   "vmtranslationupdate.warn.text": "%s 尚未安裝，這可能導致某些模組§c中文更新檔不完全§r！",
