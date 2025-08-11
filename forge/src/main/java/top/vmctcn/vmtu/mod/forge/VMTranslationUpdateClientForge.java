@@ -1,7 +1,6 @@
 package top.vmctcn.vmtu.mod.forge;
 
 import com.mojang.brigadier.Command;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.server.command.CommandManager;
 import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.client.event.ScreenEvent;
@@ -12,7 +11,7 @@ import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.loading.FMLPaths;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
-import top.vmctcn.vmtu.mod.config.ModConfigs;
+import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.gameoptions.GameOptionsSetter;
 import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 
@@ -26,12 +25,18 @@ public class VMTranslationUpdateClientForge {
 
             GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
 
-            ForgeHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
+            ForgeHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, ModConfigHelper::setConfigScreen);
 
-            if (LanguageHelper.isChineseLanguage()) {
-                MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> ModEvents.playerJoinEvent(event.getEntity()));
-                MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> ModEvents.screenAfterInitEvent(event.getScreen()));
-            }
+            MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
+                if (LanguageHelper.isChineseLanguage()) {
+                    ModEvents.playerJoinEvent(event.getEntity());
+                }
+            });
+            MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> {
+                if (LanguageHelper.isChineseLanguage()) {
+                    ModEvents.screenAfterInitEvent(event.getScreen());
+                }
+            });
             MinecraftForge.EVENT_BUS.<RegisterClientCommandsEvent>addListener(event -> event.getDispatcher().register(
                     CommandManager.literal("vmtu")
                             .then(CommandManager.literal("check")

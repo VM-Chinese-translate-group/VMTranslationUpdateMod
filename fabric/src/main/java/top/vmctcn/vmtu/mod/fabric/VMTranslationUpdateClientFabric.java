@@ -19,10 +19,17 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
 
         GameOptionsSetter.init(FabricLoader.getInstance().getGameDir());
 
-        if (LanguageHelper.isChineseLanguage()) {
-            ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> ModEvents.screenAfterInitEvent(screen));
-            ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> ModEvents.playerJoinEvent(client.player));
-        }
+
+        ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
+            if (LanguageHelper.isChineseLanguage()) {
+                ModEvents.screenAfterInitEvent(screen);
+            }
+        });
+        ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
+            if (LanguageHelper.isChineseLanguage()) {
+                ModEvents.playerJoinEvent(client.player);
+            }
+        });
 
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher.register(
                 ClientCommandManager.literal("vmtu")
