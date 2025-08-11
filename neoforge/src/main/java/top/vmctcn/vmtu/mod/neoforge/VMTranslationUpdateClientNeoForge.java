@@ -44,9 +44,7 @@ public class VMTranslationUpdateClientNeoForge {
                     LiteralArgumentBuilder.<ServerCommandSource>literal("vmtu")
                             .then(LiteralArgumentBuilder.<ServerCommandSource>literal("check")
                                     .executes(context -> {
-                                        if (MinecraftClient.getInstance().player != null) {
-                                            ModEvents.playerJoinEvent(context.getSource().getPlayer());
-                                        }
+                                        ModEvents.playerJoinEvent(context.getSource().getPlayer());
                                         return Command.SINGLE_SUCCESS;
                                     })
                             )
