@@ -1,7 +1,9 @@
 package top.vmctcn.vmtu.mod.forge;
 
+import com.mojang.brigadier.Command;
 import me.shedaniel.autoconfig.AutoConfig;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.command.CommandManager;
+import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -25,13 +27,17 @@ public class VMTranslationUpdateClientForge {
 
             ForgeHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 
-            MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
-                ModEvents.playerJoinEvent((ServerPlayerEntity) event.getEntity());
-            });
-
-            MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> {
-                ModEvents.screenAfterInitEvent(event.getScreen());
-            });
+            MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> ModEvents.playerJoinEvent(event.getEntity()));
+            MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> ModEvents.screenAfterInitEvent(event.getScreen()));
+            MinecraftForge.EVENT_BUS.<RegisterClientCommandsEvent>addListener(event -> event.getDispatcher().register(
+                    CommandManager.literal("vmtu")
+                            .then(CommandManager.literal("check")
+                                    .executes(context -> {
+                                        ModEvents.playerJoinEvent(context.getSource().getPlayer());
+                                        return Command.SINGLE_SUCCESS;
+                                    })
+                            )
+            ));
         }
     }
 }

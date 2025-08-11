@@ -1,6 +1,10 @@
 package top.vmctcn.vmtu.mod.modpack;
 
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
+import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
+import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
+import top.vmctcn.vmtu.mod.modpack.meta.Metadata;
+import top.vmctcn.vmtu.mod.modpack.meta.MetadataReader;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,21 +13,32 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
 public class VersionChecker {
-    public static String getOnlineVersion() {
-        try {
-            URI uri = URI.create(ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getUpdateCheckUrl());
-            URLConnection connection = uri.toURL().openConnection();
+    public static OnlineVersion getOnlineVersion() {
+        ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
+        String updateCheckUrl = modpackInfo.getTranslation().getUpdateCheckUrl();
+        if (updateCheckUrl != null) {
+            try {
+                URI uri = URI.create(updateCheckUrl);
+                URLConnection connection = uri.toURL().openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+                connection.setConnectTimeout(10000);
 
-            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0";
-            connection.setRequestProperty("User-Agent", userAgent);
-            connection.setConnectTimeout(10000);
-
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
-                return reader.readLine();
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
+                    String translationVersion = reader.readLine();
+                    String modpackVersion = reader.readLine();  // optional second line
+                    return new OnlineVersion(translationVersion == null ? "" : translationVersion.trim(),
+                            modpackVersion == null ? "" : modpackVersion.trim());
+                }
+            } catch (Exception e) {
+                VMTranslationUpdate.LOGGER.warn("Version check failed: ", e);
+                return new OnlineVersion("", "");
             }
-        } catch (Exception e) {
-            VMTranslationUpdate.LOGGER.warn("Version check failed: ", e);
-            return "";
+        } else {
+            Metadata.Modpacks modpack = MetadataReader.getModpack(modpackInfo.getName());
+            String translationVersion = modpack.getTranslationVersion();
+            String modpackVersion = modpack.getModpackVersion();
+
+            return new OnlineVersion(translationVersion, modpackVersion);
         }
     }
 }
