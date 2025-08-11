@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.info;
 
 public class ModpackInfo {
     Modpack modpack;

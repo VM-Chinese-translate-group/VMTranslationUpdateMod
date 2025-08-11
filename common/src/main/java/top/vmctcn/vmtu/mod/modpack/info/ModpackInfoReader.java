@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.info;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,10 +19,6 @@ public class ModpackInfoReader {
     private static final Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
 
     static {
-        init();
-    }
-
-    public static void init() {
         if (Files.exists(modpackInfoPath)) {
             try (Reader reader = Files.newBufferedReader(modpackInfoPath, StandardCharsets.UTF_8)) {
                 modpackInfo = GSON.fromJson(reader, ModpackInfo.class);

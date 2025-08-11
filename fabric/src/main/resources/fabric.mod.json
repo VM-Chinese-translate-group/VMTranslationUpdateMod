@@ -23,9 +23,6 @@
       "top.vmctcn.vmtu.mod.fabric.ModMenuImpl"
     ]
   },
-  "mixins": [
-    "vmtranslationupdate.mixins.json"
-  ],
   "depends": {
     "fabric": "*",
     "minecraft": "1.21.5",

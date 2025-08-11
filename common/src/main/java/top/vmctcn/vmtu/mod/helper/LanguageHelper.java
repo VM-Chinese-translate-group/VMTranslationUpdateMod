@@ -1,10 +1,12 @@
 package top.vmctcn.vmtu.mod.helper;
 
+import net.minecraft.client.MinecraftClient;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 
 public class LanguageHelper {
     private static final String DEFAULT_LANGUAGE = "en_us";
@@ -41,5 +43,11 @@ public class LanguageHelper {
         }
 
         return DEFAULT_LANGUAGE;
+    }
+
+    public static boolean isChineseLanguage() {
+        String language = MinecraftClient.getInstance().getLanguageManager().getLanguage();
+        Set<String> chineseLangs = Set.of("zh_cn", "zh_tw", "zh_hk", "lzh");
+        return chineseLangs.contains(language);
     }
 }
