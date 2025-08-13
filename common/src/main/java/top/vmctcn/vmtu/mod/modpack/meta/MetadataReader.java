@@ -18,7 +18,7 @@ public class MetadataReader {
     static {
         try {
             URLConnection connection = metaUrl.toURL().openConnection();
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            connection.setRequestProperty("User-Agent", "VMTU-UpdateChecker");
             connection.setConnectTimeout(10000);
 
             try (Reader reader = new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8)) {

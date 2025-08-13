@@ -39,10 +39,11 @@ public class ModpackInfoReader {
     private static void generateDefaultModpackInfo() {
         modpackInfo = new ModpackInfo();
         modpackInfo.modpack = new ModpackInfo.Modpack();
-        modpackInfo.modpack.name = "example";
-        modpackInfo.modpack.version = "v0.1.0";
+        modpackInfo.modpack.name = "ExampleModpack";
+        modpackInfo.modpack.version = "0.1.0";
 
         modpackInfo.modpack.translation = new ModpackInfo.Translation();
+        modpackInfo.modpack.translation.id = "example";
         modpackInfo.modpack.translation.url = "https://vmct-cn.top/modpacks/example/";
         modpackInfo.modpack.translation.language = "zh_cn";
         modpackInfo.modpack.translation.version = "1.0.0";

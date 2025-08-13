@@ -15,13 +15,8 @@ public class Metadata {
     }
 
     public static class Modpacks {
-        String name;
         String translationVersion;
         String modpackVersion;
-
-        public String getName() {
-            return name;
-        }
 
         public String getTranslationVersion() {
             return translationVersion;
