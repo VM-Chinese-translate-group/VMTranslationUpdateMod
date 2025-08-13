@@ -1,6 +1,5 @@
 package top.vmctcn.vmtu.mod.modpack.info;
 
-import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import top.vmctcn.vmtu.mod.ModPlatform;
@@ -40,14 +39,14 @@ public class ModpackInfoReader {
     private static void generateDefaultModpackInfo() {
         modpackInfo = new ModpackInfo();
         modpackInfo.modpack = new ModpackInfo.Modpack();
-        modpackInfo.modpack.name = "example";
-        modpackInfo.modpack.version = "v0.1.0";
+        modpackInfo.modpack.name = "ExampleModpack";
+        modpackInfo.modpack.version = "0.1.0";
 
         modpackInfo.modpack.translation = new ModpackInfo.Translation();
+        modpackInfo.modpack.translation.id = "example";
         modpackInfo.modpack.translation.url = "https://vmct-cn.top/modpacks/example/";
         modpackInfo.modpack.translation.language = "zh_cn";
         modpackInfo.modpack.translation.version = "1.0.0";
-        modpackInfo.modpack.translation.supportLanguages = Lists.newArrayList("zh_cn");
         modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.19及以上";
 
         try {
