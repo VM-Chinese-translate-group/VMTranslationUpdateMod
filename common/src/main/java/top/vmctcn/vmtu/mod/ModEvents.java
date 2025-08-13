@@ -51,11 +51,7 @@ public class ModEvents {
             player.sendMessage(Text.literal("======================================================="), false);
         }
 
-        if (translation.getSupportLanguages() != null) {
-            if (translation.getSupportLanguages().contains(languageManager.getLanguage()) && LanguageHelper.isChineseLanguage()) {
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.not_support", translation.getSupportLanguages()), false);
-            }
-        } else if (!translation.getLanguage().equals(languageManager.getLanguage())) {
+        if (!translation.getLanguage().equals(languageManager.getLanguage()) && LanguageHelper.isChineseLanguage()) {
             player.sendMessage(Text.translatable("vmtranslationupdate.message.not_support", translation.getLanguage()), false);
         }
 
