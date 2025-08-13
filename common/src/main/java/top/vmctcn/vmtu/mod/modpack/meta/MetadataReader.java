@@ -18,7 +18,7 @@ public class MetadataReader {
     static {
         try {
             URLConnection connection = metaUrl.toURL().openConnection();
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            connection.setRequestProperty("User-Agent", "VMTU-UpdateChecker");
             connection.setConnectTimeout(10000);
 
             try (Reader reader = new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8)) {
@@ -39,12 +39,12 @@ public class MetadataReader {
         return metadata;
     }
 
-    public static Metadata.Modpacks getModpack(String modpackName) {
+    public static Metadata.Modpacks getModpack(String modpackId) {
         if (metadata.getModpacks() == null) {
             VMTranslationUpdate.LOGGER.warn("Error getting modpack info in vm-meta.json.");
             return metadata.getModpacks().get("example");
         }
 
-        return metadata.getModpacks().get(modpackName);
+        return metadata.getModpacks().get(modpackId);
     }
 }

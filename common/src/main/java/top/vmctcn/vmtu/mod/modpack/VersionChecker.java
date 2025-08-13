@@ -16,11 +16,17 @@ public class VersionChecker {
     public static OnlineVersion getOnlineVersion() {
         ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
         String updateCheckUrl = modpackInfo.getTranslation().getUpdateCheckUrl();
-        if (updateCheckUrl != null) {
+        if (updateCheckUrl == null && modpackInfo.getTranslation().getId() != null) {
+            Metadata.Modpacks modpack = MetadataReader.getModpack(modpackInfo.getTranslation().getId());
+            String translationVersion = modpack.getTranslationVersion();
+            String modpackVersion = modpack.getModpackVersion();
+
+            return new OnlineVersion(translationVersion, modpackVersion);
+        } else if (updateCheckUrl != null) {
             try {
                 URI uri = URI.create(updateCheckUrl);
                 URLConnection connection = uri.toURL().openConnection();
-                connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+                connection.setRequestProperty("User-Agent", "VMTU-UpdateChecker");
                 connection.setConnectTimeout(10000);
 
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
@@ -34,11 +40,8 @@ public class VersionChecker {
                 return new OnlineVersion("", "");
             }
         } else {
-            Metadata.Modpacks modpack = MetadataReader.getModpack(modpackInfo.getName());
-            String translationVersion = modpack.getTranslationVersion();
-            String modpackVersion = modpack.getModpackVersion();
-
-            return new OnlineVersion(translationVersion, modpackVersion);
+            VMTranslationUpdate.LOGGER.warn("Version check failed");
+            return new OnlineVersion("", "");
         }
     }
 }

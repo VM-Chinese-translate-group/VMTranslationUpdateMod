@@ -12,6 +12,7 @@
   "vmtranslationupdate.message.update_modpack_hint": "当前游玩的整合包版本为%s，请把整合包更新到%s版本以匹配汉化！",
   "vmtranslationupdate.message.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
   "vmtranslationupdate.message.hover": "点我到官网下载新版本！",
+  "vmtranslationupdate.message.not_support": "汉化补丁不支持当前语言，请切换到以下语言：%s",
 
   "vmtranslationupdate.warn.title": "未检测到 %s 模组",
   "vmtranslationupdate.warn.text": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！",

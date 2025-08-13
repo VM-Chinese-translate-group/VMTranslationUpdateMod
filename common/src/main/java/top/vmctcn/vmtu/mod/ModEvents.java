@@ -3,12 +3,14 @@ package top.vmctcn.vmtu.mod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.client.resource.language.LanguageManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.helper.GameEventHelper;
+import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 import top.vmctcn.vmtu.mod.modpack.OnlineVersion;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
@@ -20,6 +22,8 @@ public class ModEvents {
 
     public static void playerJoinEvent(PlayerEntity player) {
         if (player == null) return;
+
+        LanguageManager languageManager = MinecraftClient.getInstance().getLanguageManager();
 
         ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
         ModpackInfo.Translation translation = modpack.getTranslation();
@@ -45,6 +49,10 @@ public class ModEvents {
             player.sendMessage(Text.literal("Online Translation Version: " + onlineVersion.translationVersion()), false);
             player.sendMessage(Text.literal("Online Modpack Version: " + onlineVersion.modpackVersion()), false);
             player.sendMessage(Text.literal("======================================================="), false);
+        }
+
+        if (!translation.getLanguage().equals(languageManager.getLanguage()) && LanguageHelper.isChineseLanguage()) {
+            player.sendMessage(Text.translatable("vmtranslationupdate.message.not_support", translation.getLanguage()), false);
         }
 
         if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {

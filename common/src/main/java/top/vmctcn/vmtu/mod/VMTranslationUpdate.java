@@ -17,7 +17,7 @@ public class VMTranslationUpdate {
             ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
 
-            Metadata.Modpacks meta = MetadataReader.getModpack(modpackInfo.getName());
+            Metadata.Modpacks meta = MetadataReader.getModpack(translation.getId());
 
             LOGGER.warn("==================== VMTU testMode ====================");
             LOGGER.warn("Modpack Name: {}", modpackInfo.getName());

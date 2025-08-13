@@ -40,13 +40,13 @@ public class ModpackInfoReader {
         modpackInfo = new ModpackInfo();
         modpackInfo.modpack = new ModpackInfo.Modpack();
         modpackInfo.modpack.name = "ExampleModpack";
-        modpackInfo.modpack.version = "v0.1.0";
+        modpackInfo.modpack.version = "0.1.0";
 
         modpackInfo.modpack.translation = new ModpackInfo.Translation();
+        modpackInfo.modpack.translation.id = "example";
         modpackInfo.modpack.translation.url = "https://vmct-cn.top/modpacks/example/";
         modpackInfo.modpack.translation.language = "zh_cn";
         modpackInfo.modpack.translation.version = "1.0.0";
-        modpackInfo.modpack.translation.updateCheckUrl = "https://gitee.com/Wulian233/vmtu/raw/main/update/example.txt";
         modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.19及以上";
 
         try {
