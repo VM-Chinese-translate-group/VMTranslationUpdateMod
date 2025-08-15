@@ -70,7 +70,7 @@ public class ModEvents {
             Text coloredOnlineVer = new LiteralText(onlineVersion.translationVersion()).styled(s -> s.withColor(Formatting.YELLOW));
 
             if (translationUpdateNeeded) {
-                player.sendMessage(new TranslatableText("vmtranslationupdate.message.update").append(coloredLocalVer).append(coloredOnlineVer), false);
+                player.sendMessage(new TranslatableText("vmtranslationupdate.message.update", coloredLocalVer, coloredOnlineVer), false);
                 String updateUrl = translation.getUrl();
                 Text message = new TranslatableText("vmtranslationupdate.message.update2")
                         .append(new TranslatableText(updateUrl)
@@ -86,7 +86,7 @@ public class ModEvents {
                     Text coloredLocalModpackVer = new LiteralText(localModpackVersion).styled(s -> s.withColor(Formatting.YELLOW));
                     Text coloredOnlineModpackVer = new LiteralText(onlineVersion.modpackVersion()).styled(s -> s.withColor(Formatting.YELLOW));
                     player.sendMessage(new TranslatableText("vmtranslationupdate.message.update_modpack"), false);
-                    player.sendMessage(new TranslatableText("vmtranslationupdate.message.update_modpack_hint").append(coloredLocalModpackVer).append(coloredOnlineModpackVer), false);
+                    player.sendMessage(new TranslatableText("vmtranslationupdate.message.update_modpack_hint", coloredLocalModpackVer, coloredOnlineModpackVer), false);
                 }
             }
         }
