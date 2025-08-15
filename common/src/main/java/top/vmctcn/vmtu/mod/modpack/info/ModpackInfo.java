@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.info;
 
 public class ModpackInfo {
     Modpack modpack;
@@ -26,11 +26,16 @@ public class ModpackInfo {
     }
 
     public static class Translation {
+        String id;
         String url;
         String language;
         String version;
-        String updateCheckUrl;
+        @Deprecated String updateCheckUrl;
         String resourcePackName;
+
+        public String getId() {
+            return id;
+        }
 
         public String getUrl() {
             return url;
@@ -44,6 +49,7 @@ public class ModpackInfo {
             return version;
         }
 
+        @Deprecated
         public String getUpdateCheckUrl() {
             return updateCheckUrl;
         }
