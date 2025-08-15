@@ -49,6 +49,8 @@ public class SuggestModScreen extends Screen {
 
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float delta) {
+        this.renderBackground(matrixStack);
+
         super.render(matrixStack, mouseX, mouseY, delta);
 
         ScreenHelper.drawCenteredTextWithShadow(matrixStack, this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);

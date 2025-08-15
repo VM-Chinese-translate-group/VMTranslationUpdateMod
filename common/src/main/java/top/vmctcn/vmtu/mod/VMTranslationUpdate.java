@@ -3,8 +3,8 @@ package top.vmctcn.vmtu.mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
-import top.vmctcn.vmtu.mod.modpack.ModpackInfo;
-import top.vmctcn.vmtu.mod.modpack.ModpackInfoReader;
+import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
+import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 
 public class VMTranslationUpdate {
     public static final String MODNAME = "VMTranslationUpdate";
