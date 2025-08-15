@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.info;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,12 +12,13 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.Objects;
 
 public class ModpackInfoReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static ModpackInfo modpackInfo;
-    private static final Path configPath = ModPlatform.getConfigDir();
-    private static final Path modpackInfoPath = configPath.resolve("modpackinfo.json");
+    private static final Path gamePath = ModPlatform.getGameDir();
+    private static final Path modpackInfoPath = Objects.requireNonNull(gamePath).resolve("modpackinfo.json");
 
     public static void init() {
         if (Files.exists(modpackInfoPath)) {
@@ -41,14 +42,14 @@ public class ModpackInfoReader {
         modpackInfo = new ModpackInfo();
         modpackInfo.modpack = new ModpackInfo.Modpack();
         modpackInfo.modpack.name = "ExampleModpack";
-        modpackInfo.modpack.version = "v0.1.0";
+        modpackInfo.modpack.version = "0.1.0";
 
         modpackInfo.modpack.translation = new ModpackInfo.Translation();
+        modpackInfo.modpack.translation.id = "example";
         modpackInfo.modpack.translation.url = "https://vmct-cn.top/modpacks/example/";
         modpackInfo.modpack.translation.language = "zh_cn";
         modpackInfo.modpack.translation.version = "1.0.0";
-        modpackInfo.modpack.translation.updateCheckUrl = "https://gitee.com/Wulian233/vmtu/raw/main/update/example.txt";
-        modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.18";
+        modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.12";
 
         try {
             try (Writer writer = Files.newBufferedWriter(modpackInfoPath, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {

@@ -3,7 +3,7 @@ plugins {
     id "com.gradleup.shadow" version "8.+"
 }
 
-archivesBaseName = project.archives_base_name
+base.archivesName = project.archives_base_name
 version = "${project.mod_version}+mc${project.minecraft_version}"
 group = project.maven_group
 
@@ -62,11 +62,11 @@ jar {
 }
 
 processResources {
-    inputs.property "version", project.mod_version
+    inputs.property "version", project.version
     inputs.property "mc_version", project.minecraft_version
 
-    filesMatching(["mcmod.info", "ModContexts.java"]) {
-        expand "version": project.mod_version, "mc_version": project.minecraft_version
+    filesMatching("mcmod.info") {
+        expand "version": project.version, "mc_version": project.minecraft_version
     }
 }
 

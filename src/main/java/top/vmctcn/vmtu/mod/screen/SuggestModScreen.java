@@ -12,7 +12,6 @@ import top.vmctcn.vmtu.mod.helper.ScreenHelper;
 public class SuggestModScreen extends Screen {
     public static boolean i18nUpdateModPresent = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
     public static boolean vaultPatcherPresent = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
-
     public static final Text downloadButtonText = new TranslatableText("vmtranslationupdate.warn.download.button");
     public static final Text ignoreButtonText = new TranslatableText("vmtranslationupdate.warn.ignore.button");
 
@@ -33,7 +32,6 @@ public class SuggestModScreen extends Screen {
         this.buttons.clear();
         this.addButton(new ButtonWidget(0, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, downloadButtonText.getContent()));
         this.addButton(new ButtonWidget(1, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, ignoreButtonText.getContent()));
-
     }
 
     @Override

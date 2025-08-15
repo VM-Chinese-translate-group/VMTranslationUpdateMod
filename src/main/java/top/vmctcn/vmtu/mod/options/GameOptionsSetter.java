@@ -7,7 +7,7 @@ import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.helper.LanguageHelper;
-import top.vmctcn.vmtu.mod.modpack.ModpackInfoReader;
+import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 
 import java.nio.file.Path;
 
@@ -25,9 +25,8 @@ public class GameOptionsSetter {
 
         if (ModConfigs.autoDownloadVMTranslationPack) {
             String gameVersion = ModPlatform.getGameVersion();
-            //PackSource resPackSource = ModConfigs.translationPackSource;
             String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
-            VMTUCore.init(gamePath, gameVersion, resPackName, /*resPackSource*/ PackSource.GITEE);
+            VMTUCore.init(gamePath, gameVersion, resPackName, PackSource.GITEE);
         }
     }
 }
