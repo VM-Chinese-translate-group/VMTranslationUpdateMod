@@ -1,9 +1,9 @@
 package top.vmctcn.vmtu.mod;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Loader;
 import top.vmctcn.vmtu.core.util.Reflection;
 
-import java.io.File;
 import java.nio.file.Path;
 
 public class ModPlatform {
@@ -21,11 +21,6 @@ public class ModPlatform {
     }
 
     public static Path getGameDir() {
-        try {
-            // https://github.com/MinecraftForge/MinecraftForge/blob/d3f01843f7e7a4f613b5e8113d381fd8747b4343/src/main/java/net/minecraftforge/fml/common/Loader.java#L177
-            return ((File) Reflection.clazz("net.minecraftforge.fml.common.Loader").get("minecraftDir").get()).toPath();
-        } catch (Exception ignored) {
-        }
-        return null;
+        return Minecraft.getInstance().runDir.toPath();
     }
 }

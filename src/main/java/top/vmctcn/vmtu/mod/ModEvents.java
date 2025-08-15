@@ -6,13 +6,13 @@ import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.resource.language.LanguageManager;
 import net.minecraft.entity.living.player.PlayerEntity;
 import net.minecraft.text.*;
+import top.vmctcn.vmtu.mod.modpack.OnlineVersion;
+import top.vmctcn.vmtu.mod.modpack.VersionChecker;
+import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
+import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.helper.GameEventHelper;
 import top.vmctcn.vmtu.mod.helper.LanguageHelper;
-import top.vmctcn.vmtu.mod.modpack.OnlineVersion;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
-import top.vmctcn.vmtu.mod.modpack.VersionChecker;
 import top.vmctcn.vmtu.mod.screen.SuggestModScreen;
 
 public class ModEvents {

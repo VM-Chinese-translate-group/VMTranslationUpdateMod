@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod;
+package top.vmctcn.vmtu.mod.forge;
 
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.config.Config;
@@ -7,6 +7,8 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import top.vmctcn.vmtu.mod.ModEvents;
+import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 
 @Mod.EventBusSubscriber(modid = VMTranslationUpdate.MOD_ID)
 public final class ModEventHandler {
