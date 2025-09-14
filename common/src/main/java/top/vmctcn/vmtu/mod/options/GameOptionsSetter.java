@@ -1,8 +1,8 @@
 package top.vmctcn.vmtu.mod.options;
 
 import top.vmctcn.vmtu.core.VMTUCore;
+import top.vmctcn.vmtu.core.pack.ExtraPackIndex;
 import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
-import top.vmctcn.vmtu.core.pack.PackSource;
 import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
@@ -13,7 +13,7 @@ import java.nio.file.Path;
 
 public class GameOptionsSetter {
     public static void init(Path gamePath) {
-        if (ModConfigHelper.getConfig().autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
+        if (ModConfigHelper.getConfig().misc.autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
                 GameOptionsWriter writer = new GameOptionsWriter(gamePath.resolve("options.txt"));
                 String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
@@ -23,11 +23,13 @@ public class GameOptionsSetter {
             }
         }
 
-        if (ModConfigHelper.getConfig().autoDownloadVMTranslationPack) {
+        if (ModConfigHelper.getConfig().misc.autoDownloadVMTranslationPack) {
             String gameVersion = ModPlatform.INSTANCE.getGameVersion();
-            PackSource resPackSource = ModConfigHelper.getConfig().translationPackSource;
+            String extraPackName = ModConfigHelper.getConfig().extraTranslationPack.packName;
+            ExtraPackIndex extraPackIndex = ModConfigHelper.getConfig().extraTranslationPack.index;
+            int extraPackCustomIndex = ModConfigHelper.getConfig().extraTranslationPack.customIndex;
             String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
-            VMTUCore.init(gamePath, gameVersion, resPackName, resPackSource);
+            VMTUCore.init(gamePath, gameVersion, resPackName, extraPackName, extraPackIndex, extraPackCustomIndex);
         }
     }
 }

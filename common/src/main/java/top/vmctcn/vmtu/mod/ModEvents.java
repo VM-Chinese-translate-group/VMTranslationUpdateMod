@@ -33,7 +33,7 @@ public class ModEvents {
 
         OnlineVersion onlineVersion = VersionChecker.getOnlineVersion();
 
-        if (ModConfigHelper.getConfig().testMode) {
+        if (ModConfigHelper.getConfig().misc.testMode) {
             player.sendMessage(Text.literal("==================== VMTU testMode ===================="), false);
             player.sendMessage(Text.literal("Modpack Name: " + modpack.getName()), false);
             player.sendMessage(Text.literal("Modpack Version: " + modpack.getVersion()), false);
@@ -52,12 +52,12 @@ public class ModEvents {
         }
 
         if (!translation.getLanguage().equals(languageManager.getLanguage()) && LanguageHelper.isChineseLanguage()) {
-            player.sendMessage(Text.translatable("vmtranslationupdate.message.not_support", translation.getLanguage()), false);
+            player.sendMessage(Text.translatable("vmtu.message.language_not_support", translation.getLanguage()), false);
         }
 
-        if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {
+        if (ModConfigHelper.getConfig().misc.checkModPackTranslationUpdate) {
             if (!onlineVersion.isValid()) {
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.error"), false);
+                player.sendMessage(Text.translatable("vmtu.message.update.error"), false);
                 VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
                 return;
             }
@@ -68,23 +68,23 @@ public class ModEvents {
             Text coloredOnlineVer = Text.literal(onlineVersion.translationVersion()).styled(s -> s.withColor(Formatting.YELLOW));
 
             if (translationUpdateNeeded) {
-                player.sendMessage(Text.translatable("vmtranslationupdate.message.update", coloredLocalVer, coloredOnlineVer), false);
+                player.sendMessage(Text.translatable("vmtu.message.update.new_version.text_part1", coloredLocalVer, coloredOnlineVer), false);
                 String updateUrl = translation.getUrl();
-                Text message = Text.translatable("vmtranslationupdate.message.update2")
+                Text message = Text.translatable("vmtu.message.update.new_version.text_part2")
                         .append(Text.translatable(updateUrl)
                                 .setStyle(Style.EMPTY
                                         .withClickEvent(GameEventHelper.clickOpenUrl(updateUrl))
-                                        .withHoverEvent(GameEventHelper.hoverShowText(Text.translatable("vmtranslationupdate.message.hover")))
+                                        .withHoverEvent(GameEventHelper.hoverShowText(Text.translatable("vmtu.message.update.new_version.download_hover")))
                                         .withColor(Formatting.AQUA)
                                 ))
-                        .append(Text.translatable("vmtranslationupdate.message.update3"));
+                        .append(Text.translatable("vmtu.message.update.new_version.text_part3"));
                 player.sendMessage(message, false);
 
                 if (modpackUpdateNeeded){
                     Text coloredLocalModpackVer = Text.literal(localModpackVersion).styled(s -> s.withColor(Formatting.YELLOW));
                     Text coloredOnlineModpackVer = Text.literal(onlineVersion.modpackVersion()).styled(s -> s.withColor(Formatting.YELLOW));
-                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update_modpack"), false);
-                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update_modpack_hint", coloredLocalModpackVer, coloredOnlineModpackVer), false);
+                    player.sendMessage(Text.translatable("vmtu.message.update.modpack_version_error"), false);
+                    player.sendMessage(Text.translatable("vmtu.message.update.modpack_version_error.hint", coloredLocalModpackVer, coloredOnlineModpackVer), false);
                 }
             }
         }
@@ -95,8 +95,8 @@ public class ModEvents {
             return;
         }
 
-        boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestModScreen.i18nUpdateModPresent;
-        boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestModScreen.vaultPatcherPresent;
+        boolean needI18n = ModConfigHelper.getConfig().requireModCheck.i18nUpdateMod && !ModContexts.ModPresent.i18nUpdateMod;
+        boolean needVP = ModConfigHelper.getConfig().requireModCheck.vaultPatcher && !ModContexts.ModPresent.vaultPatcher;
 
         // 只要有任何一个模组需要提示，就显示屏幕
         if (needI18n || needVP) {

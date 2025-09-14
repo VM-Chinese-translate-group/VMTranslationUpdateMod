@@ -1,0 +1,38 @@
+{
+  "comment_modinfo": "NeoForge/Fabric Mod Info Translation",
+  "fml.menu.mods.info.displayname.vmtu": "VM Translation Update",
+  "fml.menu.mods.info.description.vmtu": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
+  "modmenu.nameTranslation.vmtu": "VM Translation Update",
+  "modmenu.descriptionTranslation.vmtu": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
+
+  "vmtu.message.update.new_version.text_part1": "[VM Chinese Group]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!",
+  "vmtu.message.update.new_version.text_part2": "Please click on the right ",
+  "vmtu.message.update.new_version.text_part3": " to download the new version.",
+  "vmtu.message.update.new_version.download_hover": "Click me to download the new version!",
+  "vmtu.message.update.modpack_version_error": "Note: This translation patch update is based on a newer modpack version. §cPlease update the modpack first before reinstalling the translation!§r Otherwise, compatibility issues may occur" ,
+  "vmtu.message.update.modpack_version_error.hint": "You are currently playing with modpack version %s. Please update to version %s to match the translation patch!",
+  "vmtu.message.update.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
+
+  "vmtu.message.language_not_support": "Translation patch not support your language, please use %s",
+
+  "vmtu.required_mod.warn.title": "%s not detected",
+  "vmtu.required_mod.warn.detect_failed": "%s is not yet installed, which may result in incomplete localization of some mods!",
+  "vmtu.required_mod.warn.download_notice": "Please click the button below to jump to the download page.",
+
+  "text.autoconfig.vmtu.title": "VM Translation Update Config",
+  "text.autoconfig.vmtu.category.misc": "Misc",
+  "text.autoconfig.vmtu.option.misc.testMode": "Test Mode",
+  "text.autoconfig.vmtu.option.misc.autoSwitchLanguage": "Auto switch language",
+  "text.autoconfig.vmtu.option.misc.autoDownloadVMTranslationPack": "Auto download translation pack",
+  "text.autoconfig.vmtu.option.misc.checkModPackTranslationUpdate": "Auto-detect modpack translation version update",
+  "text.autoconfig.vmtu.category.extraTranslationPack": "Extra Translation Pack",
+  "text.autoconfig.vmtu.option.extraTranslationPack.packName": "Extra Pack Name",
+  "text.autoconfig.vmtu.option.extraTranslationPack.packName.@Tooltip": "Set extra translation pack name (including the file extension)",
+  "text.autoconfig.vmtu.option.extraTranslationPack.index": "Translation pack index",
+  "text.autoconfig.vmtu.option.extraTranslationPack.index.@Tooltip": "Choose translation pack install index",
+  "text.autoconfig.vmtu.option.extraTranslationPack.customIndex": "Custom translation pack index",
+  "text.autoconfig.vmtu.option.extraTranslationPack.customIndex.@Tooltip": "To customize the installation index of translation pack, you must set the resource pack sequence to CUSTOM_INDEX for this setting to take effect!",
+  "text.autoconfig.vmtu.category.requireModCheck": "Require Mod Check",
+  "text.autoconfig.vmtu.option.requireModCheck.i18nUpdateMod": "Detecting if I18nUpdateMod is already installed",
+  "text.autoconfig.vmtu.option.requireModCheck.vaultPatcher": "Detect if VaultPatcher is installed"
+}

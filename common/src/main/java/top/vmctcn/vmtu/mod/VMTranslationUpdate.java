@@ -9,11 +9,11 @@ import top.vmctcn.vmtu.mod.modpack.meta.Metadata;
 import top.vmctcn.vmtu.mod.modpack.meta.MetadataReader;
 
 public class VMTranslationUpdate {
-    public static final String MOD_ID = "vmtranslationupdate";
+    public static final String MOD_ID = "vmtu";
     public static final Logger LOGGER = LoggerFactory.getLogger("VMTranslationUpdateMod");
 
     public static void init() {
-        if (ModConfigHelper.getConfig().testMode) {
+        if (ModConfigHelper.getConfig().misc.testMode) {
             ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
 

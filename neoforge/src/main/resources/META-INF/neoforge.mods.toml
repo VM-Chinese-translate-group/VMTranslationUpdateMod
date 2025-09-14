@@ -4,7 +4,7 @@ issueTrackerURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUp
 license = "MIT"
 
 [[mods]]
-modId = "vmtranslationupdate"
+modId = "vmtu"
 version = "${version}"
 displayName = "VM Translation Update"
 displayURL = "https://vmct-cn.top/vmtu"
@@ -12,16 +12,16 @@ authors = "Wulian233, TexTrue"
 description = '''
 The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.
 '''
-logoFile = "assets/vmtranslationupdate/icon.png"
+logoFile = "assets/vmtu/icon.png"
 
-[[dependencies.vmtranslationupdate]]
+[[dependencies.vmtu]]
 modId = "minecraft"
 type = "required"
 versionRange = "[1.21,1.21.2)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.vmtranslationupdate]]
+[[dependencies.vmtu]]
 modId = "cloth_config"
 type = "required"
 versionRange = "*"
