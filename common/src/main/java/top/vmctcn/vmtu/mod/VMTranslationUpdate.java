@@ -7,23 +7,26 @@ import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.modpack.meta.Metadata;
 import top.vmctcn.vmtu.mod.modpack.meta.MetadataReader;
+import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
 public class VMTranslationUpdate {
     public static final String MOD_ID = "vmtranslationupdate";
     public static final Logger LOGGER = LoggerFactory.getLogger("VMTranslationUpdateMod");
 
     public static void init() {
-        if (ModConfigHelper.getConfig().misc.testMode) {
+        if (ModConfigHelper.getConfig().devMode) {
             ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
 
             Metadata.Modpacks meta = MetadataReader.getModpack(translation.getId());
 
-            LOGGER.warn("==================== VMTU testMode ====================");
+            LOGGER.warn("==================== VMTU Dev Mode ====================");
             LOGGER.warn("Modpack Name: {}", modpackInfo.getName());
             LOGGER.warn("Modpack Version: {}", modpackInfo.getVersion());
             LOGGER.warn("Modpack Translation URL: {}", translation.getUrl());
-            LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            if (translation.getUpdateCheckUrl() != null) {
+                LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            }
             LOGGER.warn("Modpack Translation Language: {}", translation.getLanguage());
             LOGGER.warn("Modpack Translation Version: {}", translation.getVersion());
             LOGGER.warn("Modpack Translation Resource Pack Name: {}", translation.getResourcePackName());
@@ -33,5 +36,7 @@ public class VMTranslationUpdate {
             LOGGER.warn("Modpack Online Translation Version: {}", meta.getTranslationVersion());
             LOGGER.warn("=======================================================");
         }
+
+        GameOptionsSetter.autoSwitchLanguage();
     }
 }

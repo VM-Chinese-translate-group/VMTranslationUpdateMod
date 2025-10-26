@@ -26,21 +26,21 @@ public class ModContexts {
         public static final Text suggestDownloadNoticeText = Text.translatable("vmtranslationupdate.required_mod.warn.download_notice");
 
         static {
-            if ((ModConfigHelper.getConfig().requireModCheck.i18nUpdateMod && !ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().requireModCheck.vaultPatcher && !ModPresent.vaultPatcher)) {
+            if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher)) {
                 suggestTitleText = Text.translatable("vmtranslationupdate.required_mod.warn.title", "I18nUpdateMod & VaultPatcher");
-            } else if (ModConfigHelper.getConfig().requireModCheck.i18nUpdateMod && !ModPresent.i18nUpdateMod) {
+            } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) {
                 suggestTitleText = Text.translatable("vmtranslationupdate.required_mod.warn.title", "I18nUpdateMod");
-            } else if (ModConfigHelper.getConfig().requireModCheck.vaultPatcher && !ModPresent.vaultPatcher) {
+            } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher) {
                 suggestTitleText = Text.translatable("vmtranslationupdate.required_mod.warn.title", "VaultPatcher");
             } else {
                 suggestTitleText = Text.empty();
             }
 
-            if ((ModConfigHelper.getConfig().requireModCheck.i18nUpdateMod && !ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().requireModCheck.vaultPatcher && !ModPresent.vaultPatcher)) {
+            if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher)) {
                 suggestFailedText = Text.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "I18nUpdateMod & VaultPatcher");
-            } else if (ModConfigHelper.getConfig().requireModCheck.i18nUpdateMod && !ModPresent.i18nUpdateMod) {
+            } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) {
                 suggestFailedText = Text.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "I18nUpdateMod");
-            } else if (ModConfigHelper.getConfig().requireModCheck.vaultPatcher && !ModPresent.vaultPatcher) {
+            } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher) {
                 suggestFailedText = Text.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "VaultPatcher");
             } else {
                 suggestFailedText = Text.empty();

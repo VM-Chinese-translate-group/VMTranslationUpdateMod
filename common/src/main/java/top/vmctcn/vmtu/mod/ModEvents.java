@@ -33,15 +33,13 @@ public class ModEvents {
 
         OnlineVersion onlineVersion = VersionChecker.getOnlineVersion();
 
-        if (ModConfigHelper.getConfig().misc.testMode) {
-            player.sendMessage(Text.literal("==================== VMTU testMode ===================="), false);
+        if (ModConfigHelper.getConfig().devMode) {
+            player.sendMessage(Text.literal("==================== VMTU Dev Mode ===================="), false);
             player.sendMessage(Text.literal("Modpack Name: " + modpack.getName()), false);
             player.sendMessage(Text.literal("Modpack Version: " + modpack.getVersion()), false);
             player.sendMessage(Text.literal("Modpack Translation URL:§b " + translation.getUrl()), false);
             if (translation.getUpdateCheckUrl() != null) {
                 player.sendMessage(Text.literal("Modpack Translation Update Check URL:§b " + translation.getUpdateCheckUrl()), false);
-            } else {
-                player.sendMessage(Text.literal("Modpack Translation Update Check URL:§b Used vm-meta v2, deprecated this"), false);
             }
             player.sendMessage(Text.literal("Modpack Translation Language: " + translation.getLanguage()), false);
             player.sendMessage(Text.literal("Modpack Translation Version: " + translation.getVersion()), false);
@@ -55,7 +53,7 @@ public class ModEvents {
             player.sendMessage(Text.translatable("vmtranslationupdate.message.language_not_support", translation.getLanguage()), false);
         }
 
-        if (ModConfigHelper.getConfig().misc.checkModPackTranslationUpdate) {
+        if (ModConfigHelper.getConfig().checkModPackTranslationUpdate) {
             if (!onlineVersion.isValid()) {
                 player.sendMessage(Text.translatable("vmtranslationupdate.message.update.error"), false);
                 VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
@@ -95,8 +93,8 @@ public class ModEvents {
             return;
         }
 
-        boolean needI18n = ModConfigHelper.getConfig().requireModCheck.i18nUpdateMod && !ModContexts.ModPresent.i18nUpdateMod;
-        boolean needVP = ModConfigHelper.getConfig().requireModCheck.vaultPatcher && !ModContexts.ModPresent.vaultPatcher;
+        boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod;
+        boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher;
 
         // 只要有任何一个模组需要提示，就显示屏幕
         if (needI18n || needVP) {

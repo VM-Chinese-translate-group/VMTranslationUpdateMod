@@ -28,12 +28,12 @@ public class SuggestModScreen extends Screen {
         super.init();
 
         this.addDrawableChild(ButtonWidget.builder(ModContexts.ScreenTexts.downloadButton, buttonWidget -> {
-            if ((ModConfigHelper.getConfig().requireModCheck.i18nUpdateMod && !ModContexts.ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().requireModCheck.vaultPatcher && !ModContexts.ModPresent.vaultPatcher)) {
+            if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher)) {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
-            } else if (ModConfigHelper.getConfig().requireModCheck.i18nUpdateMod && !ModContexts.ModPresent.i18nUpdateMod) {
+            } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod) {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
-            } else if (ModConfigHelper.getConfig().requireModCheck.vaultPatcher && !ModContexts.ModPresent.vaultPatcher) {
+            } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher) {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
             }
         }).dimensions(centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20).build());
