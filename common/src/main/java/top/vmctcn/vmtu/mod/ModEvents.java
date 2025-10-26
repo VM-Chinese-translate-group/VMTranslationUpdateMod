@@ -52,12 +52,12 @@ public class ModEvents {
         }
 
         if (!translation.getLanguage().equals(languageManager.getLanguage()) && LanguageHelper.isChineseLanguage()) {
-            player.sendMessage(Text.translatable("vmtu.message.language_not_support", translation.getLanguage()), false);
+            player.sendMessage(Text.translatable("vmtranslationupdate.message.language_not_support", translation.getLanguage()), false);
         }
 
         if (ModConfigHelper.getConfig().misc.checkModPackTranslationUpdate) {
             if (!onlineVersion.isValid()) {
-                player.sendMessage(Text.translatable("vmtu.message.update.error"), false);
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.update.error"), false);
                 VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
                 return;
             }
@@ -68,23 +68,23 @@ public class ModEvents {
             Text coloredOnlineVer = Text.literal(onlineVersion.translationVersion()).styled(s -> s.withColor(Formatting.YELLOW));
 
             if (translationUpdateNeeded) {
-                player.sendMessage(Text.translatable("vmtu.message.update.new_version.text_part1", coloredLocalVer, coloredOnlineVer), false);
+                player.sendMessage(Text.translatable("vmtranslationupdate.message.update.new_version.text_part1", coloredLocalVer, coloredOnlineVer), false);
                 String updateUrl = translation.getUrl();
-                Text message = Text.translatable("vmtu.message.update.new_version.text_part2")
+                Text message = Text.translatable("vmtranslationupdate.message.update.new_version.text_part2")
                         .append(Text.translatable(updateUrl)
                                 .setStyle(Style.EMPTY
                                         .withClickEvent(GameEventHelper.clickOpenUrl(updateUrl))
-                                        .withHoverEvent(GameEventHelper.hoverShowText(Text.translatable("vmtu.message.update.new_version.download_hover")))
+                                        .withHoverEvent(GameEventHelper.hoverShowText(Text.translatable("vmtranslationupdate.message.update.new_version.download_hover")))
                                         .withColor(Formatting.AQUA)
                                 ))
-                        .append(Text.translatable("vmtu.message.update.new_version.text_part3"));
+                        .append(Text.translatable("vmtranslationupdate.message.update.new_version.text_part3"));
                 player.sendMessage(message, false);
 
                 if (modpackUpdateNeeded){
                     Text coloredLocalModpackVer = Text.literal(localModpackVersion).styled(s -> s.withColor(Formatting.YELLOW));
                     Text coloredOnlineModpackVer = Text.literal(onlineVersion.modpackVersion()).styled(s -> s.withColor(Formatting.YELLOW));
-                    player.sendMessage(Text.translatable("vmtu.message.update.modpack_version_error"), false);
-                    player.sendMessage(Text.translatable("vmtu.message.update.modpack_version_error.hint", coloredLocalModpackVer, coloredOnlineModpackVer), false);
+                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update.modpack_version_error"), false);
+                    player.sendMessage(Text.translatable("vmtranslationupdate.message.update.modpack_version_error.hint", coloredLocalModpackVer, coloredOnlineModpackVer), false);
                 }
             }
         }
