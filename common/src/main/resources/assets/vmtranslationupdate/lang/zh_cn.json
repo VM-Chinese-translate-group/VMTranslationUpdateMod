@@ -24,6 +24,7 @@
   "text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage": "自动切换语言",
   "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自动下载汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
+  "text.autoconfig.vmtranslationupdate.option.autoLoadExtraTranslationPack": "自动加载扩展汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.extraPackName": "扩展资源包名称",
   "text.autoconfig.vmtranslationupdate.option.extraPackName.@Tooltip": "设置扩展资源包名称（包括后缀名）",
   "text.autoconfig.vmtranslationupdate.option.extraPackIndex": "扩展汉化资源包顺序",

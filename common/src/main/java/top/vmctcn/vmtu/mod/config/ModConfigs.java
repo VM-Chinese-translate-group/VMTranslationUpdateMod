@@ -17,10 +17,10 @@ public class ModConfigs implements ConfigData {
     @ConfigEntry.Gui.RequiresRestart
     public boolean autoDownloadVMTranslationPack = false;
 
+    public boolean checkModPackTranslationUpdate = true;
+
     @ConfigEntry.Gui.RequiresRestart
     public boolean autoLoadExtraTranslationPack = false;
-
-    public boolean checkModPackTranslationUpdate = true;
 
     @ConfigEntry.Gui.RequiresRestart
     @ConfigEntry.Gui.Tooltip
