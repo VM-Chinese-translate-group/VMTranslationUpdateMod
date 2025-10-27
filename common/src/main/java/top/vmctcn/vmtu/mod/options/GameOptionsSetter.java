@@ -1,8 +1,8 @@
 package top.vmctcn.vmtu.mod.options;
 
 import top.vmctcn.vmtu.core.VMTUCore;
-import top.vmctcn.vmtu.core.pack.ExtraPackIndex;
 import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
+import top.vmctcn.vmtu.core.pack.ResourcePackIndex;
 import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
@@ -31,9 +31,9 @@ public class GameOptionsSetter {
         boolean autoLoadExtraPack = ModConfigHelper.getConfig().autoLoadExtraTranslationPack;
         String gameVersion = ModPlatform.INSTANCE.getGameVersion();
         String extraPackName = ModConfigHelper.getConfig().extraPackName;
-        ExtraPackIndex extraPackIndex = ModConfigHelper.getConfig().extraPackIndex;
+        ResourcePackIndex resourcePackIndex = ModConfigHelper.getConfig().resourcePackIndex;
         int extraPackCustomIndex = ModConfigHelper.getConfig().extraPackCustomIndex;
         String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
-        VMTUCore.init(gamePath, gameVersion, resPackName, extraPackName, extraPackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
+        VMTUCore.init(gamePath, gameVersion, resPackName, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
     }
 }

@@ -25,12 +25,12 @@
   "text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack": "自動下載簡體中文模組補充翻譯資源包",
   "text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate": "自動檢測模組包版本更新",
   "text.autoconfig.vmtranslationupdate.option.autoLoadExtraTranslationPack": "自動加載擴展漢化資源包",
+  "text.autoconfig.vmtranslationupdate.option.resourcePackIndex": "漢化資源包順序",
+  "text.autoconfig.vmtranslationupdate.option.resourcePackIndex.@Tooltip": "指定漢化資源包的安裝順序",
   "text.autoconfig.vmtranslationupdate.option.extraPackName": "擴展資源包名稱",
   "text.autoconfig.vmtranslationupdate.option.extraPackName.@Tooltip": "設置擴展資源包名稱（包括後綴名）",
-  "text.autoconfig.vmtranslationupdate.option.extraPackIndex": "擴展漢化資源包順序",
-  "text.autoconfig.vmtranslationupdate.option.extraPackIndex.@Tooltip": "指定擴展漢化資源包的安裝順序",
   "text.autoconfig.vmtranslationupdate.option.extraPackCustomIndex": "自定義擴展漢化資源包順序",
-  "text.autoconfig.vmtranslationupdate.option.extraPackCustomIndex.@Tooltip": "自定義擴展漢化資源包的安裝順序，需要將擴展漢化資源包順序設置爲CUSTOM_INDEX此項纔會生效！",
+  "text.autoconfig.vmtranslationupdate.option.extraPackCustomIndex.@Tooltip": "自定義擴展漢化資源包的安裝順序，需要將漢化資源包順序設置爲CUSTOM_INDEX此項纔會生效！",
   "text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck": "檢測I18nUpdateMod是否已經安裝",
   "text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck": "檢測VaultPatcher是否已經安裝"
 }

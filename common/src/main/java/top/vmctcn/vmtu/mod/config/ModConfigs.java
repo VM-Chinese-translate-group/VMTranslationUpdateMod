@@ -3,7 +3,7 @@ package top.vmctcn.vmtu.mod.config;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import top.vmctcn.vmtu.core.pack.ExtraPackIndex;
+import top.vmctcn.vmtu.core.pack.ResourcePackIndex;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 
 @Config(name = VMTranslationUpdate.MOD_ID)
@@ -24,12 +24,12 @@ public class ModConfigs implements ConfigData {
 
     @ConfigEntry.Gui.RequiresRestart
     @ConfigEntry.Gui.Tooltip
-    public String extraPackName = "";
+    @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
+    public ResourcePackIndex resourcePackIndex = ResourcePackIndex.DEFAULT;
 
     @ConfigEntry.Gui.RequiresRestart
     @ConfigEntry.Gui.Tooltip
-    @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
-    public ExtraPackIndex extraPackIndex = ExtraPackIndex.TOP_OF_CFPA;
+    public String extraPackName = "";
 
     @ConfigEntry.Gui.RequiresRestart
     @ConfigEntry.Gui.Tooltip
