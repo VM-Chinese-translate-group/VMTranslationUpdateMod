@@ -66,13 +66,4 @@ public class SuggestModScreen extends Screen {
     public void close() {
         MinecraftClient.getInstance().setScreen(this.lastScreen);
     }
-
-    public static boolean isCoreModClassLoaded(String className) {
-        try {
-            Class.forName(className);
-            return true; // 类存在，coremod已加载
-        } catch (ClassNotFoundException e) {
-            return false; // 类不存在
-        }
-    }
 }
