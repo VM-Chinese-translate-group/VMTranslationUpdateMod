@@ -8,7 +8,7 @@ import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 import java.util.List;
 import java.util.Set;
 
-public class VMTUMixinConfig implements IMixinConfigPlugin {
+public class VMTUMixinPlugin implements IMixinConfigPlugin {
     @Override
     public void onLoad(String mixinPackage) {
 
