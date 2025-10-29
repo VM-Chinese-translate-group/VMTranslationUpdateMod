@@ -13,7 +13,7 @@ public class VMTranslationUpdate {
     public static final Logger LOGGER = LoggerFactory.getLogger("VMTranslationUpdateMod");
 
     public static void init() {
-        if (ModConfigHelper.getConfig().testMode) {
+        if (ModConfigHelper.getConfig().devMode) {
             ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
 
