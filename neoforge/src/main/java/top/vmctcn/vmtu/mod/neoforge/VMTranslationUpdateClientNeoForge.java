@@ -23,8 +23,6 @@ public class VMTranslationUpdateClientNeoForge {
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
 
-            GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
-
             NeoHelper.registerConfigScreen(modContainer, ModConfigHelper::setConfigScreen);
 
             NeoForge.EVENT_BUS.addListener(PlayerLoggedInEvent.class, event -> {

@@ -17,8 +17,6 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
     public void onInitializeClient() {
         VMTranslationUpdate.init();
 
-        GameOptionsSetter.init(FabricLoader.getInstance().getGameDir());
-
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
             if (LanguageHelper.isChineseLanguage()) {
                 ModEvents.screenAfterInitEvent(screen);
