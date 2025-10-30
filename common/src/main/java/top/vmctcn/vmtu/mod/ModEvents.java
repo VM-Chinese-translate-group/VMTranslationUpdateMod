@@ -33,8 +33,8 @@ public class ModEvents {
 
         OnlineVersion onlineVersion = VersionChecker.getOnlineVersion();
 
-        if (ModConfigHelper.getConfig().testMode) {
-            player.sendMessage(Text.literal("==================== VMTU testMode ===================="), false);
+        if (ModConfigHelper.getConfig().devMode) {
+            player.sendMessage(Text.literal("==================== VMTU Dev Mode ===================="), false);
             player.sendMessage(Text.literal("Modpack Name: " + modpack.getName()), false);
             player.sendMessage(Text.literal("Modpack Version: " + modpack.getVersion()), false);
             player.sendMessage(Text.literal("Modpack Translation URL:§b " + translation.getUrl()), false);
@@ -95,8 +95,8 @@ public class ModEvents {
             return;
         }
 
-        boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !SuggestModScreen.i18nUpdateModPresent;
-        boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !SuggestModScreen.vaultPatcherPresent;
+        boolean needI18n = ModConfigHelper.getConfig().i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod;
+        boolean needVP = ModConfigHelper.getConfig().vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher;
 
         // 只要有任何一个模组需要提示，就显示屏幕
         if (needI18n || needVP) {
