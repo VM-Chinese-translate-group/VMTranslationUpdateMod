@@ -18,7 +18,7 @@ import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 @Mod(value = VMTranslationUpdate.MOD_ID, dist = Dist.CLIENT)
 public class VMTranslationUpdateClientNeoForge {
     public VMTranslationUpdateClientNeoForge(ModContainer modContainer) {
-        if (FMLLoader.getDist().isClient()) {
+        if (FMLLoader.getCurrent().getDist().isClient()) {
             VMTranslationUpdate.init();
 
             NeoHelper.registerConfigScreen(modContainer, ModConfigHelper::setConfigScreen);
