@@ -19,7 +19,7 @@ public class VMTranslationUpdate {
 
             Metadata.Modpacks meta = MetadataReader.getModpack(translation.getId());
 
-            LOGGER.warn("==================== VMTU testMode ====================");
+            LOGGER.warn("==================== VMTU Dev Mode ====================");
             LOGGER.warn("Modpack Name: {}", modpackInfo.getName());
             LOGGER.warn("Modpack Version: {}", modpackInfo.getVersion());
             LOGGER.warn("Modpack Translation URL: {}", translation.getUrl());
