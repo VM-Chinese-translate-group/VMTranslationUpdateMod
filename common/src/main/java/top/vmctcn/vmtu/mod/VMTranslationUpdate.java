@@ -7,6 +7,7 @@ import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.modpack.meta.Metadata;
 import top.vmctcn.vmtu.mod.modpack.meta.MetadataReader;
+import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
 public class VMTranslationUpdate {
     public static final String MODNAME = "VMTranslationUpdate";
@@ -14,6 +15,8 @@ public class VMTranslationUpdate {
     public static final Logger LOGGER = LoggerFactory.getLogger(MODNAME);
 
     public static void init() {
+        GameOptionsSetter.autoSwitchLanguage();
+
         if (ModConfigHelper.getConfig().devMode) {
             ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
