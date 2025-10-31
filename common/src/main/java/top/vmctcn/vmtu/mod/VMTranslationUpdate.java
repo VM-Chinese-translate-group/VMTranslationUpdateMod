@@ -14,6 +14,8 @@ public class VMTranslationUpdate {
     public static final Logger LOGGER = LoggerFactory.getLogger("VMTranslationUpdateMod");
 
     public static void init() {
+        GameOptionsSetter.autoSwitchLanguage();
+
         if (ModConfigHelper.getConfig().devMode) {
             ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
@@ -36,7 +38,5 @@ public class VMTranslationUpdate {
             LOGGER.warn("Modpack Online Translation Version: {}", meta.getTranslationVersion());
             LOGGER.warn("=======================================================");
         }
-
-        GameOptionsSetter.autoSwitchLanguage();
     }
 }
