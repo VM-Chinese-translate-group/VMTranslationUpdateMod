@@ -1,18 +1,20 @@
 package top.vmctcn.vmtu.mod.options;
 
+import top.vmctcn.vmtu.core.VMTUCore;
+import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
+import top.vmctcn.vmtu.core.pack.ResourcePackIndex;
 import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.helper.LanguageHelper;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
-import top.vmctcn.vmtu.core.VMTUCore;
-import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
-import top.vmctcn.vmtu.core.pack.PackSource;
 
 import java.nio.file.Path;
 
 public class GameOptionsSetter {
-    public static void init(Path gamePath) {
+    private static final Path gamePath = ModPlatform.INSTANCE.getGameDir();
+
+    public static void autoSwitchLanguage() {
         if (ModConfigHelper.getConfig().autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
                 GameOptionsWriter writer = new GameOptionsWriter(gamePath.resolve("options.txt"));
@@ -22,12 +24,16 @@ public class GameOptionsSetter {
                 VMTranslationUpdate.LOGGER.warn("Failed to switch language: ", e);
             }
         }
+    }
 
-        if (ModConfigHelper.getConfig().autoDownloadVMTranslationPack) {
-            String gameVersion = ModPlatform.INSTANCE.getGameVersion();
-            PackSource resPackSource = ModConfigHelper.getConfig().translationPackSource;
-            String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
-            VMTUCore.init(gamePath, gameVersion, resPackName, resPackSource);
-        }
+    public static void autoDownloadAndLoadPack() {
+        boolean autoDownloadPack = ModConfigHelper.getConfig().autoDownloadVMTranslationPack;
+        boolean autoLoadExtraPack = ModConfigHelper.getConfig().autoLoadExtraTranslationPack;
+        String gameVersion = ModPlatform.INSTANCE.getGameVersion();
+        String extraPackName = ModConfigHelper.getConfig().extraPackName;
+        ResourcePackIndex resourcePackIndex = ModConfigHelper.getConfig().resourcePackIndex;
+        int extraPackCustomIndex = ModConfigHelper.getConfig().extraPackCustomIndex;
+        String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
+        VMTUCore.init(gamePath, gameVersion, resPackName, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
     }
 }

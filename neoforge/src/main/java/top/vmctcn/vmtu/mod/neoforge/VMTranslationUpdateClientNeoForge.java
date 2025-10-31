@@ -4,7 +4,6 @@ import com.mojang.brigadier.Command;
 import net.minecraft.server.command.CommandManager;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLLoader;
-import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -13,7 +12,6 @@ import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.helper.LanguageHelper;
-import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
 @Mod(VMTranslationUpdate.MOD_ID)
 public class VMTranslationUpdateClientNeoForge {
@@ -22,8 +20,6 @@ public class VMTranslationUpdateClientNeoForge {
 
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
-
-            GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
 
             NeoHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, ModConfigHelper::setConfigScreen);
 
