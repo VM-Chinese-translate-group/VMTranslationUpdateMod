@@ -23,6 +23,9 @@
       "top.vmctcn.vmtu.mod.fabric.ModMenuImpl"
     ]
   },
+  "mixins": [
+    "vmtu.mixins.json"
+  ],
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.19 <=1.19.2",
