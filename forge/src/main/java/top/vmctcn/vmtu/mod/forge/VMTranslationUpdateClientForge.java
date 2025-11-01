@@ -9,12 +9,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLLoader;
-import net.minecraftforge.fml.loading.FMLPaths;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.helper.LanguageHelper;
-import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
 @Mod(VMTranslationUpdate.MOD_ID)
 public class VMTranslationUpdateClientForge {
@@ -23,8 +21,6 @@ public class VMTranslationUpdateClientForge {
 
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
-
-            GameOptionsSetter.init(FMLPaths.GAMEDIR.get());
 
             ForgeHelper.registerConfigScreen(VMTranslationUpdate.MOD_ID, screen -> AutoConfig.getConfigScreen(ModConfigs.class, screen).get());
 

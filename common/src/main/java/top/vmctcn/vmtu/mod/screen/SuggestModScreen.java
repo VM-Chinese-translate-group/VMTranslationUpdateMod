@@ -5,26 +5,19 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.helper.ScreenHelper;
 
 public class SuggestModScreen extends Screen {
-    public static boolean i18nUpdateModPresent = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
-    public static boolean vaultPatcherPresent = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
-    public static final Text downloadButtonText = new TranslatableText("mco.brokenworld.download");
-    public static final Text ignoreButtonText = new TranslatableText("selectWorld.backupJoinSkipButton");
-
     public final Screen lastScreen;
 
     private static final int HEADER_HEIGHT = 40;
     private static final int FOOTER_HEIGHT = 50;
 
     public SuggestModScreen(Screen lastScreen) {
-        super(getSuggestTitle().copy().formatted(Formatting.RED).formatted(Formatting.BOLD));
+        super(ModContexts.ScreenTexts.suggestTitleText.copy().formatted(Formatting.RED).formatted(Formatting.BOLD));
         this.lastScreen = lastScreen;
     }
 
@@ -34,17 +27,17 @@ public class SuggestModScreen extends Screen {
 
         super.init();
 
-        this.addDrawableChild(new ButtonWidget(centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, downloadButtonText, buttonWidget -> {
-            if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
+        this.addDrawableChild(new ButtonWidget(centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, ModContexts.ScreenTexts.downloadButton, buttonWidget -> {
+            if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher)) {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
-            } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
+            } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod) {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
-            } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
+            } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher) {
                 ScreenHelper.openUrlOnScreen(this.client, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
             }
         }));
-        this.addDrawableChild(new ButtonWidget(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, ignoreButtonText, buttonWidget -> this.close()));
+        this.addDrawableChild(new ButtonWidget(centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, ModContexts.ScreenTexts.ignoreButton, buttonWidget -> this.close()));
     }
 
     @Override
@@ -54,8 +47,8 @@ public class SuggestModScreen extends Screen {
         super.render(matrixStack, mouseX, mouseY, delta);
 
         ScreenHelper.drawCenteredTextWithShadow(matrixStack, this.textRenderer, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
-        ScreenHelper.drawCenteredTextWithShadow(matrixStack, this.textRenderer, getSuggestText(), this.width / 2, 70, -1);
-        ScreenHelper.drawCenteredTextWithShadow(matrixStack, this.textRenderer, new TranslatableText("vmtranslationupdate.warn.text2"), this.width / 2, 80, -1);
+        ScreenHelper.drawCenteredTextWithShadow(matrixStack, this.textRenderer, ModContexts.ScreenTexts.suggestFailedText, this.width / 2, 70, -1);
+        ScreenHelper.drawCenteredTextWithShadow(matrixStack, this.textRenderer, ModContexts.ScreenTexts.suggestDownloadNoticeText, this.width / 2, 80, -1);
     }
 
     @Override
@@ -74,40 +67,5 @@ public class SuggestModScreen extends Screen {
     @Override
     public void close() {
         MinecraftClient.getInstance().setScreen(this.lastScreen);
-    }
-
-    public static boolean isCoreModClassLoaded(String className) {
-        try {
-            Class.forName(className);
-            return true; // 类存在，coremod已加载
-        } catch (ClassNotFoundException e) {
-            return false; // 类不存在
-        }
-    }
-
-    private static Text getSuggestTitle() {
-        Text titleText = LiteralText.EMPTY;
-
-        if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
-            titleText = new TranslatableText("vmtranslationupdate.warn.title", "I18nUpdateMod & VaultPatcher");
-        } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
-            titleText = new TranslatableText("vmtranslationupdate.warn.title", "I18nUpdateMod");
-        } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
-            titleText = new TranslatableText("vmtranslationupdate.warn.title", "VaultPatcher");
-        }
-        return titleText;
-    }
-
-    private static Text getSuggestText() {
-        Text context = LiteralText.EMPTY;
-
-        if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) && (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent)) {
-            context = new TranslatableText("vmtranslationupdate.warn.text", "I18nUpdateMod & VaultPatcher");
-        } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !i18nUpdateModPresent) {
-            context = new TranslatableText("vmtranslationupdate.warn.text", "I18nUpdateMod");
-        } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !vaultPatcherPresent) {
-            context = new TranslatableText("vmtranslationupdate.warn.text", "VaultPatcher");
-        }
-        return context;
     }
 }

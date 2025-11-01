@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
+import top.vmctcn.vmtu.mod.modpack.meta.Metadata;
+import top.vmctcn.vmtu.mod.modpack.meta.MetadataReader;
+import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
 
 public class VMTranslationUpdate {
     public static final String MODNAME = "VMTranslationUpdate";
@@ -12,17 +15,29 @@ public class VMTranslationUpdate {
     public static final Logger LOGGER = LoggerFactory.getLogger(MODNAME);
 
     public static void init() {
-        if (ModConfigHelper.getConfig().testMode) {
-            ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
-            ModpackInfo.Translation translation = modpack.getTranslation();
+        GameOptionsSetter.autoSwitchLanguage();
 
-            LOGGER.warn("Modpack Name: {}", modpack.getName());
-            LOGGER.warn("Modpack Version: {}", modpack.getVersion());
+        if (ModConfigHelper.getConfig().devMode) {
+            ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
+            ModpackInfo.Translation translation = modpackInfo.getTranslation();
+
+            Metadata.Modpacks meta = MetadataReader.getModpack(translation.getId());
+
+            LOGGER.warn("==================== VMTU Dev Mode ====================");
+            LOGGER.warn("Modpack Name: {}", modpackInfo.getName());
+            LOGGER.warn("Modpack Version: {}", modpackInfo.getVersion());
             LOGGER.warn("Modpack Translation URL: {}", translation.getUrl());
-            LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            if (translation.getUpdateCheckUrl() != null) {
+                LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            }
             LOGGER.warn("Modpack Translation Language: {}", translation.getLanguage());
             LOGGER.warn("Modpack Translation Version: {}", translation.getVersion());
             LOGGER.warn("Modpack Translation Resource Pack Name: {}", translation.getResourcePackName());
+            LOGGER.warn("Meta Url: {}", MetadataReader.getMetaUrl());
+            LOGGER.warn("Meta Version: {}", MetadataReader.getMetadata().getMetaVersion());
+            LOGGER.warn("Modpack Online Version: {}", meta.getModpackVersion());
+            LOGGER.warn("Modpack Online Translation Version: {}", meta.getTranslationVersion());
+            LOGGER.warn("=======================================================");
         }
     }
 }
