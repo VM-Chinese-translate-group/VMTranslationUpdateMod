@@ -16,6 +16,6 @@ public class ForgeHelper {
 
     public static void getClientModIgnoredServerOnly(String modid) {
         ModContainer modContainer = ModList.get().getModContainerById(modid).orElseThrow();
-        modContainer.registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(() -> IExtensionPoint.DisplayTest.IGNORESERVERONLY, (a, b) -> true));
+        modContainer.registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(IExtensionPoint.DisplayTest.IGNORESERVERONLY, (remoteVersion, isFromServer) -> true));
     }
 }
