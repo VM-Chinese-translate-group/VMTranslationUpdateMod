@@ -27,7 +27,9 @@ public class VMTranslationUpdate {
             LOGGER.warn("Modpack Name: {}", modpackInfo.getName());
             LOGGER.warn("Modpack Version: {}", modpackInfo.getVersion());
             LOGGER.warn("Modpack Translation URL: {}", translation.getUrl());
-            LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            if (translation.getUpdateCheckUrl() != null) {
+                LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            }
             LOGGER.warn("Modpack Translation Language: {}", translation.getLanguage());
             LOGGER.warn("Modpack Translation Version: {}", translation.getVersion());
             LOGGER.warn("Modpack Translation Resource Pack Name: {}", translation.getResourcePackName());
