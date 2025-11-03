@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "xyz.wagyourtail.unimined" version "1.3.14-SNAPSHOT"
+    id "xyz.wagyourtail.unimined" version "1.4.+"
     id "com.gradleup.shadow" version "8.+"
 }
 
@@ -13,16 +13,17 @@ unimined.minecraft {
 
     mappings {
         calamus()
-        feather(27)
+        feather(28)
 
         // calamus = intermediary, feather = yarn
-        stub.withMappings("intermediary", ["yarn"]) {
-            c("net/minecraft/unmapped/C_9482745", []) {
-                m("m_9076954", "()D", ["getMaxSpeedVanilla"])
+        stubs(["searge", "feather"]) {
+            c(["net/minecraft/entity/item/EntityMinecart"]) {
+                // fix conflict with forge added function name
+                m("func_174898_m;()D", "getMaxSpeedVanilla")
             }
         }
 
-        devFallbackNamespace("intermediary")
+        devNamespace("feather")
     }
 
     minecraftForge {
@@ -71,7 +72,7 @@ processResources {
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = "UTF-8"
     //options.release = 8
 }
@@ -95,4 +96,10 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+}
+
+processResources.dependsOn("convertLangFile")
+tasks.register("convertLangFile", Exec) {
+    commandLine("python", "scripts/json2LangConverter.py", "jsonLang", "-o", "src/main/resources/assets/vmtranslationupdate/lang")
+    workingDir projectDir
 }

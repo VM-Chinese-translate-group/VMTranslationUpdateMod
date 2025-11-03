@@ -16,7 +16,7 @@ public class VersionChecker {
     public static OnlineVersion getOnlineVersion() {
         ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
         String updateCheckUrl = modpackInfo.getTranslation().getUpdateCheckUrl();
-        if (updateCheckUrl == null && modpackInfo.getTranslation().getId() != null) {
+        if (updateCheckUrl == null && modpackInfo.getTranslation().getId() != null && MetadataReader.readMetadataSuccess) {
             Metadata.Modpacks modpack = MetadataReader.getModpack(modpackInfo.getTranslation().getId());
             String translationVersion = modpack.getTranslationVersion();
             String modpackVersion = modpack.getModpackVersion();

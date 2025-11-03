@@ -1,27 +1,31 @@
+# 此文件由JSON到lang格式转换器生成
+# 请谨慎手动修改
+
 vmtranslationupdate.warn.download.button=下载
 vmtranslationupdate.warn.ignore.button=我知道自己在做什么！
-
 commands.vmtranslationupdate.usage=/vmtu check
-
-vmtranslationupdate.message.update=[VM汉化组]：发现汉化更新，当前汉化版本为%s，最新版为%s。请及时更新您的汉化！
-vmtranslationupdate.message.update2=请点击右侧
-vmtranslationupdate.message.update3=下载新版本。
-vmtranslationupdate.message.update_modpack=注：本次汉化基于新版整合包适配，§c请先更新整合包后再重新安装汉化！§r否则可能造成不兼容问题
-vmtranslationupdate.message.update_modpack_hint=当前游玩的整合包版本为%s，请把整合包更新到%s版本以匹配汉化！
-vmtranslationupdate.message.error=[VM汉化组]：错误！汉化更新检测出现问题。
-vmtranslationupdate.message.hover=点我到官网下载新版本！
-vmtranslationupdate.message.not_support=汉化补丁不支持当前语言，请切换到以下语言：%s
-
-vmtranslationupdate.warn.title=未检测到 %s 模组
-vmtranslationupdate.warn.text=%s 尚未安装，这可能导致某些模组§c汉化不完全§r！
-vmtranslationupdate.warn.text2=请点击下面的按钮跳转到下载页面。
-
-config.vmtranslationupdate.title=VM汉化更新检测配置
-config.vmtranslationupdate.option.testMode=开发测试模式
-config.vmtranslationupdate.option.autoSwitchLanguage=自动切换语言
-config.vmtranslationupdate.option.checkModPackTranslationUpdate=自动检测整合包汉化版本更新
-config.vmtranslationupdate.option.i18nUpdateModCheck=检测I18nUpdateMod是否已经安装
-config.vmtranslationupdate.option.vaultPatcherCheck=检测VaultPatcher是否已经安装
-config.vmtranslationupdate.option.autoDownloadVMTranslationPack=自动下载汉化资源包
-config.vmtranslationupdate.option.translationPackSource=汉化资源包下载源
-config.vmtranslationupdate.option.translationPackSource.@Tooltip=指定汉化资源包的下载来源
+vmtranslationupdate.message.update.new_version.text_part1=[VM汉化组]：发现汉化更新，当前汉化版本为%s，最新版为%s。请及时更新您的汉化！
+vmtranslationupdate.message.update.new_version.text_part2=请点击右侧
+vmtranslationupdate.message.update.new_version.text_part3=下载新版本。
+vmtranslationupdate.message.update.new_version.download_hover=点我到官网下载新版本！
+vmtranslationupdate.message.update.modpack_version_error=注：本次汉化基于新版整合包适配，§c请先更新整合包后再重新安装汉化！§r否则可能造成不兼容问题
+vmtranslationupdate.message.update.modpack_version_error.hint=当前游玩的整合包版本为%s，请把整合包更新到%s版本以匹配汉化！
+vmtranslationupdate.message.update.error=[VM汉化组]：错误！汉化更新检测出现问题。
+vmtranslationupdate.message.language_not_support=汉化补丁不支持当前语言，请切换到以下语言：%s
+vmtranslationupdate.required_mod.warn.title=未检测到 %s 模组
+vmtranslationupdate.required_mod.warn.detect_failed=%s 尚未安装，这可能导致某些模组§c汉化不完全§r！
+vmtranslationupdate.required_mod.warn.download_notice=请点击下面的按钮跳转到下载页面。
+text.autoconfig.vmtranslationupdate.title=VM汉化更新检测配置
+text.autoconfig.vmtranslationupdate.option.devMode=开发测试模式
+text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage=自动切换语言
+text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack=自动下载汉化资源包
+text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate=自动检测整合包汉化版本更新
+text.autoconfig.vmtranslationupdate.option.autoLoadExtraTranslationPack=自动加载扩展汉化资源包
+text.autoconfig.vmtranslationupdate.option.resourcePackIndex=汉化资源包顺序
+text.autoconfig.vmtranslationupdate.option.resourcePackIndex.@Tooltip=指定汉化资源包的安装顺序
+text.autoconfig.vmtranslationupdate.option.extraPackName=扩展资源包名称
+text.autoconfig.vmtranslationupdate.option.extraPackName.@Tooltip=设置扩展资源包名称（包括后缀名）
+text.autoconfig.vmtranslationupdate.option.extraPackCustomIndex=自定义扩展汉化资源包顺序
+text.autoconfig.vmtranslationupdate.option.extraPackCustomIndex.@Tooltip=自定义扩展汉化资源包的安装顺序，需要将扩展汉化资源包顺序设置为CUSTOM_INDEX此项才会生效！
+text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck=检测I18nUpdateMod是否已经安装
+text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck=检测VaultPatcher是否已经安装

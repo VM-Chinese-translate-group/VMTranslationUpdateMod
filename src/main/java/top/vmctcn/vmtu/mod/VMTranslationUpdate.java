@@ -31,20 +31,25 @@ public class VMTranslationUpdate {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        MinecraftForge.EVENT_BUS.register(new ModEventHandler());
+        MinecraftForge.EVENT_BUS.register(this);
+
         MetadataReader.init();
         ModpackInfoReader.init();
 
-        if (ModConfigs.testMode) {
+        if (ModConfigs.devMode) {
             ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
 
             Metadata.Modpacks meta = MetadataReader.getModpack(translation.getId());
 
-            LOGGER.warn("==================== VMTU testMode ====================");
+            LOGGER.warn("==================== VMTU Dev Mode ====================");
             LOGGER.warn("Modpack Name: {}", modpackInfo.getName());
             LOGGER.warn("Modpack Version: {}", modpackInfo.getVersion());
             LOGGER.warn("Modpack Translation URL: {}", translation.getUrl());
-            LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            if (translation.getUpdateCheckUrl() != null) {
+                LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+            }
             LOGGER.warn("Modpack Translation Language: {}", translation.getLanguage());
             LOGGER.warn("Modpack Translation Version: {}", translation.getVersion());
             LOGGER.warn("Modpack Translation Resource Pack Name: {}", translation.getResourcePackName());
@@ -54,16 +59,13 @@ public class VMTranslationUpdate {
             LOGGER.warn("Modpack Online Translation Version: {}", meta.getTranslationVersion());
             LOGGER.warn("=======================================================");
         }
-
-        MinecraftForge.EVENT_BUS.register(new ModEventHandler());
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @EventHandler
     public static void onInit(FMLInitializationEvent event) {
-        GameOptionsSetter.setResourcePack();
+        GameOptionsSetter.autoDownloadAndLoadPack();
 
-        GameOptionsSetter.setLanguage();
+        GameOptionsSetter.autoSwitchLanguage();
 
         ClientCommandHandler.instance.register(new ModCommand());
     }

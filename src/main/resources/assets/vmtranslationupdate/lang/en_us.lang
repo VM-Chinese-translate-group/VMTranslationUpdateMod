@@ -1,27 +1,31 @@
+# 此文件由JSON到lang格式转换器生成
+# 请谨慎手动修改
+
 vmtranslationupdate.warn.download.button=Download
 vmtranslationupdate.warn.ignore.button=I know what I am doing!
-
 commands.vmtranslationupdate.usage=/vmtu check
-
-vmtranslationupdate.message.update=[VM Chinese Group]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!
-vmtranslationupdate.message.update2=Please click on the right
-vmtranslationupdate.message.update3= to download the new version.
-vmtranslationupdate.message.update_modpack=Note: This translation patch update is based on a newer modpack version. §cPlease update the modpack first before reinstalling the translation!§r Otherwise, compatibility issues may occur
-vmtranslationupdate.message.update_modpack_hint=You are currently playing with modpack version %s. Please update to version %s to match the translation patch!
-vmtranslationupdate.message.error=[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.
-vmtranslationupdate.message.hover=Click me to download the new version!
-vmtranslationupdate.message.not_support=Translation patch not support your language, please use %s
-
-vmtranslationupdate.warn.title=%s not detected
-vmtranslationupdate.warn.text=%s is not yet installed, which may result in incomplete localization of some mods!
-vmtranslationupdate.warn.text2=Please click the button below to jump to the download page.
-
-config.vmtranslationupdate.title=VM Translation Update Config
-config.vmtranslationupdate.option.testMode=Test Mode
-config.vmtranslationupdate.option.autoSwitchLanguage=Auto switch language
-config.vmtranslationupdate.option.autoDownloadVMTranslationPack=Auto download translation pack
-config.vmtranslationupdate.option.translationPackSource=Translation pack source
-config.vmtranslationupdate.option.translationPackSource.@Tooltip=Choose translation pack download source
-config.vmtranslationupdate.option.checkModPackTranslationUpdate=Auto-detect modpack translation version update
-config.vmtranslationupdate.option.i18nUpdateModCheck=Detecting if I18nUpdateMod is already installed
-config.vmtranslationupdate.option.vaultPatcherCheck=Detect if VaultPatcher is installed
+vmtranslationupdate.message.update.new_version.text_part1=[VM Chinese Group]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!
+vmtranslationupdate.message.update.new_version.text_part2=Please click on the right 
+vmtranslationupdate.message.update.new_version.text_part3= to download the new version.
+vmtranslationupdate.message.update.new_version.download_hover=Click me to download the new version!
+vmtranslationupdate.message.update.modpack_version_error=Note: This translation patch update is based on a newer modpack version. §cPlease update the modpack first before reinstalling the translation!§r Otherwise, compatibility issues may occur
+vmtranslationupdate.message.update.modpack_version_error.hint=You are currently playing with modpack version %s. Please update to version %s to match the translation patch!
+vmtranslationupdate.message.update.error=[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.
+vmtranslationupdate.message.language_not_support=Translation patch not support your language, please use %s
+vmtranslationupdate.required_mod.warn.title=%s not detected
+vmtranslationupdate.required_mod.warn.detect_failed=%s is not yet installed, which may result in incomplete localization of some mods!
+vmtranslationupdate.required_mod.warn.download_notice=Please click the button below to jump to the download page.
+text.autoconfig.vmtranslationupdate.title=VM Translation Update Config
+text.autoconfig.vmtranslationupdate.option.devMode=Dev Mode
+text.autoconfig.vmtranslationupdate.option.autoSwitchLanguage=Auto switch language
+text.autoconfig.vmtranslationupdate.option.autoDownloadVMTranslationPack=Auto download translation pack
+text.autoconfig.vmtranslationupdate.option.checkModPackTranslationUpdate=Auto-detect modpack translation version update
+text.autoconfig.vmtranslationupdate.option.autoLoadExtraTranslationPack=Auto load extra translation pack
+text.autoconfig.vmtranslationupdate.option.resourcePackIndex=Translation pack index
+text.autoconfig.vmtranslationupdate.option.resourcePackIndex.@Tooltip=Choose translation pack install index
+text.autoconfig.vmtranslationupdate.option.extraPackName=Extra Pack Name
+text.autoconfig.vmtranslationupdate.option.extraPackName.@Tooltip=Set extra translation pack name (including the file extension)
+text.autoconfig.vmtranslationupdate.option.extraPackCustomIndex=Custom translation pack index
+text.autoconfig.vmtranslationupdate.option.extraPackCustomIndex.@Tooltip=To customize the installation index of translation pack, you must set the resource pack sequence to CUSTOM_INDEX for this setting to take effect!
+text.autoconfig.vmtranslationupdate.option.i18nUpdateModCheck=Detecting if I18nUpdateMod is already installed
+text.autoconfig.vmtranslationupdate.option.vaultPatcherCheck=Detect if VaultPatcher is installed
