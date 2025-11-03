@@ -15,7 +15,6 @@ unimined.minecraft {
         calamus()
         feather(28)
 
-        // calamus = intermediary, feather = yarn
         stubs(["searge", "feather"]) {
             c(["net/minecraft/entity/item/EntityMinecart"]) {
                 // fix conflict with forge added function name
