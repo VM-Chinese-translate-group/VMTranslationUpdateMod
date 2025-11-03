@@ -49,7 +49,7 @@ public class ModpackInfoReader {
         modpackInfo.modpack.translation.url = "https://vmct-cn.top/modpacks/example/";
         modpackInfo.modpack.translation.language = "zh_cn";
         modpackInfo.modpack.translation.version = "1.0.0";
-        modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.12";
+        modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.12.2";
 
         try {
             try (Writer writer = Files.newBufferedWriter(modpackInfoPath, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
