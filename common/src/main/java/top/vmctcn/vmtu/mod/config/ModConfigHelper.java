@@ -1,8 +1,9 @@
 package top.vmctcn.vmtu.mod.config;
 
 import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.AutoConfigClient;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
-import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screens.Screen;
 
 public class ModConfigHelper {
     private static ModConfigs modConfigs;
@@ -16,6 +17,6 @@ public class ModConfigHelper {
     }
 
     public static Screen setConfigScreen(Screen screen) {
-        return AutoConfig.getConfigScreen(ModConfigs.class, screen).get();
+        return AutoConfigClient.getConfigScreen(ModConfigs.class, screen).get();
     }
 }

@@ -1,35 +1,35 @@
 package top.vmctcn.vmtu.mod.helper;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gl.RenderPipelines;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ConfirmLinkScreen;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.ConfirmLinkScreen;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.Util;
-import net.minecraft.util.math.ColorHelper;
 import org.apache.commons.lang3.StringUtils;
 
 public class ScreenHelper {
-    public static void drawCenteredTextWithShadow(DrawContext context, TextRenderer textRenderer, Text text, int centerX, int y, int color) {
-        context.drawCenteredTextWithShadow(textRenderer, text, centerX, y, color);
+    public static void drawCenteredTextWithShadow(GuiGraphics context, Font textRenderer, Component text, int centerX, int y, int color) {
+        context.drawCenteredString(textRenderer, text, centerX, y, color);
     }
 
-    public static void drawGuiTexture(DrawContext context, Identifier sprite, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight) {
-        context.drawTexture(RenderPipelines.GUI_TEXTURED, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
+    public static void drawGuiTexture(GuiGraphics context, Identifier sprite, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight) {
+        context.blit(RenderPipelines.GUI_TEXTURED, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
     }
 
     public static void resetShaderColor() {
-        int color = ColorHelper.fromFloats(1.0F, 1.0F, 1.0F, 1.0F);
+        int color = ARGB.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
-    public static void openUrlOnScreen(MinecraftClient client, Screen screen, String url) {
+    public static void openUrlOnScreen(Minecraft client, Screen screen, String url) {
         if (StringUtils.isNotBlank(url) && client != null) {
             client.setScreen(new ConfirmLinkScreen(yes -> {
                 if (yes) {
-                    Util.getOperatingSystem().open(url);
+                    Util.getPlatform().openUri(url);
                 }
                 client.setScreen(screen);
             }, url, true));

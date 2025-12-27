@@ -14,10 +14,7 @@ subprojects {
 
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
-        mappings loom.layered {
-            mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-            mappings "dev.architectury:yarn-mappings-patch-neoforge:${project.yarn_patch}"
-        }
+        mappings loom.officialMojangMappings()
 
         implementation("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
         implementation("com.google.auto.service:auto-service-annotations:1.1.1")

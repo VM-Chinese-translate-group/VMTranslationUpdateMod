@@ -1,7 +1,7 @@
 package top.vmctcn.vmtu.mod.neoforge;
 
 import com.mojang.brigadier.Command;
-import net.minecraft.server.command.CommandManager;
+import net.minecraft.commands.Commands;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -35,8 +35,8 @@ public class VMTranslationUpdateClientNeoForge {
             });
 
             NeoForge.EVENT_BUS.addListener(RegisterClientCommandsEvent.class, event -> event.getDispatcher().register(
-                    CommandManager.literal("vmtu")
-                            .then(CommandManager.literal("check")
+                    Commands.literal("vmtu")
+                            .then(Commands.literal("check")
                                     .executes(context -> {
                                         ModEvents.playerJoinEvent(context.getSource().getPlayer());
                                         return Command.SINGLE_SUCCESS;

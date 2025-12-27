@@ -1,6 +1,6 @@
 package top.vmctcn.vmtu.mod;
 
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 
 public class ModContexts {
@@ -19,31 +19,31 @@ public class ModContexts {
     }
 
     public static class ScreenTexts {
-        public static final Text downloadButton = Text.translatable("mco.brokenworld.download");
-        public static final Text ignoreButton = Text.translatable("selectWorld.backupJoinSkipButton");
-        public static final Text suggestTitleText;
-        public static final Text suggestFailedText;
-        public static final Text suggestDownloadNoticeText = Text.translatable("vmtranslationupdate.required_mod.warn.download_notice");
+        public static final Component downloadButton = Component.translatable("mco.brokenworld.download");
+        public static final Component ignoreButton = Component.translatable("selectWorld.backupJoinSkipButton");
+        public static final Component suggestTitleText;
+        public static final Component suggestFailedText;
+        public static final Component suggestDownloadNoticeText = Component.translatable("vmtranslationupdate.required_mod.warn.download_notice");
 
         static {
             if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher)) {
-                suggestTitleText = Text.translatable("vmtranslationupdate.required_mod.warn.title", "I18nUpdateMod & VaultPatcher");
+                suggestTitleText = Component.translatable("vmtranslationupdate.required_mod.warn.title", "I18nUpdateMod & VaultPatcher");
             } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) {
-                suggestTitleText = Text.translatable("vmtranslationupdate.required_mod.warn.title", "I18nUpdateMod");
+                suggestTitleText = Component.translatable("vmtranslationupdate.required_mod.warn.title", "I18nUpdateMod");
             } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher) {
-                suggestTitleText = Text.translatable("vmtranslationupdate.required_mod.warn.title", "VaultPatcher");
+                suggestTitleText = Component.translatable("vmtranslationupdate.required_mod.warn.title", "VaultPatcher");
             } else {
-                suggestTitleText = Text.empty();
+                suggestTitleText = Component.empty();
             }
 
             if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher)) {
-                suggestFailedText = Text.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "I18nUpdateMod & VaultPatcher");
+                suggestFailedText = Component.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "I18nUpdateMod & VaultPatcher");
             } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) {
-                suggestFailedText = Text.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "I18nUpdateMod");
+                suggestFailedText = Component.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "I18nUpdateMod");
             } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher) {
-                suggestFailedText = Text.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "VaultPatcher");
+                suggestFailedText = Component.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "VaultPatcher");
             } else {
-                suggestFailedText = Text.empty();
+                suggestFailedText = Component.empty();
             }
         }
     }
