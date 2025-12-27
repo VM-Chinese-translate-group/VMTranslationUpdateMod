@@ -22,7 +22,7 @@ public class ScreenHelper {
     }
 
     public static void resetShaderColor() {
-        int color = ColorHelper.fromFloats(1.0F, 1.0F, 1.0F, 1.0F);
+        //NO-OP
     }
 
     public static void openUrlOnScreen(MinecraftClient client, Screen screen, String url) {
