@@ -8,7 +8,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
 import net.minecraft.util.Util;
 import org.apache.commons.lang3.StringUtils;
 
@@ -22,7 +21,7 @@ public class ScreenHelper {
     }
 
     public static void resetShaderColor() {
-        int color = ARGB.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F);
+        //NO-OP
     }
 
     public static void openUrlOnScreen(Minecraft client, Screen screen, String url) {
