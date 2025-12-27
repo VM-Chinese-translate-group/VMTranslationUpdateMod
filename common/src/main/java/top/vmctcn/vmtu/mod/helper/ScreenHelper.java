@@ -9,7 +9,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import net.minecraft.util.math.ColorHelper;
 import org.apache.commons.lang3.StringUtils;
 
 public class ScreenHelper {
