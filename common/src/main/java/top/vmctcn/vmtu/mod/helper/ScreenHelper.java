@@ -9,7 +9,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import net.minecraft.util.math.ColorHelper;
 import org.apache.commons.lang3.StringUtils;
 
 public class ScreenHelper {
@@ -22,7 +21,7 @@ public class ScreenHelper {
     }
 
     public static void resetShaderColor() {
-        int color = ColorHelper.fromFloats(1.0F, 1.0F, 1.0F, 1.0F);
+        //NO-OP
     }
 
     public static void openUrlOnScreen(MinecraftClient client, Screen screen, String url) {
