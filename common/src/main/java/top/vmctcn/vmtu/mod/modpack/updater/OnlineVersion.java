@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.updater;
 
 public record OnlineVersion(String translationVersion, String modpackVersion) {
     public boolean isValid() {

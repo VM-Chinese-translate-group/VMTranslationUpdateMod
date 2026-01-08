@@ -11,10 +11,10 @@ import net.minecraft.world.entity.player.Player;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.helper.GameEventHelper;
 import top.vmctcn.vmtu.mod.helper.LanguageHelper;
-import top.vmctcn.vmtu.mod.modpack.OnlineVersion;
+import top.vmctcn.vmtu.mod.modpack.updater.OnlineVersion;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
-import top.vmctcn.vmtu.mod.modpack.VersionChecker;
+import top.vmctcn.vmtu.mod.modpack.updater.VersionChecker;
 import top.vmctcn.vmtu.mod.screen.SuggestModScreen;
 
 public class ModEvents {
@@ -31,7 +31,7 @@ public class ModEvents {
         String localTranslationVersion = translation.getVersion();
         String localModpackVersion = modpack.getVersion();
 
-        OnlineVersion onlineVersion = VersionChecker.getOnlineVersion();
+        OnlineVersion onlineVersion = VersionChecker.getOnlineVersion(modpack);
 
         if (ModConfigHelper.getConfig().devMode) {
             player.displayClientMessage(Component.literal("==================== VMTU Dev Mode ===================="), false);

@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack.meta;
+package top.vmctcn.vmtu.mod.modpack.updater;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,9 +10,9 @@ import java.io.Reader;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
-public class MetadataReader {
+public class VMMetadataReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static Metadata metadata;
+    private static VMMetadata metadata;
     private static final URI metaUrl = URI.create("https://gitee.com/Wulian233/vmtu/raw/main/update/v2/vm-meta.json");
     public static boolean readMetadataSuccess;
 
@@ -23,7 +23,7 @@ public class MetadataReader {
             connection.setConnectTimeout(10000);
 
             try (Reader reader = new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8)) {
-                metadata = GSON.fromJson(reader, Metadata.class);
+                metadata = GSON.fromJson(reader, VMMetadata.class);
                 readMetadataSuccess = true;
             } catch (Exception e) {
                 VMTranslationUpdate.LOGGER.warn("Error reading vm-meta.json.", e);
@@ -39,11 +39,11 @@ public class MetadataReader {
         return metaUrl;
     }
 
-    public static Metadata getMetadata() {
+    public static VMMetadata getMetadata() {
         return metadata;
     }
 
-    public static Metadata.Modpacks getModpack(String modpackId) {
+    public static VMMetadata.Modpacks getModpack(String modpackId) {
         if (metadata.getModpacks() == null) {
             VMTranslationUpdate.LOGGER.warn("Error getting modpack info in vm-meta.json.");
             return metadata.getModpacks().get("example");

@@ -1,8 +1,8 @@
-package top.vmctcn.vmtu.mod.modpack.meta;
+package top.vmctcn.vmtu.mod.modpack.updater;
 
 import java.util.Map;
 
-public class Metadata {
+public class VMMetadata {
     String metaVersion;
     Map<String, Modpacks> modpacks;
 
