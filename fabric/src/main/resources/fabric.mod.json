@@ -1,34 +1,31 @@
 {
   "schemaVersion": 1,
-  "id": "vmtranslationupdate",
+  "id": "${id}",
   "version": "${version}",
-  "name": "VM Translation Update",
-  "description": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
+  "name": "${name}",
+  "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
-    "Wulian233", "TexTrue"
+    "VMChineseTranslateGroup", "Wulian233", "TexTrue"
   ],
   "contact": {
     "homepage": "https://vmct-cn.top/vmtu",
     "sources": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod",
     "issues": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
   },
-  "icon": "assets/vmtranslationupdate/icon.png",
-  "license": "MIT",
+  "license": "CC0-1.0",
+  "icon": "assets/${id}/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
       "top.vmctcn.vmtu.mod.fabric.VMTranslationUpdateClientFabric"
     ],
-    "modmenu": [
-      "top.vmctcn.vmtu.mod.fabric.ModMenuImpl"
+    "preLaunch": [
+      "top.vmctcn.vmtu.mod.fabric.VMTranslationUpdatePreLaunch"
     ]
   },
-  "mixins": [
-    "vmtu.mixins.json"
-  ],
   "depends": {
-    "fabric": "*",
-    "minecraft": ">=1.21.11",
+    "fabricloader": ">=0.15",
+    "minecraft": "${minecraft}",
     "cloth-config": "*"
   }
 }

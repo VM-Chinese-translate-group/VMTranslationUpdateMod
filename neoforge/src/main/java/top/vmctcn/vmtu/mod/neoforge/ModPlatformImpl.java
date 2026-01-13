@@ -1,9 +1,9 @@
 package top.vmctcn.vmtu.mod.neoforge;
 
 import com.google.auto.service.AutoService;
-import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.fml.loading.FMLPaths;
 import top.vmctcn.vmtu.mod.ModPlatform;
+import top.vmctcn.vmtu.multiversion.neoforge.NeoUtils;
 
 import java.nio.file.Path;
 
@@ -11,7 +11,7 @@ import java.nio.file.Path;
 public class ModPlatformImpl implements ModPlatform {
     @Override
     public String getGameVersion() {
-        return FMLLoader.getCurrent().getVersionInfo().mcVersion();
+        return NeoUtils.getVersionInfo().mcVersion();
     }
 
     @Override

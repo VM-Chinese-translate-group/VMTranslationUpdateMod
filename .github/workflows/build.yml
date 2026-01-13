@@ -1,42 +1,42 @@
-name: Build
+# Automatically build the project and run any configured tests for every push
+# and submitted pull request. This can help catch issues that only occur on
+# certain platforms or Java versions, and provides a first line of defence
+# against bad commits.
 
-on: [ pull_request, push, workflow_dispatch ]
+name: build
+on: [ pull_request, push ]
 
 jobs:
-  Build:
+  build:
+    strategy:
+      matrix:
+        # Use these Java versions
+        java: [ 21 ]
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up JDK 21
+      - name: setup Gradle wrapper
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 9.2.0
+
+      - name: setup Java ${{ matrix.java }}
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: 21
+          java-version: ${{ matrix.java }}
+          distribution: 'zulu'
 
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            .gradle
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'build.gradle') }}
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
 
-      - name: Build with Gradle
-        run: |
-          chmod +x gradlew
-          ./gradlew build
+      - name: build
+        run: ./gradlew buildAndCollect
 
-      - name: Upload fabric artifacts
+      - name: capture build artifacts
+        if: ${{ matrix.java == '21' }} # Only upload artifacts once
         uses: actions/upload-artifact@v4
         with:
-          name: fabric
-          path: ${{ github.workspace }}/fabric/build/libs
-
-      - name: Upload neoforge artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: neoforge
-          path: ${{ github.workspace }}/neoforge/build/libs
+          name: Artifacts
+          path: build/libs/

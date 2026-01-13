@@ -27,7 +27,7 @@ public class SMUCMetadata implements ModpackMetadata {
 
     @Override
     public String getModpackName() {
-        return "SMUC NOT SUPPORT";
+        return "[SMUC NOT SUPPORT]";
     }
 
     @Override

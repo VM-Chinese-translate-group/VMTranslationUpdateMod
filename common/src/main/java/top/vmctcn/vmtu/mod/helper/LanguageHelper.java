@@ -1,5 +1,8 @@
 package top.vmctcn.vmtu.mod.helper;
 
+//? if 1.16.5 {
+/*import com.google.common.collect.Sets;
+*///?}
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 
 import java.util.Arrays;
@@ -46,8 +49,16 @@ public class LanguageHelper {
     }
 
     public static boolean isChineseLanguage() {
+        //? if >= 1.20.1 {
         String language = Minecraft.getInstance().getLanguageManager().getSelected();
+        //?} else if <=1.19.2 {
+        /*String language = Minecraft.getInstance().getLanguageManager().getSelected().getCode();
+        *///?}
+        //? if >1.16.5 {
         Set<String> chineseLangs = Set.of("zh_cn", "zh_tw", "zh_hk", "lzh");
+        //?} else {
+        /*Set<String> chineseLangs = Sets.newHashSet("zh_cn", "zh_tw", "zh_hk");
+        *///?}
         return chineseLangs.contains(language);
     }
 }

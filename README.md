@@ -69,10 +69,7 @@ testMode = false          # 供开发者使用的测试模式，会有更多日�
 
 > 基础汉化资源包名称指的是需要下载的基础汉化资源包名称
 
-## 其他
-
-作者：Wulian233（捂脸）、TexTrue
-
+## 许可证
 本模组使用MIT许可证
 
 [VMTUCore](https://github.com/VM-Chinese-translate-group/VMTUCore)基于I18nUpdateMod3修改，使用AGPLv3许可证

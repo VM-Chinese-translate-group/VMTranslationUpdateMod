@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "*"
+license = "CC0-1.0"
+
+[[mods]]
+modId = "${id}"
+version = "${version}"
+displayName = "${name}"
+displayURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod"
+authors = "VMChineseTranslateGroup, Wulian233, TexTrue"
+description = '''
+The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.
+'''
+logoFile = "assets/${id}/icon.png"
+
+[[dependencies.${id}]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "cloth_config"
+mandatory = true
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"

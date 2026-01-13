@@ -1,7 +1,12 @@
 package top.vmctcn.vmtu.mod;
 
+//? if >=1.18.2 {
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+//?} else {
+/*import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+*///?}
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
@@ -10,13 +15,17 @@ import top.vmctcn.vmtu.mod.modpack.metadata.ModpackMetadata;
 import top.vmctcn.vmtu.mod.modpack.metadata.ModpackMetadataReader;
 import top.vmctcn.vmtu.mod.modpack.updater.VMMetadata;
 import top.vmctcn.vmtu.mod.modpack.updater.VMMetadataReader;
-import top.vmctcn.vmtu.mod.options.GameOptionsSetter;
+import top.vmctcn.vmtu.mod.helper.GameOptionsHelper;
 
 import java.util.Objects;
 
 public class VMTranslationUpdate {
     public static final String MOD_ID = "vmtranslationupdate";
+    //? if >=1.18.2 {
     public static final Logger LOGGER = LoggerFactory.getLogger("VMTranslationUpdateMod");
+    //?} else {
+    /*public static final Logger LOGGER = LogManager.getLogger("VMTranslationUpdateMod");
+    *///?}
 
     public static void init() {
         ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
@@ -25,7 +34,7 @@ public class VMTranslationUpdate {
             ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
         }
 
-        GameOptionsSetter.autoSwitchLanguage();
+        GameOptionsHelper.autoSwitchLanguage();
 
         if (ModConfigHelper.getConfig().devMode) {
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
