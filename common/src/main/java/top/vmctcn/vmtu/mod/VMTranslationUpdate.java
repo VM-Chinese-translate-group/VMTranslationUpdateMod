@@ -7,7 +7,10 @@ import org.slf4j.LoggerFactory;
 /*import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 *///?}
+import top.vmctcn.vmtu.core.VMTUCore;
+import top.vmctcn.vmtu.core.pack.ResourcePackIndex;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
+import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoWriter;
@@ -15,9 +18,9 @@ import top.vmctcn.vmtu.mod.modpack.metadata.ModpackMetadata;
 import top.vmctcn.vmtu.mod.modpack.metadata.ModpackMetadataReader;
 import top.vmctcn.vmtu.mod.modpack.updater.VMMetadata;
 import top.vmctcn.vmtu.mod.modpack.updater.VMMetadataReader;
-import top.vmctcn.vmtu.mod.helper.GameOptionsHelper;
 
 import java.util.Objects;
+import java.util.ServiceLoader;
 
 public class VMTranslationUpdate {
     public static final String MOD_ID = "vmtranslationupdate";
@@ -27,6 +30,10 @@ public class VMTranslationUpdate {
     /*public static final Logger LOGGER = LogManager.getLogger("VMTranslationUpdateMod");
     *///?}
 
+    public static <T> T loadService(final Class<T> clazz) {
+        return ServiceLoader.load(clazz).findFirst().orElseThrow(() -> new AssertionError("No impl found for " + clazz.getPackageName()));
+    }
+
     public static void init() {
         ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
         ModpackMetadata modpackMetadata = ModpackMetadataReader.getMetadata();
@@ -34,7 +41,7 @@ public class VMTranslationUpdate {
             ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
         }
 
-        GameOptionsHelper.autoSwitchLanguage();
+        LanguageUtils.autoSwitchLanguage();
 
         if (ModConfigHelper.getConfig().devMode) {
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
@@ -64,5 +71,16 @@ public class VMTranslationUpdate {
             }
             LOGGER.warn("=======================================================");
         }
+    }
+
+    public static void autoDownloadAndLoadPack() {
+        boolean autoDownloadPack = ModConfigHelper.getConfig().autoDownloadVMTranslationPack;
+        boolean autoLoadExtraPack = ModConfigHelper.getConfig().autoLoadExtraTranslationPack;
+        String gameVersion = ModPlatform.INSTANCE.getGameVersion();
+        String extraPackName = ModConfigHelper.getConfig().extraPackName;
+        ResourcePackIndex resourcePackIndex = ModConfigHelper.getConfig().resourcePackIndex;
+        int extraPackCustomIndex = ModConfigHelper.getConfig().extraPackCustomIndex;
+        String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
+        VMTUCore.init(ModPlatform.INSTANCE.getGameDir(), gameVersion, resPackName, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
     }
 }

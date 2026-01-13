@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.multiversion;
+package top.vmctcn.vmtu.multiversion.screen;
 
 //? if <=1.21.5 {
 /*import com.mojang.blaze3d.systems.RenderSystem;

@@ -19,8 +19,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEven
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
-import top.vmctcn.vmtu.mod.helper.GameOptionsHelper;
-import top.vmctcn.vmtu.mod.helper.LanguageHelper;
+import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.multiversion.neoforge.NeoUtils;
 
 @Mod(value = VMTranslationUpdate.MOD_ID/*? if >=1.20.6 {*/, dist = Dist.CLIENT/*?}*/)
@@ -37,12 +36,12 @@ public class VMTranslationUpdateClientNeoForge {
             NeoUtils.registerConfigScreen(modContainer, ModConfigHelper::setConfigScreen);
 
             NeoForge.EVENT_BUS.addListener(PlayerLoggedInEvent.class, event -> {
-                if (LanguageHelper.isChineseLanguage()) {
+                if (LanguageUtils.isChineseLanguage()) {
                     ModEvents.playerJoinEvent(event.getEntity());
                 }
             });
             NeoForge.EVENT_BUS.addListener(ScreenEvent.Init.Pre.class, event -> {
-                if (LanguageHelper.isChineseLanguage()) {
+                if (LanguageUtils.isChineseLanguage()) {
                     ModEvents.screenAfterInitEvent(event.getScreen());
                 }
             });
@@ -57,7 +56,7 @@ public class VMTranslationUpdateClientNeoForge {
                             )
             ));
 
-            modEventBus.addListener(FMLConstructModEvent.class, event -> GameOptionsHelper.autoDownloadAndLoadPack());
+            modEventBus.addListener(FMLConstructModEvent.class, event -> VMTranslationUpdate.autoDownloadAndLoadPack());
         }
     }
 }

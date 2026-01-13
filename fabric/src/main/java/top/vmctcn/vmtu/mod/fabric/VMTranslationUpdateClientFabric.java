@@ -12,7 +12,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
-import top.vmctcn.vmtu.mod.helper.LanguageHelper;
+import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 
 public class VMTranslationUpdateClientFabric implements ClientModInitializer {
     @Override
@@ -20,13 +20,13 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
         VMTranslationUpdate.init();
 
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
-            if (LanguageHelper.isChineseLanguage()) {
+            if (LanguageUtils.isChineseLanguage()) {
                 ModEvents.screenAfterInitEvent(screen);
             }
         });
 
         ClientPlayConnectionEvents.JOIN.register((handler, packetSender, client) -> {
-            if (LanguageHelper.isChineseLanguage()) {
+            if (LanguageUtils.isChineseLanguage()) {
                 ModEvents.playerJoinEvent(client.player);
             }
         });

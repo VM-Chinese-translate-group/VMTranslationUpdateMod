@@ -9,7 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.player.Player;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
-import top.vmctcn.vmtu.mod.helper.LanguageHelper;
+import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.mod.modpack.updater.OnlineVersion;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
@@ -56,7 +56,7 @@ public class ModEvents {
             Messages.displayClientMessage(player, Texts.literal("======================================================="));
         }
 
-        if (!translation.getLanguage().equals(language) && LanguageHelper.isChineseLanguage()) {
+        if (!translation.getLanguage().equals(language) && LanguageUtils.isChineseLanguage()) {
             Messages.displayClientMessage(player, Texts.translatable("vmtranslationupdate.message.language_not_support", translation.getLanguage()));
         }
 
