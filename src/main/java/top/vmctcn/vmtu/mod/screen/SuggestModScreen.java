@@ -5,7 +5,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
-import top.vmctcn.vmtu.mod.helper.ScreenHelper;
+import top.vmctcn.vmtu.multiversion.ScreenUtils;
 
 public class SuggestModScreen extends Screen {
     public final Screen lastScreen;
@@ -31,12 +31,12 @@ public class SuggestModScreen extends Screen {
     protected void buttonClicked(ButtonWidget button) {
         if (button.id == 0) {
             if ((ModConfigs.i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod) && (ModConfigs.vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher)) {
-                ScreenHelper.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
-                ScreenHelper.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
+                ScreenUtils.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
+                ScreenUtils.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
             } else if (ModConfigs.i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod) {
-                ScreenHelper.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
+                ScreenUtils.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
             } else if (ModConfigs.vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher) {
-                ScreenHelper.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
+                ScreenUtils.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
             }
         } else if (button.id == 1) {
             Minecraft.getInstance().openScreen(lastScreen);

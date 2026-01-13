@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.forge;
+package top.vmctcn.vmtu.mod.legacyforge;
 
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.config.Config;

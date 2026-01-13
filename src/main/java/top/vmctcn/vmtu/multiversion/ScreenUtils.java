@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.helper;
+package top.vmctcn.vmtu.multiversion;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.ConfirmChatLinkScreen;
@@ -9,7 +9,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 
-public class ScreenHelper {
+public class ScreenUtils {
     public static void openUrlOnScreen(Minecraft client, Screen screen, String url) {
         if (StringUtils.isNotBlank(url) && client != null) {
             client.openScreen(new ConfirmChatLinkScreen((yes, i) -> {

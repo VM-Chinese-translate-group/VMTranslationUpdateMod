@@ -31,7 +31,7 @@ public class CommandCheck extends AbstractCommand {
     @Override
     public void run(MinecraftServer server, CommandSource source, String[] args) throws CommandException {
         for (String playerName : server.getPlayerNames()) {
-            ModEvents.playerJoinEvent(source.getSourceWorld().getPlayer(playerName));
+            ModEvents.playerJoinEvent(source.getCommandSourceWorld().getPlayer(playerName));
         }
     }
 }

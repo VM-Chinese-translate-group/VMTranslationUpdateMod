@@ -20,7 +20,7 @@ public class ModpackInfoReader {
     private static final Path gamePath = ModPlatform.getGameDir();
     private static final Path modpackInfoPath = Objects.requireNonNull(gamePath).resolve("modpackinfo.json");
 
-    public static void init() {
+    static {
         if (Files.exists(modpackInfoPath)) {
             try (Reader reader = Files.newBufferedReader(modpackInfoPath, StandardCharsets.UTF_8)) {
                 modpackInfo = GSON.fromJson(reader, ModpackInfo.class);

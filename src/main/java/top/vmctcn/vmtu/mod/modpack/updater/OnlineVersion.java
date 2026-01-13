@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.updater;
 
 public class OnlineVersion {
     private final String translationVersion;

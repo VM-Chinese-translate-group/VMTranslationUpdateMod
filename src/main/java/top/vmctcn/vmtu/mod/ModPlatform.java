@@ -16,6 +16,6 @@ public class ModPlatform {
     }
 
     public static Path getGameDir() {
-        return Minecraft.getInstance().runDir.toPath();
+        return Minecraft.getInstance().gameDir.toPath();
     }
 }

@@ -1,15 +1,19 @@
-package top.vmctcn.vmtu.mod.helper;
+package top.vmctcn.vmtu.mod.utils;
 
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
+import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
+import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
+import top.vmctcn.vmtu.mod.config.ModConfigs;
+import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
-public class LanguageHelper {
+public class LanguageUtils {
     private static final String DEFAULT_LANGUAGE = "en_us";
 
     public static String getFixedLanguage(String lang) {
@@ -50,5 +54,17 @@ public class LanguageHelper {
         String language = Minecraft.getInstance().getLanguageManager().getLanguage().getCode();
         Set<String> chineseLangs = Sets.newHashSet("zh_cn", "zh_tw", "zh_hk", "lzh");
         return chineseLangs.contains(language);
+    }
+
+    public static void autoSwitchLanguage() {
+        if (ModConfigs.autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
+            try {
+                GameOptionsWriter writer = new GameOptionsWriter(ModPlatform.getGameDir().resolve("options.txt"));
+                String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
+                writer.switchLanguage(LanguageUtils.getFixedLanguage(lang));
+            } catch (Exception e) {
+                VMTranslationUpdate.LOGGER.warn("Failed to switch language: ", e);
+            }
+        }
     }
 }

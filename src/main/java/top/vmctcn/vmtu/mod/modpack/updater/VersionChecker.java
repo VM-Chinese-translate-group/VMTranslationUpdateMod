@@ -1,10 +1,8 @@
-package top.vmctcn.vmtu.mod.modpack;
+package top.vmctcn.vmtu.mod.modpack.updater;
 
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
-import top.vmctcn.vmtu.mod.modpack.meta.Metadata;
-import top.vmctcn.vmtu.mod.modpack.meta.MetadataReader;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,8 +14,8 @@ public class VersionChecker {
     public static OnlineVersion getOnlineVersion() {
         ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
         String updateCheckUrl = modpackInfo.getTranslation().getUpdateCheckUrl();
-        if (updateCheckUrl == null && modpackInfo.getTranslation().getId() != null && MetadataReader.readMetadataSuccess) {
-            Metadata.Modpacks modpack = MetadataReader.getModpack(modpackInfo.getTranslation().getId());
+        if (updateCheckUrl == null && modpackInfo.getTranslation().getId() != null && VMMetadataReader.readMetadataSuccess) {
+            VMMetadata.Modpacks modpack = VMMetadataReader.getModpack(modpackInfo.getTranslation().getId());
             String translationVersion = modpack.getTranslationVersion();
             String modpackVersion = modpack.getModpackVersion();
 
