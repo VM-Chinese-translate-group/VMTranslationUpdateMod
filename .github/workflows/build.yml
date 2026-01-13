@@ -28,6 +28,15 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'zulu'
 
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            .gradle
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'build.gradle') }}
+
       - name: make gradle wrapper executable
         run: chmod +x ./gradlew
 

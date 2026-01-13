@@ -15,9 +15,9 @@ public class ModPlatformImpl implements ModPlatform {
     @Override
     public String getGameVersion() {
         //? if >=1.18.2 {
-        /*return FMLLoader.versionInfo().mcVersion();
-        *///?} else {
-        try {
+        return FMLLoader.versionInfo().mcVersion();
+        //?} else {
+        /*try {
             String[] args = (String[]) Reflection.clazz(Launcher.INSTANCE).get("argumentHandler").get("args").get();
             for (int i = 0; i < args.length - 1; ++i) {
                 if (args[i].equalsIgnoreCase("--fml.mcversion")) {
@@ -28,7 +28,7 @@ public class ModPlatformImpl implements ModPlatform {
             VMTUCore.LOGGER.warn("Error getting minecraft version: %s", e);
         }
         return null;
-        //?}
+        *///?}
     }
 
     @Override
