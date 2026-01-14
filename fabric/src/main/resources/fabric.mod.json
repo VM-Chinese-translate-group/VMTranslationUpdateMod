@@ -3,16 +3,16 @@
   "id": "${id}",
   "version": "${version}",
   "name": "${name}",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
   "authors": [
-    "VMChineseTranslateGroup", "Wulian233", "TexTrue"
+    "Wulian233", "TexTrue"
   ],
   "contact": {
     "homepage": "https://vmct-cn.top/vmtu",
     "sources": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod",
     "issues": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
   },
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/${id}/icon.png",
   "environment": "client",
   "entrypoints": {
