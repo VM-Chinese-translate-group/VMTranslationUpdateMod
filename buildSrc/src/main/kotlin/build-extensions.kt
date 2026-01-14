@@ -28,4 +28,5 @@ value class ModData(private val project: Project) {
 
     fun requireProp(key: String) = requireNotNull(project.prop(key)) { "Missing '$key'" }
     fun dep(key: String) = requireProp("deps.$key")
+    fun publish(key: String) = requireProp("publish.$key")
 }

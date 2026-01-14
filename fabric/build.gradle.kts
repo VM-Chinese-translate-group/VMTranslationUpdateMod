@@ -2,6 +2,7 @@ plugins {
     id("dev.architectury.loom")
     id("architectury-plugin")
     id("com.gradleup.shadow")
+    id("com.hypherionmc.modutils.modpublisher")
 }
 
 val loader = prop("loom.platform")!!
@@ -118,4 +119,23 @@ tasks.register<Copy>("buildAndCollect") {
     from(tasks.remapJar.get().archiveFile, tasks.remapSourcesJar.get().archiveFile)
     into(rootProject.layout.buildDirectory.file("libs/${mod.version}/$loader"))
     dependsOn(tasks.build)
+}
+
+publisher {
+    apiKeys {
+        modrinth(System.getenv("MODRINTH_TOKEN"))
+        curseforge(System.getenv("CURSEFORGE_TOKEN"))
+    }
+
+    curseID = common.mod.publish("curseforge")
+    modrinthID = common.mod.publish("modrinth")
+    versionType = common.mod.publish("version_type")
+    changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
+    projectVersion = "$loader-${project.version}"
+    displayName = "[${loader.upperCaseFirst()}]${project.version}"
+    gameVersions = property("mod.mc_targets").toString().split(',')
+    loaders = listOf(loader)
+    curseEnvironment = common.mod.publish("mod_side")
+    artifact = tasks.remapJar.get()
+    addAdditionalFile(tasks.remapSourcesJar.get())
 }
