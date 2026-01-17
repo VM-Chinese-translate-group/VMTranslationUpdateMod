@@ -64,13 +64,13 @@ dependencies {
     modImplementation("me.shedaniel.cloth:cloth-config-forge:${common.mod.dep("cloth_config")}")
 
     if (stonecutter.current.parsed >= "1.18.2") {
-        include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}:all")
+        include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
     } else {
         // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
-        shadowBundle("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}:all") { isTransitive = false }
+        shadowBundle("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}") { isTransitive = false }
     }
 
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}:all")
+    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:1.1.1")
     annotationProcessor("com.google.auto.service:auto-service:1.1.1")
 

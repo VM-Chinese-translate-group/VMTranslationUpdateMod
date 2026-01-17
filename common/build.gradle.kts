@@ -25,7 +25,7 @@ loom {
 }
 
 repositories {
-    maven { url = uri("https://jitpack.io") }
+    maven("https://jitpack.io")
 }
 
 dependencies {
@@ -35,7 +35,7 @@ dependencies {
 
     modImplementation("me.shedaniel.cloth:cloth-config:${mod.dep("cloth_config")}")
 
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${mod.dep("core_version")}:all")
+    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:1.1.1")
     annotationProcessor("com.google.auto.service:auto-service:1.1.1")
 }

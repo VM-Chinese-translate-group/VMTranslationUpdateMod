@@ -71,8 +71,8 @@ dependencies {
         exclude("net.fabricmc.fabric-api")
     }
 
-    include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}:all")
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}:all")
+    include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:1.1.1")
     annotationProcessor("com.google.auto.service:auto-service:1.1.1")
 
