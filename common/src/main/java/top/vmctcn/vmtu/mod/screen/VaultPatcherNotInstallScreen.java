@@ -12,6 +12,6 @@ public class VaultPatcherNotInstallScreen extends AbstractNotInstallScreen {
                 false
         );
 
-        ModConfigHelper.getConfig().vaultPatcherCheck = isSelectedCheckBox;
+        ModConfigHelper.getConfig().modInstallCheck.vaultPatcher = isSelectedCheckBox;
     }
 }

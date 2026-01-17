@@ -12,6 +12,6 @@ public class I18nUpdateNotInstallScreen extends AbstractNotInstallScreen {
                 false
         );
 
-        ModConfigHelper.getConfig().i18nUpdateModCheck = isSelectedCheckBox;
+        ModConfigHelper.getConfig().modInstallCheck.i18nUpdateMod = isSelectedCheckBox;
     }
 }

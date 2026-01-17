@@ -13,7 +13,7 @@ public class TextureLocaleRedirectorNotInstallScreen extends AbstractNotInstallS
                 true
         );
 
-        ModConfigHelper.getConfig().textureLocaleRedirectorCheck = isSelectedCheckBox;
+        ModConfigHelper.getConfig().modInstallCheck.textureLocaleRedirector = isSelectedCheckBox;
     }
 }
 //?}

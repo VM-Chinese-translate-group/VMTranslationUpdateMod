@@ -43,7 +43,7 @@ public class VMTranslationUpdate {
 
         LanguageUtils.autoSwitchLanguage();
 
-        if (ModConfigHelper.getConfig().devMode) {
+        if (ModConfigHelper.getConfig().misc.devMode) {
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
             VMMetadata.Modpacks vmmetadata = VMMetadataReader.getModpack(translation.getId());
 
@@ -74,12 +74,12 @@ public class VMTranslationUpdate {
     }
 
     public static void autoDownloadAndLoadPack() {
-        boolean autoDownloadPack = ModConfigHelper.getConfig().autoDownloadVMTranslationPack;
-        boolean autoLoadExtraPack = ModConfigHelper.getConfig().autoLoadExtraTranslationPack;
+        boolean autoDownloadPack = ModConfigHelper.getConfig().resourcePack.autoDownloadVMTranslationPack;
+        boolean autoLoadExtraPack = ModConfigHelper.getConfig().resourcePack.autoLoadExtraTranslationPack;
         String gameVersion = ModPlatform.INSTANCE.getGameVersion();
-        String extraPackName = ModConfigHelper.getConfig().extraPackName;
-        ResourcePackIndex resourcePackIndex = ModConfigHelper.getConfig().resourcePackIndex;
-        int extraPackCustomIndex = ModConfigHelper.getConfig().extraPackCustomIndex;
+        String extraPackName = ModConfigHelper.getConfig().resourcePack.extraPackName;
+        ResourcePackIndex resourcePackIndex = ModConfigHelper.getConfig().resourcePack.resourcePackIndex;
+        int extraPackCustomIndex = ModConfigHelper.getConfig().resourcePack.extraPackCustomIndex;
         String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
         VMTUCore.init(ModPlatform.INSTANCE.getGameDir(), gameVersion, resPackName, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
     }

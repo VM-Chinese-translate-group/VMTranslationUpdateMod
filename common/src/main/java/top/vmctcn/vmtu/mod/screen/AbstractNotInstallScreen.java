@@ -12,6 +12,8 @@ import net.minecraft.client.gui.GuiGraphics;
 //?} else if <=1.19.2 {
 /*import com.mojang.blaze3d.vertex.PoseStack;
  *///?}
+import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.Screen;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.multiversion.Texts;
@@ -44,25 +46,25 @@ public abstract class AbstractNotInstallScreen extends Screen {
 
         super.init();
 
-        //? if >1.16.5 {
-        this.addRenderableWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.downloadButton, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-            //?} else {
-            /*this.addButton(WidgetUtils.create(ModContexts.ScreenTexts.downloadButton, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-             *///?}
+        this.addButtonWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.downloadButton, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
             ScreenUtils.openUrlOnScreen(this.minecraft, this, modDownloadUrl);
         }));
-        //? if >1.16.5 {
-        this.addRenderableWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-            //?} else {
-            /*this.addButton(WidgetUtils.create(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-             *///?}
+        this.addButtonWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
             this.onClose();
         }));
         if (isRequiredCheckBox) {
-            var checkbox = WidgetUtils.createCheckbox(this.font, Texts.translatable("vmtu.required_mod.not_install.checkbox"), Texts.translatable("vmtranslationupdate.required_mod.not_install.checkbox.tooltip"), centerX, this.height - (FOOTER_HEIGHT / 2));
+            Checkbox checkbox = WidgetUtils.createCheckbox(this.font, Texts.translatable("vmtu.required_mod.not_install.checkbox"), Texts.translatable("vmtranslationupdate.required_mod.not_install.checkbox.tooltip"), centerX, this.height - (FOOTER_HEIGHT / 2));
             isSelectedCheckBox = checkbox.selected();
-            this.addRenderableWidget(checkbox);
+            this.addButtonWidget(checkbox);
         }
+    }
+
+    public <T extends AbstractWidget> T addButtonWidget(T widget) {
+        //? if >1.16.5 {
+        return this.addRenderableWidget(widget);
+        //?} else {
+        /*return this.addButton(widget);
+        *///?}
     }
 
     @Override
