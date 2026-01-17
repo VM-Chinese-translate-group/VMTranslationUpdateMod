@@ -18,6 +18,10 @@ public class ModpackInfoWriter {
     private static final Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
 
     public static void syncModpackVersion(String newVersion) {
+        if (newVersion == null || newVersion.isEmpty()) {
+            return;
+        }
+
         if (modpackInfo != null && modpackInfo.modpack != null) {
             String oldVersion = modpackInfo.modpack.version;
             modpackInfo.modpack.version = newVersion;

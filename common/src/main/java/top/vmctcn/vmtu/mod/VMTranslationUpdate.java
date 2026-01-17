@@ -36,8 +36,8 @@ public class VMTranslationUpdate {
 
     public static void init() {
         ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
-        ModpackMetadata modpackMetadata = ModpackMetadataReader.getMetadata();
-        if (modpackMetadata != null && !Objects.equals(modpackInfo.getVersion(), modpackMetadata.getModpackVersion())) {
+        ModpackMetadata modpackMetadata = Objects.requireNonNull(ModpackMetadataReader.getMetadata());
+        if (!Objects.equals(modpackInfo.getVersion(), modpackMetadata.getModpackVersion())) {
             ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
         }
 
