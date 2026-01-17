@@ -36,4 +36,9 @@ public class ModPlatformImpl implements ModPlatform {
     public Path getGameDir() {
         return FabricLoader.getInstance().getGameDir();
     }
+
+    @Override
+    public boolean isModLoaded(String modId) {
+        return FabricLoader.getInstance().isModLoaded(modId);
+    }
 }

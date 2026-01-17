@@ -8,6 +8,7 @@ import net.neoforged.fml.ModContainer;
 /*import net.neoforged.fml.IExtensionPoint;
 *///?}
 import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.fml.loading.LoadingModList;
 import net.neoforged.fml.loading.VersionInfo;
 //? if >=1.20.6 {
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -45,6 +46,14 @@ public class NeoUtils {
         return FMLLoader.getCurrent().getVersionInfo();
         //?} else {
         /*return FMLLoader.versionInfo();
+        *///?}
+    }
+
+    public static LoadingModList getLoadingModList() {
+        //? if >=1.21.10 {
+        return FMLLoader.getCurrent().getLoadingModList();
+        //?} else {
+        /*return FMLLoader.getLoadingModList();
         *///?}
     }
 }

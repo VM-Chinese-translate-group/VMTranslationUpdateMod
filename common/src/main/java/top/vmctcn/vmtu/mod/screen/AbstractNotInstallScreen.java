@@ -4,29 +4,38 @@ package top.vmctcn.vmtu.mod.screen;
 import com.mojang.blaze3d.opengl.GlStateManager;
 //?} else if <=1.21.4 && >=1.18.2 {
 /*import com.mojang.blaze3d.systems.RenderSystem;
-*///?}
+ *///?}
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 //? if >=1.20.1 {
 import net.minecraft.client.gui.GuiGraphics;
 //?} else if <=1.19.2 {
 /*import com.mojang.blaze3d.vertex.PoseStack;
-*///?}
+ *///?}
 import net.minecraft.client.gui.screens.Screen;
 import top.vmctcn.vmtu.mod.ModContexts;
-import top.vmctcn.vmtu.mod.config.ModConfigHelper;
-import top.vmctcn.vmtu.multiversion.screen.ButtonUtils;
+import top.vmctcn.vmtu.multiversion.Texts;
+import top.vmctcn.vmtu.multiversion.screen.WidgetUtils;
 import top.vmctcn.vmtu.multiversion.screen.ScreenUtils;
 
-public class SuggestModScreen extends Screen {
+public abstract class AbstractNotInstallScreen extends Screen {
     public final Screen lastScreen;
 
-    private static final int HEADER_HEIGHT = 40;
-    private static final int FOOTER_HEIGHT = 50;
+    protected static final int HEADER_HEIGHT = 40;
+    protected static final int FOOTER_HEIGHT = 50;
 
-    public SuggestModScreen(Screen lastScreen) {
-        super(ModContexts.ScreenTexts.suggestTitleText.copy().withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD));
+    protected final String modName;
+    protected final String modDownloadUrl;
+    protected final boolean isRequiredCheckBox;
+    public boolean isSelectedCheckBox;
+
+    protected AbstractNotInstallScreen(Screen lastScreen, String modName, String modDownloadUrl, boolean isRequiredCheckBox) {
+        super(Texts.translatable("vmtu.required_mod.not_install.title", modName)
+                .withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD));
+        this.modName = modName;
+        this.modDownloadUrl = modDownloadUrl;
         this.lastScreen = lastScreen;
+        this.isRequiredCheckBox = isRequiredCheckBox;
     }
 
     @Override
@@ -36,26 +45,24 @@ public class SuggestModScreen extends Screen {
         super.init();
 
         //? if >1.16.5 {
-        this.addRenderableWidget(ButtonUtils.create(ModContexts.ScreenTexts.downloadButton, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-        //?} else {
-        /*this.addButton(ButtonUtils.create(ModContexts.ScreenTexts.downloadButton, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-        *///?}
-            if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher)) {
-                ScreenUtils.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
-                ScreenUtils.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
-            } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod) {
-                ScreenUtils.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/i18nupdatemod/files/");
-            } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher) {
-                ScreenUtils.openUrlOnScreen(this.minecraft, this, "https://www.curseforge.com/minecraft/mc-mods/vault-patcher/files/");
-            }
+        this.addRenderableWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.downloadButton, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
+            //?} else {
+            /*this.addButton(WidgetUtils.create(ModContexts.ScreenTexts.downloadButton, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
+             *///?}
+            ScreenUtils.openUrlOnScreen(this.minecraft, this, modDownloadUrl);
         }));
         //? if >1.16.5 {
-        this.addRenderableWidget(ButtonUtils.create(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-        //?} else {
-        /*this.addButton(ButtonUtils.create(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-        *///?}
+        this.addRenderableWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
+            //?} else {
+            /*this.addButton(WidgetUtils.create(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
+             *///?}
             this.onClose();
         }));
+        if (isRequiredCheckBox) {
+            var checkbox = WidgetUtils.createCheckbox(this.font, Texts.translatable("vmtu.required_mod.not_install.checkbox"), Texts.translatable("vmtranslationupdate.required_mod.not_install.checkbox.tooltip"), centerX, this.height - (FOOTER_HEIGHT / 2));
+            isSelectedCheckBox = checkbox.selected();
+            this.addRenderableWidget(checkbox);
+        }
     }
 
     @Override
@@ -64,42 +71,42 @@ public class SuggestModScreen extends Screen {
             GuiGraphics guiGraphics
             /*?} else {*/
             /*PoseStack poseStack
-            *//*?}*/,
+             *//*?}*/,
             int mouseX, int mouseY, float delta
     ) {
         //? if 1.20.1 {
         /*this.renderBackground(guiGraphics);
-        *///?} else if <=1.19.2 {
+         *///?} else if <=1.19.2 {
         /*this.renderBackground(poseStack);
-        *///?}
+         *///?}
 
         //? if >=1.20.1 {
         super.render(guiGraphics, mouseX, mouseY, delta);
         //?} else if <=1.19.2 {
         /*super.render(poseStack, mouseX, mouseY, delta);
-        *///?}
+         *///?}
 
         ScreenUtils.drawCenteredTextWithShadow(
                 /*? if >=1.20.1 {*/
                 guiGraphics
                 /*?} else {*/
                 /*poseStack
-                *//*?}*/,
+                 *//*?}*/,
                 this.font, this.title, this.width / 2, (HEADER_HEIGHT / 2) - (this.font.lineHeight / 2), -1);
         ScreenUtils.drawCenteredTextWithShadow(
                 /*? if >=1.20.1 {*/
                 guiGraphics
                 /*?} else {*/
                 /*poseStack
-                *//*?}*/,
-                this.font, ModContexts.ScreenTexts.suggestFailedText, this.width / 2, 70, -1);
+                 *//*?}*/,
+                this.font, Texts.translatable("vmtu.required_mod.not_install.desc", modName), this.width / 2, 70, -1);
         ScreenUtils.drawCenteredTextWithShadow(
                 /*? if >=1.20.1 {*/
                 guiGraphics
                 /*?} else {*/
                 /*poseStack
-                *//*?}*/,
-                this.font, ModContexts.ScreenTexts.suggestDownloadNoticeText, this.width / 2, 80, -1);
+                 *//*?}*/,
+                this.font, Texts.translatable("vmtu.required_mod.not_install.desc.download"), this.width / 2, 80, -1);
     }
 
     //? if >=1.18.2 {
@@ -109,24 +116,24 @@ public class SuggestModScreen extends Screen {
             GuiGraphics guiGraphics, int mouseX, int mouseY, float partial
             /*?} else if 1.20.1 {*/
             /*GuiGraphics guiGraphics
-            *//*?} else if <=1.19.2 && >=1.18.2 {*/
+             *//*?} else if <=1.19.2 && >=1.18.2 {*/
             /*PoseStack poseStack
-            *//*?}*/
+             *//*?}*/
     ) {
         //? if >=1.20.4 {
         super.renderBackground(guiGraphics, mouseX, mouseY, partial);
         //?} else if 1.20.1 {
         /*super.renderBackground(guiGraphics);
-        *///?} else if <=1.19.2 && >=1.18.2 {
+         *///?} else if <=1.19.2 && >=1.18.2 {
         /*super.renderBackground(poseStack);
-        *///?}
+         *///?}
 
         //Render header and footer separators
         //? if >=1.21.5 {
         GlStateManager._enableBlend();
         //?} else if <=1.21.4 && >=1.18.2 {
         /*RenderSystem.enableBlend();
-        *///?}
+         *///?}
         ScreenUtils.resetShaderColor();
         //? if >=1.20.6 {
         ScreenUtils.drawGuiTexture(guiGraphics, Screen.HEADER_SEPARATOR, 0, HEADER_HEIGHT - 2, 0.0F, 0.0F, this.width, 2, 32, 2);

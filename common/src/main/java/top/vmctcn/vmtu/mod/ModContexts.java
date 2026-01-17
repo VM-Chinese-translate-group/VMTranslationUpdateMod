@@ -8,6 +8,7 @@ public class ModContexts {
     public static class ModPresent {
         public static boolean i18nUpdateMod = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
         public static boolean vaultPatcher = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
+        public static boolean textureLocaleRedirector = ModPlatform.INSTANCE.isModLoaded("texturelocaleredirector");
 
         public static boolean isCoreModClassLoaded(String className) {
             try {
@@ -24,25 +25,29 @@ public class ModContexts {
         public static final Component ignoreButton = Texts.translatable("selectWorld.backupJoinSkipButton");
         public static final Component suggestTitleText;
         public static final Component suggestFailedText;
-        public static final Component suggestDownloadNoticeText = Texts.translatable("vmtranslationupdate.required_mod.warn.download_notice");
+        public static final Component suggestDownloadNoticeText = Texts.translatable("vmtu.required_mod.warn.download_notice");
 
         static {
             if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher)) {
-                suggestTitleText = Texts.translatable("vmtranslationupdate.required_mod.warn.title", "I18nUpdateMod & VaultPatcher");
+                suggestTitleText = Texts.translatable("vmtu.required_mod.warn.title", "I18nUpdateMod & VaultPatcher");
             } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) {
-                suggestTitleText = Texts.translatable("vmtranslationupdate.required_mod.warn.title", "I18nUpdateMod");
+                suggestTitleText = Texts.translatable("vmtu.required_mod.warn.title", "I18nUpdateMod");
             } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher) {
-                suggestTitleText = Texts.translatable("vmtranslationupdate.required_mod.warn.title", "VaultPatcher");
+                suggestTitleText = Texts.translatable("vmtu.required_mod.warn.title", "VaultPatcher");
+            } else if (ModConfigHelper.getConfig().textureLocaleRedirectorCheck && !ModPresent.textureLocaleRedirector) {
+                suggestTitleText = Texts.translatable("vmtu.required_mod.warn.title", "TextureLocaleRedirector");
             } else {
                 suggestTitleText = Texts.empty();
             }
 
             if ((ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) && (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher)) {
-                suggestFailedText = Texts.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "I18nUpdateMod & VaultPatcher");
+                suggestFailedText = Texts.translatable("vmtu.required_mod.warn.detect_failed", "I18nUpdateMod & VaultPatcher");
             } else if (ModConfigHelper.getConfig().i18nUpdateModCheck && !ModPresent.i18nUpdateMod) {
-                suggestFailedText = Texts.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "I18nUpdateMod");
+                suggestFailedText = Texts.translatable("vmtu.required_mod.warn.detect_failed", "I18nUpdateMod");
             } else if (ModConfigHelper.getConfig().vaultPatcherCheck && !ModPresent.vaultPatcher) {
-                suggestFailedText = Texts.translatable("vmtranslationupdate.required_mod.warn.detect_failed", "VaultPatcher");
+                suggestFailedText = Texts.translatable("vmtu.required_mod.warn.detect_failed", "VaultPatcher");
+            } else if (ModConfigHelper.getConfig().textureLocaleRedirectorCheck && !ModPresent.textureLocaleRedirector) {
+                suggestFailedText = Texts.translatable("vmtu.required_mod.warn.detect_failed", "TextureLocaleRedirector");
             } else {
                 suggestFailedText = Texts.empty();
             }

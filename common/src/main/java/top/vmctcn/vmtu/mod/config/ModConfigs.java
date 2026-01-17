@@ -40,4 +40,7 @@ public class ModConfigs implements ConfigData {
 
     @ConfigEntry.Gui.RequiresRestart
     public boolean vaultPatcherCheck = false;
+
+    @ConfigEntry.Gui.RequiresRestart
+    public boolean textureLocaleRedirectorCheck = true;
 }

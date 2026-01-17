@@ -3,12 +3,12 @@ package top.vmctcn.vmtu.mod.forge;
 import com.mojang.brigadier.Command;
 import net.minecraft.commands.Commands;
 //? if >=1.18.2 {
-import net.minecraftforge.client.event.RegisterClientCommandsEvent;
+/*import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.client.event.ScreenEvent;
-//?} else {
-/*import net.minecraftforge.event.RegisterCommandsEvent;
+*///?} else {
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
-*///?}
+//?}
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -36,40 +36,40 @@ public class VMTranslationUpdateClientForge {
             MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
                 if (LanguageUtils.isChineseLanguage()) {
                     //? if >=1.19.2 {
-                    ModEvents.playerJoinEvent(event.getEntity());
-                    //?} else {
-                    /*ModEvents.playerJoinEvent(event.getPlayer());
-                    *///?}
+                    /*ModEvents.playerJoinEvent(event.getEntity());
+                    *///?} else {
+                    ModEvents.playerJoinEvent(event.getPlayer());
+                    //?}
                 }
             });
             //? if >=1.19.2 {
-            MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> {
-            //?} else if 1.18.2 {
+            /*MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> {
+            *///?} else if 1.18.2 {
             /*MinecraftForge.EVENT_BUS.<ScreenEvent.InitScreenEvent.Pre>addListener(event -> {
             *///?} else {
-            /*MinecraftForge.EVENT_BUS.<GuiScreenEvent.InitGuiEvent.Pre>addListener(event -> {
-            *///?}
+            MinecraftForge.EVENT_BUS.<GuiScreenEvent.InitGuiEvent.Pre>addListener(event -> {
+            //?}
                 if (LanguageUtils.isChineseLanguage()) {
                     //? if >=1.18.2 {
-                    ModEvents.screenAfterInitEvent(event.getScreen());
-                    //?} else {
-                    /*ModEvents.screenAfterInitEvent(event.getGui());
-                    *///?}
+                    /*ModEvents.screenAfterInitEvent(event.getScreen());
+                    *///?} else {
+                    ModEvents.screenAfterInitEvent(event.getGui());
+                    //?}
                 }
             });
             //? if >=1.18.2 {
-            MinecraftForge.EVENT_BUS.<RegisterClientCommandsEvent>addListener(event -> event.getDispatcher().register(
-            //?} else {
-            /*MinecraftForge.EVENT_BUS.<RegisterCommandsEvent>addListener(event -> event.getDispatcher().register(
-            *///?}
+            /*MinecraftForge.EVENT_BUS.<RegisterClientCommandsEvent>addListener(event -> event.getDispatcher().register(
+            *///?} else {
+            MinecraftForge.EVENT_BUS.<RegisterCommandsEvent>addListener(event -> event.getDispatcher().register(
+            //?}
                     Commands.literal("vmtu")
                             .then(Commands.literal("check")
                                     .executes(context -> {
                                         //? if >=1.19.2 {
-                                        ModEvents.playerJoinEvent(context.getSource().getPlayer());
-                                        //?} else {
-                                        /*ModEvents.playerJoinEvent(context.getSource().getPlayerOrException());
-                                        *///?}
+                                        /*ModEvents.playerJoinEvent(context.getSource().getPlayer());
+                                        *///?} else {
+                                        ModEvents.playerJoinEvent(context.getSource().getPlayerOrException());
+                                        //?}
                                         return Command.SINGLE_SUCCESS;
                                     })
                             )

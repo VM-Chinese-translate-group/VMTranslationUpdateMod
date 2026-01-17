@@ -8,4 +8,6 @@ public interface ModPlatform {
     String getGameVersion();
 
     Path getGameDir();
+
+    boolean isModLoaded(String modId);
 }
