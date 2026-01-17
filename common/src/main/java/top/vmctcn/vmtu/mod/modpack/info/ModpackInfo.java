@@ -30,7 +30,8 @@ public class ModpackInfo {
         String url;
         String language;
         String version;
-        @Deprecated(since = "4.0.0") String updateCheckUrl;
+        @Deprecated
+        String updateCheckUrl;
         String resourcePackName;
 
         public String getId() {
@@ -49,7 +50,7 @@ public class ModpackInfo {
             return version;
         }
 
-        @Deprecated(since = "4.0.0")
+        @Deprecated
         public String getUpdateCheckUrl() {
             return updateCheckUrl;
         }
