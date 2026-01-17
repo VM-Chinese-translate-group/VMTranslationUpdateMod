@@ -9,8 +9,7 @@ public enum MetadataType {
     FTB("config/metadata.json", new FTBMetadata(), FTBMetadata.class),
     MPUC("config/modpack-update-checker/config.json", new MPUCMetadata(), MPUCMetadata.class),
     SMUC("config/simple-modpack-update-checker.json", new SMUCMetadata(), SMUCMetadata.class),
-    SUC("config/simpleupdatechecker_modpack.json", new SUCMetadata(), SUCMetadata.class),
-    UNKNOWN(null, null, null);
+    SUC("config/simpleupdatechecker_modpack.json", new SUCMetadata(), SUCMetadata.class);
 
     private final String metadataFileName;
     private final ModpackMetadata metadata;

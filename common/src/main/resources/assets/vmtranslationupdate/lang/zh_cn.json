@@ -18,14 +18,18 @@
 
   "vmtu.required_mod.not_install.title": "未检测到 %s 模组",
   "vmtu.required_mod.not_install.desc": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！",
+  "vmtu.required_mod.not_install.desc.tlr": "%s 尚未安装，这可能导致图片§c无法汉化§r！",
   "vmtu.required_mod.not_install.desc.download": "请点击下面的按钮跳转到下载页面。",
   "vmtu.required_mod.not_install.checkbox": "不要再显示此警告",
   "vmtu.required_mod.not_install.checkbox.tooltip": "勾选此处可以禁用掉此警告，但是可能会造成翻译不完全！",
+  "vmtu.required_mod.not_install.checkbox.tooltip.tlr": "勾选此处可以禁用掉此警告，但是可能会造成图片无法汉化！",
 
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
+  "text.autoconfig.vmtranslationupdate.option.misc": "杂项",
   "text.autoconfig.vmtranslationupdate.option.misc.devMode": "开发者模式",
   "text.autoconfig.vmtranslationupdate.option.misc.autoSwitchLanguage": "自动切换语言",
   "text.autoconfig.vmtranslationupdate.option.misc.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack": "资源包",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.autoDownloadVMTranslationPack": "自动下载汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.autoLoadExtraTranslationPack": "自动加载扩展汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.resourcePackIndex": "汉化资源包顺序",
@@ -34,6 +38,7 @@
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackName.@Tooltip": "设置扩展资源包名称（包括后缀名）",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex": "自定义扩展汉化资源包顺序",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex.@Tooltip": "自定义扩展汉化资源包的安装顺序，需要将扩展汉化资源包顺序设置为CUSTOM_INDEX此项才会生效！",
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck": "Mod安装检测",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateMod": "检测I18nUpdateMod是否已经安装",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "检测VaultPatcher是否已经安装",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirector": "检测TextureLocaleRedirector是否已经安装"

@@ -12,7 +12,6 @@ import java.nio.file.Path;
 
 public class ModpackMetadataReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static ModpackMetadata metadata;
     private static final Path gamePath = ModPlatform.INSTANCE.getGameDir();
 
     public static ModpackMetadata getMetadata(MetadataType metadataType) {
@@ -20,7 +19,7 @@ public class ModpackMetadataReader {
 
         if (Files.exists(metadataPath)) {
             try (Reader reader = Files.newBufferedReader(metadataPath, StandardCharsets.UTF_8)) {
-                metadata = GSON.fromJson(reader, metadataType.getMetadataClass());
+                ModpackMetadata metadata = GSON.fromJson(reader, metadataType.getMetadataClass());
                 if (metadata == null) {
                     VMTranslationUpdate.LOGGER.warn("{} is empty or invalid", metadataType.getMetadataFileName());
                     return null;

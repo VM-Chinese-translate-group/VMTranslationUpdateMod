@@ -11,10 +11,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 //?} else if <=1.19.2 {
 /*import com.mojang.blaze3d.vertex.PoseStack;
- *///?}
+*///?}
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.MutableComponent;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.multiversion.Texts;
 import top.vmctcn.vmtu.multiversion.screen.WidgetUtils;
@@ -27,15 +28,12 @@ public abstract class AbstractNotInstallScreen extends Screen {
     protected static final int FOOTER_HEIGHT = 50;
 
     protected final String modName;
-    protected final String modDownloadUrl;
     protected final boolean isRequiredCheckBox;
-    public boolean isSelectedCheckBox;
+    public Checkbox checkbox;
 
-    protected AbstractNotInstallScreen(Screen lastScreen, String modName, String modDownloadUrl, boolean isRequiredCheckBox) {
-        super(Texts.translatable("vmtu.required_mod.not_install.title", modName)
-                .withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD));
+    protected AbstractNotInstallScreen(Screen lastScreen, String modName, boolean isRequiredCheckBox) {
+        super(Texts.translatable("vmtu.required_mod.not_install.title", modName).withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD));
         this.modName = modName;
-        this.modDownloadUrl = modDownloadUrl;
         this.lastScreen = lastScreen;
         this.isRequiredCheckBox = isRequiredCheckBox;
     }
@@ -46,18 +44,28 @@ public abstract class AbstractNotInstallScreen extends Screen {
 
         super.init();
 
-        this.addButtonWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.downloadButton, centerX - 5 - 150, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-            ScreenUtils.openUrlOnScreen(this.minecraft, this, modDownloadUrl);
+        this.addButtonWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.downloadButton, centerX - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
+            ScreenUtils.openUrlOnScreen(this.minecraft, this, getDownloadUrl());
         }));
         this.addButtonWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
             this.onClose();
         }));
         if (isRequiredCheckBox) {
-            Checkbox checkbox = WidgetUtils.createCheckbox(this.font, Texts.translatable("vmtu.required_mod.not_install.checkbox"), Texts.translatable("vmtranslationupdate.required_mod.not_install.checkbox.tooltip"), centerX, this.height - (FOOTER_HEIGHT / 2));
-            isSelectedCheckBox = checkbox.selected();
+            checkbox = WidgetUtils.createCheckbox(
+                    this.font, Texts.translatable("vmtu.required_mod.not_install.checkbox"), getCheckboxTooltip(), centerX - 50, this.height - (FOOTER_HEIGHT / 2) - 50
+            );
+            setConfigValue(checkbox.selected());
             this.addButtonWidget(checkbox);
         }
     }
+
+    public abstract void setConfigValue(boolean value);
+
+    public abstract String getDownloadUrl();
+
+    public abstract MutableComponent getScreenDescription();
+
+    public abstract MutableComponent getCheckboxTooltip();
 
     public <T extends AbstractWidget> T addButtonWidget(T widget) {
         //? if >1.16.5 {
@@ -101,7 +109,7 @@ public abstract class AbstractNotInstallScreen extends Screen {
                 /*?} else {*/
                 /*poseStack
                  *//*?}*/,
-                this.font, Texts.translatable("vmtu.required_mod.not_install.desc", modName), this.width / 2, 70, -1);
+                this.font, getScreenDescription(), this.width / 2, 70, -1);
         ScreenUtils.drawCenteredTextWithShadow(
                 /*? if >=1.20.1 {*/
                 guiGraphics

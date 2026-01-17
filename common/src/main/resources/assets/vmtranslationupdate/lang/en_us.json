@@ -18,14 +18,18 @@
 
   "vmtu.required_mod.not_install.title": "%s not detected",
   "vmtu.required_mod.not_install.desc": "%s is not yet installed, which may result in incomplete localization of some mods!",
+  "vmtu.required_mod.not_install.desc.tlr": "%s is not yet installed, which may prevent images/textures from being localized!",
   "vmtu.required_mod.not_install.desc.download": "Please click the button below to jump to the download page.",
-  "vmtu.required_mod.not_install.checkbox": "Don't show this warn again",
-  "vmtu.required_mod.not_install.checkbox.tooltip": "Check this box to disable this warn, but it may result in incomplete translations!",
+  "vmtu.required_mod.not_install.checkbox": "Don't show this warning again",
+  "vmtu.required_mod.not_install.checkbox.tooltip": "Check this box to disable this warning, but it may result in incomplete translations!",
+  "vmtu.required_mod.not_install.checkbox.tooltip.tlr": "Check this box to disable this warning, but doing so may prevent images/textures from being localized!",
 
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
+  "text.autoconfig.vmtranslationupdate.option.misc": "Miscellaneous",
   "text.autoconfig.vmtranslationupdate.option.misc.devMode": "Dev Mode",
   "text.autoconfig.vmtranslationupdate.option.misc.autoSwitchLanguage": "Auto switch language",
   "text.autoconfig.vmtranslationupdate.option.misc.checkModPackTranslationUpdate": "Auto-detect modpack translation version update",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack": "ResourcePack",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.autoDownloadVMTranslationPack": "Auto download translation pack",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.autoLoadExtraTranslationPack": "Auto load extra translation pack",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.resourcePackIndex": "Translation pack index",
@@ -34,6 +38,7 @@
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackName.@Tooltip": "Set extra translation pack name (including the file extension)",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex": "Custom translation pack index",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex.@Tooltip": "To customize the installation index of translation pack, you must set the resource pack sequence to CUSTOM_INDEX for this setting to take effect!",
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck": "ModInstallCheck",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateMod": "Detecting if I18nUpdateMod is already installed",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "Detect if VaultPatcher is installed",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirector": "Detect if TextureLocaleRedirector is installed"

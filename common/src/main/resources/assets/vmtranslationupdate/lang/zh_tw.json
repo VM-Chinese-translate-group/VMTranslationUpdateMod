@@ -18,14 +18,18 @@
 
   "vmtu.required_mod.not_install.title": "未檢測到 %s 模組",
   "vmtu.required_mod.not_install.desc": "%s 尚未安裝，這可能導致某些模組§c中文更新檔不完全§r！",
+  "vmtu.required_mod.not_install.desc.tlr": "%s 尚未安裝，這可能導致圖片§c無法漢化§r！",
   "vmtu.required_mod.not_install.desc.download": "請點擊下面的按鈕跳轉到下載頁面。",
   "vmtu.required_mod.not_install.checkbox": "不要再顯示此警告",
   "vmtu.required_mod.not_install.checkbox.tooltip": "勾選此處可以禁用掉此警告，但是可能會造成翻譯不完全！",
+  "vmtu.required_mod.not_install.checkbox.tooltip.tlr": "勾選此處可以禁用掉此警告，但是可能會造成圖片無法漢化！",
 
   "text.autoconfig.vmtranslationupdate.title": "VM中文更新檔更新檢測配寘",
+  "text.autoconfig.vmtranslationupdate.option.misc": "雜項",
   "text.autoconfig.vmtranslationupdate.option.misc.devMode": "開發者模式",
   "text.autoconfig.vmtranslationupdate.option.misc.autoSwitchLanguage": "自動切換語言",
   "text.autoconfig.vmtranslationupdate.option.misc.checkModPackTranslationUpdate": "自動檢測模組包版本更新",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack": "資源包",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.autoDownloadVMTranslationPack": "自動下載簡體中文模組補充翻譯資源包",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.autoLoadExtraTranslationPack": "自動加載擴展漢化資源包",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.resourcePackIndex": "漢化資源包順序",
@@ -34,6 +38,7 @@
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackName.@Tooltip": "設置擴展資源包名稱（包括後綴名）",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex": "自定義擴展漢化資源包順序",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex.@Tooltip": "自定義擴展漢化資源包的安裝順序，需要將漢化資源包順序設置爲CUSTOM_INDEX此項纔會生效！",
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck": "Mod安裝檢測",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateMod": "檢測I18nUpdateMod是否已經安裝",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "檢測VaultPatcher是否已經安裝",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirector": "檢測TextureLocaleRedirector是否已經安裝"

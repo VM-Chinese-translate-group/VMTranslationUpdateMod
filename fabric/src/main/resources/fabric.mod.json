@@ -21,6 +21,9 @@
     ],
     "preLaunch": [
       "top.vmctcn.vmtu.mod.fabric.VMTranslationUpdatePreLaunch"
+    ],
+    "modmenu": [
+      "top.vmctcn.vmtu.mod.fabric.ModMenuImpl"
     ]
   },
   "depends": {

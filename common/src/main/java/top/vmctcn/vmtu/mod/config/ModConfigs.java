@@ -22,7 +22,7 @@ public class ModConfigs implements ConfigData {
         public boolean devMode = false;
 
         @ConfigEntry.Gui.RequiresRestart
-        public boolean autoSwitchLanguage = true;
+        public boolean autoSwitchLanguage = false;
 
         public boolean checkModPackTranslationUpdate = true;
     }

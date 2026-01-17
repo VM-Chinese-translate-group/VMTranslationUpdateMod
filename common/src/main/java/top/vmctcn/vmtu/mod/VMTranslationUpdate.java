@@ -36,9 +36,11 @@ public class VMTranslationUpdate {
 
     public static void init() {
         ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
-        ModpackMetadata modpackMetadata = Objects.requireNonNull(ModpackMetadataReader.getMetadata());
-        if (!Objects.equals(modpackInfo.getVersion(), modpackMetadata.getModpackVersion())) {
-            ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
+        ModpackMetadata modpackMetadata = ModpackMetadataReader.getMetadata();
+        if (modpackMetadata != null) {
+            if (!Objects.equals(modpackInfo.getVersion(), modpackMetadata.getModpackVersion())) {
+                ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
+            }
         }
 
         LanguageUtils.autoSwitchLanguage();
