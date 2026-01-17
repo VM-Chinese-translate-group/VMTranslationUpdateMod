@@ -8,7 +8,7 @@
   "vmtu.message.update.new_version.text.part1": "[VM Chinese Group]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!",
   "vmtu.message.update.new_version.text.part2": "Please click ",
   "vmtu.message.update.new_version.text.part3": " to download the new version.",
-  "vmtu.message.update.new_version.text.download_link": "here",
+  "vmtu.message.update.new_version.text.download_link": "[here]",
   "vmtu.message.update.new_version.text.download_hover": "Click me to download the new version!",
   "vmtu.message.update.modpack_version.error": "Note: This translation patch update is based on a newer modpack version. §cPlease update the modpack first before reinstalling the translation!§r Otherwise, compatibility issues may occur" ,
   "vmtu.message.update.modpack_version.error.hint": "You are currently playing with modpack version %s. Please update to version %s to match the translation patch!",

@@ -8,7 +8,7 @@
   "vmtu.message.update.new_version.text.part1": "[VM翻譯組]：發現中文更新檔更新，當前為%s，最新版為%s。請及時更新您的中文更新檔！",
   "vmtu.message.update.new_version.text.part2": "請點擊",
   "vmtu.message.update.new_version.text.part3": "下載新版本。",
-  "vmtu.message.update.new_version.text.download_link": "這裏",
+  "vmtu.message.update.new_version.text.download_link": "【這裏】",
   "vmtu.message.update.new_version.text.download_hover": "點我到官網下載新版本！",
   "vmtu.message.update.modpack_version.error": "注：本次中文更新檔基於新版模組包適配，§c請先更新模組包后再重新安裝中文更新檔！§r否則可能造成不相容問題" ,
   "vmtu.message.update.modpack_version.error.hint": "當前遊玩的模組包版本為%s，請把模組包更新到%s版本以匹配中文更新檔！",
