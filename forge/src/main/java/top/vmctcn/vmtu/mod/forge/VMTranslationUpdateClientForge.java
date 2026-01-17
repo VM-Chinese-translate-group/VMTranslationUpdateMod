@@ -25,6 +25,7 @@ import top.vmctcn.vmtu.multiversion.forge.ForgeUtils;
 @Mod(VMTranslationUpdate.MOD_ID)
 public class VMTranslationUpdateClientForge {
     public VMTranslationUpdateClientForge() {
+        @SuppressWarnings("removal")
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ForgeUtils.getClientModIgnoredServerOnly(VMTranslationUpdate.MOD_ID);
 
