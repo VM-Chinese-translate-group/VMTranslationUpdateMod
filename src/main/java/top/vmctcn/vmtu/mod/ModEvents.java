@@ -13,9 +13,10 @@ import top.vmctcn.vmtu.mod.modpack.updater.VersionChecker;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
+import top.vmctcn.vmtu.mod.screen.I18nUpdateNotInstallScreen;
+import top.vmctcn.vmtu.mod.screen.VaultPatcherNotInstallScreen;
 import top.vmctcn.vmtu.multiversion.GameEvents;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
-import top.vmctcn.vmtu.mod.screen.SuggestModScreen;
 import top.vmctcn.vmtu.multiversion.Messages;
 import top.vmctcn.vmtu.multiversion.Texts;
 
@@ -35,7 +36,7 @@ public class ModEvents {
 
         OnlineVersion onlineVersion = VersionChecker.getOnlineVersion();
 
-        if (ModConfigs.devMode) {
+        if (ModConfigs.misc.devMode) {
             Messages.displayClientMessage(player, Texts.literal("==================== VMTU Dev Mode ===================="));
             Messages.displayClientMessage(player, Texts.literal("Modpack Name: " + modpack.getName()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
@@ -52,13 +53,13 @@ public class ModEvents {
         }
 
         if (!translation.getLanguage().equals(languageManager.getLanguage().getCode()) && LanguageUtils.isChineseLanguage()) {
-            Messages.displayClientMessage(player, Texts.translatable("vmtranslationupdate.message.language_not_support", translation.getLanguage()));
+            Messages.displayClientMessage(player, Texts.translatable("vmtu.message.language.not_support", translation.getLanguage()));
         }
 
-        if (ModConfigs.checkModPackTranslationUpdate) {
+        if (ModConfigs.misc.checkModPackTranslationUpdate) {
             if (!onlineVersion.isValid()) {
-                Messages.displayClientMessage(player, Texts.translatable("vmtranslationupdate.message.update.error"));
-                VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
+                Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.error"));
+                ModContexts.LOGGER.warn("Error fetching modpack translation version");
                 return;
             }
 
@@ -68,23 +69,23 @@ public class ModEvents {
             Text coloredOnlineVer = Texts.literal(onlineVersion.translationVersion()).setStyle(new Style().setColor(Formatting.YELLOW));
 
             if (translationUpdateNeeded) {
-                Messages.displayClientMessage(player, Texts.translatable("vmtranslationupdate.message.update.new_version.text_part1", coloredLocalVer.getFormattedString(), coloredOnlineVer.getFormattedString()));
+                Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.new_version.text.part1", coloredLocalVer.getFormattedString(), coloredOnlineVer.getFormattedString()));
                 String updateUrl = translation.getUrl();
-                Text message = Texts.translatable("vmtranslationupdate.message.update.new_version.text_part2")
-                        .append(Texts.translatable(updateUrl)
+                Text message = Texts.translatable("vmtu.message.update.new_version.text.part2")
+                        .append(Texts.translatable("vmtu.message.update.new_version.text.download_link")
                                 .setStyle(new Style()
                                         .setClickEvent(GameEvents.clickOpenUrl(updateUrl))
-                                        .setHoverEvent(GameEvents.hoverShowText(Texts.translatable("vmtranslationupdate.message.update.new_version.download_hover")))
+                                        .setHoverEvent(GameEvents.hoverShowText(Texts.translatable("vmtu.message.update.new_version.text.download_hover")))
                                         .setColor(Formatting.AQUA)
                                 ))
-                        .append(Texts.translatable("vmtranslationupdate.message.update.new_version.text_part3"));
+                        .append(Texts.translatable("vmtu.message.update.new_version.text.part3"));
                 player.sendMessage(message);
 
                 if (modpackUpdateNeeded){
                     Text coloredLocalModpackVer = Texts.literal(localModpackVersion).setStyle(new Style().setColor(Formatting.YELLOW));
                     Text coloredOnlineModpackVer = Texts.literal(onlineVersion.modpackVersion()).setStyle(new Style().setColor(Formatting.YELLOW));
-                    Messages.displayClientMessage(player, Texts.translatable("vmtranslationupdate.message.update.modpack_version_error"));
-                    Messages.displayClientMessage(player, Texts.translatable("vmtranslationupdate.message.update.modpack_version_error.hint", coloredLocalModpackVer.getFormattedString(), coloredOnlineModpackVer.getFormattedString()));
+                    Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.modpack_version.error"));
+                    Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.modpack_version.error.hint", coloredLocalModpackVer.getFormattedString(), coloredOnlineModpackVer.getFormattedString()));
                 }
             }
         }
@@ -96,12 +97,13 @@ public class ModEvents {
                 return;
             }
 
-            boolean needI18n = ModConfigs.i18nUpdateModCheck && !ModContexts.ModPresent.i18nUpdateMod;
-            boolean needVP = ModConfigs.vaultPatcherCheck && !ModContexts.ModPresent.vaultPatcher;
+            boolean needI18n = ModConfigs.modInstallCheck.i18nUpdateMod && !ModContexts.i18nUpdateModLoaded;
+            boolean needVP = ModConfigs.modInstallCheck.vaultPatcher && !ModContexts.vaultPatcherLoaded;
 
-            // 只要有任何一个模组需要提示，就显示屏幕
-            if (needI18n || needVP) {
-                Minecraft.getInstance().openScreen(new SuggestModScreen(screen));
+            if (needI18n) {
+                Minecraft.getInstance().openScreen(new I18nUpdateNotInstallScreen(screen));
+            } else if (needVP) {
+                Minecraft.getInstance().openScreen(new VaultPatcherNotInstallScreen(screen));
             }
 
             firstTitleScreenShown = true;

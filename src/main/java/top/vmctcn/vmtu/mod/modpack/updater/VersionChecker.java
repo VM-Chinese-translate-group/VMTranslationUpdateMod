@@ -1,6 +1,6 @@
 package top.vmctcn.vmtu.mod.modpack.updater;
 
-import top.vmctcn.vmtu.mod.VMTranslationUpdate;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 
@@ -34,11 +34,11 @@ public class VersionChecker {
                             modpackVersion == null ? "" : modpackVersion.trim());
                 }
             } catch (Exception e) {
-                VMTranslationUpdate.LOGGER.warn("Version check failed: ", e);
+                ModContexts.LOGGER.warn("Version check failed: ", e);
                 return new OnlineVersion("", "");
             }
         } else {
-            VMTranslationUpdate.LOGGER.warn("Version check failed");
+            ModContexts.LOGGER.warn("Version check failed");
             return new OnlineVersion("", "");
         }
     }

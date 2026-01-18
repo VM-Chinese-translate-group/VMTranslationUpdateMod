@@ -17,7 +17,7 @@ public class ModCommand extends CommandTreeBase {
 
     @Override
     public String getUsage(CommandSource source) {
-        return "commands.vmtranslationupdate.usage";
+        return "vmtu.command.usage";
     }
 
     @Override

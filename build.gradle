@@ -85,6 +85,6 @@ jar {
 
 processResources.dependsOn("convertLangFile")
 tasks.register("convertLangFile", Exec) {
-    commandLine("python", "scripts/json2LangConverter.py", "jsonLang", "-o", "src/main/resources/assets/vmtranslationupdate/lang")
+    commandLine("python", "scripts/json2LangConverter.py", "scripts/inputs", "-o", "src/main/resources/assets/vmtranslationupdate/lang")
     workingDir projectDir
 }

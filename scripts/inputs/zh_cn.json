@@ -1,0 +1,40 @@
+{
+  "vmtu.required_mod.download.button": "下载",
+  "vmtu.required_mod.ignore.button": "我知道自己在做什么！",
+
+  "vmtu.command.usage": "/vmtu <subcommand>",
+  "vmtu.command.check.usage": "/vmtu check",
+
+  "vmtu.message.update.new_version.text.part1": "[VM汉化组]：发现汉化更新，当前汉化版本为%s，最新版为%s。请及时更新您的汉化！",
+  "vmtu.message.update.new_version.text.part2": "请点击",
+  "vmtu.message.update.new_version.text.part3": "下载新版本。",
+  "vmtu.message.update.new_version.text.download_link": "【这里】",
+  "vmtu.message.update.new_version.text.download_hover": "点我到官网下载新版本！",
+  "vmtu.message.update.modpack_version.error": "注：本次汉化基于新版整合包适配，§c请先更新整合包后再重新安装汉化！§r否则可能造成不兼容问题" ,
+  "vmtu.message.update.modpack_version.error.hint": "当前游玩的整合包版本为%s，请把整合包更新到%s版本以匹配汉化！",
+  "vmtu.message.update.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
+
+  "vmtu.message.language.not_support": "汉化补丁不支持当前语言，请切换到以下语言：%s",
+
+  "vmtu.required_mod.not_install.title": "未检测到 %s 模组",
+  "vmtu.required_mod.not_install.desc": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！",
+  "vmtu.required_mod.not_install.desc.download": "请点击下面的按钮跳转到下载页面。",
+
+  "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
+  "text.autoconfig.vmtranslationupdate.option.misc": "杂项",
+  "text.autoconfig.vmtranslationupdate.option.misc.devMode": "开发者模式",
+  "text.autoconfig.vmtranslationupdate.option.misc.autoSwitchLanguage": "自动切换语言",
+  "text.autoconfig.vmtranslationupdate.option.misc.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack": "资源包",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack.autoDownloadVMTranslationPack": "自动下载汉化资源包",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack.autoLoadExtraTranslationPack": "自动加载扩展汉化资源包",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack.resourcePackIndex": "汉化资源包顺序",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack.resourcePackIndex.@Tooltip": "指定汉化资源包的安装顺序",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackName": "扩展资源包名称",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackName.@Tooltip": "设置扩展资源包名称（包括后缀名）",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex": "自定义扩展汉化资源包顺序",
+  "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex.@Tooltip": "自定义扩展汉化资源包的安装顺序，需要将扩展汉化资源包顺序设置为CUSTOM_INDEX此项才会生效！",
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck": "Mod安装检测",
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateMod": "检测I18nUpdateMod是否已经安装",
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "检测VaultPatcher是否已经安装"
+}
