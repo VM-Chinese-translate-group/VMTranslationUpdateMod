@@ -41,8 +41,8 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
-    shade("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}:all")
+    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}")
+    shade("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}")
 }
 
 processResources {
