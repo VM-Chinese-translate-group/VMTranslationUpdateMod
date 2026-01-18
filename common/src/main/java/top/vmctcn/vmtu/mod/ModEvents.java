@@ -67,7 +67,7 @@ public class ModEvents {
         if (ModConfigHelper.getConfig().misc.checkModPackTranslationUpdate) {
             if (!onlineVersion.isValid()) {
                 Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.error"));
-                VMTranslationUpdate.LOGGER.warn("Error fetching modpack translation version");
+                ModContexts.LOGGER.warn("Error fetching modpack translation version");
                 return;
             }
 
@@ -104,9 +104,9 @@ public class ModEvents {
             return;
         }
 
-        boolean needI18n = ModConfigHelper.getConfig().modInstallCheck.i18nUpdateMod && !ModContexts.ModPresent.i18nUpdateMod;
-        boolean needVP = ModConfigHelper.getConfig().modInstallCheck.vaultPatcher && !ModContexts.ModPresent.vaultPatcher;
-        boolean needTLR = ModConfigHelper.getConfig().modInstallCheck.textureLocaleRedirector && !ModContexts.ModPresent.textureLocaleRedirector;
+        boolean needI18n = ModConfigHelper.getConfig().modInstallCheck.i18nUpdateMod && !ModContexts.i18nUpdateModLoaded;
+        boolean needVP = ModConfigHelper.getConfig().modInstallCheck.vaultPatcher && !ModContexts.vaultPatcherLoaded;
+        boolean needTLR = ModConfigHelper.getConfig().modInstallCheck.textureLocaleRedirector && !ModContexts.textureLocaleRedirectorLoaded;
 
         if (needI18n) {
             Minecraft.getInstance().setScreen(new I18nUpdateNotInstallScreen(screen));

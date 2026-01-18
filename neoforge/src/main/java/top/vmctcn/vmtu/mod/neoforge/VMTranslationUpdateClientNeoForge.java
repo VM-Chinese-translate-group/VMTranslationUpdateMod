@@ -16,17 +16,18 @@ import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.multiversion.neoforge.NeoUtils;
 
-@Mod(value = VMTranslationUpdate.MOD_ID/*? if >=1.20.6 {*/, dist = Dist.CLIENT/*?}*/)
+@Mod(value = ModContexts.MOD_ID/*? if >=1.20.6 {*/, dist = Dist.CLIENT/*?}*/)
 public class VMTranslationUpdateClientNeoForge {
     public VMTranslationUpdateClientNeoForge(IEventBus modEventBus/*? if >=1.20.6 {*/, ModContainer modContainer/*?}*/) {
         //? if 1.20.4 {
-        /*ModContainer modContainer = ModList.get().getModContainerById(VMTranslationUpdate.MOD_ID).orElseThrow();
+        /*ModContainer modContainer = ModList.get().getModContainerById(ModContexts.MOD_ID).orElseThrow();
         NeoUtils.getClientModIgnoredServerOnly(modContainer);
         *///?}
 

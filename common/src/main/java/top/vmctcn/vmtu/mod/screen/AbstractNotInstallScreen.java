@@ -15,13 +15,17 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.multiversion.Texts;
 import top.vmctcn.vmtu.multiversion.screen.WidgetUtils;
 import top.vmctcn.vmtu.multiversion.screen.ScreenUtils;
 
 public abstract class AbstractNotInstallScreen extends Screen {
+    public final Component downloadButton = Texts.translatable("mco.brokenworld.download");
+    public final Component ignoreButton = Texts.translatable("selectWorld.backupJoinSkipButton");
+    public final Component checkboxButton = Texts.translatable("vmtu.required_mod.not_install.checkbox");
+
     public final Screen lastScreen;
 
     protected static final int HEADER_HEIGHT = 40;
@@ -29,7 +33,7 @@ public abstract class AbstractNotInstallScreen extends Screen {
 
     protected final String modName;
     protected final boolean isRequiredCheckBox;
-    public Checkbox checkbox;
+    protected Checkbox checkbox;
 
     protected AbstractNotInstallScreen(Screen lastScreen, String modName, boolean isRequiredCheckBox) {
         super(Texts.translatable("vmtu.required_mod.not_install.title", modName).withStyle(ChatFormatting.RED).withStyle(ChatFormatting.BOLD));
@@ -44,16 +48,14 @@ public abstract class AbstractNotInstallScreen extends Screen {
 
         super.init();
 
-        this.addButtonWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.downloadButton, centerX - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
+        this.addButtonWidget(WidgetUtils.createButton(downloadButton, centerX - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
             ScreenUtils.openUrlOnScreen(this.minecraft, this, getDownloadUrl());
         }));
-        this.addButtonWidget(WidgetUtils.createButton(ModContexts.ScreenTexts.ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
+        this.addButtonWidget(WidgetUtils.createButton(ignoreButton, centerX + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
             this.onClose();
         }));
         if (isRequiredCheckBox) {
-            checkbox = WidgetUtils.createCheckbox(
-                    this.font, Texts.translatable("vmtu.required_mod.not_install.checkbox"), getCheckboxTooltip(), centerX - 50, this.height - (FOOTER_HEIGHT / 2) - 50
-            );
+            checkbox = WidgetUtils.createCheckbox(this.font, checkboxButton, getCheckboxTooltip(), centerX - 50, this.height - (FOOTER_HEIGHT / 2) - 50);
             setConfigValue(checkbox.selected());
             this.addButtonWidget(checkbox);
         }

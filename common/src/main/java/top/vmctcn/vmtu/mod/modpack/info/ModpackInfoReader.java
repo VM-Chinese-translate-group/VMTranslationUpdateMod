@@ -2,8 +2,8 @@ package top.vmctcn.vmtu.mod.modpack.info;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
-import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -23,15 +23,15 @@ public class ModpackInfoReader {
             try (Reader reader = Files.newBufferedReader(modpackInfoPath, StandardCharsets.UTF_8)) {
                 modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
                 if (modpackInfo == null) {
-                    VMTranslationUpdate.LOGGER.warn("modpackinfo.json is empty or invalid, generating default file.");
+                    ModContexts.LOGGER.warn("modpackinfo.json is empty or invalid, generating default file.");
                     generateDefaultModpackInfo();
                 }
             } catch (Exception e) {
-                VMTranslationUpdate.LOGGER.warn("Error reading modpackinfo.json, generating default file.", e);
+                ModContexts.LOGGER.warn("Error reading modpackinfo.json, generating default file.", e);
                 generateDefaultModpackInfo();
             }
         } else {
-            VMTranslationUpdate.LOGGER.warn("modpackinfo.json does not exist, generating default file.");
+            ModContexts.LOGGER.warn("modpackinfo.json does not exist, generating default file.");
             generateDefaultModpackInfo();
         }
     }
@@ -51,14 +51,14 @@ public class ModpackInfoReader {
 
         try {
             Files.writeString(modpackInfoPath, GSON.toJson(modpackInfo), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-            VMTranslationUpdate.LOGGER.info("Default modpackinfo.json generated.");
+            ModContexts.LOGGER.info("Default modpackinfo.json generated.");
 
             // 再次读取以确保正确加载
             try (Reader reader = Files.newBufferedReader(modpackInfoPath, StandardCharsets.UTF_8)) {
                 modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
             }
         } catch (IOException e) {
-            VMTranslationUpdate.LOGGER.error("Failed to generate default modpackinfo.json", e);
+            ModContexts.LOGGER.error("Failed to generate default modpackinfo.json", e);
         }
     }
 

@@ -2,8 +2,8 @@ package top.vmctcn.vmtu.mod.modpack.info;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
-import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -29,12 +29,12 @@ public class ModpackInfoWriter {
             try {
                 Files.writeString(modpackInfoPath, GSON.toJson(modpackInfo), StandardCharsets.UTF_8,
                         StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                VMTranslationUpdate.LOGGER.info("Modpack version updated from {} to {}", oldVersion, newVersion);
+                ModContexts.LOGGER.info("Modpack version updated from {} to {}", oldVersion, newVersion);
             } catch (IOException e) {
-                VMTranslationUpdate.LOGGER.error("Failed to update modpack version to {}", newVersion, e);
+                ModContexts.LOGGER.error("Failed to update modpack version to {}", newVersion, e);
             }
         } else {
-            VMTranslationUpdate.LOGGER.error("Cannot update modpack version: modpackInfo or modpack is null");
+            ModContexts.LOGGER.error("Cannot update modpack version: modpackInfo or modpack is null");
         }
     }
 }

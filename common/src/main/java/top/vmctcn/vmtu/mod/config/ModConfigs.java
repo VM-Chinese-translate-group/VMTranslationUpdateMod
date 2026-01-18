@@ -4,9 +4,9 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import top.vmctcn.vmtu.core.pack.ResourcePackIndex;
-import top.vmctcn.vmtu.mod.VMTranslationUpdate;
+import top.vmctcn.vmtu.mod.ModContexts;
 
-@Config(name = VMTranslationUpdate.MOD_ID)
+@Config(name = ModContexts.MOD_ID)
 public class ModConfigs implements ConfigData {
 
     @ConfigEntry.Gui.CollapsibleObject

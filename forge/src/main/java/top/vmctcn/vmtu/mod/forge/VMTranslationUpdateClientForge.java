@@ -16,23 +16,24 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModEvents;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.multiversion.forge.ForgeUtils;
 
-@Mod(VMTranslationUpdate.MOD_ID)
+@Mod(ModContexts.MOD_ID)
 public class VMTranslationUpdateClientForge {
     public VMTranslationUpdateClientForge() {
         @SuppressWarnings("removal")
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ForgeUtils.getClientModIgnoredServerOnly(VMTranslationUpdate.MOD_ID);
+        ForgeUtils.getClientModIgnoredServerOnly(ModContexts.MOD_ID);
 
         if (FMLLoader.getDist().isClient()) {
             VMTranslationUpdate.init();
 
-            ForgeUtils.registerConfigScreen(VMTranslationUpdate.MOD_ID, ModConfigHelper::setConfigScreen);
+            ForgeUtils.registerConfigScreen(ModContexts.MOD_ID, ModConfigHelper::setConfigScreen);
 
             MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
                 if (LanguageUtils.isChineseLanguage()) {

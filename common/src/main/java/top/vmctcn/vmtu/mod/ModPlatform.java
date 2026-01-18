@@ -3,7 +3,7 @@ package top.vmctcn.vmtu.mod;
 import java.nio.file.Path;
 
 public interface ModPlatform {
-    ModPlatform INSTANCE = VMTranslationUpdate.loadService(ModPlatform.class);
+    ModPlatform INSTANCE = ModContexts.loadService(ModPlatform.class);
 
     String getGameVersion();
 

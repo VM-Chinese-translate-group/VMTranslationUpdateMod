@@ -2,7 +2,7 @@ package top.vmctcn.vmtu.mod.modpack.updater;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import top.vmctcn.vmtu.mod.VMTranslationUpdate;
+import top.vmctcn.vmtu.mod.ModContexts;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,11 +26,11 @@ public class VMMetadataReader {
                 metadata = GSON.fromJson(reader, VMMetadata.class);
                 readMetadataSuccess = true;
             } catch (Exception e) {
-                VMTranslationUpdate.LOGGER.warn("Error reading vm-meta.json.", e);
+                ModContexts.LOGGER.warn("Error reading vm-meta.json.", e);
                 readMetadataSuccess = false;
             }
         } catch (IOException e) {
-            VMTranslationUpdate.LOGGER.warn("Error getting vm-meta.json.", e);
+            ModContexts.LOGGER.warn("Error getting vm-meta.json.", e);
             readMetadataSuccess = false;
         }
     }
@@ -45,7 +45,7 @@ public class VMMetadataReader {
 
     public static VMMetadata.Modpacks getModpack(String modpackId) {
         if (metadata.getModpacks() == null) {
-            VMTranslationUpdate.LOGGER.warn("Error getting modpack info in vm-meta.json.");
+            ModContexts.LOGGER.warn("Error getting modpack info in vm-meta.json.");
             return metadata.getModpacks().get("example");
         }
 

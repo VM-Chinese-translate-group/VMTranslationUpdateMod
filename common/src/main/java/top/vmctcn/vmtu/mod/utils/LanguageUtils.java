@@ -4,8 +4,8 @@ package top.vmctcn.vmtu.mod.utils;
 /*import com.google.common.collect.Sets;
 *///?}
 import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
-import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -32,7 +32,7 @@ public class LanguageUtils {
                 try {
                     return (Locale) f.get(Locale.getDefault());
                 } catch (IllegalAccessException e) {
-                    VMTranslationUpdate.LOGGER.error("Failed to get locale from field {}", f.getName(), e);
+                    ModContexts.LOGGER.error("Failed to get locale from field {}", f.getName(), e);
                     return null;
                 }
             }).filter(Objects::nonNull).filter(l -> !l.getLanguage().isEmpty() && !l.getCountry().isEmpty()).toArray(Locale[]::new); // Get preset locales from java
@@ -45,7 +45,7 @@ public class LanguageUtils {
             }
 
             /* Language should be fixed */
-            VMTranslationUpdate.LOGGER.info("Switching language to {}{}", language, !fixedFrom.equals(language) ? ", fixed from " + fixedFrom + "." /* Log the unfixed language */ : "...");
+            ModContexts.LOGGER.info("Switching language to {}{}", language, !fixedFrom.equals(language) ? ", fixed from " + fixedFrom + "." /* Log the unfixed language */ : "...");
             return language;
         }
 
@@ -73,7 +73,7 @@ public class LanguageUtils {
                 String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
                 writer.switchLanguage(LanguageUtils.getFixedLanguage(lang));
             } catch (Exception e) {
-                VMTranslationUpdate.LOGGER.warn("Failed to switch language: ", e);
+                ModContexts.LOGGER.warn("Failed to switch language: ", e);
             }
         }
     }

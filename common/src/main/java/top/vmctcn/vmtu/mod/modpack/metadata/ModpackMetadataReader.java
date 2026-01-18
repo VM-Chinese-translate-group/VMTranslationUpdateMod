@@ -2,8 +2,8 @@ package top.vmctcn.vmtu.mod.modpack.metadata;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
-import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
@@ -21,15 +21,15 @@ public class ModpackMetadataReader {
             try (Reader reader = Files.newBufferedReader(metadataPath, StandardCharsets.UTF_8)) {
                 ModpackMetadata metadata = GSON.fromJson(reader, metadataType.getMetadataClass());
                 if (metadata == null) {
-                    VMTranslationUpdate.LOGGER.warn("{} is empty or invalid", metadataType.getMetadataFileName());
+                    ModContexts.LOGGER.warn("{} is empty or invalid", metadataType.getMetadataFileName());
                     return null;
                 }
                 return metadata;
             } catch (Exception e) {
-                VMTranslationUpdate.LOGGER.warn("Error reading {} {}", metadataType.getMetadataFileName(), e);
+                ModContexts.LOGGER.warn("Error reading {} {}", metadataType.getMetadataFileName(), e);
             }
         } else {
-            VMTranslationUpdate.LOGGER.warn("{} does not exist", metadataType.getMetadataFileName());
+            ModContexts.LOGGER.warn("{} does not exist", metadataType.getMetadataFileName());
         }
 
         return null;

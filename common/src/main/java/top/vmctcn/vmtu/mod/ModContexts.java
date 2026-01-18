@@ -1,26 +1,37 @@
 package top.vmctcn.vmtu.mod;
 
-import net.minecraft.network.chat.Component;
-import top.vmctcn.vmtu.multiversion.Texts;
+//? if >=1.18.2 {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+//?} else {
+/*import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+*///?}
+
+import java.util.ServiceLoader;
 
 public class ModContexts {
-    public static class ModPresent {
-        public static boolean i18nUpdateMod = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
-        public static boolean vaultPatcher = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
-        public static boolean textureLocaleRedirector = ModPlatform.INSTANCE.isModLoaded("texturelocaleredirector");
+    public static final String MOD_ID = "vmtranslationupdate";
+    //? if >=1.18.2 {
+    public static final Logger LOGGER = LoggerFactory.getLogger("VMTranslationUpdateMod");
+    //?} else {
+    /*public static final Logger LOGGER = LogManager.getLogger("VMTranslationUpdateMod");
+     *///?}
 
-        public static boolean isCoreModClassLoaded(String className) {
-            try {
-                Class.forName(className);
-                return true; // 类存在，coremod已加载
-            } catch (ClassNotFoundException e) {
-                return false; // 类不存在
-            }
+    public static boolean i18nUpdateModLoaded = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
+    public static boolean vaultPatcherLoaded = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
+    public static boolean textureLocaleRedirectorLoaded = ModPlatform.INSTANCE.isModLoaded("texturelocaleredirector");
+
+    public static boolean isCoreModClassLoaded(String className) {
+        try {
+            Class.forName(className);
+            return true; // 类存在，coremod已加载
+        } catch (ClassNotFoundException e) {
+            return false; // 类不存在
         }
     }
 
-    public static class ScreenTexts {
-        public static final Component downloadButton = Texts.translatable("mco.brokenworld.download");
-        public static final Component ignoreButton = Texts.translatable("selectWorld.backupJoinSkipButton");
+    public static <T> T loadService(final Class<T> clazz) {
+        return ServiceLoader.load(clazz).findFirst().orElseThrow(() -> new AssertionError("No impl found for " + clazz.getPackageName()));
     }
 }
