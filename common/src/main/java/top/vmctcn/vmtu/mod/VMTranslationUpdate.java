@@ -59,11 +59,11 @@ public class VMTranslationUpdate {
     public static void autoDownloadAndLoadPack() {
         boolean autoDownloadPack = ModConfigHelper.getConfig().resourcePack.autoDownloadVMTranslationPack;
         boolean autoLoadExtraPack = ModConfigHelper.getConfig().resourcePack.autoLoadExtraTranslationPack;
-        String gameVersion = ModPlatform.INSTANCE.getGameVersion();
+        String gameVersion = ModPlatform.getGameVersion();
         String extraPackName = ModConfigHelper.getConfig().resourcePack.extraPackName;
         ResourcePackIndex resourcePackIndex = ModConfigHelper.getConfig().resourcePack.resourcePackIndex;
         int extraPackCustomIndex = ModConfigHelper.getConfig().resourcePack.extraPackCustomIndex;
         String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
-        VMTUCore.init(ModPlatform.INSTANCE.getGameDir(), gameVersion, resPackName, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
+        VMTUCore.init(ModPlatform.getGameDir(), gameVersion, resPackName, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
     }
 }

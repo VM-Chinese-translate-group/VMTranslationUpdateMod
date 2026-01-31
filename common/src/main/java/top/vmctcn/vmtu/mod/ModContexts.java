@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.apache.logging.log4j.Logger;
 *///?}
 
-import java.util.ServiceLoader;
-
 public class ModContexts {
     public static final String MOD_ID = "vmtranslationupdate";
     //? if >=1.18.2 {
@@ -20,7 +18,7 @@ public class ModContexts {
 
     public static boolean i18nUpdateModLoaded = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
     public static boolean vaultPatcherLoaded = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
-    public static boolean textureLocaleRedirectorLoaded = ModPlatform.INSTANCE.isModLoaded("texturelocaleredirector");
+    public static boolean textureLocaleRedirectorLoaded = ModPlatform.isModLoaded("texturelocaleredirector");
 
     public static boolean isCoreModClassLoaded(String className) {
         try {
@@ -29,9 +27,5 @@ public class ModContexts {
         } catch (ClassNotFoundException e) {
             return false; // 类不存在
         }
-    }
-
-    public static <T> T loadService(final Class<T> clazz) {
-        return ServiceLoader.load(clazz).findFirst().orElseThrow(() -> new AssertionError("No impl found for " + clazz.getPackageName()));
     }
 }

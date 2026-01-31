@@ -12,7 +12,7 @@ import java.nio.file.Path;
 
 public class ModpackMetadataReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path gamePath = ModPlatform.INSTANCE.getGameDir();
+    private static final Path gamePath = ModPlatform.getGameDir();
 
     public static ModpackMetadata getMetadata(MetadataType metadataType) {
         Path metadataPath = gamePath.resolve(metadataType.getMetadataFileName());

@@ -73,8 +73,6 @@ dependencies {
 
     include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
     implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
-    implementation("com.google.auto.service:auto-service-annotations:1.1.1")
-    annotationProcessor("com.google.auto.service:auto-service:1.1.1")
 
     commonBundle(project(common.path, "namedElements")) { isTransitive = false }
     shadowBundle(project(common.path, "transformProductionFabric")) { isTransitive = false }

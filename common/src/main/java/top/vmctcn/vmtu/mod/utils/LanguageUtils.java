@@ -69,7 +69,7 @@ public class LanguageUtils {
     public static void autoSwitchLanguage() {
         if (ModConfigHelper.getConfig().misc.autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
-                GameOptionsWriter writer = new GameOptionsWriter(ModPlatform.INSTANCE.getGameDir().resolve("options.txt"));
+                GameOptionsWriter writer = new GameOptionsWriter(ModPlatform.getGameDir().resolve("options.txt"));
                 String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
                 writer.switchLanguage(LanguageUtils.getFixedLanguage(lang));
             } catch (Exception e) {

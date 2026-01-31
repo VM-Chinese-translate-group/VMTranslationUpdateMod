@@ -15,7 +15,7 @@ import java.nio.file.StandardOpenOption;
 public class ModpackInfoReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static ModpackInfo modpackInfo;
-    private static final Path gamePath = ModPlatform.INSTANCE.getGameDir();
+    private static final Path gamePath = ModPlatform.getGameDir();
     private static final Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
 
     static {

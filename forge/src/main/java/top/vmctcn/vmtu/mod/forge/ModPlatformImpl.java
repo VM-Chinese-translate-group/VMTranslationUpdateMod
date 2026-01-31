@@ -1,19 +1,15 @@
 package top.vmctcn.vmtu.mod.forge;
 
-import com.google.auto.service.AutoService;
 import cpw.mods.modlauncher.Launcher;
 import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.loading.FMLPaths;
 import top.vmctcn.vmtu.core.VMTUCore;
 import top.vmctcn.vmtu.core.util.Reflection;
-import top.vmctcn.vmtu.mod.ModPlatform;
 
 import java.nio.file.Path;
 
-@AutoService(ModPlatform.class)
-public class ModPlatformImpl implements ModPlatform {
-    @Override
-    public String getGameVersion() {
+public class ModPlatformImpl {
+    public static String getGameVersion() {
         //? if >=1.18.2 {
         return FMLLoader.versionInfo().mcVersion();
         //?} else {
@@ -31,13 +27,11 @@ public class ModPlatformImpl implements ModPlatform {
         *///?}
     }
 
-    @Override
-    public Path getGameDir() {
+    public static Path getGameDir() {
         return FMLPaths.GAMEDIR.get();
     }
 
-    @Override
-    public boolean isModLoaded(String modId) {
+    public static boolean isModLoaded(String modId) {
         return FMLLoader.getLoadingModList().getModFileById(modId) != null;
     }
 }
