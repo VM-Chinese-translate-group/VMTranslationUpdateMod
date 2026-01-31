@@ -7,15 +7,11 @@ import top.vmctcn.vmtu.multiversion.Texts;
 
 public class I18nUpdateNotInstallScreen extends AbstractNotInstallScreen {
     public I18nUpdateNotInstallScreen(Screen lastScreen) {
-        super(
-                lastScreen,
-                "I18nUpdateMod",
-                false
-        );
+        super(lastScreen, "I18nUpdateMod", false);
     }
 
     @Override
-    public void setConfigValue(boolean value) {
+    public void setModInstallCheck(boolean value) {
         ModConfigHelper.getConfig().modInstallCheck.i18nUpdateMod = value;
     }
 

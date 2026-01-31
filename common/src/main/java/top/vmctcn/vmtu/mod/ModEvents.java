@@ -44,8 +44,8 @@ public class ModEvents {
 
         OnlineVersion onlineVersion = VersionChecker.getOnlineVersion(modpack);
 
-        if (ModConfigHelper.getConfig().misc.devMode) {
-            Messages.displayClientMessage(player, Texts.literal("==================== VMTU Dev Mode ===================="));
+        if (ModConfigHelper.getConfig().misc.devMode || ModPlatform.isDevelopmentEnvironment()) {
+            Messages.displayClientMessage(player, Texts.literal("==================== VMTU Development Mode ===================="));
             Messages.displayClientMessage(player, Texts.literal("Modpack Name: " + modpack.getName()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation URL:§b " + translation.getUrl()));

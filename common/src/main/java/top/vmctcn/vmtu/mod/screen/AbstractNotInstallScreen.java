@@ -56,12 +56,12 @@ public abstract class AbstractNotInstallScreen extends Screen {
         }));
         if (isRequiredCheckBox) {
             checkbox = WidgetUtils.createCheckbox(this.font, checkboxButton, getCheckboxTooltip(), centerX - 50, this.height - (FOOTER_HEIGHT / 2) - 50);
-            setConfigValue(checkbox.selected());
+            this.setModInstallCheck(!checkbox.selected());
             this.addButtonWidget(checkbox);
         }
     }
 
-    public abstract void setConfigValue(boolean value);
+    public abstract void setModInstallCheck(boolean value);
 
     public abstract String getDownloadUrl();
 

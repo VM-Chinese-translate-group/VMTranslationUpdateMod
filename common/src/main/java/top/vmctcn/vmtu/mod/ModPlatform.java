@@ -23,4 +23,10 @@ public class ModPlatform {
         // Just throw an error, the content should get replaced at runtime.
         throw new AssertionError();
     }
+
+    @ExpectPlatform
+    public static boolean isDevelopmentEnvironment() {
+        // Just throw an error, the content should get replaced at runtime.
+        throw new AssertionError();
+    }
 }

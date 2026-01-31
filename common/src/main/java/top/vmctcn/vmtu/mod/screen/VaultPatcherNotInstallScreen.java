@@ -7,15 +7,11 @@ import top.vmctcn.vmtu.multiversion.Texts;
 
 public class VaultPatcherNotInstallScreen extends AbstractNotInstallScreen {
     public VaultPatcherNotInstallScreen(Screen lastScreen) {
-        super(
-                lastScreen,
-                "VaultPatcher",
-                false
-        );
+        super(lastScreen, "VaultPatcher", false);
     }
 
     @Override
-    public void setConfigValue(boolean value) {
+    public void setModInstallCheck(boolean value) {
         ModConfigHelper.getConfig().modInstallCheck.vaultPatcher = value;
     }
 

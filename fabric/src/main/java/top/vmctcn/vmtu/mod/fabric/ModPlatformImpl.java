@@ -35,4 +35,8 @@ public class ModPlatformImpl {
     public static boolean isModLoaded(String modId) {
         return FabricLoader.getInstance().isModLoaded(modId);
     }
+
+    public static boolean isDevelopmentEnvironment() {
+        return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
 }

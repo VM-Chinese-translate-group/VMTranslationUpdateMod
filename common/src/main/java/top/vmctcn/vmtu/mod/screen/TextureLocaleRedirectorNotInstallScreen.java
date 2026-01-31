@@ -8,15 +8,11 @@ import top.vmctcn.vmtu.multiversion.Texts;
 //? if >=1.20.1 {
 public class TextureLocaleRedirectorNotInstallScreen extends AbstractNotInstallScreen {
     public TextureLocaleRedirectorNotInstallScreen(Screen lastScreen) {
-        super(
-                lastScreen,
-                "TextureLocaleRedirector",
-                true
-        );
+        super(lastScreen, "TextureLocaleRedirector", true);
     }
 
     @Override
-    public void setConfigValue(boolean value) {
+    public void setModInstallCheck(boolean value) {
         ModConfigHelper.getConfig().modInstallCheck.textureLocaleRedirector = value;
     }
 

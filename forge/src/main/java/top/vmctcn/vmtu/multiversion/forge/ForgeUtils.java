@@ -50,4 +50,8 @@ public class ForgeUtils {
         /*modContainer.registerExtensionPoint(ExtensionPoint.DISPLAYTEST, () -> Pair.of(() -> FMLNetworkConstants.IGNORESERVERONLY, (remoteVersion, isFromServer) -> true));
         *///?}
     }
+
+    public static boolean isDevelopmentEnvironment() {
+        return FMLLoader.isProduction();
+    }
 }

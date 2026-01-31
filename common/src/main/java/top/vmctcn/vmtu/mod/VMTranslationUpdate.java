@@ -26,11 +26,11 @@ public class VMTranslationUpdate {
 
         LanguageUtils.autoSwitchLanguage();
 
-        if (ModConfigHelper.getConfig().misc.devMode) {
+        if (ModConfigHelper.getConfig().misc.devMode || ModPlatform.isDevelopmentEnvironment()) {
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
             VMMetadata.Modpacks vmmetadata = VMMetadataReader.getModpack(translation.getId());
 
-            ModContexts.LOGGER.warn("==================== VMTU Dev Mode ====================");
+            ModContexts.LOGGER.warn("==================== VMTU Development Mode ====================");
             ModContexts.LOGGER.warn("Modpack Name: {}", modpackInfo.getName());
             ModContexts.LOGGER.warn("Modpack Version: {}", modpackInfo.getVersion());
             ModContexts.LOGGER.warn("Modpack Translation URL: {}", translation.getUrl());

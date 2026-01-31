@@ -17,4 +17,8 @@ public class ModPlatformImpl {
     public static boolean isModLoaded(String modId) {
         return NeoUtils.getLoadingModList().getModFileById(modId) != null;
     }
+
+    public static boolean isDevelopmentEnvironment() {
+        return NeoUtils.isDevelopmentEnvironment();
+    }
 }

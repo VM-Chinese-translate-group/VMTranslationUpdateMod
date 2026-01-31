@@ -56,4 +56,12 @@ public class NeoUtils {
         /*return FMLLoader.getLoadingModList();
         *///?}
     }
+
+    public static boolean isDevelopmentEnvironment() {
+        //? if >=1.21.10 {
+        return FMLLoader.getCurrent().isProduction();
+        //?} else {
+        /*return FMLLoader.isProduction();
+         *///?}
+    }
 }
