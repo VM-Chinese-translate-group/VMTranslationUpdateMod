@@ -39,18 +39,18 @@ public class ModConfigs {
         @Config.RequiresMcRestart
         @Config.Name("autoSwitchLanguage")
         @Config.LangKey("text.autoconfig.vmtranslationupdate.option.misc.autoSwitchLanguage")
-        public boolean autoSwitchLanguage = true;
+        public boolean autoSwitchLanguage = false;
 
         @Config.Name("checkModPackTranslationUpdate")
         @Config.LangKey("text.autoconfig.vmtranslationupdate.option.misc.checkModPackTranslationUpdate")
-        public boolean checkModPackTranslationUpdate = true;
+        public boolean checkModPackTranslationUpdate = false;
     }
 
     public static class ResourcePack {
         @Config.RequiresMcRestart
         @Config.Name("autoDownloadVMTranslationPack")
         @Config.LangKey("text.autoconfig.vmtranslationupdate.option.resourcePack.autoDownloadVMTranslationPack")
-        public boolean autoDownloadVMTranslationPack = false;
+        public boolean autoDownloadVMTranslationPack = true;
 
         @Config.RequiresMcRestart
         @Config.Name("autoLoadExtraTranslationPack")
