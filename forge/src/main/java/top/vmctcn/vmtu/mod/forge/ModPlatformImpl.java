@@ -5,6 +5,7 @@ import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.loading.FMLPaths;
 import top.vmctcn.vmtu.core.VMTUCore;
 import top.vmctcn.vmtu.core.util.Reflection;
+import top.vmctcn.vmtu.multiversion.forge.ForgeUtils;
 
 import java.nio.file.Path;
 
@@ -33,5 +34,9 @@ public class ModPlatformImpl {
 
     public static boolean isModLoaded(String modId) {
         return FMLLoader.getLoadingModList().getModFileById(modId) != null;
+    }
+
+    public static boolean isDevelopmentEnvironment() {
+        return ForgeUtils.isDevelopmentEnvironment();
     }
 }
