@@ -24,12 +24,12 @@ public class ModConfigs implements ConfigData {
         @ConfigEntry.Gui.RequiresRestart
         public boolean autoSwitchLanguage = false;
 
-        public boolean checkModPackTranslationUpdate = true;
+        public boolean checkModPackTranslationUpdate = false;
     }
 
     public static class ResourcePack {
         @ConfigEntry.Gui.RequiresRestart
-        public boolean autoDownloadVMTranslationPack = false;
+        public boolean autoDownloadVMTranslationPack = true;
 
         @ConfigEntry.Gui.RequiresRestart
         public boolean autoLoadExtraTranslationPack = false;
@@ -56,6 +56,6 @@ public class ModConfigs implements ConfigData {
         public boolean vaultPatcher = false;
 
         @ConfigEntry.Gui.RequiresRestart
-        public boolean textureLocaleRedirector = true;
+        public boolean textureLocaleRedirector = false;
     }
 }
