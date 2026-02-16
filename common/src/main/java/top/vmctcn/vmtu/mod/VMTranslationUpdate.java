@@ -52,7 +52,7 @@ public class VMTranslationUpdate {
             } else {
                 ModContexts.LOGGER.info("Modpack Metadata: null");
             }
-            ModContexts.LOGGER.warn("=====================================================");
+            ModContexts.LOGGER.info("=====================================================");
         }
     }
 

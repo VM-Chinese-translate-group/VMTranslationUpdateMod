@@ -54,7 +54,7 @@ public class ModEvents {
             }
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Language: " + translation.getLanguage()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Version: " + translation.getVersion()));
-            Messages.displayClientMessage(player, Texts.literal("Modpack Resource Pack Name: " + translation.getResourcePackName()));
+            Messages.displayClientMessage(player, Texts.literal("Translation Resource Pack Name: " + translation.getResourcePackName()));
             Messages.displayClientMessage(player, Texts.literal("Online Translation Version: " + onlineVersion.translationVersion()));
             Messages.displayClientMessage(player, Texts.literal("Online Modpack Version: " + onlineVersion.modpackVersion()));
             Messages.displayClientMessage(player, Texts.literal("====================================================="));
