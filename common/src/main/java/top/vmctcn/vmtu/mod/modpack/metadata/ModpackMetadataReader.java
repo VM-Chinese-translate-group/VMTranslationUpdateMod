@@ -21,15 +21,15 @@ public class ModpackMetadataReader {
             try (Reader reader = Files.newBufferedReader(metadataPath, StandardCharsets.UTF_8)) {
                 ModpackMetadata metadata = GSON.fromJson(reader, metadataType.getMetadataClass());
                 if (metadata == null) {
-                    ModContexts.LOGGER.warn("{} is empty or invalid", metadataType.getMetadataFileName());
+                    ModContexts.LOGGER.warn("{} ({}) is empty or invalid", metadataType.getMetadataName(), metadataType.getMetadataFileName());
                     return null;
                 }
                 return metadata;
             } catch (Exception e) {
-                ModContexts.LOGGER.warn("Error reading {} {}", metadataType.getMetadataFileName(), e);
+                ModContexts.LOGGER.warn("Error reading {} ({}) {}", metadataType.getMetadataName(), metadataType.getMetadataFileName(), e);
             }
         } else {
-            ModContexts.LOGGER.warn("{} does not exist", metadataType.getMetadataFileName());
+            ModContexts.LOGGER.warn("{} ({}) does not exist", metadataType.getMetadataName(), metadataType.getMetadataFileName());
         }
 
         return null;
