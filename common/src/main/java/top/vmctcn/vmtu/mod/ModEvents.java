@@ -30,6 +30,7 @@ public class ModEvents {
     public static ModpackInfo.Translation translation = modpack.getTranslation();
     public static OnlineVersion onlineVersion = VersionChecker.getOnlineVersion(modpack);
 
+    @SuppressWarnings({"ConstantConditions", "deprecation"})
     public static void playerJoinEvent(Player player) {
         if (player == null) return;
 
@@ -44,12 +45,18 @@ public class ModEvents {
         String localModpackVersion = modpack.getVersion();
 
         if (ModConfigHelper.getConfig().misc.devMode || ModPlatform.isDevelopmentEnvironment()) {
-            Messages.displayClientMessage(player, Texts.literal("============ VMTU Dev Mode =============="));
+            Messages.displayClientMessage(player, Texts.literal("=================== VMTU Dev Mode ==================="));
             Messages.displayClientMessage(player, Texts.literal("Modpack Name: " + modpack.getName()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation URL:§b " + translation.getUrl()));
             if (translation.getUpdateCheckUrl() != null) {
-                Messages.displayClientMessage(player, Texts.literal("Modpack Translation Update Check URL:§b " + translation.getUpdateCheckUrl()));
+                Component updateCheckUrlMsg = Texts.literal("Modpack Translation Update Check URL: ")
+                        .append(Texts.translatable(translation.getUpdateCheckUrl())
+                                .setStyle(Style.EMPTY
+                                        .withClickEvent(GameEvents.clickOpenUrl(translation.getUpdateCheckUrl()))
+                                        .withColor(ChatFormatting.AQUA)
+                                ));
+                Messages.displayClientMessage(player, updateCheckUrlMsg);
             }
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Language: " + translation.getLanguage()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Version: " + translation.getVersion()));
