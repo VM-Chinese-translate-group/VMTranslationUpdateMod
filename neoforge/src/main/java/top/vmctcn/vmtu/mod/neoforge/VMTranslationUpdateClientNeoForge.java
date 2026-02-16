@@ -51,7 +51,18 @@ public class VMTranslationUpdateClientNeoForge {
                     Commands.literal("vmtu")
                             .then(Commands.literal("check")
                                     .executes(context -> {
-                                        ModEvents.playerJoinEvent(context.getSource().getPlayer());
+                                        ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
+                                        ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
+                                        return Command.SINGLE_SUCCESS;
+                                    })
+                                    .then(Commands.literal("modpack"))
+                                    .executes(context -> {
+                                        ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
+                                        return Command.SINGLE_SUCCESS;
+                                    })
+                                    .then(Commands.literal("translation"))
+                                    .executes(context -> {
+                                        ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
                                         return Command.SINGLE_SUCCESS;
                                     })
                             )

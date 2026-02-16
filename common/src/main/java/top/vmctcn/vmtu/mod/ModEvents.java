@@ -26,6 +26,10 @@ import top.vmctcn.vmtu.multiversion.Texts;
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
 
+    public static ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
+    public static ModpackInfo.Translation translation = modpack.getTranslation();
+    public static OnlineVersion onlineVersion = VersionChecker.getOnlineVersion(modpack);
+
     public static void playerJoinEvent(Player player) {
         if (player == null) return;
 
@@ -36,13 +40,8 @@ public class ModEvents {
         /*String language = languageManager.getSelected().getCode();
         *///?}
 
-        ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
-        ModpackInfo.Translation translation = modpack.getTranslation();
-
         String localTranslationVersion = translation.getVersion();
         String localModpackVersion = modpack.getVersion();
-
-        OnlineVersion onlineVersion = VersionChecker.getOnlineVersion(modpack);
 
         if (ModConfigHelper.getConfig().misc.devMode || ModPlatform.isDevelopmentEnvironment()) {
             Messages.displayClientMessage(player, Texts.literal("============ VMTU Dev Mode =============="));
@@ -73,30 +72,38 @@ public class ModEvents {
 
             boolean translationUpdateNeeded = !localTranslationVersion.equals(onlineVersion.translationVersion());
             boolean modpackUpdateNeeded = !onlineVersion.modpackVersion().isEmpty() && !localModpackVersion.equals(onlineVersion.modpackVersion());
-            Component coloredLocalVer = Texts.literal(localTranslationVersion).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
-            Component coloredOnlineVer = Texts.literal(onlineVersion.translationVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
 
             if (translationUpdateNeeded) {
-                Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.new_version.text.part1", coloredLocalVer, coloredOnlineVer));
-                String updateUrl = translation.getUrl();
-                Component message = Texts.translatable("vmtu.message.update.new_version.text.part2")
-                        .append(Texts.translatable("vmtu.message.update.new_version.text.download_link")
-                                .setStyle(Style.EMPTY
-                                        .withClickEvent(GameEvents.clickOpenUrl(updateUrl))
-                                        .withHoverEvent(GameEvents.hoverShowText(Texts.translatable("vmtu.message.update.new_version.text.download_hover")))
-                                        .withColor(ChatFormatting.AQUA)
-                                ))
-                        .append(Texts.translatable("vmtu.message.update.new_version.text.part3"));
-                Messages.displayClientMessage(player, message);
+                checkTranslationUpdateCommand(player);
 
                 if (modpackUpdateNeeded){
-                    Component coloredLocalModpackVer = Texts.literal(localModpackVersion).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
-                    Component coloredOnlineModpackVer = Texts.literal(onlineVersion.modpackVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
-                    Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.modpack_version.error"));
-                    Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.modpack_version.error.hint", coloredLocalModpackVer, coloredOnlineModpackVer));
+                    checkModpackUpdateCommand(player);
                 }
             }
         }
+    }
+
+    public static void checkModpackUpdateCommand(Player player) {
+        Component coloredLocalModpackVer = Texts.literal(translation.getVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
+        Component coloredOnlineModpackVer = Texts.literal(onlineVersion.modpackVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
+        Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.modpack_version.error"));
+        Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.modpack_version.error.hint", coloredLocalModpackVer, coloredOnlineModpackVer));
+    }
+
+    public static void checkTranslationUpdateCommand(Player player) {
+        Component coloredLocalVer = Texts.literal(translation.getVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
+        Component coloredOnlineVer = Texts.literal(onlineVersion.translationVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
+        Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.new_version.text.part1", coloredLocalVer, coloredOnlineVer));
+        String updateUrl = translation.getUrl();
+        Component message = Texts.translatable("vmtu.message.update.new_version.text.part2")
+                .append(Texts.translatable("vmtu.message.update.new_version.text.download_link")
+                        .setStyle(Style.EMPTY
+                                .withClickEvent(GameEvents.clickOpenUrl(updateUrl))
+                                .withHoverEvent(GameEvents.hoverShowText(Texts.translatable("vmtu.message.update.new_version.text.download_hover")))
+                                .withColor(ChatFormatting.AQUA)
+                        ))
+                .append(Texts.translatable("vmtu.message.update.new_version.text.part3"));
+        Messages.displayClientMessage(player, message);
     }
 
     public static void screenAfterInitEvent(Screen screen) {

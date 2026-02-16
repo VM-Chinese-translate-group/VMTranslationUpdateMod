@@ -68,10 +68,32 @@ public class VMTranslationUpdateClientForge {
                             .then(Commands.literal("check")
                                     .executes(context -> {
                                         //? if >=1.19.2 {
-                                        ModEvents.playerJoinEvent(context.getSource().getPlayer());
+                                        var player = context.getSource().getPlayer();
                                         //?} else {
-                                        /*ModEvents.playerJoinEvent(context.getSource().getPlayerOrException());
-                                        *///?}
+                                        /*var player = context.getSource().getPlayerOrException();
+                                         *///?}
+                                        ModEvents.checkModpackUpdateCommand(player);
+                                        ModEvents.checkTranslationUpdateCommand(player);
+                                        return Command.SINGLE_SUCCESS;
+                                    })
+                                    .then(Commands.literal("modpack"))
+                                    .executes(context -> {
+                                        //? if >=1.19.2 {
+                                        var player = context.getSource().getPlayer();
+                                        //?} else {
+                                        /*var player = context.getSource().getPlayerOrException();
+                                         *///?}
+                                        ModEvents.checkModpackUpdateCommand(player);
+                                        return Command.SINGLE_SUCCESS;
+                                    })
+                                    .then(Commands.literal("translation"))
+                                    .executes(context -> {
+                                        //? if >=1.19.2 {
+                                        var player = context.getSource().getPlayer();
+                                        //?} else {
+                                        /*var player = context.getSource().getPlayerOrException();
+                                         *///?}
+                                        ModEvents.checkTranslationUpdateCommand(player);
                                         return Command.SINGLE_SUCCESS;
                                     })
                             )
