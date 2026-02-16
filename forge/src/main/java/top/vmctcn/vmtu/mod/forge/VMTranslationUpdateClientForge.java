@@ -9,6 +9,9 @@ import net.minecraftforge.client.event.ScreenEvent;
 /*import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 *///?}
+//? if <=1.18.2 {
+import net.minecraft.world.entity.player.Player;
+//?}
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -38,17 +41,17 @@ public class VMTranslationUpdateClientForge {
             MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
                 if (LanguageUtils.isChineseLanguage()) {
                     //? if >=1.19.2 {
-                    ModEvents.playerJoinEvent(event.getEntity());
-                    //?} else {
-                    /*ModEvents.playerJoinEvent(event.getPlayer());
-                    *///?}
+                    /*ModEvents.playerJoinEvent(event.getEntity());
+                    *///?} else {
+                    ModEvents.playerJoinEvent(event.getPlayer());
+                    //?}
                 }
             });
             //? if >=1.19.2 {
-            MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> {
-            //?} else if 1.18.2 {
-            /*MinecraftForge.EVENT_BUS.<ScreenEvent.InitScreenEvent.Pre>addListener(event -> {
-            *///?} else {
+            /*MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> {
+            *///?} else if 1.18.2 {
+            MinecraftForge.EVENT_BUS.<ScreenEvent.InitScreenEvent.Pre>addListener(event -> {
+            //?} else {
             /*MinecraftForge.EVENT_BUS.<GuiScreenEvent.InitGuiEvent.Pre>addListener(event -> {
             *///?}
                 if (LanguageUtils.isChineseLanguage()) {
@@ -68,10 +71,10 @@ public class VMTranslationUpdateClientForge {
                             .then(Commands.literal("check")
                                     .executes(context -> {
                                         //? if >=1.19.2 {
-                                        var player = context.getSource().getPlayer();
-                                        //?} else {
-                                        /*var player = context.getSource().getPlayerOrException();
-                                         *///?}
+                                        /*var player = context.getSource().getPlayer();
+                                        *///?} else {
+                                        var player = context.getSource().getPlayerOrException();
+                                         //?}
                                         ModEvents.checkModpackUpdateCommand(player);
                                         ModEvents.checkTranslationUpdateCommand(player);
                                         return Command.SINGLE_SUCCESS;
@@ -79,20 +82,20 @@ public class VMTranslationUpdateClientForge {
                                     .then(Commands.literal("modpack"))
                                     .executes(context -> {
                                         //? if >=1.19.2 {
-                                        var player = context.getSource().getPlayer();
-                                        //?} else {
-                                        /*var player = context.getSource().getPlayerOrException();
-                                         *///?}
+                                        /*var player = context.getSource().getPlayer();
+                                        *///?} else {
+                                        Player player = context.getSource().getPlayerOrException();
+                                         //?}
                                         ModEvents.checkModpackUpdateCommand(player);
                                         return Command.SINGLE_SUCCESS;
                                     })
                                     .then(Commands.literal("translation"))
                                     .executes(context -> {
                                         //? if >=1.19.2 {
-                                        var player = context.getSource().getPlayer();
-                                        //?} else {
-                                        /*var player = context.getSource().getPlayerOrException();
-                                         *///?}
+                                        /*var player = context.getSource().getPlayer();
+                                        *///?} else {
+                                        var player = context.getSource().getPlayerOrException();
+                                         //?}
                                         ModEvents.checkTranslationUpdateCommand(player);
                                         return Command.SINGLE_SUCCESS;
                                     })
