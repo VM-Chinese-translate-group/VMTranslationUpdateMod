@@ -45,7 +45,7 @@ public class ModEvents {
         OnlineVersion onlineVersion = VersionChecker.getOnlineVersion(modpack);
 
         if (ModConfigHelper.getConfig().misc.devMode || ModPlatform.isDevelopmentEnvironment()) {
-            Messages.displayClientMessage(player, Texts.literal("==================== VMTU Development Mode ===================="));
+            Messages.displayClientMessage(player, Texts.literal("============ VMTU Dev Mode =============="));
             Messages.displayClientMessage(player, Texts.literal("Modpack Name: " + modpack.getName()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation URL:§b " + translation.getUrl()));
@@ -54,10 +54,10 @@ public class ModEvents {
             }
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Language: " + translation.getLanguage()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Version: " + translation.getVersion()));
-            Messages.displayClientMessage(player, Texts.literal("Modpack Translation Resource Pack Name: " + translation.getResourcePackName()));
+            Messages.displayClientMessage(player, Texts.literal("Translation Resource Pack Name: " + translation.getResourcePackName()));
             Messages.displayClientMessage(player, Texts.literal("Online Translation Version: " + onlineVersion.translationVersion()));
             Messages.displayClientMessage(player, Texts.literal("Online Modpack Version: " + onlineVersion.modpackVersion()));
-            Messages.displayClientMessage(player, Texts.literal("======================================================="));
+            Messages.displayClientMessage(player, Texts.literal("====================================================="));
         }
 
         if (!translation.getLanguage().equals(language) && LanguageUtils.isChineseLanguage()) {
