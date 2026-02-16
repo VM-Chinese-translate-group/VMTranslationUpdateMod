@@ -30,6 +30,7 @@ public class ModEvents {
     public static ModpackInfo.Translation translation = modpack.getTranslation();
     public static OnlineVersion onlineVersion = VersionChecker.getOnlineVersion(modpack);
 
+    @SuppressWarnings({"ConstantConditions", "deprecation"})
     public static void playerJoinEvent(Player player) {
         if (player == null) return;
 

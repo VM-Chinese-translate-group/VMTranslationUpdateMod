@@ -15,6 +15,7 @@ import top.vmctcn.vmtu.mod.modpack.updater.VMMetadataReader;
 import java.util.Objects;
 
 public class VMTranslationUpdate {
+    @SuppressWarnings({"ConstantConditions", "deprecation"})
     public static void init() {
         ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
         ModpackMetadata modpackMetadata = ModpackMetadataReader.getMetadata();
