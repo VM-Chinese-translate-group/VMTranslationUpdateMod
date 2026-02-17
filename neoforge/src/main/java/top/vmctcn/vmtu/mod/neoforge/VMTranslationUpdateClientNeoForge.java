@@ -47,26 +47,22 @@ public class VMTranslationUpdateClientNeoForge {
                 }
             });
 
-            NeoForge.EVENT_BUS.addListener(RegisterClientCommandsEvent.class, event -> event.getDispatcher().register(
-                    Commands.literal("vmtu")
-                            .then(Commands.literal("check")
-                                    .executes(context -> {
-                                        ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
-                                        ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
-                                        return Command.SINGLE_SUCCESS;
-                                    })
-                                    .then(Commands.literal("modpack"))
-                                    .executes(context -> {
-                                        ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
-                                        return Command.SINGLE_SUCCESS;
-                                    })
-                                    .then(Commands.literal("translation"))
-                                    .executes(context -> {
-                                        ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
-                                        return Command.SINGLE_SUCCESS;
-                                    })
-                            )
-            ));
+            NeoForge.EVENT_BUS.addListener(RegisterClientCommandsEvent.class, event -> {
+                event.getDispatcher().register(
+                        Commands.literal("vmtu")
+                                .then(Commands.literal("check").executes(context -> {
+                                    ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
+                                    ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
+                                    return Command.SINGLE_SUCCESS;
+                                }).then(Commands.literal("modpack").executes(context -> {
+                                    ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
+                                    return Command.SINGLE_SUCCESS;
+                                })).then(Commands.literal("translation").executes(context -> {
+                                    ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
+                                    return Command.SINGLE_SUCCESS;
+                                })))
+                );
+            });
 
             modEventBus.addListener(FMLConstructModEvent.class, event -> VMTranslationUpdate.autoDownloadAndLoadPack());
         }

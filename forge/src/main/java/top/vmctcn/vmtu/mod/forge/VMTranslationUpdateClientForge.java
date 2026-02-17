@@ -1,6 +1,7 @@
 package top.vmctcn.vmtu.mod.forge;
 
 import com.mojang.brigadier.Command;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 //? if >=1.18.2 {
 /*import net.minecraftforge.client.event.RegisterClientCommandsEvent;
@@ -9,9 +10,7 @@ import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 //?}
-//? if <=1.18.2 {
 import net.minecraft.world.entity.player.Player;
-//?}
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -40,67 +39,34 @@ public class VMTranslationUpdateClientForge {
 
             MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(event -> {
                 if (LanguageUtils.isChineseLanguage()) {
-                    //? if >=1.19.2 {
-                    /*ModEvents.playerJoinEvent(event.getEntity());
-                    *///?} else {
-                    ModEvents.playerJoinEvent(event.getPlayer());
-                    //?}
+                    ModEvents.playerJoinEvent(/*? if >=1.19.2 {*//*event.getEntity()*//*?} else {*/event.getPlayer()/*?}*/);
                 }
             });
-            //? if >=1.19.2 {
-            /*MinecraftForge.EVENT_BUS.<ScreenEvent.Init.Pre>addListener(event -> {
-            *///?} else if 1.18.2 {
-            /*MinecraftForge.EVENT_BUS.<ScreenEvent.InitScreenEvent.Pre>addListener(event -> {
-            *///?} else {
-            MinecraftForge.EVENT_BUS.<GuiScreenEvent.InitGuiEvent.Pre>addListener(event -> {
-            //?}
+            MinecraftForge.EVENT_BUS.</*? if >=1.19.2 {*//*ScreenEvent.Init.Pre*//*?} else if 1.18.2 {*//*ScreenEvent.InitScreenEvent.Pre*//*?} else {*/GuiScreenEvent.InitGuiEvent.Pre/*?}*/>addListener(event -> {
                 if (LanguageUtils.isChineseLanguage()) {
-                    //? if >=1.18.2 {
-                    /*ModEvents.screenAfterInitEvent(event.getScreen());
-                    *///?} else {
-                    ModEvents.screenAfterInitEvent(event.getGui());
-                    //?}
+                    ModEvents.screenAfterInitEvent(/*? if >=1.19.2 {*//*event.getScreen()*//*?} else {*/event.getGui()/*?}*/);
                 }
             });
-            //? if >=1.18.2 {
-            /*MinecraftForge.EVENT_BUS.<RegisterClientCommandsEvent>addListener(event -> event.getDispatcher().register(
-            *///?} else {
-            MinecraftForge.EVENT_BUS.<RegisterCommandsEvent>addListener(event -> event.getDispatcher().register(
-            //?}
-                    Commands.literal("vmtu")
-                            .then(Commands.literal("check")
-                                    .executes(context -> {
-                                        //? if >=1.19.2 {
-                                        /*var player = context.getSource().getPlayer();
-                                        *///?} else {
-                                        Player player = context.getSource().getPlayerOrException();
-                                         //?}
-                                        ModEvents.checkModpackUpdateCommand(player);
-                                        ModEvents.checkTranslationUpdateCommand(player);
-                                        return Command.SINGLE_SUCCESS;
-                                    })
-                                    .then(Commands.literal("modpack"))
-                                    .executes(context -> {
-                                        //? if >=1.19.2 {
-                                        /*var player = context.getSource().getPlayer();
-                                        *///?} else {
-                                        Player player = context.getSource().getPlayerOrException();
-                                         //?}
-                                        ModEvents.checkModpackUpdateCommand(player);
-                                        return Command.SINGLE_SUCCESS;
-                                    })
-                                    .then(Commands.literal("translation"))
-                                    .executes(context -> {
-                                        //? if >=1.19.2 {
-                                        /*var player = context.getSource().getPlayer();
-                                        *///?} else {
-                                        Player player = context.getSource().getPlayerOrException();
-                                         //?}
-                                        ModEvents.checkTranslationUpdateCommand(player);
-                                        return Command.SINGLE_SUCCESS;
-                                    })
-                            )
-            ));
+
+            MinecraftForge.EVENT_BUS.</*? if >=1.18.2 {*//*RegisterClientCommandsEvent*//*?} else {*/RegisterCommandsEvent/*?}*/>addListener(event -> {
+                event.getDispatcher().register(
+                        Commands.literal("vmtu")
+                                .then(Commands.literal("check").executes(context -> {
+                                    CommandSourceStack source = context.getSource();
+                                    ModEvents.checkModpackUpdateCommand(/*? if >=1.19.2 {*//*source.getPlayer()*//*?} else {*/source.getPlayerOrException()/*?}*/);
+                                    ModEvents.checkTranslationUpdateCommand(/*? if >=1.19.2 {*//*source.getPlayer()*//*?} else {*/source.getPlayerOrException()/*?}*/);
+                                    return Command.SINGLE_SUCCESS;
+                                }).then(Commands.literal("modpack").executes(context -> {
+                                    CommandSourceStack source = context.getSource();
+                                    ModEvents.checkModpackUpdateCommand(/*? if >=1.19.2 {*//*source.getPlayer()*//*?} else {*/source.getPlayerOrException()/*?}*/);
+                                    return Command.SINGLE_SUCCESS;
+                                })).then(Commands.literal("translation").executes(context -> {
+                                    CommandSourceStack source = context.getSource();
+                                    ModEvents.checkTranslationUpdateCommand(/*? if >=1.19.2 {*//*source.getPlayer()*//*?} else {*/source.getPlayerOrException()/*?}*/);
+                                    return Command.SINGLE_SUCCESS;
+                                })))
+                );
+            });
 
             modEventBus.<FMLConstructModEvent>addListener(event -> VMTranslationUpdate.autoDownloadAndLoadPack());
         }
