@@ -20,7 +20,7 @@
   "vmtu.required_mod.not_install.desc": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！",
   "vmtu.required_mod.not_install.desc.tlr": "%s 尚未安装，这可能导致图片§c无法汉化§r！",
   "vmtu.required_mod.not_install.desc.download": "请点击下面的按钮跳转到下载页面。",
-  "vmtu.required_mod.not_install.checkbox": "不要再显示此警告",
+  "vmtu.required_mod.not_install.checkbox": "不再显示",
   "vmtu.required_mod.not_install.checkbox.tooltip": "勾选此处可以禁用掉此警告，但是可能会造成翻译不完全！",
   "vmtu.required_mod.not_install.checkbox.tooltip.tlr": "勾选此处可以禁用掉此警告，但是可能会造成图片无法汉化！",
 

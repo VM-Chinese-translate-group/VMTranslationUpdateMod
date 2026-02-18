@@ -45,10 +45,16 @@ public class ModEvents {
         String localModpackVersion = modpack.getVersion();
 
         if (ModConfigHelper.getConfig().misc.devMode || ModPlatform.isDevelopmentEnvironment()) {
-            Messages.displayClientMessage(player, Texts.literal("=================== VMTU Dev Mode ==================="));
+            Messages.displayClientMessage(player, Texts.literal("=================== VMTU Dev Mode ===================="));
             Messages.displayClientMessage(player, Texts.literal("Modpack Name: " + modpack.getName()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
-            Messages.displayClientMessage(player, Texts.literal("Modpack Translation URL:§b " + translation.getUrl()));
+            Component translationUrlMsg = Texts.literal("Modpack Translation URL:")
+                    .append(Texts.translatable(translation.getUrl())
+                            .setStyle(Style.EMPTY
+                                    .withClickEvent(GameEvents.clickOpenUrl(translation.getUrl()))
+                                    .withColor(ChatFormatting.AQUA)
+                            ));
+            Messages.displayClientMessage(player, translationUrlMsg);
             if (translation.getUpdateCheckUrl() != null) {
                 Component updateCheckUrlMsg = Texts.literal("Modpack Translation Update Check URL: ")
                         .append(Texts.translatable(translation.getUpdateCheckUrl())

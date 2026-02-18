@@ -20,7 +20,7 @@
   "vmtu.required_mod.not_install.desc": "%s is not yet installed, which may result in incomplete localization of some mods!",
   "vmtu.required_mod.not_install.desc.tlr": "%s is not yet installed, which may prevent images/textures from being localized!",
   "vmtu.required_mod.not_install.desc.download": "Please click the button below to jump to the download page.",
-  "vmtu.required_mod.not_install.checkbox": "Don't show this warning again",
+  "vmtu.required_mod.not_install.checkbox": "Don't show again",
   "vmtu.required_mod.not_install.checkbox.tooltip": "Check this box to disable this warning, but it may result in incomplete translations!",
   "vmtu.required_mod.not_install.checkbox.tooltip.tlr": "Check this box to disable this warning, but doing so may prevent images/textures from being localized!",
 

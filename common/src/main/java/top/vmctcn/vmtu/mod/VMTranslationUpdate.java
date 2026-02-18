@@ -31,7 +31,7 @@ public class VMTranslationUpdate {
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
             VMMetadata.Modpacks vmmetadata = VMMetadataReader.getModpack(translation.getId());
 
-            ModContexts.LOGGER.info("============ VMTU Dev Mode ==============");
+            ModContexts.LOGGER.info("=================== VMTU Dev Mode ====================");
             ModContexts.LOGGER.info("Modpack Name: {}", modpackInfo.getName());
             ModContexts.LOGGER.info("Modpack Version: {}", modpackInfo.getVersion());
             ModContexts.LOGGER.info("Modpack Translation URL: {}", translation.getUrl());
