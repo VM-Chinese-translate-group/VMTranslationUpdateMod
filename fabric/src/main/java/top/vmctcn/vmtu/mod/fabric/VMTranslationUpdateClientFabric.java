@@ -36,8 +36,8 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
             dispatcher.register(
                     ClientCommandManager.literal("vmtu")
                             .then(ClientCommandManager.literal("check").executes(context -> {
-                                ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
                                 ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
+                                ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
                                 return Command.SINGLE_SUCCESS;
                             }).then(ClientCommandManager.literal("modpack").executes(context -> {
                                 ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());

@@ -53,8 +53,8 @@ public class VMTranslationUpdateClientForge {
                         Commands.literal("vmtu")
                                 .then(Commands.literal("check").executes(context -> {
                                     CommandSourceStack source = context.getSource();
-                                    ModEvents.checkModpackUpdateCommand(/*? if >=1.19.2 {*//*source.getPlayer()*//*?} else {*/source.getPlayerOrException()/*?}*/);
                                     ModEvents.checkTranslationUpdateCommand(/*? if >=1.19.2 {*//*source.getPlayer()*//*?} else {*/source.getPlayerOrException()/*?}*/);
+                                    ModEvents.checkModpackUpdateCommand(/*? if >=1.19.2 {*//*source.getPlayer()*//*?} else {*/source.getPlayerOrException()/*?}*/);
                                     return Command.SINGLE_SUCCESS;
                                 }).then(Commands.literal("modpack").executes(context -> {
                                     CommandSourceStack source = context.getSource();
