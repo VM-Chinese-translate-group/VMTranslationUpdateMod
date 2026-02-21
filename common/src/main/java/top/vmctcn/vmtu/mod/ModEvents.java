@@ -9,16 +9,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.player.Player;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
-import top.vmctcn.vmtu.mod.screen.I18nUpdateNotInstallScreen;
 //? if >= 1.20.1 {
-import top.vmctcn.vmtu.mod.screen.TextureLocaleRedirectorNotInstallScreen;
+import top.vmctcn.vmtu.mod.screen.MissingModScreen;
 //?}
-import top.vmctcn.vmtu.mod.screen.VaultPatcherNotInstallScreen;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.mod.modpack.updater.OnlineVersion;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.modpack.updater.VersionChecker;
+import top.vmctcn.vmtu.mod.utils.RequiredMods;
 import top.vmctcn.vmtu.multiversion.GameEvents;
 import top.vmctcn.vmtu.multiversion.Messages;
 import top.vmctcn.vmtu.multiversion.Texts;
@@ -67,12 +66,12 @@ public class ModEvents {
         }
 
         if (!translation.getLanguage().equals(language) && LanguageUtils.isChineseLanguage()) {
-            Messages.displayClientMessage(player, Texts.translatable("vmtu.message.language.not_support", translation.getLanguage()));
+            Messages.displayClientMessage(player, Texts.translatable(ModContexts.getTranslationKey("message", "supported_language"), translation.getLanguage()));
         }
 
         if (ModConfigHelper.getConfig().misc.checkModPackTranslationUpdate) {
             if (!onlineVersion.isValid()) {
-                Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.error"));
+                Messages.displayClientMessage(player, ModContexts.getTranslatableText("message", "update_checker", "error"));
                 ModContexts.LOGGER.warn("Error fetching modpack translation version");
                 return;
             }
@@ -82,7 +81,6 @@ public class ModEvents {
 
             if (translationUpdateNeeded) {
                 checkTranslationUpdateCommand(player);
-
                 if (modpackUpdateNeeded){
                     checkModpackUpdateCommand(player);
                 }
@@ -93,23 +91,23 @@ public class ModEvents {
     public static void checkModpackUpdateCommand(Player player) {
         Component coloredLocalModpackVer = Texts.literal(translation.getVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
         Component coloredOnlineModpackVer = Texts.literal(onlineVersion.modpackVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
-        Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.modpack_version.error"));
-        Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.modpack_version.error.hint", coloredLocalModpackVer, coloredOnlineModpackVer));
+        Messages.displayClientMessage(player, ModContexts.getTranslatableText("message", "update_checker", "modpack", "line1"));
+        Messages.displayClientMessage(player, Texts.translatable(ModContexts.getTranslationKey("message", "update_checker", "modpack", "line2"), coloredLocalModpackVer, coloredOnlineModpackVer));
     }
 
     public static void checkTranslationUpdateCommand(Player player) {
         Component coloredLocalVer = Texts.literal(translation.getVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
         Component coloredOnlineVer = Texts.literal(onlineVersion.translationVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
-        Messages.displayClientMessage(player, Texts.translatable("vmtu.message.update.new_version.text.part1", coloredLocalVer, coloredOnlineVer));
+        Messages.displayClientMessage(player, Texts.translatable(ModContexts.getTranslationKey("message", "update_checker", "translation", "line1"), coloredLocalVer, coloredOnlineVer));
         String updateUrl = translation.getUrl();
-        Component message = Texts.translatable("vmtu.message.update.new_version.text.part2")
-                .append(Texts.translatable("vmtu.message.update.new_version.text.download_link")
+        Component message = ModContexts.getTranslatableText("message", "update_checker", "translation", "line2")
+                .append(ModContexts.getTranslatableText("message", "update_checker", "translation", "link"))
                         .setStyle(Style.EMPTY
                                 .withClickEvent(GameEvents.clickOpenUrl(updateUrl))
-                                .withHoverEvent(GameEvents.hoverShowText(Texts.translatable("vmtu.message.update.new_version.text.download_hover")))
+                                .withHoverEvent(GameEvents.hoverShowText(ModContexts.getTranslatableText("message", "update_checker", "translation", "link", "tooltip")))
                                 .withColor(ChatFormatting.AQUA)
-                        ))
-                .append(Texts.translatable("vmtu.message.update.new_version.text.part3"));
+                        )
+                .append(ModContexts.getTranslatableText("message", "update_checker", "translation", "line3"));
         Messages.displayClientMessage(player, message);
     }
 
@@ -118,18 +116,10 @@ public class ModEvents {
             return;
         }
 
-        boolean needI18n = ModConfigHelper.getConfig().modInstallCheck.i18nUpdateMod && !ModContexts.i18nUpdateModLoaded;
-        boolean needVP = ModConfigHelper.getConfig().modInstallCheck.vaultPatcher && !ModContexts.vaultPatcherLoaded;
-        boolean needTLR = ModConfigHelper.getConfig().modInstallCheck.textureLocaleRedirector && !ModContexts.textureLocaleRedirectorLoaded;
+        Minecraft minecraft = Minecraft.getInstance();
 
-        if (needI18n) {
-            Minecraft.getInstance().setScreen(new I18nUpdateNotInstallScreen(screen));
-        } else if (needVP) {
-            Minecraft.getInstance().setScreen(new VaultPatcherNotInstallScreen(screen));
-            //? if >=1.20.1 {
-        } else if (needTLR) {
-            Minecraft.getInstance().setScreen(new TextureLocaleRedirectorNotInstallScreen(screen));
-            //?}
+        if (!RequiredMods.isAllLoaded()) {
+            minecraft.setScreen(new MissingModScreen(RequiredMods.getAllMissing(), screen));
         }
 
         firstTitleScreenShown = true;

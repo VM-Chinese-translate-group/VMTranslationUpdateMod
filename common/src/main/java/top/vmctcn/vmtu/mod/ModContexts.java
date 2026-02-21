@@ -1,5 +1,8 @@
 package top.vmctcn.vmtu.mod;
 
+import net.minecraft.network.chat.MutableComponent;
+import org.jetbrains.annotations.NotNull;
+import top.vmctcn.vmtu.multiversion.Texts;
 //? if >=1.18.2 {
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,16 +19,20 @@ public class ModContexts {
     /*public static final Logger LOGGER = LogManager.getLogger("VMTranslationUpdateMod");
      *///?}
 
-    public static boolean i18nUpdateModLoaded = isCoreModClassLoaded("i18nupdatemod.I18nUpdateMod");
-    public static boolean vaultPatcherLoaded = isCoreModClassLoaded("me.fengming.vaultpatcher_asm.VaultPatcher");
-    public static boolean textureLocaleRedirectorLoaded = ModPlatform.isModLoaded("texturelocaleredirector");
-
-    public static boolean isCoreModClassLoaded(String className) {
+    public static boolean isModClassLoaded(String className) {
         try {
             Class.forName(className);
-            return true; // 类存在，coremod已加载
+            return true; // 类存在，mod已加载
         } catch (ClassNotFoundException e) {
             return false; // 类不存在
         }
+    }
+
+    public static @NotNull String getTranslationKey(String type, String... path) {
+        return type + ".vmtu." + String.join(".", path);
+    }
+
+    public static @NotNull MutableComponent getTranslatableText(String type, String... path) {
+        return Texts.translatable(getTranslationKey(type, path));
     }
 }
