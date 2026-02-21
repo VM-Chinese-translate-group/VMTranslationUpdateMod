@@ -1,18 +1,18 @@
 {
   "comment_modinfo": "NeoForge/Fabric 模組信息翻譯",
   "fml.menu.mods.info.displayname.vmtranslationupdate": "VM中文更新檔更新",
-  "fml.menu.mods.info.description.vmtranslationupdate": "VM翻譯組用於檢查中文更新檔更新和一些其他實用功能的模組。",
+  "fml.menu.mods.info.description.vmtranslationupdate": "VM漢化組用於檢查中文更新檔更新和一些其他實用功能的模組。",
   "modmenu.nameTranslation.vmtranslationupdate": "VM中文更新檔更新",
-  "modmenu.descriptionTranslation.vmtranslationupdate": "VM翻譯組用於檢查中文更新檔更新和一些其他實用功能的模組。",
+  "modmenu.descriptionTranslation.vmtranslationupdate": "VM漢化組用於檢查中文更新檔更新和一些其他實用功能的模組。",
 
-  "message.vmtu.update_checker.translation.part1": "[VM翻譯組]：發現中文更新檔更新，當前為%s，最新版為%s。請及時更新您的中文更新檔！",
+  "message.vmtu.update_checker.translation.part1": "[VM漢化組]：發現中文更新檔更新，當前為%s，最新版為%s。請及時更新您的中文更新檔！",
   "message.vmtu.update_checker.translation.part2": "請",
   "message.vmtu.update_checker.translation.part3": "下載新版本。",
   "message.vmtu.update_checker.translation.link": "【點擊這裏】",
   "message.vmtu.update_checker.translation.link.tooltip": "點我到官網下載新版本！",
   "message.vmtu.update_checker.modpack.line1": "注：本次中文更新檔基於新版模組包適配，§c請先更新模組包后再重新安裝中文更新檔！§r否則可能造成不相容問題" ,
   "message.vmtu.update_checker.modpack.line2": "當前遊玩的模組包版本為%s，請把模組包更新到%s版本以匹配中文更新檔！",
-  "message.vmtu.update_checker.error": "[VM翻譯組]：錯誤！漢化更新檢測出現問題。",
+  "message.vmtu.update_checker.error": "[VM漢化組]：錯誤！漢化更新檢測出現問題。",
   "message.vmtu.supported_language": "漢化補丁不支持當前語言，請切換到以下語言：%s",
 
   "screen.vmtu.missing_mod.title": "§l你需要手動下載以下§c§l%d個§r§l模組",
