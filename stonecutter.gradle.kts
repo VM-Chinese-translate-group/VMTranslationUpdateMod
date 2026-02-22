@@ -20,7 +20,6 @@ for (it in stonecutter.tree.nodes) {
 }
 
 stonecutter parameters {
-
     replacements.string(current.parsed >= "1.21.11") {
         //replace("ResourceLocation", "Identifier")
         replace("net.minecraft.Util", "net.minecraft.util.Util")

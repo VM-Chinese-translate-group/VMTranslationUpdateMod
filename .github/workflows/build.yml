@@ -32,5 +32,5 @@ jobs:
         if: ${{ matrix.java == '21' }}
         uses: actions/upload-artifact@v6
         with:
-          name: Artifacts
+          name: VMTUArtifacts.build${{ github.run_number }}
           path: build/libs/
