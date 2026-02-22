@@ -12,7 +12,9 @@ import net.minecraft.client.gui.components.PlainTextButton;
 import net.minecraft.network.chat.Component;
 //? if <=1.20.1 {
 /*import top.vmctcn.vmtu.multiversion.screen.widgets.CheckboxWidget;
-import top.vmctcn.vmtu.multiversion.screen.widgets.PlainTextButtonWidget;
+*///?}
+//? if <=1.19.2 {
+/*import top.vmctcn.vmtu.multiversion.screen.widgets.PlainTextButtonWidget;
 *///?}
 
 public class Widgets {

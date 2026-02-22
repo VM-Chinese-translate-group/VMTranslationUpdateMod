@@ -3,14 +3,14 @@
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.Checkbox;
 //? if >=1.20.1 {
 import net.minecraft.client.gui.components.Tooltip;
-//?} else if >=1.19.2 {
-/^import net.minecraft.client.OptionInstance;
-^///?}
+//?}
+//? if >=1.19.2 {
+import net.minecraft.client.OptionInstance;
+//?}
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Nullable;
