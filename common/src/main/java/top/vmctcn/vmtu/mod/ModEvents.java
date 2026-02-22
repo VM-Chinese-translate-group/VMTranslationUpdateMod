@@ -9,9 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.player.Player;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
-//? if >= 1.20.1 {
 import top.vmctcn.vmtu.mod.screen.MissingModScreen;
-//?}
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.mod.modpack.updater.OnlineVersion;
 import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;

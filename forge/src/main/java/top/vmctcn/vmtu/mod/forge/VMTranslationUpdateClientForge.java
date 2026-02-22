@@ -4,12 +4,12 @@ import com.mojang.brigadier.Command;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 //? if >=1.18.2 {
-import net.minecraftforge.client.event.RegisterClientCommandsEvent;
+/*import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.client.event.ScreenEvent;
-//?} else {
-/*import net.minecraftforge.event.RegisterCommandsEvent;
+*///?} else {
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
-*///?}
+//?}
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -42,13 +42,13 @@ public class VMTranslationUpdateClientForge {
                     ModEvents.playerJoinEvent(/*? if >=1.19.2 {*//*event.getEntity()*//*?} else {*/event.getPlayer()/*?}*/);
                 }
             });
-            MinecraftForge.EVENT_BUS.</*? if >=1.19.2 {*//*ScreenEvent.Init.Pre*//*?} else if 1.18.2 {*/ScreenEvent.InitScreenEvent.Pre/*?} else {*//*GuiScreenEvent.InitGuiEvent.Pre*//*?}*/>addListener(event -> {
+            MinecraftForge.EVENT_BUS.</*? if >=1.19.2 {*//*ScreenEvent.Init.Pre*//*?} else if 1.18.2 {*//*ScreenEvent.InitScreenEvent.Pre*//*?} else {*/GuiScreenEvent.InitGuiEvent.Pre/*?}*/>addListener(event -> {
                 if (LanguageUtils.isChineseLanguage()) {
-                    ModEvents.screenAfterInitEvent(/*? if >=1.18.2 {*/event.getScreen()/*?} else {*//*event.getGui()*//*?}*/);
+                    ModEvents.screenAfterInitEvent(/*? if >=1.18.2 {*//*event.getScreen()*//*?} else {*/event.getGui()/*?}*/);
                 }
             });
 
-            MinecraftForge.EVENT_BUS.</*? if >=1.18.2 {*/RegisterClientCommandsEvent/*?} else {*//*RegisterCommandsEvent*//*?}*/>addListener(event -> {
+            MinecraftForge.EVENT_BUS.</*? if >=1.18.2 {*//*RegisterClientCommandsEvent*//*?} else {*/RegisterCommandsEvent/*?}*/>addListener(event -> {
                 event.getDispatcher().register(
                         Commands.literal("vmtu")
                                 .then(Commands.literal("check").executes(context -> {
