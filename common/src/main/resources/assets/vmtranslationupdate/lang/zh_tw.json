@@ -5,9 +5,9 @@
   "modmenu.nameTranslation.vmtranslationupdate": "VM中文更新檔更新",
   "modmenu.descriptionTranslation.vmtranslationupdate": "VM漢化組用於檢查中文更新檔更新和一些其他實用功能的模組。",
 
-  "message.vmtu.update_checker.translation.part1": "[VM漢化組]：發現中文更新檔更新，當前為%s，最新版為%s。請及時更新您的中文更新檔！",
-  "message.vmtu.update_checker.translation.part2": "請",
-  "message.vmtu.update_checker.translation.part3": "下載新版本。",
+  "message.vmtu.update_checker.translation.line1": "[VM漢化組]：發現中文更新檔更新，當前為%s，最新版為%s。請及時更新您的中文更新檔！",
+  "message.vmtu.update_checker.translation.line2": "請",
+  "message.vmtu.update_checker.translation.line3": "下載新版本。",
   "message.vmtu.update_checker.translation.link": "【點擊這裏】",
   "message.vmtu.update_checker.translation.link.tooltip": "點我到官網下載新版本！",
   "message.vmtu.update_checker.modpack.line1": "注：本次中文更新檔基於新版模組包適配，§c請先更新模組包后再重新安裝中文更新檔！§r否則可能造成不相容問題" ,

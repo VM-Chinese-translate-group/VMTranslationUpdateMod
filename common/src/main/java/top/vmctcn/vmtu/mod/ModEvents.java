@@ -100,17 +100,17 @@ public class ModEvents {
     }
 
     public static void checkTranslationUpdateCommand(Player player) {
-        Component coloredLocalVer = Texts.literal(translation.getVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
-        Component coloredOnlineVer = Texts.literal(onlineVersion.translationVersion()).withStyle(s -> s.withColor(ChatFormatting.YELLOW));
+        Component coloredLocalVer = Texts.literal(translation.getVersion()).withStyle(style -> style.withColor(ChatFormatting.YELLOW));
+        Component coloredOnlineVer = Texts.literal(onlineVersion.translationVersion()).withStyle(style -> style.withColor(ChatFormatting.YELLOW));
         Messages.displayClientMessage(player, Texts.translatable(ModContexts.getTranslationKey("message", "update_checker", "translation", "line1"), coloredLocalVer, coloredOnlineVer));
         String updateUrl = translation.getUrl();
         Component message = ModContexts.getTranslatableText("message", "update_checker", "translation", "line2")
-                .append(ModContexts.getTranslatableText("message", "update_checker", "translation", "link"))
-                        .setStyle(Style.EMPTY
-                                .withClickEvent(GameEvents.clickOpenUrl(updateUrl))
-                                .withHoverEvent(GameEvents.hoverShowText(ModContexts.getTranslatableText("message", "update_checker", "translation", "link", "tooltip")))
-                                .withColor(ChatFormatting.AQUA)
-                        )
+                .append(ModContexts.getTranslatableText("message", "update_checker", "translation", "link")).withStyle(style -> {
+                    return style
+                            .withClickEvent(GameEvents.clickOpenUrl(updateUrl))
+                            .withHoverEvent(GameEvents.hoverShowText(ModContexts.getTranslatableText("message", "update_checker", "translation", "link", "tooltip")))
+                            .withColor(ChatFormatting.AQUA);
+                })
                 .append(ModContexts.getTranslatableText("message", "update_checker", "translation", "line3"));
         Messages.displayClientMessage(player, message);
     }

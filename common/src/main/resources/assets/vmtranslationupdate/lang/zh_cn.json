@@ -5,9 +5,9 @@
   "modmenu.nameTranslation.vmtranslationupdate": "VM汉化更新",
   "modmenu.descriptionTranslation.vmtranslationupdate": "VM汉化组用于检查汉化更新和一些其他实用功能的模组",
 
-  "message.vmtu.update_checker.translation.part1": "[VM汉化组]：发现汉化更新，当前汉化版本为%s，最新版为%s。请及时更新您的汉化！",
-  "message.vmtu.update_checker.translation.part2": "请",
-  "message.vmtu.update_checker.translation.part3": "下载新版本。",
+  "message.vmtu.update_checker.translation.line1": "[VM汉化组]：发现汉化更新，当前汉化版本为%s，最新版为%s。请及时更新您的汉化！",
+  "message.vmtu.update_checker.translation.line2": "请",
+  "message.vmtu.update_checker.translation.line3": "下载新版本。",
   "message.vmtu.update_checker.translation.link": "【点击这里】",
   "message.vmtu.update_checker.translation.link.tooltip": "点我到官网下载新版本！",
   "message.vmtu.update_checker.modpack.line1": "注：本次汉化基于新版整合包适配，§c请先更新整合包后再重新安装汉化！§r否则可能造成不兼容问题",

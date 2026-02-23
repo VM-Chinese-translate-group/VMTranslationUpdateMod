@@ -5,9 +5,9 @@
   "modmenu.nameTranslation.vmtranslationupdate": "VM Translation Update",
   "modmenu.descriptionTranslation.vmtranslationupdate": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
 
-  "message.vmtu.update_checker.translation.part1": "[VM Chinese Group]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!",
-  "message.vmtu.update_checker.translation.part2": "Please ",
-  "message.vmtu.update_checker.translation.part3": " to download the new version.",
+  "message.vmtu.update_checker.translation.line1": "[VM Chinese Group]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!",
+  "message.vmtu.update_checker.translation.line2": "Please ",
+  "message.vmtu.update_checker.translation.line3": " to download the new version.",
   "message.vmtu.update_checker.translation.link": "[click here]",
   "message.vmtu.update_checker.translation.link.tooltip": "Click me to download the new version!",
   "message.vmtu.update_checker.modpack.line1": "Note: This translation patch update is based on a newer modpack version. §cPlease update the modpack first before reinstalling the translation!§r Otherwise, compatibility issues may occur" ,
