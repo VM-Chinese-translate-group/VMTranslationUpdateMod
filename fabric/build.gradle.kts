@@ -131,7 +131,7 @@ publisher {
     changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
     projectVersion = "$loader-${project.version}"
     displayName = "[${loader.upperCaseFirst()}]${project.version}"
-    gameVersions = property("mod.mc_targets").toString().split(',')
+    gameVersions = common.mod.requireProp("mod.mc_targets").split(',')
     loaders = listOf(loader)
     curseEnvironment = common.mod.publish("mod_side")
     artifact = tasks.remapJar.get()
