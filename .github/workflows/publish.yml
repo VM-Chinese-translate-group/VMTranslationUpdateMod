@@ -21,6 +21,9 @@ jobs:
           distribution: 'zulu'
           java-version: 21
 
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+
       - name: build
         run: ./gradlew buildAndCollect
 
