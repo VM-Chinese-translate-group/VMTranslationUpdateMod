@@ -29,32 +29,31 @@ public class VMTranslationUpdate {
 
         if (ModConfigs.misc.devMode) {
             ModpackInfo.Translation translation = modpackInfo.getTranslation();
+            VMMetadata.Modpacks vmmetadata = VMMetadataReader.getModpack(translation.getId());
 
-            VMMetadata.Modpacks meta = VMMetadataReader.getModpack(translation.getId());
-
-            ModContexts.LOGGER.warn("==================== VMTU Dev Mode ====================");
-            ModContexts.LOGGER.warn("Modpack Name: {}", modpackInfo.getName());
-            ModContexts.LOGGER.warn("Modpack Version: {}", modpackInfo.getVersion());
-            ModContexts.LOGGER.warn("Modpack Translation URL: {}", translation.getUrl());
+            ModContexts.LOGGER.info("=================== VMTU Dev Mode ====================");
+            ModContexts.LOGGER.info("Modpack Name: {}", modpackInfo.getName());
+            ModContexts.LOGGER.info("Modpack Version: {}", modpackInfo.getVersion());
+            ModContexts.LOGGER.info("Modpack Translation URL: {}", translation.getUrl());
             if (translation.getUpdateCheckUrl() != null) {
-                ModContexts.LOGGER.warn("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+                ModContexts.LOGGER.info("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
             }
-            ModContexts.LOGGER.warn("Modpack Translation Language: {}", translation.getLanguage());
-            ModContexts.LOGGER.warn("Modpack Translation Version: {}", translation.getVersion());
-            ModContexts.LOGGER.warn("Modpack Translation Resource Pack Name: {}", translation.getResourcePackName());
-            ModContexts.LOGGER.warn("Meta Url: {}", VMMetadataReader.getMetaUrl());
-            ModContexts.LOGGER.warn("Meta Version: {}", VMMetadataReader.getMetadata().getMetaVersion());
-            ModContexts.LOGGER.warn("Modpack Online Version: {}", meta.getModpackVersion());
-            ModContexts.LOGGER.warn("Modpack Online Translation Version: {}", meta.getTranslationVersion());
+            ModContexts.LOGGER.info("Modpack Translation Language: {}", translation.getLanguage());
+            ModContexts.LOGGER.info("Modpack Translation Version: {}", translation.getVersion());
+            ModContexts.LOGGER.info("Translation Resource Pack Name: {}", translation.getResourcePackName());
+            ModContexts.LOGGER.info("Meta Url: {}", VMMetadataReader.getMetaUrl());
+            ModContexts.LOGGER.info("Meta Version: {}", VMMetadataReader.getMetadata().getMetaVersion());
+            ModContexts.LOGGER.info("Modpack Online Version: {}", vmmetadata.getModpackVersion());
+            ModContexts.LOGGER.info("Modpack Online Translation Version: {}", vmmetadata.getTranslationVersion());
             if (modpackMetadata != null) {
-                ModContexts.LOGGER.warn("Modpack Metadata Type: {}", modpackMetadata.getMetadataType());
-                ModContexts.LOGGER.warn("Modpack Metadata File Name: {}", modpackMetadata.getMetadataType().getMetadataFileName());
-                ModContexts.LOGGER.warn("Modpack Metadata Version: {}", modpackMetadata.getModpackVersion());
-                ModContexts.LOGGER.warn("Modpack Name in Metadata: {}", modpackMetadata.getModpackName());
+                ModContexts.LOGGER.info("Modpack Metadata Type: {}", modpackMetadata.getMetadataType());
+                ModContexts.LOGGER.info("Modpack Metadata File Name: {}", modpackMetadata.getMetadataType().getMetadataFileName());
+                ModContexts.LOGGER.info("Modpack Metadata Version: {}", modpackMetadata.getModpackVersion());
+                ModContexts.LOGGER.info("Modpack Name in Metadata: {}", modpackMetadata.getModpackName());
             } else {
-                ModContexts.LOGGER.warn("Modpack Metadata: null");
+                ModContexts.LOGGER.info("Modpack Metadata: null");
             }
-            ModContexts.LOGGER.warn("=======================================================");
+            ModContexts.LOGGER.info("=====================================================");
         }
     }
 

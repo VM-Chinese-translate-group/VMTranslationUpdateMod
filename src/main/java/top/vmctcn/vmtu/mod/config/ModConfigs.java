@@ -87,13 +87,18 @@ public class ModConfigs {
 
     public static class ModInstallCheck {
         @Config.RequiresMcRestart
-        @Config.Name("i18nUpdateModCheck")
+        @Config.Name("i18nUpdateMod")
         @Config.LangKey("text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateModCheck")
         public boolean i18nUpdateMod = true;
 
         @Config.RequiresMcRestart
-        @Config.Name("vaultPatcherCheck")
+        @Config.Name("vaultPatcher")
         @Config.LangKey("text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcherCheck")
         public boolean vaultPatcher = false;
+
+        @Config.RequiresMcRestart
+        @Config.Name("textureLocaleRedirector")
+        @Config.LangKey("text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirectorCheck")
+        public boolean textureLocaleRedirector = false;
     }
 }

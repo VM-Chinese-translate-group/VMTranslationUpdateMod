@@ -13,9 +13,13 @@ import java.nio.file.Path;
 public class ModpackMetadataReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static ModpackMetadata metadata;
-    private static final Path gamePath = ModPlatform.getGameDir();
 
     public static ModpackMetadata getMetadata(MetadataType metadataType) {
+        Path gamePath = ModPlatform.getGameDir();
+        if (gamePath == null) {
+            ModContexts.LOGGER.error("Game directory is null, cannot read metadata");
+            return null;
+        }
         Path metadataPath = gamePath.resolve(metadataType.getMetadataFileName());
 
         if (Files.exists(metadataPath)) {

@@ -12,33 +12,44 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.Objects;
 
 public class ModpackInfoReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static ModpackInfo modpackInfo;
-    private static final Path gamePath = ModPlatform.getGameDir();
-    private static final Path modpackInfoPath = Objects.requireNonNull(gamePath).resolve("modpackinfo.json");
+    private static boolean initialized = false;
 
-    static {
+    private static void ensureInitialized() {
+        if (initialized) {
+            return;
+        }
+        initialized = true;
+
+        Path gamePath = ModPlatform.getGameDir();
+        if (gamePath == null) {
+            ModContexts.LOGGER.error("Game directory is null, cannot initialize ModpackInfoReader");
+            generateDefaultModpackInfoWithoutFile();
+            return;
+        }
+        Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
+
         if (Files.exists(modpackInfoPath)) {
             try (Reader reader = Files.newBufferedReader(modpackInfoPath, StandardCharsets.UTF_8)) {
                 modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
                 if (modpackInfo == null) {
                     ModContexts.LOGGER.warn("modpackinfo.json is empty or invalid, generating default file.");
-                    generateDefaultModpackInfo();
+                    generateDefaultModpackInfo(modpackInfoPath);
                 }
             } catch (Exception e) {
                 ModContexts.LOGGER.warn("Error reading modpackinfo.json, generating default file.", e);
-                generateDefaultModpackInfo();
+                generateDefaultModpackInfo(modpackInfoPath);
             }
         } else {
             ModContexts.LOGGER.warn("modpackinfo.json does not exist, generating default file.");
-            generateDefaultModpackInfo();
+            generateDefaultModpackInfo(modpackInfoPath);
         }
     }
 
-    private static void generateDefaultModpackInfo() {
+    private static void generateDefaultModpackInfoWithoutFile() {
         modpackInfo = new ModpackInfo();
         modpackInfo.modpack = new ModpackInfo.Modpack();
         modpackInfo.modpack.name = "ExampleModpack";
@@ -50,6 +61,10 @@ public class ModpackInfoReader {
         modpackInfo.modpack.translation.language = "zh_cn";
         modpackInfo.modpack.translation.version = "1.0.0";
         modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.12.2";
+    }
+
+    private static void generateDefaultModpackInfo(Path modpackInfoPath) {
+        generateDefaultModpackInfoWithoutFile();
 
         try {
             try (Writer writer = Files.newBufferedWriter(modpackInfoPath, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
@@ -67,6 +82,7 @@ public class ModpackInfoReader {
     }
 
     public static ModpackInfo getModpackInfo() {
+        ensureInitialized();
         return modpackInfo;
     }
 }

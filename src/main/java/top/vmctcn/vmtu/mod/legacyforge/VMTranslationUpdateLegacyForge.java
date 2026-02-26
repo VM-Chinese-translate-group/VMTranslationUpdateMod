@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import top.vmctcn.vmtu.mod.ModContexts;
+import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.VMTranslationUpdate;
 import top.vmctcn.vmtu.mod.command.ModCommand;
 
@@ -21,6 +22,8 @@ public class VMTranslationUpdateLegacyForge {
     public void preInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new ModEventHandler());
         MinecraftForge.EVENT_BUS.register(this);
+
+        ModPlatform.setGameDir(event.getSuggestedConfigurationFile().getParentFile().getParentFile().toPath());
 
         VMTranslationUpdate.init();
     }

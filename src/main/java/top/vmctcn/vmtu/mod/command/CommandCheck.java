@@ -2,11 +2,17 @@ package top.vmctcn.vmtu.mod.command;
 
 import net.minecraft.entity.living.player.PlayerEntity;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.command.AbstractCommand;
 import net.minecraft.server.command.source.CommandSource;
+import net.minecraftforge.server.command.CommandTreeBase;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModEvents;
 
-public class CommandCheck extends AbstractCommand {
+public class CommandCheck extends CommandTreeBase {
+
+    public CommandCheck() {
+        addSubcommand(new CommandCheckModpack());
+        addSubcommand(new CommandCheckTranslation());
+    }
 
     @Override
     public String getName() {
@@ -15,12 +21,7 @@ public class CommandCheck extends AbstractCommand {
 
     @Override
     public String getUsage(CommandSource source) {
-        return "vmtu.command.check.usage";
-    }
-
-    @Override
-    public int getRequiredPermissionLevel() {
-        return 0;
+        return ModContexts.getTranslationKey("command", "check", "usage");
     }
 
     @Override

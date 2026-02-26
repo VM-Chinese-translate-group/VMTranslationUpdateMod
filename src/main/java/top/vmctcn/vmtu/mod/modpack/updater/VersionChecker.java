@@ -11,15 +11,11 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
 public class VersionChecker {
-    public static OnlineVersion getOnlineVersion() {
-        ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
+    public static OnlineVersion getOnlineVersion(ModpackInfo.Modpack modpackInfo) {
         String updateCheckUrl = modpackInfo.getTranslation().getUpdateCheckUrl();
-        if (updateCheckUrl == null && modpackInfo.getTranslation().getId() != null && VMMetadataReader.readMetadataSuccess) {
-            VMMetadata.Modpacks modpack = VMMetadataReader.getModpack(modpackInfo.getTranslation().getId());
-            String translationVersion = modpack.getTranslationVersion();
-            String modpackVersion = modpack.getModpackVersion();
-
-            return new OnlineVersion(translationVersion, modpackVersion);
+        if ((updateCheckUrl == null || updateCheckUrl.isEmpty()) && modpackInfo.getTranslation().getId() != null && VMMetadataReader.readMetadataSuccess) {
+            VMMetadata.Modpacks modpacks = VMMetadataReader.getModpack(modpackInfo.getTranslation().getId());
+            return new OnlineVersion(modpacks.getTranslationVersion(), modpacks.getModpackVersion());
         } else if (updateCheckUrl != null) {
             try {
                 URI uri = URI.create(updateCheckUrl);

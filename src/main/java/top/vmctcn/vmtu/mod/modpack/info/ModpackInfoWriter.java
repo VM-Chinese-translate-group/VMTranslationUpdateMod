@@ -13,14 +13,19 @@ import java.nio.file.StandardOpenOption;
 
 public class ModpackInfoWriter {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final ModpackInfo modpackInfo = ModpackInfoReader.getModpackInfo();
-    private static final Path gamePath = ModPlatform.getGameDir();
-    private static final Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
 
     public static void syncModpackVersion(String newVersion) {
+        ModpackInfo modpackInfo = ModpackInfoReader.getModpackInfo();
         if (modpackInfo != null && modpackInfo.modpack != null) {
             String oldVersion = modpackInfo.modpack.version;
             modpackInfo.modpack.version = newVersion;
+
+            Path gamePath = ModPlatform.getGameDir();
+            if (gamePath == null) {
+                ModContexts.LOGGER.error("Game directory is null, cannot sync modpack version");
+                return;
+            }
+            Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
 
             try {
                 Files.write(modpackInfoPath, GSON.toJson(modpackInfo).getBytes(StandardCharsets.UTF_8),

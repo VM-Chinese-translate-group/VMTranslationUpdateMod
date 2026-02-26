@@ -1,24 +1,30 @@
 {
-  "vmtu.required_mod.download.button": "下载",
-  "vmtu.required_mod.ignore.button": "我知道自己在做什么！",
+  "command.vmtu.usage": "/vmtu <子命令>",
+  "command.vmtu.check.usage": "/vmtu check <子命令>",
+  "command.vmtu.check.translation.usage": "/vmtu check translation - 检查整合包汉化更新",
+  "command.vmtu.check.modpack.usage": "/vmtu check modpack - 检查整合包更新",
 
-  "vmtu.command.usage": "/vmtu <subcommand>",
-  "vmtu.command.check.usage": "/vmtu check",
+  "message.vmtu.update_checker.translation.line1": "[VM汉化组]：发现汉化更新，当前汉化版本为%s，最新版为%s。请及时更新您的汉化！",
+  "message.vmtu.update_checker.translation.line2": "请",
+  "message.vmtu.update_checker.translation.line3": "下载新版本。",
+  "message.vmtu.update_checker.translation.link": "【点击这里】",
+  "message.vmtu.update_checker.translation.link.tooltip": "点我到官网下载新版本！",
+  "message.vmtu.update_checker.modpack.line1": "注：本次汉化基于新版整合包适配，§c请先更新整合包后再重新安装汉化！§r否则可能造成不兼容问题",
+  "message.vmtu.update_checker.modpack.line2": "当前游玩的整合包版本为%s，请把整合包更新到%s版本以匹配汉化！",
+  "message.vmtu.update_checker.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
 
-  "vmtu.message.update.new_version.text.part1": "[VM汉化组]：发现汉化更新，当前汉化版本为%s，最新版为%s。请及时更新您的汉化！",
-  "vmtu.message.update.new_version.text.part2": "请点击",
-  "vmtu.message.update.new_version.text.part3": "下载新版本。",
-  "vmtu.message.update.new_version.text.download_link": "【这里】",
-  "vmtu.message.update.new_version.text.download_hover": "点我到官网下载新版本！",
-  "vmtu.message.update.modpack_version.error": "注：本次汉化基于新版整合包适配，§c请先更新整合包后再重新安装汉化！§r否则可能造成不兼容问题" ,
-  "vmtu.message.update.modpack_version.error.hint": "当前游玩的整合包版本为%s，请把整合包更新到%s版本以匹配汉化！",
-  "vmtu.message.update.error": "[VM汉化组]：错误！汉化更新检测出现问题。",
+  "message.vmtu.supported_language": "汉化补丁不支持当前语言，请切换到以下语言：%s",
 
-  "vmtu.message.language.not_support": "汉化补丁不支持当前语言，请切换到以下语言：%s",
-
-  "vmtu.required_mod.not_install.title": "未检测到 %s 模组",
-  "vmtu.required_mod.not_install.desc": "%s 尚未安装，这可能导致某些模组§c汉化不完全§r！",
-  "vmtu.required_mod.not_install.desc.download": "请点击下面的按钮跳转到下载页面。",
+  "screen.vmtu.missing_mod.title": "§l你需要手动下载以下§c§l%d个§r§l模组",
+  "screen.vmtu.missing_mod.subtitle": "如果不安装以下模组可能会导致汉化不完全",
+  "screen.vmtu.missing_mod.description": "§7§o（点击按钮即可前往下载页）",
+  "button.vmtu.missing_mod.quit": "关闭游戏并打开“mods”文件夹",
+  "button.vmtu.missing_mod.skip": "回到标题界面",
+  "button.vmtu.missing_mod.i18nupdatemod.tooltip": "用于下载CFPA的汉化资源包，汉化大部分模组",
+  "button.vmtu.missing_mod.vaultpatcher.tooltip": "用于汉化带有硬编码文本的模组",
+  "button.vmtu.missing_mod.texturelocaleredirector.tooltip": "（可选）用于汉化图片，你可以在下面的复选框关闭TLR检测",
+  "checkbox.vmtu.missing_mod.optional": "不再检测可选模组",
+  "checkbox.vmtu.missing_mod.optional.tooltip": "勾选此处可以禁用掉此警告，但是可能会造成汉化不完全！",
 
   "text.autoconfig.vmtranslationupdate.title": "VM汉化更新检测配置",
   "text.autoconfig.vmtranslationupdate.option.misc": "杂项",
@@ -36,5 +42,6 @@
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex.@Tooltip": "自定义扩展汉化资源包的安装顺序，需要将扩展汉化资源包顺序设置为CUSTOM_INDEX此项才会生效！",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck": "Mod安装检测",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateMod": "检测I18nUpdateMod是否已经安装",
-  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "检测VaultPatcher是否已经安装"
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "检测VaultPatcher是否已经安装",
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirector": "检测TextureLocaleRedirector是否已经安装"
 }

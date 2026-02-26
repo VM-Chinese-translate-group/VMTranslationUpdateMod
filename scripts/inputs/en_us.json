@@ -1,24 +1,29 @@
 {
-  "vmtu.required_mod.download.button": "Download",
-  "vmtu.required_mod.ignore.button": "I know what I am doing!",
+  "command.vmtu.usage": "/vmtu <subcommand>",
+  "command.vmtu.check.usage": "/vmtu check <subcommand>",
+  "command.vmtu.check.translation.usage": "/vmtu check translation - Check for translation patch updates",
+  "command.vmtu.check.modpack.usage": "/vmtu check modpack - Check for modpack updates",
 
-  "vmtu.command.usage": "/vmtu <subcommand>",
-  "vmtu.command.check.usage": "/vmtu check",
+  "message.vmtu.update_checker.translation.line1": "[VM Chinese Group]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!",
+  "message.vmtu.update_checker.translation.line2": "Please ",
+  "message.vmtu.update_checker.translation.line3": " to download the new version.",
+  "message.vmtu.update_checker.translation.link": "[click here]",
+  "message.vmtu.update_checker.translation.link.tooltip": "Click me to download the new version!",
+  "message.vmtu.update_checker.modpack.line1": "Note: This translation patch update is based on a newer modpack version. §cPlease update the modpack first before reinstalling the translation!§r Otherwise, compatibility issues may occur" ,
+  "message.vmtu.update_checker.modpack.line2": "You are currently playing with modpack version %s. Please update to version %s to match the translation patch!",
+  "message.vmtu.update_checker.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
+  "message.vmtu.supported_language": "Translation patch not support your language, please use %s",
 
-  "vmtu.message.update.new_version.text.part1": "[VM Chinese Group]: A new translation patch update is available. You are currently using version %s, and the latest is %s. Please update your translation in time!",
-  "vmtu.message.update.new_version.text.part2": "Please click ",
-  "vmtu.message.update.new_version.text.part3": " to download the new version.",
-  "vmtu.message.update.new_version.text.download_link": "[here]",
-  "vmtu.message.update.new_version.text.download_hover": "Click me to download the new version!",
-  "vmtu.message.update.modpack_version.error": "Note: This translation patch update is based on a newer modpack version. §cPlease update the modpack first before reinstalling the translation!§r Otherwise, compatibility issues may occur" ,
-  "vmtu.message.update.modpack_version.error.hint": "You are currently playing with modpack version %s. Please update to version %s to match the translation patch!",
-  "vmtu.message.update.error": "[VM Chinese Group]: Error! There is an issue with the Chinese localization update detection.",
-
-  "vmtu.message.language.not_support": "Translation patch not support your language, please use %s",
-
-  "vmtu.required_mod.not_install.title": "%s not detected",
-  "vmtu.required_mod.not_install.desc": "%s is not yet installed, which may result in incomplete localization of some mods!",
-  "vmtu.required_mod.not_install.desc.download": "Please click the button below to jump to the download page.",
+  "screen.vmtu.missing_mod.title": "§lYou Need to Download §c§l%d§r§l Mod(s) Manually",
+  "screen.vmtu.missing_mod.subtitle": "Failure to install the following mod(s) may result in incomplete localization.",
+  "screen.vmtu.missing_mod.description": "§7§o(Click button to download page)",
+  "button.vmtu.missing_mod.quit": "Close game & open mods folder",
+  "button.vmtu.missing_mod.skip": "Back to title screen",
+  "button.vmtu.missing_mod.i18nupdatemod.tooltip": "For downloading the CFPA Chinese localization resource pack, which localizes most mods.",
+  "button.vmtu.missing_mod.vaultpatcher.tooltip": "For localizing mods with hard-coded text",
+  "button.vmtu.missing_mod.texturelocaleredirector.tooltip": "(Optional) For localizing textures/images, you can click the checkbox below to disable TLR detection.",
+  "checkbox.vmtu.missing_mod.optional": "Don‘t check optional mods again",
+  "checkbox.vmtu.missing_mod.optional.tooltip": "Check this box to disable check optional mod(s), but it may result in incomplete translations!",
 
   "text.autoconfig.vmtranslationupdate.title": "VM Translation Update Config",
   "text.autoconfig.vmtranslationupdate.option.misc": "Miscellaneous",
@@ -36,5 +41,6 @@
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex.@Tooltip": "To customize the installation index of translation pack, you must set the resource pack sequence to CUSTOM_INDEX for this setting to take effect!",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck": "ModInstallCheck",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateMod": "Detecting if I18nUpdateMod is already installed",
-  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "Detect if VaultPatcher is installed"
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "Detect if VaultPatcher is installed",
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirector": "Detect if TextureLocaleRedirector is installed"
 }
