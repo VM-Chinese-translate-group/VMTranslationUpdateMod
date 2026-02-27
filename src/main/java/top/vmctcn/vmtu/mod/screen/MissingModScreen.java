@@ -5,10 +5,13 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Formatting;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
 import org.jetbrains.annotations.Nullable;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
+import top.vmctcn.vmtu.mod.legacyforge.cache.ModInstanceCacheFile;
 import top.vmctcn.vmtu.mod.utils.RequiredMods;
 import top.vmctcn.vmtu.multiversion.Texts;
 import top.vmctcn.vmtu.multiversion.screen.ScreenUtils;
@@ -65,7 +68,7 @@ public class MissingModScreen extends Screen {
                         .setStyle(new Style().setColor(Formatting.RED))
                         .setStyle(new Style().setColor(mod.isRequired() ? Formatting.RED : Formatting.YELLOW));
 
-                int y = 40 + (height - 90) * index.incrementAndGet() / ((int) missingMods.size() + 1);
+                int y = 40 + (height - 90) * index.incrementAndGet() / (missingMods.size() + 1);
 
                 if (mod.isLoadedCheck()) {
                     buttonIdToMod.put(index.get(), mod);
@@ -160,6 +163,8 @@ public class MissingModScreen extends Screen {
     private void optionalModCheckBox(Text text) {
         Text tooltip = ModContexts.getTranslatableText("checkbox", "missing_mod", "optional", "tooltip");
         this.checkbox = Widgets.createCheckbox(BUTTON_CHECKBOX, text, tooltip, (this.width / 2) - 50, this.height - (FOOTER_HEIGHT / 2) - 35);
+        // Hide checkbox on startup if user previously confirmed (marker file exists)
+        this.checkbox.visible = isOptionalModConfirmed();
         this.addButtonWidget(checkbox);
     }
 
@@ -183,8 +188,9 @@ public class MissingModScreen extends Screen {
                 break;
             case BUTTON_CHECKBOX:
                 if (checkbox.isChecked()) {
-                    setOptionalModConfigOption(false);
-                    // checkbox will be hidden on next startup based on config
+                    markOptionalModConfirmed();
+                    setOptionalModCheckConfig();
+                    // checkbox will be hidden on next startup based on marker file
                 }
                 break;
         }
@@ -218,7 +224,17 @@ public class MissingModScreen extends Screen {
         return this.addButton(widget);
     }
 
-    public void setOptionalModConfigOption(boolean value) {
-        ModConfigs.modInstallCheck.textureLocaleRedirector = value;
+    public void setOptionalModCheckConfig() {
+        ModConfigs.modInstallCheck.textureLocaleRedirector = isOptionalModConfirmed();
+        ConfigManager.sync(ModContexts.MOD_ID, Config.Type.INSTANCE);
+    }
+
+    private boolean isOptionalModConfirmed() {
+        return ModInstanceCacheFile.getInstance().checkOptionalMod;
+    }
+
+    private void markOptionalModConfirmed() {
+        ModInstanceCacheFile.getInstance().checkOptionalMod = false;
+        ModInstanceCacheFile.save();
     }
 }

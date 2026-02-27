@@ -10,6 +10,6 @@ public class Widgets {
     }
 
     public static CheckboxWidget createCheckbox(int id, Text text, Text tooltip, int x, int y) {
-        return CheckboxWidget.builder(id, text.getContent()).tooltip(tooltip.getContent()).pos(x, y).build();
+        return CheckboxWidget.builder(id, text.getContent()).tooltip(tooltip.getFormattedString()).pos(x, y).build();
     }
 }
