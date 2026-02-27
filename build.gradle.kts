@@ -113,11 +113,11 @@ tasks.register("convertLanguageFile") {
         } ?: emptyArray()
 
         if (jsonFiles.isEmpty()) {
-            logger.warn("No JSON files found in ${inputDir.absolutePath}")
+            logger.warn("⚠️ No JSON files found in ${inputDir.absolutePath}")
             return@doLast
         }
 
-        logger.lifecycle("Starting conversion of ${jsonFiles.size} JSON file(s)...")
+        logger.lifecycle("♻️ Starting conversion of ${jsonFiles.size} JSON file(s)...")
 
         jsonFiles.forEach { jsonFile ->
             val langFileName = jsonFile.nameWithoutExtension + ".lang"
@@ -173,13 +173,13 @@ tasks.register("convertLanguageFile") {
                 // Write lang file
                 langFile.writeText(langLines.joinToString("\n"), Charsets.UTF_8)
 
-                logger.lifecycle("✓ Converted: ${jsonFile.name} -> $langFileName (${langLines.size - 3} key-value pairs)")
+                logger.lifecycle("✅ Converted: ${jsonFile.name} -> $langFileName (${langLines.size - 3} key-value pairs)")
 
             } catch (e: Exception) {
                 throw RuntimeException("Failed to convert file ${jsonFile.name}: ${e.message}", e)
             }
         }
 
-        logger.lifecycle("Language file conversion completed! Output directory: ${outputDir.absolutePath}")
+        logger.lifecycle("✅ Language file conversion completed! Output directory: ${outputDir.absolutePath}")
     }
 }

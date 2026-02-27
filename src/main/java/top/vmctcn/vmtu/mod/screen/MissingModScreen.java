@@ -14,26 +14,36 @@ import top.vmctcn.vmtu.multiversion.Texts;
 import top.vmctcn.vmtu.multiversion.screen.ScreenUtils;
 import top.vmctcn.vmtu.multiversion.screen.Widgets;
 import top.vmctcn.vmtu.multiversion.screen.widgets.CheckboxWidget;
-import top.vmctcn.vmtu.multiversion.screen.widgets.PlainTextButtonWidget;
-import top.vmctcn.vmtu.multiversion.util.StringUtils;
 
 import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MissingModScreen extends Screen {
     public final Text title;
     @Nullable
     private final ArrayList<RequiredMods> missingMods;
-    private RequiredMods mod;
     @Nullable
     private final Screen parent;
+
+    private final List<ButtonWidget> missingModButtons = new ArrayList<>();
+    private final Map<Integer, RequiredMods> buttonIdToMod = new HashMap<>();
     private CheckboxWidget checkbox;
 
     protected static final int HEADER_HEIGHT = 40;
     protected static final int FOOTER_HEIGHT = 50;
+
+    // Button IDs
+    private static final int BUTTON_QUIT_WITH_SKIP = 114;
+    private static final int BUTTON_SKIP = 514;
+    private static final int BUTTON_QUIT = 251;
+    private static final int BUTTON_CHECKBOX = 314;
 
     public MissingModScreen(@Nullable ArrayList<RequiredMods> missingMods) {
         this(missingMods, null);
@@ -48,9 +58,6 @@ public class MissingModScreen extends Screen {
     @Override
     public void init() {
         if (missingMods != null && !missingMods.isEmpty()) {
-            int widest = missingMods.stream().map(mod -> mod.getName().length())
-                    .max(Comparator.naturalOrder()).orElse(0);
-            String brackets = "[" + StringUtils.repeat(" ", widest + 17) + "]";
             AtomicInteger index = new AtomicInteger(0);
 
             missingMods.forEach(mod -> {
@@ -61,16 +68,11 @@ public class MissingModScreen extends Screen {
                 int y = 40 + (height - 90) * index.incrementAndGet() / ((int) missingMods.size() + 1);
 
                 if (mod.isLoadedCheck()) {
+                    buttonIdToMod.put(index.get(), mod);
                     if (mod.isRequired()) {
-                        // Brackets
-                        modDownloadButton(mod, Texts.literal(brackets).setStyle(new Style().setColor(Formatting.DARK_RED)), y);
-                        // Names
-                        modDownloadButton(mod, text, y);
+                        modDownloadButton(index.get(), text, y);
                     } else {
-                        // Brackets
-                        modDownloadButton(mod, Texts.literal(brackets).setStyle(new Style().setColor(Formatting.YELLOW)), y);
-                        // Names
-                        modDownloadButton(mod, text, y);
+                        modDownloadButton(index.get(), text, y);
                     }
                 }
             });
@@ -112,68 +114,103 @@ public class MissingModScreen extends Screen {
         ScreenUtils.drawCenteredTextWithShadow(textRenderer, title, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2), -1);
         ScreenUtils.drawCenteredTextWithShadow(textRenderer, subtitle, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2) + 15, -1);
         ScreenUtils.drawCenteredTextWithShadow(textRenderer, description, this.width / 2, (HEADER_HEIGHT / 2) - (this.textRenderer.fontHeight / 2) + 30, -1);
+
+        for (ButtonWidget button : missingModButtons) {
+            if (isMouseOverButton(button, mouseX, mouseY)) {
+                RequiredMods mod = buttonIdToMod.get(button.id);
+                if (mod != null) {
+                    Text tooltip = ModContexts.getTranslatableText("button", "missing_mod", mod.getName().toLowerCase(), "tooltip");
+                    this.renderTooltip(tooltip.getFormattedString(), mouseX, mouseY);
+                }
+                break;
+            }
+        }
+
+        if (checkbox != null && checkbox.visible && isMouseOverButton(checkbox, mouseX, mouseY)) {
+            this.renderTooltip(checkbox.getTooltip(), mouseX, mouseY);
+        }
     }
 
-    private void modDownloadButton(RequiredMods mod, Text text, int y) {
-        Text tooltip = ModContexts.getTranslatableText("button", "missing_mod", mod.getName().toLowerCase(), "tooltip");
-        PlainTextButtonWidget button = Widgets.createPlainTextButton(0, text, tooltip,
-                this.width / 2 - this.textRenderer.getWidth(text.getContent()) / 2, y,
-                this.textRenderer.getWidth(text.getContent()), 10,
-                this.textRenderer
-        );
-        this.mod = mod;
+    private boolean isMouseOverButton(ButtonWidget button, int mouseX, int mouseY) {
+        return mouseX >= button.x && mouseX < button.x + button.getWidth()
+            && mouseY >= button.y && mouseY < button.y + button.height;
+    }
 
+    private void modDownloadButton(int buttonId, Text text, int y) {
+        ButtonWidget button = Widgets.createButton(buttonId, text, (this.width / 2) - 75, y, 150, 20);
+        this.missingModButtons.add(button);
         this.addButtonWidget(button);
     }
 
     private void skipAndQuitButton(Text quit, Text skip) {
         // Quit
-        this.addButtonWidget(Widgets.createButton(1, quit, (this.width / 2) - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20));
+        ButtonWidget quitButton = Widgets.createButton(BUTTON_QUIT_WITH_SKIP, quit, (this.width / 2) - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20);
+        this.addButtonWidget(quitButton);
 
         // Skip
-        this.addButtonWidget(Widgets.createButton(2, skip, (this.width / 2) + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20));
+        ButtonWidget skipButton = Widgets.createButton(BUTTON_SKIP, skip, (this.width / 2) + 5, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20);
+        this.addButtonWidget(skipButton);
     }
 
     private void quitButton(Text quit) {
-        this.addButtonWidget(Widgets.createButton(3, quit, (this.width / 2) - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 300, 20));
+        ButtonWidget quitButton = Widgets.createButton(BUTTON_QUIT, quit, (this.width / 2) - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 300, 20);
+        this.addButtonWidget(quitButton);
     }
 
     private void optionalModCheckBox(Text text) {
         Text tooltip = ModContexts.getTranslatableText("checkbox", "missing_mod", "optional", "tooltip");
-        checkbox = Widgets.createCheckbox(4, text, tooltip, (this.width / 2) - 50, this.height - (FOOTER_HEIGHT / 2) - 35, (checkboxWidget, selected) -> {
-            this.setOptionalModConfigOption(!selected);
-        });
-        checkbox.visible = ModConfigs.modInstallCheck.textureLocaleRedirector;
-        ModConfigs.modInstallCheck.textureLocaleRedirector = !checkbox.isChecked();
+        this.checkbox = Widgets.createCheckbox(BUTTON_CHECKBOX, text, tooltip, (this.width / 2) - 50, this.height - (FOOTER_HEIGHT / 2) - 35);
         this.addButtonWidget(checkbox);
     }
 
     @Override
     protected void buttonClicked(ButtonWidget button) {
+        // Handle mod download buttons (dynamic IDs from buttonIdToMod)
+        RequiredMods mod = buttonIdToMod.get(button.id);
+        if (mod != null) {
+            openModDownloadUrl(mod, button.id);
+            return;
+        }
+
+        // Handle fixed buttons
         switch (button.id) {
-            case 0:
-                mod.openUrl();
+            case BUTTON_QUIT_WITH_SKIP:
+            case BUTTON_QUIT:
+                openModsFolderAndQuit();
                 break;
-            case 1:
-            case 3:
-                try {
-                    Desktop.getDesktop().open(ModPlatform.getGameDir().resolve("mods").toFile());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                if (this.minecraft != null) {
-                    minecraft.stop();
-                }
-                break;
-            case 2:
+            case BUTTON_SKIP:
                 this.onClose();
                 break;
-            case 4:
+            case BUTTON_CHECKBOX:
                 if (checkbox.isChecked()) {
                     setOptionalModConfigOption(false);
-                    checkbox.visible = false;
+                    // checkbox will be hidden on next startup based on config
                 }
                 break;
+        }
+    }
+
+    private void openModDownloadUrl(RequiredMods mod, int buttonId) {
+        URL url = mod.getUrl();
+        if (url != null) {
+            try {
+                Desktop.getDesktop().browse(url.toURI());
+            } catch (URISyntaxException | IOException e) {
+                ModContexts.LOGGER.warn("Cannot handle URL for mod {}!", mod.getName(), e);
+            }
+        } else {
+            ModContexts.LOGGER.info("No URL found for button id {}! ({})", buttonId, mod.getName());
+        }
+    }
+
+    private void openModsFolderAndQuit() {
+        try {
+            Desktop.getDesktop().open(ModPlatform.getGameDir().resolve("mods").toFile());
+        } catch (IOException e) {
+            ModContexts.LOGGER.error("Failed to open mods folder!", e);
+        }
+        if (this.minecraft != null) {
+            minecraft.stop();
         }
     }
 

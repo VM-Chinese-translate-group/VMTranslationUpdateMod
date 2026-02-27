@@ -13,7 +13,7 @@ import java.net.URI;
 
 public class ScreenUtils {
     public static void drawCenteredTextWithShadow(TextRenderer textRenderer, Text text, int centerX, int y, int color) {
-        textRenderer.drawWithShadow(text.getContent(), (float)(centerX - textRenderer.getWidth(text.getContent()) / 2), (float)y, color);
+        textRenderer.drawWithShadow(text.getFormattedString(), (float)(centerX - textRenderer.getWidth(text.getContent()) / 2), (float)y, color);
     }
 
     public static void openUrlOnScreen(Minecraft client, Screen screen, String url) {

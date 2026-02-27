@@ -1,21 +1,22 @@
 package top.vmctcn.vmtu.multiversion.screen.widgets;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.TextRenderer;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
+import net.minecraftforge.fml.client.config.GuiUtils;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
 import java.util.Objects;
 
 public class CheckboxWidget extends GuiCheckBox {
     @Nullable
     private String tooltip;
-    private final OnValueChange onValueChange;
+//    private final OnValueChange onValueChange;
 
-    public CheckboxWidget(int id, int x, int y, String displayString, boolean isChecked, OnValueChange onValueChange) {
+    public CheckboxWidget(int id, int x, int y, String displayString, boolean isChecked) {
         super(id, x, y, displayString, isChecked);
-        this.onValueChange = onValueChange;
+//        this.onValueChange = onValueChange;
     }
 
     public static Builder builder(int id, String component) {
@@ -37,7 +38,7 @@ public class CheckboxWidget extends GuiCheckBox {
 
     @Override
     public boolean mouseClicked(Minecraft minecraft, int mouseX, int mouseY) {
-        this.onValueChange.onValueChange(this, this.isChecked());
+//        this.onValueChange.onValueChange(this, this.isChecked());
         return super.mouseClicked(minecraft, mouseX, mouseY);
     }
 
@@ -49,12 +50,16 @@ public class CheckboxWidget extends GuiCheckBox {
         }
     }
 
-    @Override
     public void renderTooltip(int mouseX, int mouseY) {
-        super.renderTooltip(mouseX, mouseY);
-        Screen screen = Minecraft.getInstance().screen;
-        if (screen != null && this.tooltip != null) {
-            screen.renderTooltip(this.tooltip, mouseX, mouseY);
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.screen != null && this.tooltip != null) {
+            GuiUtils.drawHoveringText(
+                Collections.singletonList(this.tooltip),
+                mouseX, mouseY,
+                mc.screen.width, mc.screen.height,
+                -1,
+                mc.textRenderer
+            );
         }
     }
 
@@ -70,14 +75,14 @@ public class CheckboxWidget extends GuiCheckBox {
         private final String message;
         private int xPos = 0;
         private int yPos = 0;
-        private OnValueChange onValueChange;
+//        private OnValueChange onValueChange;
         private boolean selected;
         @Nullable
         private String tooltip;
 
         Builder(int buttonId, String message) {
             this.buttonId = buttonId;
-            this.onValueChange = OnValueChange.NOP;
+//            this.onValueChange = OnValueChange.NOP;
             this.selected = false;
             this.tooltip = null;
             this.message = message;
@@ -89,10 +94,10 @@ public class CheckboxWidget extends GuiCheckBox {
             return this;
         }
 
-        public Builder onValueChange(OnValueChange onValueChange) {
-            this.onValueChange = onValueChange;
-            return this;
-        }
+//        public Builder onValueChange(OnValueChange onValueChange) {
+//            this.onValueChange = onValueChange;
+//            return this;
+//        }
 
         public Builder selected(boolean selected) {
             this.selected = selected;
@@ -105,11 +110,11 @@ public class CheckboxWidget extends GuiCheckBox {
         }
 
         public CheckboxWidget build() {
-            OnValueChange onValueChange = (checkbox, bl) -> {
-                this.onValueChange.onValueChange(checkbox, bl);
-            };
+//            OnValueChange onValueChange = (checkbox, bl) -> {
+//                this.onValueChange.onValueChange(checkbox, bl);
+//            };
 
-            CheckboxWidget checkbox = new CheckboxWidget(this.buttonId, this.xPos, this.yPos, this.message, this.selected, onValueChange);
+            CheckboxWidget checkbox = new CheckboxWidget(this.buttonId, this.xPos, this.yPos, this.message, this.selected);
             checkbox.setTooltip(this.tooltip);
             return checkbox;
         }
