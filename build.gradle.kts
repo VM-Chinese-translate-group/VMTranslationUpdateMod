@@ -6,6 +6,7 @@ plugins {
     java
     id("xyz.wagyourtail.unimined") version "1.4.+"
     id("com.gradleup.shadow") version "8.+"
+    id("com.hypherionmc.modutils.modpublisher") version "2.+"
 }
 
 base.archivesName.set(project.properties["archives_base_name"] as String)
@@ -184,4 +185,23 @@ tasks.register("convertLanguageFiles") {
 
         logger.lifecycle("✅ Language file conversion completed! Output directory: ${outputDir.absolutePath}")
     }
+}
+
+publisher {
+    apiKeys {
+        modrinth(System.getenv("MODRINTH_TOKEN"))
+        curseforge(System.getenv("CURSEFORGE_TOKEN"))
+    }
+
+    curseID = properties["curseforge_id"] as String?
+    modrinthID = properties["modrinth_id"] as String?
+    versionType = properties["version_type"] as String?
+    changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
+    projectVersion = "forge-${project.version}"
+    displayName = "[Forge]${project.version}"
+    gameVersions = listOf(project.properties["minecraft_version"] as String)
+    loaders = listOf("forge")
+    curseEnvironment = "client"
+    artifact = tasks.named("remapJar").get()
+    addAdditionalFile(tasks.named("sourcesJar").get())
 }
