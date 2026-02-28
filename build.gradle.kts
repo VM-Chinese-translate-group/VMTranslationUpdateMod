@@ -1,3 +1,5 @@
+import com.google.gson.JsonElement
+import com.google.gson.JsonParser
 import xyz.wagyourtail.unimined.api.minecraft.task.RemapJarTask
 
 plugins {
@@ -72,7 +74,7 @@ java {
 }
 
 tasks.shadowJar {
-    relocate("top.vmctcn.vmtu.core", "vmtu.include.core")
+    //relocate("top.vmctcn.vmtu.core", "vmtu.include.core")
 
     from(shade)
     archiveClassifier.set("dev-shadow")
@@ -88,13 +90,13 @@ tasks.jar {
     archiveClassifier.set("dev")
 }
 
-tasks.processResources.get().dependsOn("convertLanguageFile")
+tasks.processResources.get().dependsOn("convertLanguageFiles")
 // Fix implicit dependency: sourcesJar must run after convertLanguageFile
 // because sourcesJar includes generated files in src/main/resources
-tasks.named("sourcesJar").get().dependsOn("convertLanguageFile")
+tasks.named("sourcesJar").get().dependsOn("convertLanguageFiles")
 
 // JSON to Lang file gradle task
-tasks.register("convertLanguageFile") {
+tasks.register("convertLanguageFiles") {
     description = "Convert JSON language files to Minecraft *.lang format"
 
     val inputDir = file("scripts/inputs")
@@ -126,7 +128,7 @@ tasks.register("convertLanguageFile") {
             try {
                 // Read and parse JSON
                 val jsonContent = jsonFile.readText(Charsets.UTF_8)
-                val jsonElement = com.google.gson.JsonParser.parseString(jsonContent)
+                val jsonElement = JsonParser.parseString(jsonContent)
 
                 if (!jsonElement.isJsonObject) {
                     throw IllegalArgumentException("JSON file must contain an object: ${jsonFile.name}")
@@ -141,7 +143,7 @@ tasks.register("convertLanguageFile") {
                 langLines.add("")
 
                 // Recursively flatten JSON object
-                fun flattenJson(element: com.google.gson.JsonElement, parentKey: String = "") {
+                fun flattenJson(element: JsonElement, parentKey: String = "") {
                     when {
                         element.isJsonObject -> {
                             element.asJsonObject.entrySet().forEach { (key, value) ->
