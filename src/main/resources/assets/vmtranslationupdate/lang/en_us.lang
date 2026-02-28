@@ -21,7 +21,6 @@ button.vmtu.missing_mod.quit=Close game & open mods folder
 button.vmtu.missing_mod.skip=Back to title screen
 button.vmtu.missing_mod.i18nupdatemod.tooltip=For downloading the CFPA Chinese localization resource pack, which localizes most mods.
 button.vmtu.missing_mod.vaultpatcher.tooltip=For localizing mods with hard-coded text
-button.vmtu.missing_mod.texturelocaleredirector.tooltip=(Optional) For localizing textures/images, you can click the checkbox below to disable TLR detection.
 checkbox.vmtu.missing_mod.optional=Don‘t check optional mods again
 checkbox.vmtu.missing_mod.optional.tooltip=Check this box to disable check optional mod(s), but it may result in incomplete translations!
 text.autoconfig.vmtranslationupdate.title=VM Translation Update Config
@@ -41,4 +40,3 @@ text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex.@To
 text.autoconfig.vmtranslationupdate.option.modInstallCheck=ModInstallCheck
 text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateMod=Detecting if I18nUpdateMod is already installed
 text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher=Detect if VaultPatcher is installed
-text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirector=Detect if TextureLocaleRedirector is installed
