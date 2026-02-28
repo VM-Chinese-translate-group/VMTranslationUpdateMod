@@ -5,12 +5,9 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Formatting;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.ConfigManager;
 import org.jetbrains.annotations.Nullable;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
-import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.legacyforge.cache.ModInstanceCacheFile;
 import top.vmctcn.vmtu.mod.utils.RequiredMods;
 import top.vmctcn.vmtu.multiversion.Texts;
@@ -225,8 +222,8 @@ public class MissingModScreen extends Screen {
     }
 
     public void setOptionalModCheckConfig() {
-        ModConfigs.modInstallCheck.textureLocaleRedirector = isOptionalModConfirmed();
-        ConfigManager.sync(ModContexts.MOD_ID, Config.Type.INSTANCE);
+//        ModConfigs.modInstallCheck.textureLocaleRedirector = isOptionalModConfirmed();
+//        ConfigManager.sync(ModContexts.MOD_ID, Config.Type.INSTANCE);
     }
 
     private boolean isOptionalModConfirmed() {

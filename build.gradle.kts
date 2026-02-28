@@ -198,7 +198,7 @@ publisher {
     versionType = properties["version_type"] as String?
     changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
     projectVersion = "forge-${project.version}"
-    displayName = "[Forge]${project.version}"
+    displayName = "[Forge] LTS ${project.version}"
     gameVersions = listOf(project.properties["minecraft_version"] as String)
     loaders = listOf("forge")
     curseEnvironment = "client"

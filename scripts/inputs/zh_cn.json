@@ -22,7 +22,6 @@
   "button.vmtu.missing_mod.skip": "回到标题界面",
   "button.vmtu.missing_mod.i18nupdatemod.tooltip": "用于下载CFPA的汉化资源包，汉化大部分模组",
   "button.vmtu.missing_mod.vaultpatcher.tooltip": "用于汉化带有硬编码文本的模组",
-  "button.vmtu.missing_mod.texturelocaleredirector.tooltip": "（可选）用于汉化图片，你可以在下面的复选框关闭TLR检测",
   "checkbox.vmtu.missing_mod.optional": "不再检测可选模组",
   "checkbox.vmtu.missing_mod.optional.tooltip": "勾选此处可以禁用掉此警告，但是可能会造成汉化不完全！",
 
@@ -42,6 +41,5 @@
   "text.autoconfig.vmtranslationupdate.option.resourcePack.extraPackCustomIndex.@Tooltip": "自定义扩展汉化资源包的安装顺序，需要将扩展汉化资源包顺序设置为CUSTOM_INDEX此项才会生效！",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck": "Mod安装检测",
   "text.autoconfig.vmtranslationupdate.option.modInstallCheck.i18nUpdateMod": "检测I18nUpdateMod是否已经安装",
-  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "检测VaultPatcher是否已经安装",
-  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirector": "检测TextureLocaleRedirector是否已经安装"
+  "text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcher": "检测VaultPatcher是否已经安装"
 }

@@ -25,13 +25,6 @@ public enum RequiredMods {
             UrlUtils.getCurseForgeModFileUrl("vault-patcher"),
             ModConfigs.modInstallCheck.vaultPatcher,
             true
-    ),
-    TEXTURE_LOCALE_REDIRECTOR(
-            "com.wulian.texturelocaleredirector.TextureLocaleRedirector",
-            "TextureLocaleRedirector",
-            UrlUtils.getCurseForgeModFileUrl("texture-locale-redirector"),
-            ModConfigs.modInstallCheck.textureLocaleRedirector,
-            false
     );
 
     final String className;

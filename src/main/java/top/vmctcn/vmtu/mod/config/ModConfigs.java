@@ -95,10 +95,5 @@ public class ModConfigs {
         @Config.Name("vaultPatcher")
         @Config.LangKey("text.autoconfig.vmtranslationupdate.option.modInstallCheck.vaultPatcherCheck")
         public boolean vaultPatcher = false;
-
-        @Config.RequiresMcRestart
-        @Config.Name("textureLocaleRedirector")
-        @Config.LangKey("text.autoconfig.vmtranslationupdate.option.modInstallCheck.textureLocaleRedirectorCheck")
-        public boolean textureLocaleRedirector = false;
     }
 }
