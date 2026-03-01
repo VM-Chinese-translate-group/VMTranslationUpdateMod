@@ -27,11 +27,11 @@ public class VMMetadataReader {
                 metadata = GSON.fromJson(reader, VMMetadata.class);
                 readMetadataSuccess = true;
             } catch (Exception e) {
-                ModContexts.LOGGER.warn("Error reading vm-metadata.json.", e);
+                ModContexts.LOGGER.warn("Error reading vm-meta.json.", e);
                 readMetadataSuccess = false;
             }
         } catch (IOException e) {
-            ModContexts.LOGGER.warn("Error getting vm-metadata.json.", e);
+            ModContexts.LOGGER.warn("Error getting vm-meta.json.", e);
             readMetadataSuccess = false;
         }
     }
@@ -46,7 +46,7 @@ public class VMMetadataReader {
 
     public static VMMetadata.Modpacks getModpack(String modpackId) {
         if (metadata.getModpacks() == null) {
-            ModContexts.LOGGER.warn("Error getting modpack info in vm-metadata.json.");
+            ModContexts.LOGGER.warn("Error getting modpack info in vm-meta.json.");
             return metadata.getModpacks().get("example");
         }
 
