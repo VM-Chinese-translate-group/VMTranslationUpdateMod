@@ -1,15 +1,11 @@
 [
-  {
-    "modid": "vmtranslationupdate",
-    "name": "VMTranslationUpdateMod",
-    "description": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
-    "version": "${version}",
-    "mcversion": "${mc_version}",
-    "url": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod",
-    "updateUrl": "",
-    "authorList": ["VMChineseTranslateGroup", "Wulian233","TexTrue"],
-    "logoFile": "icon.png",
-    "screenshots": [],
-    "dependencies": []
-  }
+	{
+		"modid": "${mod_id}",
+		"version": "${mod_version}",
+		"name": "${mod_name}",
+		"description": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
+		"logoFile": "icon.png",
+		"authorList": ["VMChineseTranslateGroup", "Wulian233","TexTrue"],
+		"url": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod"
+	}
 ]

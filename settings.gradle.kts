@@ -1,11 +1,27 @@
 pluginManagement {
     repositories {
-        maven("https://maven.wagyourtail.xyz/releases")
-        maven("https://maven.wagyourtail.xyz/snapshots")
-        maven("https://maven.legacyfabric.net/")
-        maven("https://maven.fabricmc.net/")
-        maven("https://files.minecraftforge.net/maven/")
-        maven("https://maven.firstdark.dev/releases")
+        mavenCentral()
         gradlePluginPortal()
+        maven("https://jitpack.io/")
+        maven("https://maven.crystaelix.com/releases/")
+        maven("https://maven.architectury.dev/")
+        maven("https://maven.fabricmc.net/")
+        maven("https://maven.minecraftforge.net/")
+        maven("https://maven.firstdark.dev/releases")
+        maven {
+            name = "Ornithe Releases"
+            url = uri("https://maven.ornithemc.net/releases")
+        }
+        maven {
+            name = "Ornithe Snapshots"
+            url = uri("https://maven.ornithemc.net/snapshots")
+        }
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "com.crystaelix.loom" && requested.version?.startsWith("jitpack-") == true) {
+                useModule("com.github.Crystaelix:crystaelix-loom:${requested.version!!.substring(8)}")
+            }
+        }
     }
 }

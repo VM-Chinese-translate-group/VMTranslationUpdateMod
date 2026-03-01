@@ -1,106 +1,102 @@
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
-import xyz.wagyourtail.unimined.api.minecraft.task.RemapJarTask
+import kotlin.collections.component1
+import kotlin.collections.component2
 
 plugins {
-    java
-    id("xyz.wagyourtail.unimined") version "1.4.+"
-    id("com.gradleup.shadow") version "8.+"
+    id("dev.architectury.mappings-layers-plugin") version "1.4-SNAPSHOT"
+    id("com.crystaelix.loom") version "1.13-SNAPSHOT"
+    id("ploceus") version "1.15-SNAPSHOT"
+    id("maven-publish")
     id("com.hypherionmc.modutils.modpublisher") version "2.+"
 }
 
-base.archivesName.set(project.properties["archives_base_name"] as String)
-version = "${project.properties["mod_version"]}+mc${project.properties["minecraft_version"]}"
-group = project.properties["maven_group"] as String
+val modVersion = project.properties["mod_version"] as String
+val modGroup = project.properties["maven_group"] as String
+val modArchiveBaseName = project.properties["archives_base_name"] as String
+val modId = project.properties["mod_id"] as String
+val modAuthor = project.properties["mod_author"] as String
+val mappingsVersion = project.properties["mappings_version"] as String
+val minecraftVersion = project.properties["minecraft_version"] as String
+val forgeVersion = project.properties["forge_version"] as String
+val curseforgeId = project.properties["curseforge_id"] as String
+val modrinthId = project.properties["modrinth_id"] as String
+val versionType = project.properties["version_type"] as String
 
-unimined.minecraft {
-    version(project.properties["minecraft_version"].toString())
+version = "${modVersion}+mc${minecraftVersion}"
+group = modGroup
+base.archivesName.set(modArchiveBaseName)
 
-    mappings {
-        calamus()
-        feather(31)
-
-        stubs("searge", "feather") {
-            c("net/minecraft/entity/item/EntityMinecart") {
-                // fix conflict with forge added function name
-                m("func_174898_m;()D", "getMaxSpeedVanilla")
-            }
-        }
-
-        devNamespace("feather")
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
     }
-
-    minecraftForge {
-        loader(project.properties["forge_version"].toString())
-    }
-
-    defaultRemapJar = true
+    withSourcesJar()
 }
 
-val shade: Configuration by configurations.creating
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+loom {
+    silentMojangMappingsLicense()
+
+    //generatedIntermediateMappings()
+}
 
 repositories {
+    mavenCentral()
     maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${project.properties["core_version"]}")
-    shade("com.github.VM-Chinese-translate-group:VMTUCore:${project.properties["core_version"]}")
+    // Minecraft dependencies, required
+    minecraft("com.mojang:minecraft:${minecraftVersion}")
+    mappings(mappingsLayers.from(ploceus.featherMappings(mappingsVersion)) {
+        mapMethod("m_9076954", "getMaxSpeedVanilla")
+    })
+    legacyForge("net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}")
+
+    implementation("com.github.VM-Chinese-translate-group:VMTUCore:0.3.1")
+    include("com.github.VM-Chinese-translate-group:VMTUCore:0.3.1")
 }
 
 tasks.processResources {
-    inputs.property("version", project.version)
-    inputs.property("mc_version", project.properties["minecraft_version"])
-
+    filteringCharset = "UTF-8"
     filesMatching("mcmod.info") {
-        expand(
-            mapOf(
-                "version" to project.version,
-                "mc_version" to project.properties["minecraft_version"]
-            )
-        )
+        expand(mapOf(
+            "mod_id" to modId,
+            "mod_name" to base.archivesName.get(),
+            "mod_version" to project.version
+        ))
     }
 }
 
-tasks.withType<JavaCompile>().configureEach {
-    options.encoding = "UTF-8"
-    //options.release = 8
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-
-    withSourcesJar()
-}
-
-tasks.shadowJar {
-    //relocate("top.vmctcn.vmtu.core", "vmtu.include.core")
-
-    from(shade)
-    archiveClassifier.set("dev-shadow")
-}
-
-tasks.named<RemapJarTask>("remapJar") {
-    inputFile.set(tasks.shadowJar.get().archiveFile)
-    dependsOn(tasks.shadowJar)
-    //archiveClassifier.set("")
-}
+val manifestAttributes = mapOf(
+    "Specification-Title" to modArchiveBaseName,
+    "Specification-Vendor" to modAuthor,
+    "Specification-Version" to "1",
+    "Implementation-Title" to base.archivesName.get(),
+    "Implementation-Version" to project.version,
+    "Implementation-Vendor" to modAuthor,
+)
 
 tasks.jar {
-    archiveClassifier.set("dev")
+    manifest.attributes(manifestAttributes)
+}
+
+tasks.named<Jar>("sourcesJar") {
+    manifest.attributes(manifestAttributes)
 }
 
 tasks.processResources.get().dependsOn("convertLanguageFiles")
-// Fix implicit dependency: sourcesJar must run after convertLanguageFile
-// because sourcesJar includes generated files in src/main/resources
+tasks.processTestResources.get().dependsOn("convertLanguageFiles")
 tasks.named("sourcesJar").get().dependsOn("convertLanguageFiles")
 
-// JSON to Lang file gradle task
 tasks.register("convertLanguageFiles") {
     description = "Convert JSON language files to Minecraft *.lang format"
 
-    val inputDir = file("scripts/inputs")
+    val inputDir = file("scripts/langs")
     val outputDir = file("src/main/resources/assets/vmtranslationupdate/lang")
 
     inputs.dir(inputDir)
@@ -163,7 +159,7 @@ tasks.register("convertLanguageFiles") {
                         }
                         element.isJsonArray -> {
                             // Serialize array to JSON string
-                            langLines.add("$parentKey=${element.toString()}")
+                            langLines.add("$parentKey=$element")
                         }
                         element.isJsonNull -> {
                             langLines.add("$parentKey=null")
@@ -193,15 +189,15 @@ publisher {
         curseforge(System.getenv("CURSEFORGE_TOKEN"))
     }
 
-    curseID = properties["curseforge_id"] as String?
-    modrinthID = properties["modrinth_id"] as String?
-    versionType = properties["version_type"] as String?
+    curseID = curseforgeId
+    modrinthID = modrinthId
+    versionType = versionType
     changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
     projectVersion = "forge-${project.version}"
-    displayName = "[Forge] LTS ${project.version}"
+    displayName = "[Forge] ${project.version}"
     gameVersions = listOf(project.properties["minecraft_version"] as String)
     loaders = listOf("forge")
     curseEnvironment = "client"
-    artifact = tasks.named("remapJar").get()
-    addAdditionalFile(tasks.named("sourcesJar").get())
+    artifact = tasks.remapJar.get()
+    addAdditionalFile(tasks.remapSourcesJar.get())
 }
