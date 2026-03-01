@@ -22,9 +22,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Build with Gradle
-        run: |
-          chmod +x gradlew
-          ./gradlew build
+        run: ./gradlew build --stacktrace -Porg.gradle.parallel.threads=4
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
