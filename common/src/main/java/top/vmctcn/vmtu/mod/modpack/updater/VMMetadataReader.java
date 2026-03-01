@@ -2,6 +2,7 @@ package top.vmctcn.vmtu.mod.modpack.updater;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import top.vmctcn.vmtu.core.util.AssetUtil;
 import top.vmctcn.vmtu.mod.ModContexts;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 public class VMMetadataReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static VMMetadata metadata;
-    private static final URI metaUrl = URI.create("https://gitee.com/Wulian233/vmtu/raw/main/update/v2/vm-meta.json");
+    private static final URI metaUrl = URI.create(AssetUtil.getFastestUrl() + "update/v2/vm-meta.json");
     public static boolean readMetadataSuccess;
 
     static {
