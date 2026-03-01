@@ -8,7 +8,7 @@ plugins {
     id("com.crystaelix.loom") version "1.13-SNAPSHOT"
     id("ploceus") version "1.15-SNAPSHOT"
     id("maven-publish")
-    //id("com.hypherionmc.modutils.modpublisher") version "2.+"
+    id("com.hypherionmc.modutils.modpublisher") version "2.+"
     id("com.gradleup.shadow") version "8.+"
 }
 
@@ -53,6 +53,7 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
+
 dependencies {
     // Minecraft dependencies, required
     minecraft("com.mojang:minecraft:${minecraftVersion}")
@@ -62,7 +63,7 @@ dependencies {
     legacyForge("net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}")
 
     implementation("com.github.VM-Chinese-translate-group:VMTUCore:0.3.1")
-    include("com.github.VM-Chinese-translate-group:VMTUCore:0.3.1")
+    shade("com.github.VM-Chinese-translate-group:VMTUCore:0.3.1")
 }
 
 tasks.processResources {
@@ -197,21 +198,21 @@ tasks.register("convertLanguageFiles") {
     }
 }
 
-//publisher {
-//    apiKeys {
-//        modrinth(System.getenv("MODRINTH_TOKEN"))
-//        curseforge(System.getenv("CURSEFORGE_TOKEN"))
-//    }
-//
-//    curseID = curseforgeId
-//    modrinthID = modrinthId
-//    versionType = versionType
-//    changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
-//    projectVersion = "forge-${project.version}"
-//    displayName = "[Forge] ${project.version}"
-//    gameVersions = listOf(project.properties["minecraft_version"] as String)
-//    loaders = listOf("forge")
-//    curseEnvironment = "client"
-//    artifact = tasks.remapJar.get()
-//    addAdditionalFile(tasks.remapSourcesJar.get())
-//}
+publisher {
+    apiKeys {
+        modrinth(System.getenv("MODRINTH_TOKEN"))
+        curseforge(System.getenv("CURSEFORGE_TOKEN"))
+    }
+
+    curseID = curseforgeId
+    modrinthID = modrinthId
+    versionType = versionType
+    changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
+    projectVersion = "forge-${project.version}"
+    displayName = "[Forge] ${project.version}"
+    gameVersions = listOf(project.properties["minecraft_version"] as String)
+    loaders = listOf("forge")
+    curseEnvironment = "client"
+    artifact = tasks.remapJar.get()
+    addAdditionalFile(tasks.remapSourcesJar.get())
+}
