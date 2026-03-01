@@ -9,6 +9,7 @@ plugins {
     id("ploceus") version "1.15-SNAPSHOT"
     id("maven-publish")
     id("com.hypherionmc.modutils.modpublisher") version "2.+"
+    id("com.gradleup.shadow") version "8.+"
 }
 
 val modVersion = project.properties["mod_version"] as String
@@ -43,6 +44,8 @@ loom {
 
     //generatedIntermediateMappings()
 }
+
+val shade: Configuration by configurations.creating
 
 repositories {
     mavenLocal()
@@ -81,6 +84,16 @@ val manifestAttributes = mapOf(
     "Implementation-Version" to project.version,
     "Implementation-Vendor" to modAuthor,
 )
+
+tasks.shadowJar {
+    from(shade)
+    archiveClassifier.set("dev-shadow")
+}
+
+tasks.remapJar {
+    inputFile.set(tasks.shadowJar.get().archiveFile)
+    dependsOn(tasks.shadowJar)
+}
 
 tasks.jar {
     manifest.attributes(manifestAttributes)
