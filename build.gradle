@@ -3,7 +3,6 @@ import com.google.gson.JsonParser
 import xyz.wagyourtail.unimined.api.minecraft.task.RemapJarTask
 
 plugins {
-    id 'java'
     id 'xyz.wagyourtail.unimined' version '1.4.1'
     id 'com.gradleup.shadow' version '8.+'
     id 'com.hypherionmc.modutils.modpublisher' version '2.1.8'
