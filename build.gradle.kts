@@ -203,5 +203,5 @@ publisher {
     loaders = listOf("forge")
     curseEnvironment = "client"
     artifact = tasks.named("remapJar").get()
-    addAdditionalFile(tasks.named("sourcesJar").get())
+//    addAdditionalFile(tasks.named("sourcesJar").get())
 }
