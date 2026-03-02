@@ -16,6 +16,10 @@ pluginManagement {
             name = "Ornithe Snapshots"
             url = uri("https://maven.ornithemc.net/snapshots")
         }
+        maven {
+            name = "legacy-fabric"
+            url = uri("https://maven.legacyfabric.net/")
+        }
     }
     resolutionStrategy {
         eachPlugin {

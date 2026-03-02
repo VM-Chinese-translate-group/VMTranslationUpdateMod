@@ -4,11 +4,11 @@ import kotlin.collections.component1
 import kotlin.collections.component2
 
 plugins {
-    id("dev.architectury.mappings-layers-plugin") version "1.4-SNAPSHOT"
+    //id("dev.architectury.mappings-layers-plugin") version "1.4-SNAPSHOT"
     id("com.crystaelix.loom") version "1.13-SNAPSHOT"
-    id("ploceus") version "1.15-SNAPSHOT"
+    //id("ploceus") version "1.15-SNAPSHOT"
     id("maven-publish")
-    id("com.hypherionmc.modutils.modpublisher") version "2.+"
+    id("com.hypherionmc.modutils.modpublisher") version "2.1.8"
     id("com.gradleup.shadow") version "8.+"
 }
 
@@ -42,24 +42,33 @@ tasks.withType<JavaCompile> {
 loom {
     silentMojangMappingsLicense()
 
-    //generatedIntermediateMappings()
+    generatedIntermediateMappings()
 }
 
 val shade: Configuration by configurations.creating
 
 repositories {
-    mavenLocal()
+    //mavenLocal()
     mavenCentral()
     maven { url = uri("https://jitpack.io") }
+    maven {
+        name = "Ornithe Releases"
+        url = uri("https://maven.ornithemc.net/releases")
+        content {
+            includeGroup("net.ornithemc")
+        }
+    }
+    maven("https://maven.minecraftforge.net/")
 }
-
 
 dependencies {
     // Minecraft dependencies, required
     minecraft("com.mojang:minecraft:${minecraftVersion}")
-    mappings(mappingsLayers.from(ploceus.featherMappings(mappingsVersion), {
-        mapMethod("m_9076954", "getMaxSpeedVanilla")
-    }))
+//    mappings(ploceus.layeredMappings {
+//        mappings(file("scripts/mappings/mappings-patch.tiny"))
+//        mappings(ploceus.featherMappings(mappingsVersion))
+//    })
+    mappings("de.oceanlabs.mcp:mcp_stable:39-1.12")
     legacyForge("net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}")
 
     implementation("com.github.VM-Chinese-translate-group:VMTUCore:0.3.1")
@@ -198,21 +207,21 @@ tasks.register("convertLanguageFiles") {
     }
 }
 
-publisher {
-    apiKeys {
-        modrinth(System.getenv("MODRINTH_TOKEN"))
-        curseforge(System.getenv("CURSEFORGE_TOKEN"))
-    }
-
-    curseID = curseforgeId
-    modrinthID = modrinthId
-    versionType = versionType
-    changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
-    projectVersion = "forge-${project.version}"
-    displayName = "[Forge] ${project.version}"
-    gameVersions = listOf(project.properties["minecraft_version"] as String)
-    loaders = listOf("forge")
-    curseEnvironment = "client"
-    artifact = tasks.remapJar.get()
-    addAdditionalFile(tasks.remapSourcesJar.get())
-}
+//publisher {
+//    apiKeys {
+//        modrinth(System.getenv("MODRINTH_TOKEN"))
+//        curseforge(System.getenv("CURSEFORGE_TOKEN"))
+//    }
+//
+//    curseID = curseforgeId
+//    modrinthID = modrinthId
+//    versionType = versionType
+//    changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
+//    projectVersion = "forge-${project.version}"
+//    displayName = "[Forge] ${project.version}"
+//    gameVersions = listOf(project.properties["minecraft_version"] as String)
+//    loaders = listOf("forge")
+//    curseEnvironment = "client"
+//    artifact = tasks.remapJar.get()
+//    addAdditionalFile(tasks.remapSourcesJar.get())
+//}
