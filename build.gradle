@@ -2,6 +2,7 @@ plugins {
     id "java"
     id "xyz.wagyourtail.unimined" version "1.4.+"
     id "com.gradleup.shadow" version "8.+"
+    id "com.hypherionmc.modutils.modpublisher" version "2.+"
 }
 
 base.archivesName = project.archives_base_name
@@ -87,4 +88,23 @@ processResources.dependsOn("convertLangFile")
 tasks.register("convertLangFile", Exec) {
     commandLine("python", "scripts/json2lang.py", "scripts/inputs", "-o", "src/main/resources/assets/vmtranslationupdate/lang")
     workingDir projectDir
+}
+
+publisher {
+    apiKeys {
+        modrinth(System.getenv("MODRINTH_TOKEN"))
+        curseforge(System.getenv("CURSEFORGE_TOKEN"))
+    }
+
+    curseID = project.curseforge_id
+    modrinthID = project.modrinth_id
+    versionType = project.version_type
+    changelog = rootProject.file("CHANGELOG.md").getText()
+    projectVersion = "forge-${project.version}"
+    displayName = "[Forge]${project.version}"
+    gameVersions = [project.minecraft_version]
+    loaders = ["forge"]
+    curseEnvironment = "client"
+    artifact = tasks.remapJar
+    addAdditionalFile(tasks.sourcesJar)
 }
