@@ -2,6 +2,7 @@ plugins {
     id "java"
     id "xyz.wagyourtail.unimined" version "1.4.+"
     id "com.gradleup.shadow" version "8.+"
+    id "me.modmuss50.mod-publish-plugin" version "1.1.0"
 }
 
 base.archivesName = project.archives_base_name
@@ -87,4 +88,25 @@ processResources.dependsOn("convertLangFile")
 tasks.register("convertLangFile", Exec) {
     commandLine("python", "scripts/json2lang.py", "scripts/inputs", "-o", "src/main/resources/assets/vmtranslationupdate/lang")
     workingDir projectDir
+}
+
+publishMods {
+    displayName = "[Forge]${project.version}"
+    changelog = file("CHANGELOG.md").getText()
+    type = STABLE
+    file = remapJar.archiveFile
+    modLoaders.add("forge")
+
+    curseforge {
+        projectId = "${project.curseforge_id}"
+        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+        minecraftVersions.add("1.12.2")
+        clientRequired = true
+    }
+
+    modrinth {
+        projectId = "${project.modrinth_id}"
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        minecraftVersions.add("1.12.2")
+    }
 }
