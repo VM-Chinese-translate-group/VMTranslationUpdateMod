@@ -7,6 +7,7 @@ import top.vmctcn.vmtu.mod.ModPlatform;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -50,7 +51,9 @@ public class ModpackInfoReader {
         modpackInfo.modpack.translation.resourcePackName = "VM汉化组模组汉化包1.19及以上";
 
         try {
-            Files.writeString(modpackInfoPath, GSON.toJson(modpackInfo), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            try (Writer writer = Files.newBufferedWriter(modpackInfoPath, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+                writer.write(GSON.toJson(modpackInfo));
+            }
             ModContexts.LOGGER.info("Default modpackinfo.json generated.");
 
             // 再次读取以确保正确加载

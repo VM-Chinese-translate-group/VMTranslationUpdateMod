@@ -95,6 +95,8 @@ java {
 tasks.shadowJar {
     configurations = listOf(shadowBundle)
     archiveClassifier = "dev-shadow"
+
+    isZip64 = true
 }
 
 tasks.remapJar {

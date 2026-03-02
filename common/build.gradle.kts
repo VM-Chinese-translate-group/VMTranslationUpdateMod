@@ -1,7 +1,6 @@
 plugins {
     id("dev.architectury.loom")
     id("architectury-plugin")
-    id("com.gradleup.shadow")
 }
 
 architectury.common(stonecutter.tree.branches.mapNotNull {

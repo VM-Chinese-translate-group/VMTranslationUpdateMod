@@ -96,6 +96,8 @@ tasks.shadowJar {
     configurations = listOf(shadowBundle)
     archiveClassifier = "dev-shadow"
     exclude("fabric.mod.json", "architectury.common.json")
+
+    isZip64 = true
 }
 
 tasks.processResources {
