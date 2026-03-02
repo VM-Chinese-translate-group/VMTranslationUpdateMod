@@ -106,11 +106,17 @@ tasks.shadowJar {
 }
 
 tasks.processResources {
+    val clothConfigId = when {
+        stonecutter.current.parsed >= "1.17" -> "cloth_config"
+        else -> "cloth-config"
+    }
+
     properties(listOf("META-INF/mods.toml", "pack.mcmeta"),
         "id" to mod.id,
         "name" to mod.name,
         "version" to mod.version,
-        "minecraft" to common.mod.requireProp("mod.mc_dep_forgelike")
+        "minecraft" to common.mod.requireProp("mod.mc_dep_forgelike"),
+        "clothconfig_id" to clothConfigId
     )
 }
 

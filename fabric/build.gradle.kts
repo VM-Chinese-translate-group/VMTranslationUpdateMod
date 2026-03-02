@@ -107,11 +107,17 @@ tasks.remapJar {
 }
 
 tasks.processResources {
+    val clothConfigId = when {
+        stonecutter.current.parsed >= "1.18" -> "cloth-config"
+        else -> "cloth-config2"
+    }
+
     properties(listOf("fabric.mod.json"),
         "id" to mod.id,
         "name" to mod.name,
         "version" to mod.version,
-        "minecraft" to common.mod.requireProp("mod.mc_dep_fabric")
+        "minecraft" to common.mod.requireProp("mod.mc_dep_fabric"),
+        "clothconfig_id" to clothConfigId
     )
 }
 
