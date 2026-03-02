@@ -1,0 +1,24 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/openjdk/jdk:21-ubuntu
+      options: --user root
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./gradlew build publishMods --stacktrace -Porg.gradle.parallel.threads=4
+        env:
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
