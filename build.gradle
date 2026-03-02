@@ -67,7 +67,7 @@ java {
 }
 
 shadowJar {
-    relocate("top.vmctcn.vmtu.core", "vmtu.include.core")
+    //relocate("top.vmctcn.vmtu.core", "vmtu.include.core")
 
     configurations = [project.configurations.shade]
     archiveClassifier.set("dev-shadow")
@@ -85,6 +85,6 @@ jar {
 
 processResources.dependsOn("convertLangFile")
 tasks.register("convertLangFile", Exec) {
-    commandLine("python", "scripts/json2LangConverter.py", "scripts/inputs", "-o", "src/main/resources/assets/vmtranslationupdate/lang")
+    commandLine("python", "scripts/json2lang.py", "scripts/inputs", "-o", "src/main/resources/assets/vmtranslationupdate/lang")
     workingDir projectDir
 }
