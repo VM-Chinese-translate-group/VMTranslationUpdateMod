@@ -4,9 +4,9 @@ import xyz.wagyourtail.unimined.api.minecraft.task.RemapJarTask
 
 plugins {
     java
-    id("xyz.wagyourtail.unimined") version "1.4.+"
+    id("xyz.wagyourtail.unimined") version "1.4.1"
     id("com.gradleup.shadow") version "8.+"
-    id("com.hypherionmc.modutils.modpublisher") version "2.+"
+    id("com.hypherionmc.modutils.modpublisher") version "2.1.8"
 }
 
 base.archivesName.set(project.properties["archives_base_name"] as String)
@@ -198,7 +198,7 @@ publisher {
     versionType = properties["version_type"] as String?
     changelog = rootProject.file("CHANGELOG.md").readText(Charsets.UTF_8)
     projectVersion = "forge-${project.version}"
-    displayName = "[Forge] LTS ${project.version}"
+    displayName = "[Forge]${project.version}"
     gameVersions = listOf(project.properties["minecraft_version"] as String)
     loaders = listOf("forge")
     curseEnvironment = "client"
