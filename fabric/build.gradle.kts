@@ -144,4 +144,12 @@ publisher {
     curseEnvironment = common.mod.publish("mod_side")
     artifact = tasks.remapJar.get()
     addAdditionalFile(tasks.remapSourcesJar.get())
+    modrinthDepends {
+        required("fabric-api")
+        required("cloth-config")
+    }
+    curseDepends {
+        required("fabric-api")
+        required("cloth-config")
+    }
 }
