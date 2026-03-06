@@ -47,7 +47,7 @@ public class ModEvents {
             Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
             Component translationUrlMsg = Texts.literal("Modpack Translation URL:")
                     .append(Texts.translatable(translation.getUrl())
-                            .setStyle(Style.EMPTY
+                            .withStyle(Style.EMPTY
                                     .withClickEvent(GameEvents.clickOpenUrl(translation.getUrl()))
                                     .withColor(ChatFormatting.AQUA)
                             ));
@@ -63,7 +63,9 @@ public class ModEvents {
             }
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Language: " + translation.getLanguage()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Version: " + translation.getVersion()));
-            Messages.displayClientMessage(player, Texts.literal("Translation Resource Pack Name: " + translation.getResourcePackName()));
+            if (translation.getResourcePackName() != null) {
+                Messages.displayClientMessage(player, Texts.literal("Translation Resource Pack Name: " + translation.getResourcePackName()));
+            }
             Messages.displayClientMessage(player, Texts.literal("Online Translation Version: " + onlineVersion.translationVersion()));
             Messages.displayClientMessage(player, Texts.literal("Online Modpack Version: " + onlineVersion.modpackVersion()));
             Messages.displayClientMessage(player, Texts.literal("====================================================="));
@@ -105,12 +107,11 @@ public class ModEvents {
         Messages.displayClientMessage(player, Texts.translatable(ModContexts.getTranslationKey("message", "update_checker", "translation", "line1"), coloredLocalVer, coloredOnlineVer));
         String updateUrl = translation.getUrl();
         Component message = ModContexts.getTranslatableText("message", "update_checker", "translation", "line2")
-                .append(ModContexts.getTranslatableText("message", "update_checker", "translation", "link")).withStyle(style -> {
-                    return style
-                            .withClickEvent(GameEvents.clickOpenUrl(updateUrl))
-                            .withHoverEvent(GameEvents.hoverShowText(ModContexts.getTranslatableText("message", "update_checker", "translation", "link", "tooltip")))
-                            .withColor(ChatFormatting.AQUA);
-                })
+                .append(ModContexts.getTranslatableText("message", "update_checker", "translation", "link"))
+                .withStyle(Style.EMPTY
+                        .withClickEvent(GameEvents.clickOpenUrl(updateUrl))
+                        .withHoverEvent(GameEvents.hoverShowText(ModContexts.getTranslatableText("message", "update_checker", "translation", "link", "tooltip")))
+                        .withColor(ChatFormatting.AQUA))
                 .append(ModContexts.getTranslatableText("message", "update_checker", "translation", "line3"));
         Messages.displayClientMessage(player, message);
     }

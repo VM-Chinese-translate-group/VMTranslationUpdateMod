@@ -32,6 +32,7 @@ public class ModpackInfo {
         String version;
         @Deprecated
         String updateCheckUrl;
+        @Deprecated
         String resourcePackName;
 
         public String getId() {
@@ -55,6 +56,7 @@ public class ModpackInfo {
             return updateCheckUrl;
         }
 
+        @Deprecated
         public String getResourcePackName() {
             return resourcePackName;
         }
