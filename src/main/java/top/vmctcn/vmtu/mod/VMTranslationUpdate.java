@@ -40,7 +40,9 @@ public class VMTranslationUpdate {
             }
             ModContexts.LOGGER.info("Modpack Translation Language: {}", translation.getLanguage());
             ModContexts.LOGGER.info("Modpack Translation Version: {}", translation.getVersion());
-            ModContexts.LOGGER.info("Translation Resource Pack Name: {}", translation.getResourcePackName());
+            if (translation.getResourcePackName() != null) {
+                ModContexts.LOGGER.info("Translation Resource Pack Name: {}", translation.getResourcePackName());
+            }
             ModContexts.LOGGER.info("Meta Url: {}", VMMetadataReader.getMetaUrl());
             ModContexts.LOGGER.info("Meta Version: {}", VMMetadataReader.getMetadata().getMetaVersion());
             ModContexts.LOGGER.info("Modpack Online Version: {}", vmmetadata.getModpackVersion());
@@ -64,7 +66,6 @@ public class VMTranslationUpdate {
         String extraPackName = ModConfigs.resourcePack.extraPackName;
         ResourcePackIndex resourcePackIndex = ModConfigs.resourcePack.resourcePackIndex;
         int extraPackCustomIndex = ModConfigs.resourcePack.extraPackCustomIndex;
-        String resPackName = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getResourcePackName();
-        VMTUCore.init(ModPlatform.getGameDir(), gameVersion, resPackName, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
+        VMTUCore.init(ModPlatform.getGameDir(), gameVersion, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
     }
 }

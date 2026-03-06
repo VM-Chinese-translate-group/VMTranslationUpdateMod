@@ -40,13 +40,29 @@ public class ModEvents {
             Messages.displayClientMessage(player, Texts.literal("==================== VMTU Dev Mode ===================="));
             Messages.displayClientMessage(player, Texts.literal("Modpack Name: " + modpack.getName()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
-            Messages.displayClientMessage(player, Texts.literal("Modpack Translation URL:§b " + translation.getUrl()));
+            Text translationUrlMessage = Texts.literal("Modpack Translation URL:")
+                    .append(Texts.literal(translation.getUrl())
+                            .setStyle(new Style()
+                                    .setClickEvent(GameEvents.clickOpenUrl(translation.getUrl()))
+                                    .setColor(Formatting.AQUA)
+                            )
+                    );
+            Messages.displayClientMessage(player, translationUrlMessage);
             if (translation.getUpdateCheckUrl() != null) {
-                Messages.displayClientMessage(player, Texts.literal("Modpack Translation Update Check URL:§b " + translation.getUpdateCheckUrl()));
+                Text updateCheckUrlMessage = Texts.literal("Modpack Translation Update Check URL:")
+                        .append(Texts.literal(translation.getUpdateCheckUrl())
+                                .setStyle(new Style()
+                                        .setClickEvent(GameEvents.clickOpenUrl(translation.getUpdateCheckUrl()))
+                                        .setColor(Formatting.AQUA)
+                                )
+                        );
+                Messages.displayClientMessage(player, updateCheckUrlMessage);
             }
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Language: " + translation.getLanguage()));
             Messages.displayClientMessage(player, Texts.literal("Modpack Translation Version: " + translation.getVersion()));
-            Messages.displayClientMessage(player, Texts.literal("Modpack Translation Resource Pack Name: " + translation.getResourcePackName()));
+            if (translation.getResourcePackName() != null) {
+                Messages.displayClientMessage(player, Texts.literal("Modpack Translation Resource Pack Name: " + translation.getResourcePackName()));
+            }
             Messages.displayClientMessage(player, Texts.literal("Online Translation Version: " + onlineVersion.translationVersion()));
             Messages.displayClientMessage(player, Texts.literal("Online Modpack Version: " + onlineVersion.modpackVersion()));
             Messages.displayClientMessage(player, Texts.literal("======================================================="));
