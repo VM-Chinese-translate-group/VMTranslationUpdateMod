@@ -101,11 +101,11 @@ public enum RequiredMods {
     }
 
     public static boolean isLoaded(boolean required) {
-        return getMissing(required).stream().findAny() == null;
+        return !getMissing(required).stream().findAny().isPresent();
     }
 
     public static boolean isAllLoaded() {
-        return getAllMissing().stream().findAny() == null;
+        return !getAllMissing().stream().findAny().isPresent();
     }
 
     public static String asString(boolean required) {
