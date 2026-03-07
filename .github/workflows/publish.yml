@@ -17,7 +17,9 @@ jobs:
       options: --user root
     steps:
       - uses: actions/checkout@v4
-      - run: ./gradlew build publishMods --stacktrace -Porg.gradle.parallel.threads=4
+      - run: |
+          chmod +x gradlew
+          ./gradlew build publishMods --stacktrace -Porg.gradle.parallel.threads=4
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
