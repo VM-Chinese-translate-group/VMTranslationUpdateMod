@@ -59,9 +59,16 @@ public class LanguageUtils {
     public static void autoSwitchLanguage() {
         if (ModConfigs.misc.autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
+                String language;
+
+                if (ModpackInfoReader.isExampleModpackInfo()) {
+                    language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
+                } else {
+                    language = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
+                }
+
                 GameOptionsWriter writer = new GameOptionsWriter(ModPlatform.getGameDir().resolve("options.txt"));
-                String lang = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
-                writer.switchLanguage(LanguageUtils.getFixedLanguage(lang));
+                writer.switchLanguage(LanguageUtils.getFixedLanguage(language));
             } catch (Exception e) {
                 ModContexts.LOGGER.warn("Failed to switch language: ", e);
             }

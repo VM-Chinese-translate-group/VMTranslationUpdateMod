@@ -44,6 +44,10 @@ public class ModConfigs {
         @Config.Name("checkModPackTranslationUpdate")
         @Config.LangKey("text.autoconfig.vmtranslationupdate.option.misc.checkModPackTranslationUpdate")
         public boolean checkModPackTranslationUpdate = false;
+
+        @Config.Name("generateExampleModpackInfo")
+        @Config.LangKey("text.autoconfig.vmtranslationupdate.option.misc.generateExampleModpackInfo")
+        public boolean generateExampleModpackInfo = false;
     }
 
     public static class ResourcePack {

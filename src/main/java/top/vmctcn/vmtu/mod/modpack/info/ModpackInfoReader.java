@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
+import top.vmctcn.vmtu.mod.config.ModConfigs;
+import top.vmctcn.vmtu.multiversion.util.ObjectUtils;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -16,54 +18,41 @@ import java.nio.file.StandardOpenOption;
 public class ModpackInfoReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static ModpackInfo modpackInfo;
-    private static boolean initialized = false;
+    private static final Path gamePath = ModPlatform.getGameDir();
+    private static final Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
 
-    private static void ensureInitialized() {
-        if (initialized) {
-            return;
-        }
-        initialized = true;
-
-        Path gamePath = ModPlatform.getGameDir();
-        if (gamePath == null) {
-            ModContexts.LOGGER.error("Game directory is null, cannot initialize ModpackInfoReader");
-            generateDefaultModpackInfoWithoutFile();
-            return;
-        }
-        Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
-
+    static {
         if (Files.exists(modpackInfoPath)) {
             try (Reader reader = Files.newBufferedReader(modpackInfoPath, StandardCharsets.UTF_8)) {
                 modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
                 if (modpackInfo == null) {
-                    ModContexts.LOGGER.warn("modpackinfo.json is empty or invalid, generating default file.");
-                    generateDefaultModpackInfo(modpackInfoPath);
+                    if (ModConfigs.misc.generateExampleModpackInfo == true) {
+                        ModContexts.LOGGER.warn("modpackinfo.json is empty or invalid, generating default file.");
+                        generateDefaultModpackInfo();
+                    } else {
+                        ModContexts.LOGGER.warn("modpackinfo.json is empty or invalid, skip it.");
+                    }
                 }
             } catch (Exception e) {
-                ModContexts.LOGGER.warn("Error reading modpackinfo.json, generating default file.", e);
-                generateDefaultModpackInfo(modpackInfoPath);
+                if (ModConfigs.misc.generateExampleModpackInfo == true) {
+                    ModContexts.LOGGER.warn("Error reading modpackinfo.json, generating default file.", e);
+                    generateDefaultModpackInfo();
+                } else {
+                    ModContexts.LOGGER.warn("Error reading modpackinfo.json, skip it.");
+                }
             }
         } else {
-            ModContexts.LOGGER.warn("modpackinfo.json does not exist, generating default file.");
-            generateDefaultModpackInfo(modpackInfoPath);
+            if (ModConfigs.misc.generateExampleModpackInfo == true) {
+                ModContexts.LOGGER.warn("modpackinfo.json does not exist, generating default file.");
+                generateDefaultModpackInfo();
+            } else {
+                ModContexts.LOGGER.warn("modpackinfo.json does not exist, skip it.");
+            }
         }
     }
 
-    private static void generateDefaultModpackInfoWithoutFile() {
-        modpackInfo = new ModpackInfo();
-        modpackInfo.modpack = new ModpackInfo.Modpack();
-        modpackInfo.modpack.name = "ExampleModpack";
-        modpackInfo.modpack.version = "0.1.0";
-
-        modpackInfo.modpack.translation = new ModpackInfo.Translation();
-        modpackInfo.modpack.translation.id = "example";
-        modpackInfo.modpack.translation.url = "https://vmct-cn.top/modpacks/example/";
-        modpackInfo.modpack.translation.language = "zh_cn";
-        modpackInfo.modpack.translation.version = "1.0.0";
-    }
-
-    private static void generateDefaultModpackInfo(Path modpackInfoPath) {
-        generateDefaultModpackInfoWithoutFile();
+    private static void generateDefaultModpackInfo() {
+        modpackInfo = new DefaultModpackInfo();
 
         try {
             try (Writer writer = Files.newBufferedWriter(modpackInfoPath, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
@@ -81,7 +70,10 @@ public class ModpackInfoReader {
     }
 
     public static ModpackInfo getModpackInfo() {
-        ensureInitialized();
-        return modpackInfo;
+        return ObjectUtils.requireNonNullElseGet(modpackInfo, DefaultModpackInfo::new);
+    }
+
+    public static boolean isExampleModpackInfo() {
+        return getModpackInfo().getModpack().getTranslation().getId().equals("example");
     }
 }
