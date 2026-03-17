@@ -17,10 +17,12 @@ import java.util.Objects;
 public class VMTranslationUpdate {
     @SuppressWarnings({"ConstantConditions", "deprecation"})
     public static void init() {
-        ModpackInfo.Modpack modpackInfo = ModpackInfoReader.getModpackInfo().getModpack();
+
+        ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
         ModpackMetadata modpackMetadata = ModpackMetadataReader.getMetadata();
-        if (modpackMetadata != null) {
-            if (!Objects.equals(modpackInfo.getVersion(), modpackMetadata.getModpackVersion())) {
+
+        if (modpackMetadata != null && !ModpackInfoReader.isExampleModpackInfo()) {
+            if (!Objects.equals(modpack.getVersion(), modpackMetadata.getModpackVersion())) {
                 ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
             }
         }
@@ -28,12 +30,12 @@ public class VMTranslationUpdate {
         LanguageUtils.autoSwitchLanguage();
 
         if (ModConfigHelper.getConfig().misc.devMode || ModPlatform.isDevelopmentEnvironment()) {
-            ModpackInfo.Translation translation = modpackInfo.getTranslation();
+            ModpackInfo.Translation translation = modpack.getTranslation();
             VMMetadata.Modpacks vmMetadata = VMMetadataReader.getModpack(translation.getId());
 
             ModContexts.LOGGER.info("=================== VMTU Dev Mode ====================");
-            ModContexts.LOGGER.info("Modpack Name: {}", modpackInfo.getName());
-            ModContexts.LOGGER.info("Modpack Version: {}", modpackInfo.getVersion());
+            ModContexts.LOGGER.info("Modpack Name: {}", modpack.getName());
+            ModContexts.LOGGER.info("Modpack Version: {}", modpack.getVersion());
             ModContexts.LOGGER.info("Modpack Translation URL: {}", translation.getUrl());
             if (translation.getUpdateCheckUrl() != null) {
                 ModContexts.LOGGER.info("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());

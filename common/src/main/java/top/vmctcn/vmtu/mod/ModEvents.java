@@ -85,10 +85,12 @@ public class ModEvents {
             boolean translationUpdateNeeded = !localTranslationVersion.equals(onlineVersion.translationVersion());
             boolean modpackUpdateNeeded = !onlineVersion.modpackVersion().isEmpty() && !localModpackVersion.equals(onlineVersion.modpackVersion());
 
-            if (translationUpdateNeeded) {
-                checkTranslationUpdateCommand(player);
-                if (modpackUpdateNeeded){
-                    checkModpackUpdateCommand(player);
+            if (!ModpackInfoReader.isExampleModpackInfo()) {
+                if (translationUpdateNeeded) {
+                    checkTranslationUpdateCommand(player);
+                    if (modpackUpdateNeeded){
+                        checkModpackUpdateCommand(player);
+                    }
                 }
             }
         }

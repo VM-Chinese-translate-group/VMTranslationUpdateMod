@@ -25,6 +25,9 @@ public class ModConfigs implements ConfigData {
         public boolean autoSwitchLanguage = false;
 
         public boolean checkModPackTranslationUpdate = false;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean generateExampleModpackInfo = false;
     }
 
     public static class ResourcePack {

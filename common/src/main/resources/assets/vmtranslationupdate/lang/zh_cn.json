@@ -32,6 +32,8 @@
   "text.autoconfig.vmtranslationupdate.option.misc.devMode": "开发者模式",
   "text.autoconfig.vmtranslationupdate.option.misc.autoSwitchLanguage": "自动切换语言",
   "text.autoconfig.vmtranslationupdate.option.misc.checkModPackTranslationUpdate": "自动检测整合包汉化版本更新",
+  "text.autoconfig.vmtranslationupdate.option.misc.generateExampleModpackInfo": "生成示例整合包信息文件",
+  "text.autoconfig.vmtranslationupdate.option.misc.generateExampleModpackInfo.@Tooltip": "开启此功能可以自动生成示例的modpackinfo.json文件",
   "text.autoconfig.vmtranslationupdate.option.resourcePack": "资源包",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.autoDownloadVMTranslationPack": "自动下载汉化资源包",
   "text.autoconfig.vmtranslationupdate.option.resourcePack.autoLoadExtraTranslationPack": "自动加载扩展汉化资源包",

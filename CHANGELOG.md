@@ -1,2 +1,3 @@
 ## Changelog
-- 修复崩溃问题 ([#37](https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues/37))
+- 重写关于示例 `modpackinfo.json` 的代码
+- 添加 `misc.generateExampleModpackInfo` 配置项，用于控制示例`modpackinfo.json`的生成
