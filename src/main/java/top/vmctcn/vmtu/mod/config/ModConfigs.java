@@ -47,6 +47,10 @@ public class ModConfigs {
 
         @Config.Name("generateExampleModpackInfo")
         @Config.LangKey("text.autoconfig.vmtranslationupdate.option.misc.generateExampleModpackInfo")
+        @Config.Comment({
+                "Enabling this feature will automatically generate a example modpackinfo.json file.",
+                "开启此功能可以自动生成示例的modpackinfo.json文件"
+        })
         public boolean generateExampleModpackInfo = false;
     }
 
