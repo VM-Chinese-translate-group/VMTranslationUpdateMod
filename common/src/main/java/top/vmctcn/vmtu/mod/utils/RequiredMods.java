@@ -2,6 +2,7 @@ package top.vmctcn.vmtu.mod.utils;
 
 import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
+import top.vmctcn.vmtu.core.util.ArrayUtil;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 
@@ -91,13 +92,13 @@ public enum RequiredMods {
     }
 
     public static ArrayList<RequiredMods> getMissing(boolean required) {
-        return ArrayUtils.asArrayList(Arrays.stream(values())
+        return ArrayUtil.asArrayList(Arrays.stream(values())
                 .filter(dep -> (dep.isRequired() || !required) && !dep.isLoaded() && dep.isLoadedCheck())
         );
     }
 
     public static ArrayList<RequiredMods> getAllMissing() {
-        return ArrayUtils.asArrayList(Arrays.stream(values()).filter(dep -> !dep.isLoaded() && dep.isLoadedCheck()));
+        return ArrayUtil.asArrayList(Arrays.stream(values()).filter(dep -> !dep.isLoaded() && dep.isLoadedCheck()));
     }
 
     public static boolean isLoaded(boolean required) {
