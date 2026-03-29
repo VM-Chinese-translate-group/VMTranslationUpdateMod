@@ -43,15 +43,19 @@ loom {
         isIdeConfigGenerated = true
         runDir = "../../../run"
         vmArgs("-Dmixin.debug.export=true")
+    }
 
-        // fix runs not set common sources
-        sourceSets {
-            main {
-                java {
-                    srcDir(common.sourceSets["main"].java)
-                }
-                resources {
-                    srcDir(common.sourceSets["main"].resources)
+    runs {
+        getByName("client") {
+            // fix runs not set common sources
+            sourceSets {
+                main {
+                    java {
+                        srcDir(common.sourceSets["main"].java)
+                    }
+                    resources {
+                        srcDir(common.sourceSets["main"].resources)
+                    }
                 }
             }
         }
