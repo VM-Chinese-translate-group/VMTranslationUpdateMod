@@ -1,24 +1,31 @@
 package top.vmctcn.vmtu.mod.neoforge;
 
+import com.google.auto.service.AutoService;
 import net.neoforged.fml.loading.FMLPaths;
+import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.multiversion.neoforge.NeoUtils;
 
 import java.nio.file.Path;
 
-public class ModPlatformImpl {
-    public static String getGameVersion() {
+@AutoService(ModPlatform.class)
+public class ModPlatformImpl implements ModPlatform {
+    @Override
+    public String getGameVersion() {
         return NeoUtils.getVersionInfo().mcVersion();
     }
 
-    public static Path getGameDir() {
+    @Override
+    public Path getGameDir() {
         return FMLPaths.GAMEDIR.get();
     }
 
-    public static boolean isModLoaded(String modId) {
+    @Override
+    public boolean isModLoaded(String modId) {
         return NeoUtils.getLoadingModList().getModFileById(modId) != null;
     }
 
-    public static boolean isDevelopmentEnvironment() {
+    @Override
+    public boolean isDevelopmentEnvironment() {
         return NeoUtils.isDevelopmentEnvironment();
     }
 }

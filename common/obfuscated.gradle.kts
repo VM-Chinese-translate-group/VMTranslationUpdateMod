@@ -1,8 +1,8 @@
 plugins {
-    id("dev.architectury.loom-no-remap")
+    id("dev.architectury.loom-remap")
 }
 
-logger.lifecycle("[Common|Unobfuscated] Game version: ${stonecutter.current.version}")
+logger.lifecycle("[Common|Obfuscated] Game version: ${stonecutter.current.version}")
 
 val minecraft: String = stonecutter.current.version
 
@@ -10,6 +10,8 @@ version = "${mod.version}+mc$minecraft"
 base.archivesName.set("${mod.id}-common")
 
 loom {
+    silentMojangMappingsLicense()
+
     decompilers {
         get("vineflower").apply { // Adds names to lambdas - useful for mixins
             options.put("mark-corresponding-synthetics", "1")
@@ -24,9 +26,10 @@ repositories {
 
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
-    implementation("net.fabricmc:fabric-loader:${mod.dep("fabric_loader")}")
+    mappings(loom.officialMojangMappings())
+    modImplementation("net.fabricmc:fabric-loader:${mod.dep("fabric_loader")}")
 
-    implementation("me.shedaniel.cloth:cloth-config:${mod.dep("cloth_config")}")
+    modImplementation("me.shedaniel.cloth:cloth-config:${mod.dep("cloth_config")}")
 
     implementation("com.github.VM-Chinese-translate-group:VMTUCore:${mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")

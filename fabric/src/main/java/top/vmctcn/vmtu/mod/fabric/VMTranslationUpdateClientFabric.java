@@ -3,10 +3,10 @@ package top.vmctcn.vmtu.mod.fabric;
 import com.mojang.brigadier.Command;
 import net.fabricmc.api.ClientModInitializer;
 //? if >=1.19.2 {
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 //?} else {
-/*import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
+/*import net.fabricmc.fabric.api.client.command.v1.ClientCommands;
 *///?}
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
@@ -34,31 +34,31 @@ public class VMTranslationUpdateClientFabric implements ClientModInitializer {
         //? if >=1.19.2 {
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
             dispatcher.register(
-                    ClientCommandManager.literal("vmtu")
-                            .then(ClientCommandManager.literal("check").executes(context -> {
+                    ClientCommands.literal("vmtu")
+                            .then(ClientCommands.literal("check").executes(context -> {
                                 ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
                                 ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
                                 return Command.SINGLE_SUCCESS;
-                            }).then(ClientCommandManager.literal("modpack").executes(context -> {
+                            }).then(ClientCommands.literal("modpack").executes(context -> {
                                 ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
                                 return Command.SINGLE_SUCCESS;
-                            })).then(ClientCommandManager.literal("translation").executes(context -> {
+                            })).then(ClientCommands.literal("translation").executes(context -> {
                                 ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
                                 return Command.SINGLE_SUCCESS;
                             })))
             );
         });
         //?} else {
-        /*ClientCommandManager.DISPATCHER.register(
-                ClientCommandManager.literal("vmtu")
-                        .then(ClientCommandManager.literal("check").executes(context -> {
+        /*ClientCommands.DISPATCHER.register(
+                ClientCommands.literal("vmtu")
+                        .then(ClientCommands.literal("check").executes(context -> {
                             ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
                             ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
                             return Command.SINGLE_SUCCESS;
-                        }).then(ClientCommandManager.literal("modpack").executes(context -> {
+                        }).then(ClientCommands.literal("modpack").executes(context -> {
                             ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
                             return Command.SINGLE_SUCCESS;
-                        })).then(ClientCommandManager.literal("translation").executes(context -> {
+                        })).then(ClientCommands.literal("translation").executes(context -> {
                             ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
                             return Command.SINGLE_SUCCESS;
                         })))

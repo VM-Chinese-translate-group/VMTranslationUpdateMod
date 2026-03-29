@@ -4,7 +4,7 @@ plugins {
     id("com.hypherionmc.modutils.modpublisher")
 }
 
-logger.lifecycle("[Forge|Obfuscated] Game version: ${stonecutter.current.version}")
+logger.lifecycle("[Fabric|Obfuscated] Game version: ${stonecutter.current.version}")
 
 val loader = prop("loom.platform")!!
 val minecraft: String = stonecutter.current.version
@@ -47,9 +47,6 @@ loom {
         // fix runs not set common sources
         sourceSets {
             main {
-                java {
-                    srcDir(common.sourceSets["main"].java)
-                }
                 resources {
                     srcDir(common.sourceSets["main"].resources)
                 }
@@ -59,27 +56,27 @@ loom {
 }
 
 repositories {
-    maven("https://maven.minecraftforge.net")
     maven("https://jitpack.io")
-    maven("https://maven.architectury.dev") {
-        content { includeGroup("me.shedaniel.cloth") }
-    }
+    maven("https://maven.terraformersmc.com/releases/")
+    maven("https://maven.nucleoid.xyz/")
+    maven("https://maven.architectury.dev")
 }
 
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
     mappings(loom.officialMojangMappings())
-    "forge"("net.minecraftforge:forge:$minecraft-${common.mod.dep("forge_loader")}")
+    modImplementation("net.fabricmc:fabric-loader:${common.mod.dep("fabric_loader")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${common.mod.dep("fabric_api")}")
 
-    modImplementation("me.shedaniel.cloth:cloth-config-forge:${common.mod.dep("cloth_config")}")
-
-    if (stonecutter.current.parsed >= "1.18.2") {
-        include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
-    } else {
-        // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
-        shadowBundle("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}") { isTransitive = false }
+    modImplementation("me.shedaniel.cloth:cloth-config-fabric:${common.mod.dep("cloth_config")}") {
+        exclude("net.fabricmc.fabric-api")
     }
 
+    modImplementation("com.terraformersmc:modmenu:${common.mod.dep("modmenu")}") {
+        exclude("net.fabricmc.fabric-api")
+    }
+
+    include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
     implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
@@ -92,6 +89,7 @@ java {
     withSourcesJar()
 
     val requiredJava = when {
+        stonecutter.current.parsed >= "26.1" -> JavaVersion.VERSION_25
         stonecutter.current.parsed >= "1.20.5" -> JavaVersion.VERSION_21
         stonecutter.current.parsed >= "1.18" -> JavaVersion.VERSION_17
         stonecutter.current.parsed >= "1.17" -> JavaVersion.VERSION_16
@@ -102,6 +100,13 @@ java {
     sourceCompatibility = requiredJava
 }
 
+tasks.shadowJar {
+    configurations = listOf(shadowBundle)
+    archiveClassifier = "dev-shadow"
+
+    isZip64 = true
+}
+
 tasks.remapJar {
     injectAccessWidener = true
     inputFile = tasks.shadowJar.get().archiveFile
@@ -109,25 +114,17 @@ tasks.remapJar {
     dependsOn(tasks.shadowJar)
 }
 
-tasks.shadowJar {
-    configurations = listOf(shadowBundle)
-    archiveClassifier = "dev-shadow"
-    exclude("fabric.mod.json", "architectury.common.json")
-
-    isZip64 = true
-}
-
 tasks.processResources {
     val clothConfigId = when {
-        stonecutter.current.parsed >= "1.17" -> "cloth_config"
-        else -> "cloth-config"
+        stonecutter.current.parsed >= "1.18" -> "cloth-config"
+        else -> "cloth-config2"
     }
 
-    properties(listOf("META-INF/mods.toml", "pack.mcmeta"),
+    properties(listOf("fabric.mod.json"),
         "id" to mod.id,
         "name" to mod.name,
         "version" to mod.version,
-        "minecraft" to common.mod.requireProp("mod.mc_dep_forgelike"),
+        "minecraft" to common.mod.requireProp("mod.mc_dep_fabric"),
         "clothconfig_id" to clothConfigId
     )
 }
@@ -156,9 +153,11 @@ publisher {
     artifact = tasks.remapJar.get()
     addAdditionalFile(tasks.remapSourcesJar.get())
     modrinthDepends {
+        required("fabric-api")
         required("cloth-config")
     }
     curseDepends {
+        required("fabric-api")
         required("cloth-config")
     }
 }

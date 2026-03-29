@@ -1,12 +1,14 @@
 package top.vmctcn.vmtu.multiversion;
 
 //? if >=1.19.2 {
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 //?} else if <=1.18.2 {
 /*import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 *///?}
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 
 public class Texts {
     public static MutableComponent empty() {

@@ -6,9 +6,11 @@ package top.vmctcn.vmtu.multiversion.screen;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-//? if >=1.20.1 {
-import net.minecraft.client.gui.GuiGraphics;
-//?} else if <=1.19.2 {
+//? if >=26.1 {
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+//?} else if >=1.20.1 && <=1.21.11 {
+/*import net.minecraft.client.gui.GuiGraphics;
+*///?} else if <=1.19.2 {
 /*import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiComponent;
 *///?}
@@ -31,39 +33,45 @@ import org.apache.commons.lang3.StringUtils;
 
 public class ScreenUtils /*? if <=1.19.2 {*//*extends GuiComponent*//*?}*/ {
     public static void drawCenteredTextWithShadow(
-            /*? if >=1.20.1 {*/
-            GuiGraphics context, Font font, Component text, int centerX, int y, int color
-            /*?} else if <=1.19.2 {*/
+            /*? if >=26.1 {*/
+            GuiGraphicsExtractor graphics, Font font, Component text, int centerX, int y, int color
+            /*?} else if >=1.20.1 && <=1.21.11 {*/
+            /*GuiGraphics graphics, Font font, Component text, int centerX, int y, int color
+            *//*?} else if <=1.19.2 {*/
             /*PoseStack poseStack, Font font, Component text, int centerX, int y, int color
             *//*?}*/
     ) {
-        //? if >=1.20.1 {
-        context.drawCenteredString(font, text, centerX, y, color);
-        //?} else if <=1.19.2 {
+        //? if >=26.1 {
+        graphics.centeredText(font, text, centerX, y, color);
+        //?} else if >=1.20.1 && <=1.21.11 {
+        /*graphics.drawCenteredString(font, text, centerX, y, color);
+        *///?} else if <=1.19.2 {
         /*drawCenteredString(poseStack, font, text, centerX, y, color);
         *///?}
     }
 
     public static void drawGuiTexture(
-            /*? if >=1.21.11 {*/
-            GuiGraphics guiGraphics, Identifier sprite, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight
-            /*?} else if >=1.20.6 && <=1.21.10 {*/
-            /*GuiGraphics guiGraphics, ResourceLocation sprite, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight
+            /*? if >=26.1 {*/
+            GuiGraphicsExtractor graphics, Identifier sprite, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight
+            /*?} else if 1.21.11 {*/
+            /*GuiGraphics graphics, Identifier sprite, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight
+            *//*?} else if >=1.20.6 && <=1.21.10 {*/
+            /*GuiGraphics graphics, ResourceLocation sprite, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight
             *//*?} else if <=1.20.4 && >=1.20.1 {*/
-            /*GuiGraphics guiGraphics, int startX, int startY, int endX, int endY, int z, int colorStart, int colorEnd
+            /*GuiGraphics graphics, int startX, int startY, int endX, int endY, int z, int colorStart, int colorEnd
             *//*?} else if <=1.19.2 && >=1.18.2 {*/
             /*PoseStack poseStack, int startX, int startY, int endX, int endY, int colorStart, int colorEnd, int z
             *//*?} else if <=1.18.2 {*/
             /*?}*/
     ) {
         //? if >=1.21.8 {
-        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
         //?} else if <=1.21.5 && >=1.21.4 {
-        /*guiGraphics.blit(RenderType::guiTextured, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
+        /*graphics.blit(RenderType::guiTextured, sprite, x, y, u, v, width, height, textureWidth, textureHeight);
         *///?} else if <=1.21.1 && >=1.20.6 {
-        /*guiGraphics.blit(sprite, x, y, u, v, width, height, textureWidth, textureHeight);
+        /*graphics.blit(sprite, x, y, u, v, width, height, textureWidth, textureHeight);
         *///?} else if <=1.20.4 && >=1.20.1 {
-        /*guiGraphics.fillGradient(startX, startY, endX, endY, z, colorStart, colorEnd);
+        /*graphics.fillGradient(startX, startY, endX, endY, z, colorStart, colorEnd);
         *///?} else if <=1.19.2 && >=1.18.2 {
         /*fillGradient(poseStack, startX, startY, endX, endY, colorStart, colorEnd, z);
         *///?}

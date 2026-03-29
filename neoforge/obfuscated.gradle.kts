@@ -4,7 +4,7 @@ plugins {
     id("com.hypherionmc.modutils.modpublisher")
 }
 
-logger.lifecycle("[Forge|Obfuscated] Game version: ${stonecutter.current.version}")
+logger.lifecycle("[NeoForge|Obfuscated] Game version: ${stonecutter.current.version}")
 
 val loader = prop("loom.platform")!!
 val minecraft: String = stonecutter.current.version
@@ -59,7 +59,7 @@ loom {
 }
 
 repositories {
-    maven("https://maven.minecraftforge.net")
+    maven("https://maven.neoforged.net/releases/")
     maven("https://jitpack.io")
     maven("https://maven.architectury.dev") {
         content { includeGroup("me.shedaniel.cloth") }
@@ -69,17 +69,11 @@ repositories {
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
     mappings(loom.officialMojangMappings())
-    "forge"("net.minecraftforge:forge:$minecraft-${common.mod.dep("forge_loader")}")
+    "neoForge"("net.neoforged:neoforge:${common.mod.dep("neoforge_loader")}")
 
-    modImplementation("me.shedaniel.cloth:cloth-config-forge:${common.mod.dep("cloth_config")}")
+    modImplementation("me.shedaniel.cloth:cloth-config-neoforge:${common.mod.dep("cloth_config")}")
 
-    if (stonecutter.current.parsed >= "1.18.2") {
-        include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
-    } else {
-        // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
-        shadowBundle("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}") { isTransitive = false }
-    }
-
+    include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
     implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
@@ -92,6 +86,7 @@ java {
     withSourcesJar()
 
     val requiredJava = when {
+        stonecutter.current.parsed >= "26.1" -> JavaVersion.VERSION_25
         stonecutter.current.parsed >= "1.20.5" -> JavaVersion.VERSION_21
         stonecutter.current.parsed >= "1.18" -> JavaVersion.VERSION_17
         stonecutter.current.parsed >= "1.17" -> JavaVersion.VERSION_16
@@ -118,17 +113,11 @@ tasks.shadowJar {
 }
 
 tasks.processResources {
-    val clothConfigId = when {
-        stonecutter.current.parsed >= "1.17" -> "cloth_config"
-        else -> "cloth-config"
-    }
-
-    properties(listOf("META-INF/mods.toml", "pack.mcmeta"),
+    properties(listOf("META-INF/neoforge.mods.toml", "META-INF/mods.toml", "pack.mcmeta"),
         "id" to mod.id,
         "name" to mod.name,
         "version" to mod.version,
-        "minecraft" to common.mod.requireProp("mod.mc_dep_forgelike"),
-        "clothconfig_id" to clothConfigId
+        "minecraft" to common.mod.requireProp("mod.mc_dep_forgelike")
     )
 }
 

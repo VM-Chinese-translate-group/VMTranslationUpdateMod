@@ -2,9 +2,11 @@ package top.vmctcn.vmtu.mod.screen;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.ChatFormatting;
-//? if >=1.20.1 {
-import net.minecraft.client.gui.GuiGraphics;
-//?} else {
+//? if >=26.1 {
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+//?} else if >=1.20.1 && <26.1 {
+/*import net.minecraft.client.gui.GuiGraphics;
+*///?} else {
 /*import com.mojang.blaze3d.vertex.PoseStack;
 *///?}
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -109,26 +111,32 @@ public class MissingModScreen extends Screen {
         this.minecraft.setScreen(parent);
     }
 
-    @Override
+    //? if <21.6 {
+    /*@Override
     public void render(
-            /*? if >=1.20.1 {*/
+            /^? if >=1.20.1 {^/
             GuiGraphics guiGraphics
-            /*?} else {*/
-            /*PoseStack poseStack
-             *//*?}*/,
+            /^?} else {^/
+            /^PoseStack poseStack
+             ^//^?}^/,
             int mouseX, int mouseY, float delta
     ) {
         //? if 1.20.1 {
-        /*this.renderBackground(guiGraphics);
-         *///?} else if <=1.19.2 {
-        /*this.renderBackground(poseStack);
-         *///?}
+        /^this.renderBackground(guiGraphics);
+         ^///?} else if <=1.19.2 {
+        /^this.renderBackground(poseStack);
+         ^///?}
 
         //? if >=1.20.1 {
         super.render(guiGraphics, mouseX, mouseY, delta);
         //?} else if <=1.19.2 {
-        /*super.render(poseStack, mouseX, mouseY, delta);
-         *///?}
+        /^super.render(poseStack, mouseX, mouseY, delta);
+         ^///?}
+    *///?} else if >=26.1 {
+    @Override
+    public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float delta) {
+        super.extractRenderState(guiGraphics, mouseX, mouseY, delta);
+    //?}
 
         MutableComponent title = Texts.literal(this.title.getString()).withStyle(ChatFormatting.BOLD);
         MutableComponent subtitle = ModContexts.getTranslatableText("screen", "missing_mod", "subtitle");
@@ -140,21 +148,36 @@ public class MissingModScreen extends Screen {
                 /*?} else {*/
                 /*poseStack
                  *//*?}*/,
-                this.font, title, this.width / 2, (HEADER_HEIGHT / 2) - (this.font.lineHeight / 2), -1);
+                this.font,
+                title,
+                this.width / 2,
+                (HEADER_HEIGHT / 2) - (this.font.lineHeight / 2),
+                -1
+        );
         ScreenUtils.drawCenteredTextWithShadow(
                 /*? if >=1.20.1 {*/
                 guiGraphics
                 /*?} else {*/
                 /*poseStack
                  *//*?}*/,
-                this.font, subtitle, this.width / 2, (HEADER_HEIGHT / 2) - (this.font.lineHeight / 2) + 15, -1);
+                this.font,
+                subtitle,
+                this.width / 2,
+                (HEADER_HEIGHT / 2) - (this.font.lineHeight / 2) + 15,
+                -1
+        );
         ScreenUtils.drawCenteredTextWithShadow(
                 /*? if >=1.20.1 {*/
                 guiGraphics
                 /*?} else {*/
                 /*poseStack
                  *//*?}*/,
-                this.font, description, this.width / 2, (HEADER_HEIGHT / 2) - (this.font.lineHeight / 2) + 30, -1);
+                this.font,
+                description,
+                this.width / 2,
+                (HEADER_HEIGHT / 2) - (this.font.lineHeight / 2) + 30,
+                -1
+        );
     }
 
     private void modDownloadButton(RequiredMods mod, Component text, int y) {
@@ -174,7 +197,7 @@ public class MissingModScreen extends Screen {
         // Quit
         this.addButtonWidget(
             Widgets.createButton(quit, (this.width / 2) - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 150, 20, buttonWidget -> {
-                Util.getPlatform().openFile(ModPlatform.getGameDir().resolve("mods").toFile());
+                Util.getPlatform().openFile(ModPlatform.getInstance().getGameDir().resolve("mods").toFile());
                 if (this.minecraft != null) {
                     minecraft.stop();
                 }
@@ -192,7 +215,7 @@ public class MissingModScreen extends Screen {
     private void quitButton(Component quit) {
         this.addButtonWidget(
             Widgets.createButton(quit, (this.width / 2) - 155, this.height - (FOOTER_HEIGHT / 2) - 10, 300, 20, buttonWidget -> {
-                Util.getPlatform().openFile(ModPlatform.getGameDir().resolve("mods").toFile());
+                Util.getPlatform().openFile(ModPlatform.getInstance().getGameDir().resolve("mods").toFile());
                 if (this.minecraft != null) {
                     minecraft.stop();
                 }
