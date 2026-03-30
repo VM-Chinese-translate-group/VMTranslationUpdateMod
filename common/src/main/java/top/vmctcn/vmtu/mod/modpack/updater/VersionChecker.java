@@ -14,6 +14,9 @@ public class VersionChecker {
         String updateCheckUrl = modpackInfo.getTranslation().getUpdateCheckUrl();
         if ((updateCheckUrl == null || updateCheckUrl.isEmpty()) && modpackInfo.getTranslation().getId() != null && VMMetadataReader.readMetadataSuccess) {
             VMMetadata.Modpacks modpacks = VMMetadataReader.getModpack(modpackInfo.getTranslation().getId());
+            if (modpacks == null) {
+                return new OnlineVersion("", "");
+            }
             return new OnlineVersion(modpacks.getTranslationVersion(), modpacks.getModpackVersion());
         } else if (updateCheckUrl != null) {
             try {

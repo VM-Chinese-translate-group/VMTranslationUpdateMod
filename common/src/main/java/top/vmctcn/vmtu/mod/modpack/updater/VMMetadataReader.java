@@ -45,11 +45,21 @@ public class VMMetadataReader {
     }
 
     public static VMMetadata.Modpacks getModpack(String modpackId) {
-        if (metadata.getModpacks() == null) {
-            ModContexts.LOGGER.warn("Error getting modpack info in vm-meta.json.");
-            return metadata.getModpacks().get("example");
+        if (metadata == null) {
+            ModContexts.LOGGER.warn("Error getting modpack info in vm-meta.json: metadata is null.");
+            return null;
         }
 
-        return metadata.getModpacks().get(modpackId);
+        if (metadata.getModpacks() == null) {
+            ModContexts.LOGGER.warn("Error getting modpack info in vm-meta.json: modpacks is null.");
+            return null;
+        }
+
+        VMMetadata.Modpacks modpack = metadata.getModpacks().get(modpackId);
+        if (modpack == null) {
+            ModContexts.LOGGER.warn("Error getting modpack info in vm-meta.json: missing modpack id '{}'.", modpackId);
+        }
+
+        return modpack;
     }
 }

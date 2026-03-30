@@ -1,32 +1,18 @@
 package top.vmctcn.vmtu.mod;
 
-import dev.architectury.injectables.annotations.ExpectPlatform;
-
 import java.nio.file.Path;
 
-public class ModPlatform {
+public interface ModPlatform {
 
-    @ExpectPlatform
-    public static String getGameVersion() {
-        // Just throw an error, the content should get replaced at runtime.
-        throw new AssertionError();
+    static ModPlatform getInstance() {
+        return ModContexts.loadService(ModPlatform.class);
     }
 
-    @ExpectPlatform
-    public static Path getGameDir() {
-        // Just throw an error, the content should get replaced at runtime.
-        throw new AssertionError();
-    }
+    String getGameVersion();
 
-    @ExpectPlatform
-    public static boolean isModLoaded(String modId) {
-        // Just throw an error, the content should get replaced at runtime.
-        throw new AssertionError();
-    }
+    Path getGameDir();
 
-    @ExpectPlatform
-    public static boolean isDevelopmentEnvironment() {
-        // Just throw an error, the content should get replaced at runtime.
-        throw new AssertionError();
-    }
+    boolean isModLoaded(String modId);
+
+    boolean isDevelopmentEnvironment();
 }

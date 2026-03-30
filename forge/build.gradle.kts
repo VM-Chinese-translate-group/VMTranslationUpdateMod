@@ -1,9 +1,10 @@
 plugins {
-    id("dev.architectury.loom")
-    id("architectury-plugin")
+    id("dev.architectury.loom-remap")
     id("com.gradleup.shadow")
     id("com.hypherionmc.modutils.modpublisher")
 }
+
+logger.lifecycle("[Forge|Obfuscated] Game version: ${stonecutter.current.version}")
 
 val loader = prop("loom.platform")!!
 val minecraft: String = stonecutter.current.version
@@ -13,11 +14,6 @@ val common: Project = requireNotNull(stonecutter.node.sibling("common")?.project
 
 version = "${mod.version}+mc$minecraft"
 base.archivesName.set("${mod.id}-$loader")
-
-architectury {
-    platformSetupLoomIde()
-    forge()
-}
 
 val commonBundle: Configuration by configurations.creating {
     isCanBeConsumed = false
@@ -32,7 +28,6 @@ val shadowBundle: Configuration by configurations.creating {
 configurations {
     compileClasspath.get().extendsFrom(commonBundle)
     runtimeClasspath.get().extendsFrom(commonBundle)
-    get("developmentForge").extendsFrom(commonBundle)
 }
 
 loom {
@@ -49,11 +44,30 @@ loom {
         runDir = "../../../run"
         vmArgs("-Dmixin.debug.export=true")
     }
+
+    runs {
+        getByName("client") {
+            // fix runs not set common sources
+            sourceSets {
+                main {
+                    java {
+                        srcDir(common.sourceSets["main"].java)
+                    }
+                    resources {
+                        srcDir(common.sourceSets["main"].resources)
+                    }
+                }
+            }
+        }
+    }
 }
 
 repositories {
     maven("https://maven.minecraftforge.net")
     maven("https://jitpack.io")
+    maven("https://maven.architectury.dev") {
+        content { includeGroup("me.shedaniel.cloth") }
+    }
 }
 
 dependencies {
@@ -71,9 +85,11 @@ dependencies {
     }
 
     implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
+    implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
+    annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 
     commonBundle(project(common.path, "namedElements")) { isTransitive = false }
-    shadowBundle(project(common.path, "transformProductionForge")) { isTransitive = false }
+    shadowBundle(project(common.path)) { isTransitive = false }
 }
 
 java {

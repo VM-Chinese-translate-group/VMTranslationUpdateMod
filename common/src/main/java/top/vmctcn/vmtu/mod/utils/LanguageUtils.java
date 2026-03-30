@@ -77,7 +77,7 @@ public class LanguageUtils {
                     language = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
                 }
 
-                GameOptionsWriter writer = new GameOptionsWriter(ModPlatform.getGameDir().resolve("options.txt"));
+                GameOptionsWriter writer = new GameOptionsWriter(ModPlatform.getInstance().getGameDir().resolve("options.txt"));
                 writer.switchLanguage(LanguageUtils.getFixedLanguage(language));
             } catch (Exception e) {
                 ModContexts.LOGGER.warn("Failed to switch language: ", e);

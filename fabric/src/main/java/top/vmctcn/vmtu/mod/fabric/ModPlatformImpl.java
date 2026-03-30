@@ -1,12 +1,16 @@
 package top.vmctcn.vmtu.mod.fabric;
 
+import com.google.auto.service.AutoService;
 import net.fabricmc.loader.api.FabricLoader;
 import top.vmctcn.vmtu.core.util.Reflection;
+import top.vmctcn.vmtu.mod.ModPlatform;
 
 import java.nio.file.Path;
 
-public class ModPlatformImpl {
-    public static String getGameVersion() {
+@AutoService(ModPlatform.class)
+public class ModPlatformImpl implements ModPlatform {
+    @Override
+    public String getGameVersion() {
         try {
             // Fabric
             return (String) Reflection.clazz("net.fabricmc.loader.impl.FabricLoaderImpl")
@@ -28,15 +32,18 @@ public class ModPlatformImpl {
         return null;
     }
 
-    public static Path getGameDir() {
+    @Override
+    public Path getGameDir() {
         return FabricLoader.getInstance().getGameDir();
     }
 
-    public static boolean isModLoaded(String modId) {
+    @Override
+    public boolean isModLoaded(String modId) {
         return FabricLoader.getInstance().isModLoaded(modId);
     }
 
-    public static boolean isDevelopmentEnvironment() {
+    @Override
+    public boolean isDevelopmentEnvironment() {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
 }

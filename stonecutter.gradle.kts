@@ -1,7 +1,7 @@
 plugins {
     id("dev.kikugie.stonecutter")
-    id("dev.architectury.loom") version "1.13-SNAPSHOT" apply false
-    id("architectury-plugin") version "3.4-SNAPSHOT" apply false
+    id("dev.architectury.loom-remap") version "1.14-SNAPSHOT" apply false
+    id("dev.architectury.loom-no-remap") version "1.14-SNAPSHOT" apply false
     id("com.gradleup.shadow") version "9.3.1" apply false
     id("com.hypherionmc.modutils.modpublisher") version "2.+" apply false
 }
@@ -23,5 +23,11 @@ stonecutter parameters {
     replacements.string(current.parsed >= "1.21.11") {
         //replace("ResourceLocation", "Identifier")
         replace("net.minecraft.Util", "net.minecraft.util.Util")
+    }
+
+    replacements.string(current.parsed >= "26.1") {
+        if (branch.id == "fabric") {
+            replace("ClientCommandManager", "ClientCommands")
+        }
     }
 }

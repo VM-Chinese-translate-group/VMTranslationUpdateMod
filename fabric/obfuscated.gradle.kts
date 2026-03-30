@@ -1,10 +1,10 @@
 plugins {
-    id("dev.architectury.loom-no-remap")
+    id("dev.architectury.loom-remap")
     id("com.gradleup.shadow")
     id("com.hypherionmc.modutils.modpublisher")
 }
 
-logger.lifecycle("[Fabric|Unobfuscated] Game version: ${stonecutter.current.version}")
+logger.lifecycle("[Fabric|Obfuscated] Game version: ${stonecutter.current.version}")
 
 val loader = prop("loom.platform")!!
 val minecraft: String = stonecutter.current.version
@@ -31,6 +31,8 @@ configurations {
 }
 
 loom {
+    silentMojangMappingsLicense()
+
     decompilers {
         get("vineflower").apply { // Adds names to lambdas - useful for mixins
             options.put("mark-corresponding-synthetics", "1")
@@ -66,14 +68,15 @@ repositories {
 
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
-    implementation("net.fabricmc:fabric-loader:${common.mod.dep("fabric_loader")}")
-    implementation("net.fabricmc.fabric-api:fabric-api:${common.mod.dep("fabric_api")}")
+    mappings(loom.officialMojangMappings())
+    modImplementation("net.fabricmc:fabric-loader:${common.mod.dep("fabric_loader")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${common.mod.dep("fabric_api")}")
 
-    implementation("me.shedaniel.cloth:cloth-config-fabric:${common.mod.dep("cloth_config")}") {
+    modImplementation("me.shedaniel.cloth:cloth-config-fabric:${common.mod.dep("cloth_config")}") {
         exclude("net.fabricmc.fabric-api")
     }
 
-    implementation("com.terraformersmc:modmenu:${common.mod.dep("modmenu")}") {
+    modImplementation("com.terraformersmc:modmenu:${common.mod.dep("modmenu")}") {
         exclude("net.fabricmc.fabric-api")
     }
 
@@ -82,7 +85,7 @@ dependencies {
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 
-    commonBundle(project(common.path)) { isTransitive = false }
+    commonBundle(project(common.path, "namedElements")) { isTransitive = false }
     shadowBundle(project(common.path)) { isTransitive = false }
 }
 
@@ -101,17 +104,18 @@ java {
     sourceCompatibility = requiredJava
 }
 
-tasks.jar {
-    archiveClassifier = "raw"
-}
-
 tasks.shadowJar {
-    dependsOn(tasks.jar)
-    from(zipTree(tasks.jar.get().archiveFile))
     configurations = listOf(shadowBundle)
-    archiveClassifier = null
+    archiveClassifier = "dev-shadow"
 
     isZip64 = true
+}
+
+tasks.remapJar {
+    injectAccessWidener = true
+    inputFile = tasks.shadowJar.get().archiveFile
+    archiveClassifier = null
+    dependsOn(tasks.shadowJar)
 }
 
 tasks.processResources {
@@ -130,7 +134,7 @@ tasks.processResources {
 }
 
 tasks.register<Copy>("buildAndCollect") {
-    from(tasks.shadowJar.get().archiveFile)
+    from(tasks.remapJar.get().archiveFile, tasks.remapSourcesJar.get().archiveFile)
     into(rootProject.layout.buildDirectory.file("libs/${mod.version}/$loader"))
     dependsOn(tasks.build)
 }
@@ -150,8 +154,8 @@ publisher {
     gameVersions = common.mod.requireProp("mod.mc_targets").split(',')
     loaders = listOf(loader)
     curseEnvironment = common.mod.publish("mod_side")
-    artifact = tasks.shadowJar.get()
-//    addAdditionalFile(tasks.remapSourcesJar.get())
+    artifact = tasks.remapJar.get()
+    addAdditionalFile(tasks.remapSourcesJar.get())
     modrinthDepends {
         required("fabric-api")
         required("cloth-config")

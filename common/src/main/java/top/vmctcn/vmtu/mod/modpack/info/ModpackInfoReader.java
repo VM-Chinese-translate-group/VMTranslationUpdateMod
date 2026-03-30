@@ -18,15 +18,19 @@ import java.util.Objects;
 public class ModpackInfoReader {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static ModpackInfo modpackInfo;
-    private static final Path gamePath = ModPlatform.getGameDir();
+    private static final Path gamePath = ModPlatform.getInstance().getGameDir();
     private static final Path modpackInfoPath = gamePath.resolve("modpackinfo.json");
 
+    private ModpackInfoReader() {
+    }
+
     static {
+        boolean generateExampleModpackInfo = ModConfigHelper.getConfig().misc.generateExampleModpackInfo;
         if (Files.exists(modpackInfoPath)) {
             try (Reader reader = Files.newBufferedReader(modpackInfoPath, StandardCharsets.UTF_8)) {
                 modpackInfo = GSON.fromJson(reader, ModpackInfo.class);
                 if (modpackInfo == null) {
-                    if (ModConfigHelper.getConfig().misc.generateExampleModpackInfo == true) {
+                    if (generateExampleModpackInfo) {
                         ModContexts.LOGGER.warn("modpackinfo.json is empty or invalid, generating default file.");
                         generateDefaultModpackInfo();
                     } else {
@@ -34,7 +38,7 @@ public class ModpackInfoReader {
                     }
                 }
             } catch (Exception e) {
-                if (ModConfigHelper.getConfig().misc.generateExampleModpackInfo == true) {
+                if (generateExampleModpackInfo) {
                     ModContexts.LOGGER.warn("Error reading modpackinfo.json, generating default file.", e);
                     generateDefaultModpackInfo();
                 } else {
@@ -42,7 +46,7 @@ public class ModpackInfoReader {
                 }
             }
         } else {
-            if (ModConfigHelper.getConfig().misc.generateExampleModpackInfo == true) {
+            if (generateExampleModpackInfo) {
                 ModContexts.LOGGER.warn("modpackinfo.json does not exist, generating default file.");
                 generateDefaultModpackInfo();
             } else {
