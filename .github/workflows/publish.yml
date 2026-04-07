@@ -27,7 +27,7 @@ jobs:
       - name: build
         run: ./gradlew buildAndCollect
 
-      - uses: gradle/actions/wrapper-validation@v4
+      - uses: gradle/actions/wrapper-validation@v6
       - run: |
           chmod +x gradlew
           ./gradlew publishMod --stacktrace -Porg.gradle.parallel.threads=4
