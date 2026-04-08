@@ -37,38 +37,10 @@ public class ModEvents {
         String localModpackVersion = modpack.getVersion();
 
         if (ModConfigs.misc.devMode) {
-            Messages.displayClientMessage(player, Texts.literal("==================== VMTU Dev Mode ===================="));
-            Messages.displayClientMessage(player, Texts.literal("Modpack Name: " + modpack.getName()));
-            Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
-            Text translationUrlMessage = Texts.literal("Modpack Translation URL:")
-                    .append(Texts.literal(translation.getUrl())
-                            .setStyle(new Style()
-                                    .setClickEvent(GameEvents.clickOpenUrl(translation.getUrl()))
-                                    .setColor(Formatting.AQUA)
-                            )
-                    );
-            Messages.displayClientMessage(player, translationUrlMessage);
-            if (translation.getUpdateCheckUrl() != null) {
-                Text updateCheckUrlMessage = Texts.literal("Modpack Translation Update Check URL:")
-                        .append(Texts.literal(translation.getUpdateCheckUrl())
-                                .setStyle(new Style()
-                                        .setClickEvent(GameEvents.clickOpenUrl(translation.getUpdateCheckUrl()))
-                                        .setColor(Formatting.AQUA)
-                                )
-                        );
-                Messages.displayClientMessage(player, updateCheckUrlMessage);
-            }
-            Messages.displayClientMessage(player, Texts.literal("Modpack Translation Language: " + translation.getLanguage()));
-            Messages.displayClientMessage(player, Texts.literal("Modpack Translation Version: " + translation.getVersion()));
-            if (translation.getResourcePackName() != null) {
-                Messages.displayClientMessage(player, Texts.literal("Modpack Translation Resource Pack Name: " + translation.getResourcePackName()));
-            }
-            Messages.displayClientMessage(player, Texts.literal("Online Translation Version: " + onlineVersion.translationVersion()));
-            Messages.displayClientMessage(player, Texts.literal("Online Modpack Version: " + onlineVersion.modpackVersion()));
-            Messages.displayClientMessage(player, Texts.literal("======================================================="));
+            showDevelopmentInfo(player, modpack, translation, onlineVersion);
         }
 
-        if (!translation.getLanguage().equals(language) && LanguageUtils.isChineseLanguage()) {
+        if (translation.getLanguage() != null && !translation.getLanguage().equals(language) && LanguageUtils.isChineseLanguage()) {
             Messages.displayClientMessage(player, Texts.translatable(ModContexts.getTranslationKey("message", "supported_language"), translation.getLanguage()));
         }
 
@@ -128,5 +100,33 @@ public class ModEvents {
         }
 
         firstTitleScreenShown = true;
+    }
+
+    @SuppressWarnings("deprecation")
+    private static void showDevelopmentInfo(PlayerEntity player, ModpackInfo.Modpack modpack, ModpackInfo.Translation translation, OnlineVersion onlineVersion) {
+        Messages.displayClientMessage(player, Texts.literal("=================== VMTU Dev Mode ===================="));
+        Messages.displayClientMessage(player, Texts.literal("Modpack Name: " + modpack.getName()));
+        Messages.displayClientMessage(player, Texts.literal("Modpack Version: " + modpack.getVersion()));
+        Messages.displayClientMessage(player, urlText("Modpack Translation URL:", translation.getUrl()));
+        if (translation.getUpdateCheckUrl() != null) {
+            Messages.displayClientMessage(player, urlText("Modpack Translation Update Check URL: ", translation.getUpdateCheckUrl()));
+        }
+        Messages.displayClientMessage(player, Texts.literal("Modpack Translation Language: " + translation.getLanguage()));
+        Messages.displayClientMessage(player, Texts.literal("Modpack Translation Version: " + translation.getVersion()));
+        if (translation.getResourcePackName() != null) {
+            Messages.displayClientMessage(player, Texts.literal("Translation Resource Pack Name: " + translation.getResourcePackName()));
+        }
+        Messages.displayClientMessage(player, Texts.literal("Online Translation Version: " + onlineVersion.translationVersion()));
+        Messages.displayClientMessage(player, Texts.literal("Online Modpack Version: " + onlineVersion.modpackVersion()));
+        Messages.displayClientMessage(player, Texts.literal("====================================================="));
+    }
+
+    private static Text urlText(String label, String url) {
+        return Texts.literal(label)
+                .append(Texts.literal(url)
+                        .setStyle(new Style()
+                                .setClickEvent(GameEvents.clickOpenUrl(url))
+                                .setColor(Formatting.AQUA)
+                        ));
     }
 }

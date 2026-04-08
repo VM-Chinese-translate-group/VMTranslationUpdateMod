@@ -19,53 +19,79 @@ public class VMTranslationUpdate {
     public static void init() {
         ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
         ModpackMetadata modpackMetadata = ModpackMetadataReader.getMetadata();
-        if (modpackMetadata != null && !ModpackInfoReader.isExampleModpackInfo()) {
-            if (!Objects.equals(modpack.getVersion(), modpackMetadata.getModpackVersion())) {
-                ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
-            }
-        }
 
+        syncModpackVersion(modpack, modpackMetadata);
         LanguageUtils.autoSwitchLanguage();
 
         if (ModConfigs.misc.devMode) {
-            ModpackInfo.Translation translation = modpack.getTranslation();
-            VMMetadata.Modpacks metadata = VMMetadataReader.getModpack(translation.getId());
-
-            ModContexts.LOGGER.info("=================== VMTU Dev Mode ====================");
-            ModContexts.LOGGER.info("Modpack Name: {}", modpack.getName());
-            ModContexts.LOGGER.info("Modpack Version: {}", modpack.getVersion());
-            ModContexts.LOGGER.info("Modpack Translation URL: {}", translation.getUrl());
-            if (translation.getUpdateCheckUrl() != null) {
-                ModContexts.LOGGER.info("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
-            }
-            ModContexts.LOGGER.info("Modpack Translation Language: {}", translation.getLanguage());
-            ModContexts.LOGGER.info("Modpack Translation Version: {}", translation.getVersion());
-            if (translation.getResourcePackName() != null) {
-                ModContexts.LOGGER.info("Translation Resource Pack Name: {}", translation.getResourcePackName());
-            }
-            ModContexts.LOGGER.info("Meta Url: {}", VMMetadataReader.getMetaUrl());
-            ModContexts.LOGGER.info("Meta Version: {}", VMMetadataReader.getMetadata().getMetaVersion());
-            ModContexts.LOGGER.info("Modpack Online Version: {}", metadata.getModpackVersion());
-            ModContexts.LOGGER.info("Modpack Online Translation Version: {}", metadata.getTranslationVersion());
-            if (modpackMetadata != null) {
-                ModContexts.LOGGER.info("Modpack Metadata Type: {}", modpackMetadata.getMetadataType());
-                ModContexts.LOGGER.info("Modpack Metadata File Name: {}", modpackMetadata.getMetadataType().getMetadataFileName());
-                ModContexts.LOGGER.info("Modpack Metadata Version: {}", modpackMetadata.getModpackVersion());
-                ModContexts.LOGGER.info("Modpack Name in Metadata: {}", modpackMetadata.getModpackName());
-            } else {
-                ModContexts.LOGGER.info("Modpack Metadata: null");
-            }
-            ModContexts.LOGGER.info("=====================================================");
+            logDevInfo(modpack, modpackMetadata);
         }
     }
 
     public static void autoDownloadAndLoadPack() {
-        boolean autoDownloadPack = ModConfigs.resourcePack.autoDownloadVMTranslationPack;
-        boolean autoLoadExtraPack = ModConfigs.resourcePack.autoLoadExtraTranslationPack;
+        ModConfigs.ResourcePack resourcePackConfig = ModConfigs.resourcePack;
         String gameVersion = ModPlatform.getGameVersion();
-        String extraPackName = ModConfigs.resourcePack.extraPackName;
-        ResourcePackIndex resourcePackIndex = ModConfigs.resourcePack.resourcePackIndex;
-        int extraPackCustomIndex = ModConfigs.resourcePack.extraPackCustomIndex;
-        VMTUCore.init(ModPlatform.getGameDir(), gameVersion, extraPackName, resourcePackIndex, extraPackCustomIndex, autoDownloadPack, autoLoadExtraPack);
+        String extraPackName = resourcePackConfig.extraPackName;
+        ResourcePackIndex resourcePackIndex = resourcePackConfig.resourcePackIndex;
+        int extraPackCustomIndex = resourcePackConfig.extraPackCustomIndex;
+        boolean autoDownloadPack = resourcePackConfig.autoDownloadVMTranslationPack;
+        boolean autoLoadExtraPack = resourcePackConfig.autoLoadExtraTranslationPack;
+
+        VMTUCore.init(
+                ModPlatform.getGameDir(),
+                gameVersion,
+                extraPackName,
+                resourcePackIndex,
+                extraPackCustomIndex,
+                autoDownloadPack,
+                autoLoadExtraPack
+        );
+    }
+
+    private static void syncModpackVersion(ModpackInfo.Modpack modpack, ModpackMetadata modpackMetadata) {
+        if (modpackMetadata == null || ModpackInfoReader.isExampleModpackInfo()) {
+            return;
+        }
+
+        if (!Objects.equals(modpack.getVersion(), modpackMetadata.getModpackVersion())) {
+            ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private static void logDevInfo(ModpackInfo.Modpack modpack, ModpackMetadata modpackMetadata) {
+        ModpackInfo.Translation translation = modpack.getTranslation();
+        VMMetadata metadata = VMMetadataReader.getMetadata();
+        VMMetadata.Modpacks vmMetadata = metadata != null ? VMMetadataReader.getModpack(translation.getId()) : null;
+
+        ModContexts.LOGGER.info("=================== VMTU Dev Mode ====================");
+        ModContexts.LOGGER.info("Modpack Name: {}", modpack.getName());
+        ModContexts.LOGGER.info("Modpack Version: {}", modpack.getVersion());
+        ModContexts.LOGGER.info("Modpack Translation URL: {}", translation.getUrl());
+        logIfPresent("Modpack Translation Update Check URL: {}", translation.getUpdateCheckUrl());
+        ModContexts.LOGGER.info("Modpack Translation Language: {}", translation.getLanguage());
+        ModContexts.LOGGER.info("Modpack Translation Version: {}", translation.getVersion());
+        logIfPresent("Translation Resource Pack Name: {}", translation.getResourcePackName());
+        ModContexts.LOGGER.info("Meta Url: {}", VMMetadataReader.getMetaUrl());
+        ModContexts.LOGGER.info("Meta Version: {}", metadata != null ? metadata.getMetaVersion() : null);
+        ModContexts.LOGGER.info("Modpack Online Version: {}", vmMetadata != null ? vmMetadata.getModpackVersion() : null);
+        ModContexts.LOGGER.info("Modpack Online Translation Version: {}", vmMetadata != null ? vmMetadata.getTranslationVersion() : null);
+
+        if (modpackMetadata == null) {
+            ModContexts.LOGGER.info("Modpack Metadata: null");
+        } else {
+            ModContexts.LOGGER.info("Modpack Metadata Type: {}", modpackMetadata.getMetadataType());
+            ModContexts.LOGGER.info("Modpack Metadata File Name: {}", modpackMetadata.getMetadataType().getMetadataFileName());
+            ModContexts.LOGGER.info("Modpack Metadata Version: {}", modpackMetadata.getModpackVersion());
+            ModContexts.LOGGER.info("Modpack Name in Metadata: {}", modpackMetadata.getModpackName());
+        }
+
+        ModContexts.LOGGER.info("=====================================================");
+    }
+
+    private static void logIfPresent(String message, Object value) {
+        if (value != null) {
+            ModContexts.LOGGER.info(message, value);
+        }
     }
 }
