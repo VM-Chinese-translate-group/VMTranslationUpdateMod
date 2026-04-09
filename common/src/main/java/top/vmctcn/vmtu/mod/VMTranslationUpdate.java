@@ -26,7 +26,7 @@ public class VMTranslationUpdate {
         syncModpackVersion(modpack, modpackMetadata);
         LanguageUtils.autoSwitchLanguage();
 
-        if (shouldLogDevInfo(config)) {
+        if (config.misc.devMode || ModPlatform.getInstance().isDevelopmentEnvironment()) {
             logDevInfo(modpack, modpackMetadata);
         }
     }
@@ -59,10 +59,6 @@ public class VMTranslationUpdate {
         if (!Objects.equals(modpack.getVersion(), modpackMetadata.getModpackVersion())) {
             ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
         }
-    }
-
-    private static boolean shouldLogDevInfo(ModConfigs config) {
-        return config.misc.devMode || ModPlatform.getInstance().isDevelopmentEnvironment();
     }
 
     @SuppressWarnings("deprecation")

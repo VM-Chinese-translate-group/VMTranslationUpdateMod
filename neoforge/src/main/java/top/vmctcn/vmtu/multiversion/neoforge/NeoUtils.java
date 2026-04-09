@@ -21,7 +21,7 @@ import java.util.function.Function;
 public class NeoUtils {
     public static void registerConfigScreen(ModContainer modContainer, Function<Screen, Screen> screenFunction) {
         //? if >=1.20.6 {
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, (client, screen) -> screenFunction.apply(screen));
+        modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, screen) -> screenFunction.apply(screen));
         //?} else {
         /*modContainer.registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((client, screen) -> screenFunction.apply(screen)));
         *///?}
@@ -59,9 +59,9 @@ public class NeoUtils {
 
     public static boolean isDevelopmentEnvironment() {
         //? if >=1.21.10 {
-        return FMLLoader.getCurrent().isProduction();
+        return !FMLLoader.getCurrent().isProduction();
         //?} else {
-        /*return FMLLoader.isProduction();
+        /*return !FMLLoader.isProduction();
          *///?}
     }
 }

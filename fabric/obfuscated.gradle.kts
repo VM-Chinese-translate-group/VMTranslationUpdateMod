@@ -127,7 +127,7 @@ tasks.processResources {
     properties(listOf("fabric.mod.json"),
         "id" to mod.id,
         "name" to mod.name,
-        "version" to mod.version,
+        "version" to project.version,
         "minecraft" to common.mod.requireProp("mod.mc_dep_fabric"),
         "clothconfig_id" to clothConfigId
     )

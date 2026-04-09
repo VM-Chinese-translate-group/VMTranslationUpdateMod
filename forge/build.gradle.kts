@@ -130,7 +130,7 @@ tasks.processResources {
     properties(listOf("META-INF/mods.toml", "pack.mcmeta"),
         "id" to mod.id,
         "name" to mod.name,
-        "version" to mod.version,
+        "version" to project.version,
         "minecraft" to common.mod.requireProp("mod.mc_dep_forgelike"),
         "clothconfig_id" to clothConfigId
     )

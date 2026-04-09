@@ -1,7 +1,9 @@
 package top.vmctcn.vmtu.mod.modpack.info;
 
 public class DefaultModpackInfo extends ModpackInfo {
-    DefaultModpack modpack = new DefaultModpack();
+    public DefaultModpackInfo() {
+        this.modpack = new DefaultModpack();
+    }
 
     @Override
     public ModpackInfo.Modpack getModpack() {
@@ -9,9 +11,11 @@ public class DefaultModpackInfo extends ModpackInfo {
     }
 
     public static class DefaultModpack extends ModpackInfo.Modpack {
-        String name = "ExampleModpack";
-        String version = "0.1.0";
-        DefaultTranslation translation = new DefaultTranslation();
+        public DefaultModpack() {
+            this.name = "ExampleModpack";
+            this.version = "0.1.0";
+            this.translation = new DefaultTranslation();
+        }
 
         @Override
         public String getName() {
@@ -30,10 +34,12 @@ public class DefaultModpackInfo extends ModpackInfo {
     }
 
     public static class DefaultTranslation extends ModpackInfo.Translation {
-        String id = "example";
-        String url = "https://vmct-cn.top/modpacks/example/";
-        String language = "zh_cn";
-        String version = "1.0.0";
+        public DefaultTranslation() {
+            this.id = "example";
+            this.url = "https://vmct-cn.top/modpacks/example/";
+            this.language = "zh_cn";
+            this.version = "1.0.0";
+        }
 
         @Override
         public String getId() {

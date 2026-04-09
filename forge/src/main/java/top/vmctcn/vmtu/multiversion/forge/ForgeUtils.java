@@ -53,6 +53,6 @@ public class ForgeUtils {
     }
 
     public static boolean isDevelopmentEnvironment() {
-        return FMLLoader.isProduction();
+        return !FMLLoader.isProduction();
     }
 }

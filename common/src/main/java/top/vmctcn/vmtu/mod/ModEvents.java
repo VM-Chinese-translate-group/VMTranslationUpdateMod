@@ -44,7 +44,7 @@ public class ModEvents {
         String localTranslationVersion = translation.getVersion();
         String localModpackVersion = modpack.getVersion();
 
-        if (shouldShowDevelopmentInfo(config)) {
+        if (config.misc.devMode || ModPlatform.getInstance().isDevelopmentEnvironment()) {
             showDevelopmentInfo(player, modpack, translation, onlineVersion);
         }
 
@@ -107,10 +107,6 @@ public class ModEvents {
         }
 
         firstTitleScreenShown = true;
-    }
-
-    private static boolean shouldShowDevelopmentInfo(ModConfigs config) {
-        return config.misc.devMode || ModPlatform.getInstance().isDevelopmentEnvironment();
     }
 
     @SuppressWarnings("deprecation")
