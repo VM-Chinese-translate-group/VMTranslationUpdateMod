@@ -7,7 +7,7 @@ public class DefaultModpackInfo extends ModpackInfo {
 
     @Override
     public ModpackInfo.Modpack getModpack() {
-        return this.modpack;
+        return super.getModpack();
     }
 
     public static class DefaultModpack extends ModpackInfo.Modpack {
@@ -19,17 +19,17 @@ public class DefaultModpackInfo extends ModpackInfo {
 
         @Override
         public String getName() {
-            return this.name;
+            return super.getName();
         }
 
         @Override
         public String getVersion() {
-            return this.version;
+            return super.getVersion();
         }
 
         @Override
         public ModpackInfo.Translation getTranslation() {
-            return this.translation;
+            return super.getTranslation();
         }
     }
 
@@ -43,22 +43,22 @@ public class DefaultModpackInfo extends ModpackInfo {
 
         @Override
         public String getId() {
-            return this.id;
+            return super.getId();
         }
 
         @Override
         public String getUrl() {
-            return this.url;
+            return super.getUrl();
         }
 
         @Override
         public String getLanguage() {
-            return this.language;
+            return super.getLanguage();
         }
 
         @Override
         public String getVersion() {
-            return this.version;
+            return super.getVersion();
         }
     }
 }
