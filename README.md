@@ -1,6 +1,6 @@
 <div align="center"> 
    <img height="100px" width="100px" alt="logo" src="./common/src/main/resources/assets/vmtranslationupdate/icon.png"/> 
-   <h1>VMTranslationUpdateMod</h1>
+   <h1>VM Translation Update</h1>
 
 <a href="https://modrinth.com/project/vmupdate/">
 <img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg">
@@ -17,9 +17,16 @@
 <img alt="fabric" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg"> (≥1.16.5)
 </div>
 
-VM汉化更新是一个为 Minecraft 整合包汉化补丁设计的自动化汉化更新管理工具，涵盖了绝大部分汉化相关的使用场景。模组相关功能请查询[VMTU 文档](https://vmct-cn.top/vmtu/)。
+VM 汉化更新是一个为 Minecraft 整合包汉化补丁设计的自动化汉化管理工具，涵盖了绝大部分汉化相关的使用场景。
+
+普通玩家可以通过它获得额外的模组资源包汉化，VM汉化组内部也可以通过它为玩家提供更好的汉化体验。
+
+模组相关功能请查询 [VMTU 文档](https://vmct-cn.top/vmtu/)。
 
 ## 许可证
+
 本模组使用MIT许可证
 
-[VMTUCore](https://github.com/VM-Chinese-translate-group/VMTUCore)基于I18nUpdateMod3修改，使用AGPLv3许可证
+其中，自动下载并激活资源包功能（
+[VMTUCore](https://github.com/VM-Chinese-translate-group/VMTUCore)）的代码源于 [i18nUpdateMod3](https://github.com/CFPAOrg/I18nUpdateMod3) 模组代码修改，
+按照上游协议规定使用 AGPL 协议。
