@@ -30,7 +30,7 @@ jobs:
 
       - name: capture build artifacts
         if: ${{ matrix.java == '25' }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: VMTUArtifacts.build${{ github.run_number }}
           path: build/libs/
