@@ -30,12 +30,9 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'zulu'
 
-      - name: make gradle wrapper executable
-        run: chmod +x ./gradlew
-
       - run: |
           chmod +x gradlew
-          ./gradlew publishMod --stacktrace -Porg.gradle.parallel.threads=8
+          ./gradlew build publishMod --stacktrace -Porg.gradle.parallel.threads=8
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
