@@ -2,7 +2,7 @@ package top.vmctcn.vmtu.mod.utils;
 
 import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
-import top.vmctcn.vmtu.core.util.ArrayUtil;
+import top.vmctcn.vmtu.libraries.common.ArrayUtil;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 
