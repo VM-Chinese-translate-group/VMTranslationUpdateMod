@@ -1,11 +1,13 @@
 package top.vmctcn.vmtu.mod;
 
+import top.vmctcn.vmtu.libraries.common.CommonContexts;
+
 import java.nio.file.Path;
 
 public interface ModPlatform {
 
     static ModPlatform getInstance() {
-        return ModContexts.loadService(ModPlatform.class);
+        return CommonContexts.loadService(ModPlatform.class);
     }
 
     String getGameVersion();

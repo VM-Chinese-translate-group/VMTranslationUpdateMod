@@ -11,6 +11,14 @@ pluginManagement {
     }
 }
 
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        maven("https://jitpack.io")
+//        maven("https://maven.architectury.dev")
+//    }
+//}
+
 val currentStonecutterVersion = file("versions/currentVersion").readText().trim()
 val gradleJava = JavaVersion.current()
 val requiresJava25 = currentStonecutterVersion >= "26.1"

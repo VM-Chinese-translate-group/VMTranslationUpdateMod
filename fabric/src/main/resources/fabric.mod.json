@@ -9,18 +9,18 @@
   ],
   "contact": {
     "homepage": "https://vmct-cn.top/vmtu",
-    "sources": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod",
-    "issues": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod/issues"
+    "sources": "https://github.com/VM-Chinese-translate-group/VMTranslationUtilityMod",
+    "issues": "https://github.com/VM-Chinese-translate-group/VMTranslationUtilityMod/issues"
   },
   "license": "MIT",
   "icon": "assets/${id}/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
-      "top.vmctcn.vmtu.mod.fabric.VMTranslationUpdateClientFabric"
+      "top.vmctcn.vmtu.mod.fabric.VMTranslationUtilityModClientFabric"
     ],
     "preLaunch": [
-      "top.vmctcn.vmtu.mod.fabric.VMTranslationUpdatePreLaunch"
+      "top.vmctcn.vmtu.mod.fabric.VMTranslationUtilityModPreLaunch"
     ],
     "modmenu": [
       "top.vmctcn.vmtu.mod.fabric.ModMenuImpl"

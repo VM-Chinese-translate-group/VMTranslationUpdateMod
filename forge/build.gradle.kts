@@ -78,13 +78,19 @@ dependencies {
     modImplementation("me.shedaniel.cloth:cloth-config-forge:${common.mod.dep("cloth_config")}")
 
     if (stonecutter.current.parsed >= "1.18.2") {
-        include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
+        include("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
+        include("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
+        include("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
     } else {
         // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
-        shadowBundle("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}") { isTransitive = false }
+        shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}") { isTransitive = false }
+        shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}") { isTransitive = false }
+        shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}") { isTransitive = false }
     }
 
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 

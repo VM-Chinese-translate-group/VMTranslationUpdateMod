@@ -1,7 +1,5 @@
 package top.vmctcn.vmtu.mod;
 
-import java.util.Iterator;
-import java.util.ServiceLoader;
 import net.minecraft.network.chat.MutableComponent;
 import org.jetbrains.annotations.NotNull;
 import top.vmctcn.vmtu.multiversion.Texts;
@@ -36,15 +34,5 @@ public class ModContexts {
 
     public static @NotNull MutableComponent getTranslatableText(String type, String... path) {
         return Texts.translatable(getTranslationKey(type, path));
-    }
-
-    public static <T> T loadService(final Class<T> clazz) {
-        ServiceLoader<T> serviceLoader = ServiceLoader.load(clazz);
-        Iterator<T> iterator = serviceLoader.iterator();
-        if (iterator.hasNext()) {
-            return iterator.next();
-        }
-        Package servicePackage = clazz.getPackage();
-        throw new AssertionError("No impl found for " + (servicePackage != null ? servicePackage.getName() : clazz.getName()));
     }
 }

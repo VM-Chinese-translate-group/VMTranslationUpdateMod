@@ -3,7 +3,8 @@ package top.vmctcn.vmtu.mod.utils;
 //? if 1.16.5 {
 /*import com.google.common.collect.Sets;
 *///?}
-import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
+import top.vmctcn.vmtu.libraries.modpack.info.api.ModpackInfoHelper;
+import top.vmctcn.vmtu.libraries.resourcepack.pack.GameOptionsWriter;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
 
@@ -13,7 +14,6 @@ import java.util.Objects;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 
 public class LanguageUtils {
     private static final String DEFAULT_LANGUAGE = "en_us";
@@ -67,14 +67,14 @@ public class LanguageUtils {
     }
 
     public static void autoSwitchLanguage() {
-        if (ModConfigHelper.getConfig().misc.autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
+        if (ModConfigHelper.getConfig().misc.autoSwitchLanguage && ModpackInfoHelper.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
                 String language;
 
-                if (ModpackInfoReader.isExampleModpackInfo()) {
+                if (ModpackInfoHelper.isExampleModpackInfo()) {
                     language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
                 } else {
-                    language = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
+                    language = ModpackInfoHelper.getModpackInfo().getModpack().getTranslation().getLanguage();
                 }
 
                 GameOptionsWriter writer = new GameOptionsWriter(ModPlatform.getInstance().getGameDir().resolve("options.txt"));

@@ -20,20 +20,20 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModEvents;
-import top.vmctcn.vmtu.mod.VMTranslationUpdate;
+import top.vmctcn.vmtu.mod.VMTranslationUtilityMod;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.multiversion.forge.ForgeUtils;
 
 @Mod(ModContexts.MOD_ID)
-public class VMTranslationUpdateClientForge {
-    public VMTranslationUpdateClientForge() {
+public class VMTranslationUtilityModClientForge {
+    public VMTranslationUtilityModClientForge() {
         @SuppressWarnings("removal")
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ForgeUtils.getClientModIgnoredServerOnly(ModContexts.MOD_ID);
 
         if (FMLLoader.getDist().isClient()) {
-            VMTranslationUpdate.init();
+            VMTranslationUtilityMod.init();
 
             ForgeUtils.registerConfigScreen(ModContexts.MOD_ID, ModConfigHelper::setConfigScreen);
 
@@ -68,7 +68,7 @@ public class VMTranslationUpdateClientForge {
                 );
             });
 
-            modEventBus.<FMLConstructModEvent>addListener(event -> VMTranslationUpdate.autoDownloadAndLoadPack());
+            modEventBus.<FMLConstructModEvent>addListener(event -> VMTranslationUtilityMod.autoDownloadAndLoadPack());
         }
     }
 }

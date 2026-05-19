@@ -3,7 +3,7 @@ package top.vmctcn.vmtu.mod.config;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import top.vmctcn.vmtu.core.pack.ResourcePackIndex;
+import top.vmctcn.vmtu.libraries.resourcepack.pack.ResourcePackIndex;
 import top.vmctcn.vmtu.mod.ModContexts;
 
 @Config(name = ModContexts.MOD_ID)

@@ -1,26 +1,34 @@
 package top.vmctcn.vmtu.mod;
 
-import top.vmctcn.vmtu.core.VMTUCore;
-import top.vmctcn.vmtu.core.pack.ResourcePackIndex;
+import top.vmctcn.vmtu.libraries.common.CommonContexts;
+import top.vmctcn.vmtu.libraries.modpack.info.api.ModpackInfo;
+import top.vmctcn.vmtu.libraries.modpack.info.api.ModpackInfoHelper;
+import top.vmctcn.vmtu.libraries.modpack.metadata.api.ModpackMetadata;
+import top.vmctcn.vmtu.libraries.modpack.metadata.api.ModpackMetadataReader;
+import top.vmctcn.vmtu.libraries.resourcepack.ExtraResourcePackInfo;
+import top.vmctcn.vmtu.libraries.resourcepack.ResourcePackInfo;
+import top.vmctcn.vmtu.libraries.resourcepack.ResourcePackModule;
+import top.vmctcn.vmtu.libraries.resourcepack.pack.ResourcePackIndex;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoWriter;
-import top.vmctcn.vmtu.mod.modpack.metadata.ModpackMetadata;
-import top.vmctcn.vmtu.mod.modpack.metadata.ModpackMetadataReader;
+
 import top.vmctcn.vmtu.mod.modpack.updater.VMMetadata;
 import top.vmctcn.vmtu.mod.modpack.updater.VMMetadataReader;
 
+import java.nio.file.Path;
 import java.util.Objects;
 
-public class VMTranslationUpdate {
+public class VMTranslationUtilityMod {
 
     @SuppressWarnings({"ConstantConditions"})
     public static void init() {
+        String gameVersion = ModPlatform.getInstance().getGameVersion();
+        Path gameDir = ModPlatform.getInstance().getGameDir();
+        CommonContexts.setGameInfo(gameVersion, gameDir);
+
         ModConfigs config = ModConfigHelper.getConfig();
-        ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
+        ModpackInfo.Modpack modpack = ModpackInfoHelper.getModpackInfo().getModpack();
         ModpackMetadata modpackMetadata = ModpackMetadataReader.getMetadata();
 
         syncModpackVersion(modpack, modpackMetadata);
@@ -33,31 +41,24 @@ public class VMTranslationUpdate {
 
     public static void autoDownloadAndLoadPack() {
         ModConfigs.ResourcePack resourcePackConfig = ModConfigHelper.getConfig().resourcePack;
-        String gameVersion = ModPlatform.getInstance().getGameVersion();
         String extraPackName = resourcePackConfig.extraPackName;
         ResourcePackIndex resourcePackIndex = resourcePackConfig.resourcePackIndex;
         int extraPackCustomIndex = resourcePackConfig.extraPackCustomIndex;
         boolean autoDownloadPack = resourcePackConfig.autoDownloadVMTranslationPack;
         boolean autoLoadExtraPack = resourcePackConfig.autoLoadExtraTranslationPack;
 
-        VMTUCore.init(
-                ModPlatform.getInstance().getGameDir(),
-                gameVersion,
-                extraPackName,
-                resourcePackIndex,
-                extraPackCustomIndex,
-                autoDownloadPack,
-                autoLoadExtraPack
-        );
+        ExtraResourcePackInfo extraResourcePackInfo = new ExtraResourcePackInfo(extraPackName, extraPackCustomIndex, autoLoadExtraPack);
+        ResourcePackInfo resourcePackInfo = new ResourcePackInfo(resourcePackIndex, autoDownloadPack);
+        new ResourcePackModule(extraResourcePackInfo, resourcePackInfo);
     }
 
     private static void syncModpackVersion(ModpackInfo.Modpack modpack, ModpackMetadata modpackMetadata) {
-        if (modpackMetadata == null || ModpackInfoReader.isExampleModpackInfo()) {
+        if (modpackMetadata == null || ModpackInfoHelper.isExampleModpackInfo()) {
             return;
         }
 
         if (!Objects.equals(modpack.getVersion(), modpackMetadata.getModpackVersion())) {
-            ModpackInfoWriter.syncModpackVersion(modpackMetadata.getModpackVersion());
+            ModpackInfoHelper.syncModpackVersion(modpackMetadata.getModpackVersion());
         }
     }
 

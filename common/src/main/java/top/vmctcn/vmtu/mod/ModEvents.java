@@ -8,11 +8,11 @@ import net.minecraft.client.resources.language.LanguageManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.player.Player;
+import top.vmctcn.vmtu.libraries.modpack.info.api.ModpackInfo;
+import top.vmctcn.vmtu.libraries.modpack.info.api.ModpackInfoHelper;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.screen.MissingModScreen;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfo;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 import top.vmctcn.vmtu.mod.modpack.updater.OnlineVersion;
 import top.vmctcn.vmtu.mod.modpack.updater.VersionChecker;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
@@ -24,7 +24,7 @@ import top.vmctcn.vmtu.multiversion.Texts;
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
 
-    public static ModpackInfo.Modpack modpack = ModpackInfoReader.getModpackInfo().getModpack();
+    public static ModpackInfo.Modpack modpack = ModpackInfoHelper.getModpackInfo().getModpack();
     public static ModpackInfo.Translation translation = modpack.getTranslation();
     public static OnlineVersion onlineVersion = VersionChecker.getOnlineVersion(modpack);
 
@@ -62,7 +62,7 @@ public class ModEvents {
             boolean translationUpdateNeeded = !localTranslationVersion.equals(onlineVersion.translationVersion());
             boolean modpackUpdateNeeded = !onlineVersion.modpackVersion().isEmpty() && !localModpackVersion.equals(onlineVersion.modpackVersion());
 
-            if (!ModpackInfoReader.isExampleModpackInfo()) {
+            if (!ModpackInfoHelper.isExampleModpackInfo()) {
                 if (translationUpdateNeeded) {
                     checkTranslationUpdateCommand(player);
                     if (modpackUpdateNeeded){

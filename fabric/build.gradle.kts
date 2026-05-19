@@ -77,8 +77,9 @@ dependencies {
         exclude("net.fabricmc.fabric-api")
     }
 
-    include("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${common.mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")?.let { include(it) }
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")?.let { include(it) }
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")?.let { include(it) }
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 

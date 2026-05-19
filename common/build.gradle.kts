@@ -28,7 +28,9 @@ dependencies {
 
     implementation("me.shedaniel.cloth:cloth-config:${mod.dep("cloth_config")}")
 
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 }
