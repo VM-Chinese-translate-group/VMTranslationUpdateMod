@@ -58,11 +58,11 @@ public class ForgeUtils {
         return !FMLLoader.isProduction();
     }
 
-    public static ForgeVersionInfo getVersionInfo() {
+    public static VersionInfo getVersionInfo() {
         //? if >=1.18.2 {
         /*return FMLLoader.versionInfo();
         *///?} else {
-        return new ForgeVersionInfo();
+        return new VersionInfo();
         //?}
     }
 }

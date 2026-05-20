@@ -4,13 +4,13 @@ package top.vmctcn.vmtu.multiversion.forge;
 import net.minecraftforge.versions.forge.ForgeVersion;
 import net.minecraftforge.versions.mcp.MCPVersion;
 
-public class ForgeVersionInfo {
+public class VersionInfo {
     public final String forgeVersion;
     public final String mcVersion;
     public final String mcpVersion;
     public final String forgeGroup;
 
-    public ForgeVersionInfo() {
+    public VersionInfo() {
         this.forgeVersion = ForgeVersion.getVersion();
         this.mcVersion = MCPVersion.getMCVersion();
         this.mcpVersion = MCPVersion.getMCPVersion();
