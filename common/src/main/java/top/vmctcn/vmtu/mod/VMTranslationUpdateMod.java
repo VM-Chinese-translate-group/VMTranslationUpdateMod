@@ -19,7 +19,7 @@ import top.vmctcn.vmtu.mod.modpack.updater.VMMetadataReader;
 import java.nio.file.Path;
 import java.util.Objects;
 
-public class VMTranslationUtilityMod {
+public class VMTranslationUpdateMod {
 
     @SuppressWarnings({"ConstantConditions"})
     public static void init() {

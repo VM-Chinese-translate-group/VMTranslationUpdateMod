@@ -17,10 +17,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "top.vmctcn.vmtu.mod.fabric.VMTranslationUtilityModClientFabric"
+      "top.vmctcn.vmtu.mod.fabric.VMTranslationUpdateModClientFabric"
     ],
     "preLaunch": [
-      "top.vmctcn.vmtu.mod.fabric.VMTranslationUtilityModPreLaunch"
+      "top.vmctcn.vmtu.mod.fabric.VMTranslationUpdateModPreLaunch"
     ],
     "modmenu": [
       "top.vmctcn.vmtu.mod.fabric.ModMenuImpl"

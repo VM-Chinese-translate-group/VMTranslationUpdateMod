@@ -17,22 +17,26 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.fml.loading.FMLPaths;
+import top.vmctcn.vmtu.libraries.common.CommonContexts;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModEvents;
-import top.vmctcn.vmtu.mod.VMTranslationUtilityMod;
+import top.vmctcn.vmtu.mod.VMTranslationUpdateMod;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.multiversion.forge.ForgeUtils;
 
+import java.nio.file.Path;
+
 @Mod(ModContexts.MOD_ID)
-public class VMTranslationUtilityModClientForge {
-    public VMTranslationUtilityModClientForge() {
+public class VMTranslationUpdateModClientForge {
+    public VMTranslationUpdateModClientForge() {
         @SuppressWarnings("removal")
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ForgeUtils.getClientModIgnoredServerOnly(ModContexts.MOD_ID);
 
         if (FMLLoader.getDist().isClient()) {
-            VMTranslationUtilityMod.init();
+            VMTranslationUpdateMod.init();
 
             ForgeUtils.registerConfigScreen(ModContexts.MOD_ID, ModConfigHelper::setConfigScreen);
 
@@ -67,7 +71,13 @@ public class VMTranslationUtilityModClientForge {
                 );
             });
 
-            modEventBus.<FMLConstructModEvent>addListener(event -> VMTranslationUtilityMod.autoDownloadAndLoadPack());
+            modEventBus.<FMLConstructModEvent>addListener(event -> {
+                String gameVersion = ForgeUtils.getVersionInfo().mcVersion();
+                Path gameDir = FMLPaths.GAMEDIR.get();
+                CommonContexts.setGameInfo(gameVersion, gameDir);
+
+                VMTranslationUpdateMod.autoDownloadAndLoadPack();
+            });
         }
     }
 }

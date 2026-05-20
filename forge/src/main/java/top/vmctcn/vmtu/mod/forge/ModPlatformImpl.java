@@ -15,21 +15,7 @@ import java.nio.file.Path;
 public class ModPlatformImpl implements ModPlatform {
     @Override
     public String getGameVersion() {
-        //? if >=1.18.2 {
-        /*return FMLLoader.versionInfo().mcVersion();
-        *///?} else {
-        try {
-            String[] args = (String[]) Reflection.clazz(Launcher.INSTANCE).get("argumentHandler").get("args").get();
-            for (int i = 0; i < args.length - 1; ++i) {
-                if (args[i].equalsIgnoreCase("--fml.mcversion")) {
-                    return args[i + 1];
-                }
-            }
-        } catch (Exception e) {
-            ModContexts.LOGGER.warn("Error getting minecraft version: %s", e);
-        }
-        return null;
-        //?}
+        return ForgeUtils.getVersionInfo().mcVersion();
     }
 
     @Override

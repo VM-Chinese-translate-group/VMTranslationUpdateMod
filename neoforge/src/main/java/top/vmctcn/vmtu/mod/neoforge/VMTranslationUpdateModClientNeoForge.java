@@ -20,7 +20,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEven
 import top.vmctcn.vmtu.libraries.common.CommonContexts;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModEvents;
-import top.vmctcn.vmtu.mod.VMTranslationUtilityMod;
+import top.vmctcn.vmtu.mod.VMTranslationUpdateMod;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 import top.vmctcn.vmtu.multiversion.neoforge.NeoUtils;
@@ -28,15 +28,15 @@ import top.vmctcn.vmtu.multiversion.neoforge.NeoUtils;
 import java.nio.file.Path;
 
 @Mod(value = ModContexts.MOD_ID/*? if >=1.20.6 {*/, dist = Dist.CLIENT/*?}*/)
-public class VMTranslationUtilityModClientNeoForge {
-    public VMTranslationUtilityModClientNeoForge(IEventBus modEventBus/*? if >=1.20.6 {*/, ModContainer modContainer/*?}*/) {
+public class VMTranslationUpdateModClientNeoForge {
+    public VMTranslationUpdateModClientNeoForge(IEventBus modEventBus/*? if >=1.20.6 {*/, ModContainer modContainer/*?}*/) {
         //? if 1.20.4 {
         /*ModContainer modContainer = ModList.get().getModContainerById(ModContexts.MOD_ID).orElseThrow();
         NeoUtils.getClientModIgnoredServerOnly(modContainer);
         *///?}
 
         if (NeoUtils.getDist().isClient()) {
-            VMTranslationUtilityMod.init();
+            top.vmctcn.vmtu.mod.VMTranslationUpdateMod.init();
 
             NeoUtils.registerConfigScreen(modContainer, ModConfigHelper::setConfigScreen);
 
@@ -73,7 +73,7 @@ public class VMTranslationUtilityModClientNeoForge {
                 Path gameDir = FMLPaths.GAMEDIR.get();
                 CommonContexts.setGameInfo(gameVersion, gameDir);
 
-                VMTranslationUtilityMod.autoDownloadAndLoadPack();
+                VMTranslationUpdateMod.autoDownloadAndLoadPack();
             });
         }
     }

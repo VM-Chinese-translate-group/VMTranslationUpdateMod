@@ -11,13 +11,13 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import top.vmctcn.vmtu.mod.ModEvents;
-import top.vmctcn.vmtu.mod.VMTranslationUtilityMod;
+import top.vmctcn.vmtu.mod.VMTranslationUpdateMod;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 
-public class VMTranslationUtilityModClientFabric implements ClientModInitializer {
+public class VMTranslationUpdateModClientFabric implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        VMTranslationUtilityMod.init();
+        VMTranslationUpdateMod.init();
 
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
             if (LanguageUtils.isChineseLanguage()) {
