@@ -17,7 +17,9 @@ import java.util.NoSuchElementException;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
-
+//? if >=1.18.2 {
+/*import net.minecraftforge.fml.loading.VersionInfo;
+*///?}
 
 import java.util.function.Function;
 
@@ -54,5 +56,13 @@ public class ForgeUtils {
 
     public static boolean isDevelopmentEnvironment() {
         return !FMLLoader.isProduction();
+    }
+
+    public static ForgeVersionInfo getVersionInfo() {
+        //? if >=1.18.2 {
+        /*return FMLLoader.versionInfo();
+        *///?} else {
+        return new ForgeVersionInfo();
+        //?}
     }
 }
