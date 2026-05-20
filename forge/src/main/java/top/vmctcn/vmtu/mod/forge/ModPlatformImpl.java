@@ -4,8 +4,8 @@ import com.google.auto.service.AutoService;
 import cpw.mods.modlauncher.Launcher;
 import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.loading.FMLPaths;
-import top.vmctcn.vmtu.core.VMTUCore;
-import top.vmctcn.vmtu.core.util.Reflection;
+import top.vmctcn.vmtu.libraries.resourcepack.util.Reflection;
+import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.multiversion.forge.ForgeUtils;
 import top.vmctcn.vmtu.mod.ModPlatform;
 
@@ -26,7 +26,7 @@ public class ModPlatformImpl implements ModPlatform {
                 }
             }
         } catch (Exception e) {
-            VMTUCore.LOGGER.warn("Error getting minecraft version: %s", e);
+            ModContexts.LOGGER.warn("Error getting minecraft version: %s", e);
         }
         return null;
         //?}
