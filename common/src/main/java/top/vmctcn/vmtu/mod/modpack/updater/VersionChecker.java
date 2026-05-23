@@ -1,6 +1,8 @@
 package top.vmctcn.vmtu.mod.modpack.updater;
 
 import top.vmctcn.vmtu.mod.ModContexts;
+import top.vmctcn.vmtu.mod.modpack.metadata.VMMetadata;
+import top.vmctcn.vmtu.mod.modpack.metadata.VMMetadataReader;
 import top.vmctcn.vmtu.libraries.modpack.info.api.ModpackInfo;
 
 import java.io.BufferedReader;

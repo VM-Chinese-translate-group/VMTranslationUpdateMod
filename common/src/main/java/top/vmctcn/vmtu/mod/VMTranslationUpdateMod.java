@@ -13,8 +13,8 @@ import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
 import top.vmctcn.vmtu.mod.utils.LanguageUtils;
 
-import top.vmctcn.vmtu.mod.modpack.updater.VMMetadata;
-import top.vmctcn.vmtu.mod.modpack.updater.VMMetadataReader;
+import top.vmctcn.vmtu.mod.modpack.metadata.VMMetadata;
+import top.vmctcn.vmtu.mod.modpack.metadata.VMMetadataReader;
 
 import java.nio.file.Path;
 import java.util.Objects;

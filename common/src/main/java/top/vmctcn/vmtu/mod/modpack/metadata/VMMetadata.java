@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack.updater;
+package top.vmctcn.vmtu.mod.modpack.metadata;
 
 import java.util.Map;
 

@@ -32,7 +32,7 @@ if (requiresJava25 && !gradleJava.isCompatibleWith(JavaVersion.VERSION_25)) {
 }
 
 plugins {
-    id("dev.kikugie.stonecutter") version "0.9"
+    id("dev.kikugie.stonecutter") version "0.9.4"
 }
 
 stonecutter {

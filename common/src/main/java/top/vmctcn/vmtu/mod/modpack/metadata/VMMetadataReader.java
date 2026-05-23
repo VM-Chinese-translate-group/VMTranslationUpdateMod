@@ -1,4 +1,4 @@
-package top.vmctcn.vmtu.mod.modpack.updater;
+package top.vmctcn.vmtu.mod.modpack.metadata;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
