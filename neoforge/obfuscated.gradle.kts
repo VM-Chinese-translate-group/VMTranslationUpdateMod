@@ -107,12 +107,24 @@ tasks.remapJar {
     inputFile = tasks.shadowJar.get().archiveFile
     archiveClassifier = null
     dependsOn(tasks.shadowJar)
+
+    if (sc.current.parsed >= "1.20.6") {
+        exclude("META-INF/neoforge.mods.toml", "pack.mcmeta")
+    } else {
+        exclude("META-INF/mods.toml")
+    }
 }
 
 tasks.shadowJar {
     configurations = listOf(shadowBundle)
     archiveClassifier = "dev-shadow"
     exclude("fabric.mod.json", "architectury.common.json")
+
+    if (sc.current.parsed >= "1.20.6") {
+        exclude("META-INF/neoforge.mods.toml", "pack.mcmeta")
+    } else {
+        exclude("META-INF/mods.toml")
+    }
 
     isZip64 = true
 }

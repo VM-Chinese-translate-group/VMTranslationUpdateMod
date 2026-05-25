@@ -26,8 +26,11 @@
       "top.vmctcn.vmtu.mod.fabric.ModMenuImpl"
     ]
   },
+  "mixins": [
+    "vmtu.mixins.json"
+  ],
   "depends": {
-    "fabricloader": ">=0.15",
+    "fabricloader": "*",
     "minecraft": "${minecraft}",
     "${clothconfig_id}": "*"
   }

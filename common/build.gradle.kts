@@ -10,11 +10,11 @@ version = "${mod.version}+mc$minecraft"
 base.archivesName.set("${mod.id}-common")
 
 loom {
-    decompilers {
-        get("vineflower").apply { // Adds names to lambdas - useful for mixins
-            options.put("mark-corresponding-synthetics", "1")
-        }
-    }
+//    decompilers {
+//        get("vineflower").apply { // Adds names to lambdas - useful for mixins
+//            options.put("mark-corresponding-synthetics", "1")
+//        }
+//    }
 }
 
 repositories {

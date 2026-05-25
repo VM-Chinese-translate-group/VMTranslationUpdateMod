@@ -60,6 +60,10 @@ loom {
             }
         }
     }
+
+    forge {
+        mixinConfigs("vmtu.mixins.json")
+    }
 }
 
 repositories {

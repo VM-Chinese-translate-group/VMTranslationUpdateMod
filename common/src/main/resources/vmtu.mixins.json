@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "top.vmctcn.vmtu.mod.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "LanguageManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -8,14 +8,13 @@ import top.vmctcn.vmtu.libraries.resourcepack.pack.GameOptionsWriter;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
 
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+
 import net.minecraft.client.Minecraft;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 
 public class LanguageUtils {
+    private static final HashMap<String, String[]> FALLBACK_QUEUES = HashMap.newHashMap(8);
     private static final String DEFAULT_LANGUAGE = "en_us";
 
     public static String getFixedLanguage(String lang) {
@@ -50,6 +49,21 @@ public class LanguageUtils {
         }
 
         return DEFAULT_LANGUAGE;
+    }
+
+    public static HashMap<String, String[]> getFallbackQueues() {
+        if (FALLBACK_QUEUES.isEmpty()) {
+            generateDefaultQueues();
+        }
+
+        return FALLBACK_QUEUES;
+    }
+
+    private static void generateDefaultQueues() {
+        FALLBACK_QUEUES.put("zh_cn", new String[]{"zh_hk", "zh_tw"});
+        FALLBACK_QUEUES.put("zh_hk", new String[]{"zh_cn", "zh_tw"});
+        FALLBACK_QUEUES.put("zh_tw", new String[]{"zh_cn", "zh_hk"});
+        FALLBACK_QUEUES.put("lzh", new String[]{"zh_cn", "zh_hk", "zh_tw"});
     }
 
     public static boolean isChineseLanguage() {
