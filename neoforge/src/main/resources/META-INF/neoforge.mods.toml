@@ -14,7 +14,7 @@ The VM Chinese translate Group mod is used to check Chinese localization patches
 logoFile = "assets/${id}/icon.png"
 
 [[mixins]]
-config = "vmtu.mixins.json"
+config = "vmtu-neoforge.mixins.json"
 
 [[dependencies.${id}]]
 modId = "minecraft"

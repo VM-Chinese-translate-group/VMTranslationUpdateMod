@@ -14,7 +14,7 @@ import net.minecraft.client.Minecraft;
 import top.vmctcn.vmtu.mod.config.ModConfigHelper;
 
 public class LanguageUtils {
-    private static final HashMap<String, String[]> FALLBACK_QUEUES = HashMap.newHashMap(8);
+    private static final HashMap<String, String[]> FALLBACK_QUEUES = HashMapUtils.newHashMap(8);
     private static final String DEFAULT_LANGUAGE = "en_us";
 
     public static String getFixedLanguage(String lang) {

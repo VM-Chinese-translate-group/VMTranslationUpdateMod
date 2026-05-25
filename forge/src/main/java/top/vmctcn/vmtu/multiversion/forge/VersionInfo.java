@@ -1,5 +1,5 @@
 //? if 1.16.5 {
-package top.vmctcn.vmtu.multiversion.forge;
+/*package top.vmctcn.vmtu.multiversion.forge;
 
 import net.minecraftforge.versions.forge.ForgeVersion;
 import net.minecraftforge.versions.mcp.MCPVersion;
@@ -41,4 +41,4 @@ public class VersionInfo {
         return mcVersion + "-" + mcpVersion;
     }
 }
-//?}
+*///?}

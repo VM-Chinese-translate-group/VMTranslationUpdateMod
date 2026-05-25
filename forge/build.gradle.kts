@@ -62,7 +62,7 @@ loom {
     }
 
     forge {
-        mixinConfigs("vmtu.mixins.json")
+        mixinConfigs("vmtu-forge.mixins.json")
     }
 }
 
@@ -85,11 +85,16 @@ dependencies {
         include("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
         include("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
         include("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
+
+        // MinecraftForge doesn't include MixinExtras
+        annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.4")?.let { compileOnly(it) }
+        include("io.github.llamalad7:mixinextras-forge:0.5.4")?.let { implementation(it) }
     } else {
         // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
         shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}") { isTransitive = false }
         shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}") { isTransitive = false }
         shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}") { isTransitive = false }
+        shadowBundle("io.github.llamalad7:mixinextras-forge:0.5.4")
     }
 
     implementation("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
@@ -127,6 +132,11 @@ tasks.shadowJar {
     configurations = listOf(shadowBundle)
     archiveClassifier = "dev-shadow"
     exclude("fabric.mod.json", "architectury.common.json")
+
+    if (sc.current.parsed.matches("1.16.5")) {
+        relocate("com.llamalad7.mixinextras", project.group.toString() + ".mixinextras")
+        mergeServiceFiles()
+    }
 
     isZip64 = true
 }

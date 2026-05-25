@@ -27,7 +27,7 @@
     ]
   },
   "mixins": [
-    "vmtu.mixins.json"
+    "vmtu-fabric.mixins.json"
   ],
   "depends": {
     "fabricloader": "*",

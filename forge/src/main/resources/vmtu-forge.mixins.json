@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "top.vmctcn.vmtu.mod.forge.mixin",
+  "plugin": "top.vmctcn.vmtu.multiversion.forge.MixinExtrasMixinConfigPlugin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "LanguageManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

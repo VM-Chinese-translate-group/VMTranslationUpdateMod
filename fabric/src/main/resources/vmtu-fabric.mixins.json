@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "top.vmctcn.vmtu.mod.mixin",
+  "package": "top.vmctcn.vmtu.mod.fabric.mixin",
   "compatibilityLevel": "JAVA_8",
   "client": [
     "LanguageManagerMixin"
