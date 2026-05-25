@@ -78,7 +78,7 @@ dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
     mappings(loom.officialMojangMappings())
     "forge"("net.minecraftforge:forge:$minecraft-${common.mod.dep("forge_loader")}")
-
+    annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.4")?.let { compileOnly(it) }
     modImplementation("me.shedaniel.cloth:cloth-config-forge:${common.mod.dep("cloth_config")}")
 
     if (stonecutter.current.parsed >= "1.18.2") {
@@ -87,7 +87,6 @@ dependencies {
         include("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
 
         // MinecraftForge doesn't include MixinExtras
-        annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.4")?.let { compileOnly(it) }
         include("io.github.llamalad7:mixinextras-forge:0.5.4")?.let { implementation(it) }
     } else {
         // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
