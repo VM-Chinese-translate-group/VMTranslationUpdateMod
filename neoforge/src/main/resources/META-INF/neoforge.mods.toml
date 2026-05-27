@@ -9,7 +9,7 @@ displayName = "${name}"
 displayURL = "https://github.com/VM-Chinese-translate-group/VMTranslationUtilityMod"
 authors = "Wulian233, TexTrue"
 description = '''
-The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.
+The VM Chinese Translation Group mod is used to check Chinese localization patches and some other utility features.
 '''
 logoFile = "assets/${id}/icon.png"
 

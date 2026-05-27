@@ -1,6 +1,6 @@
 <div align="center"> 
    <img height="100px" width="100px" alt="logo" src="./common/src/main/resources/assets/vmtranslationupdate/icon.png"/> 
-   <h1>VM Translation Update</h1>
+   <h1>VM Translation Utility</h1>
 
 <a href="https://modrinth.com/project/vmupdate/">
 <img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg">
@@ -17,7 +17,7 @@
 <img alt="fabric" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg"> (≥1.16.5)
 </div>
 
-VM 汉化更新是一个为 Minecraft 整合包汉化补丁设计的自动化汉化管理工具，涵盖了绝大部分汉化相关的使用场景。
+VM 汉化实用工具是一个为 Minecraft 整合包汉化补丁设计的自动化汉化管理工具，涵盖了绝大部分汉化相关的使用场景。
 
 普通玩家可以通过它获得额外的模组资源包汉化，VM汉化组内部也可以通过它为玩家提供更好的汉化体验。
 

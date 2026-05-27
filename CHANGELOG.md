@@ -1,12 +1,39 @@
 # 新功能
 
-- 支持备选回退语言
+* 新增备选回退语言支持。
+
+针对部分中文语言进行了特殊的加载顺序处理，具体规则如下：
+
+* 简体中文（中国大陆）
+  → 繁體中文（台灣）
+  → 繁體中文（香港特別行政區）
+
+* 繁體中文（台灣）
+  → 繁體中文（香港特別行政區）
+  → 简体中文（中国大陆）
+
+* 繁體中文（香港特別行政區）
+  → 繁體中文（台灣）
+  → 简体中文（中国大陆）
+
+* 文言（華夏）
+  → 繁體中文（台灣）
+  → 繁體中文（香港特別行政區）
+  → 简体中文（中国大陆）
+
+# 更改
+
+* 模组名称由 **VM Translation Update（VM汉化更新）** 更名为
+  **VM Translation Utility（VM汉化实用工具）**
 
 # 修复
 
-- [ VMTULibraries ] 修复关于1.21.9及其之后版本资源包pack_format转换的问题
+* VM汉化组的英文名称不正确
+* [VMTULibraries]：修复了 `1.21.9` 及后续版本资源包 `pack_format` 转换异常的问题
+* 解决了 VMTULibraries 内置元数据与 VM-Resources 云端仓库元数据内容不同步的问题
 
-# 代码
+# 代码调整
 
-- VMTULibraries `0.3.6` -> `0.4.1`
-- 将modpackinfo代码分离到VMTULibraries
+* 将 `VMTUCore` 重命名为 `VMTULibraries`
+* 更新 `VMTULibraries`：`0.3.6` → `0.4.1`
+* 将 `modpackinfo` 相关代码拆分至 `VMTULibraries`，提升整体可维护性
