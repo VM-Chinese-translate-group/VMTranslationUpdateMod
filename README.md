@@ -28,5 +28,5 @@ VM 汉化实用工具是一个为 Minecraft 整合包汉化补丁设计的自动
 本模组使用MIT许可证
 
 其中，自动下载并激活资源包功能（
-[MTULibraries-Resourcepack](https://github.com/VM-Chinese-translate-group/VMTULibraries/tree/main/resourcepack)）的代码源于 [i18nUpdateMod3](https://github.com/CFPAOrg/I18nUpdateMod3) 模组代码修改，
+[VMTULibraries-Resourcepack](https://github.com/VM-Chinese-translate-group/VMTULibraries/tree/main/resourcepack)）的代码源于 [i18nUpdateMod3](https://github.com/CFPAOrg/I18nUpdateMod3) 模组代码修改，
 按照上游协议规定使用 AGPL 协议。
