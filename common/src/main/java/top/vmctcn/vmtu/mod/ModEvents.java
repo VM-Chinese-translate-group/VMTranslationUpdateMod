@@ -20,6 +20,7 @@ import top.vmctcn.vmtu.mod.utils.RequiredMods;
 import top.vmctcn.vmtu.multiversion.GameEvents;
 import top.vmctcn.vmtu.multiversion.Messages;
 import top.vmctcn.vmtu.multiversion.Texts;
+import top.vmctcn.vmtu.multiversion.screen.ScreenUtils;
 
 public class ModEvents {
     public static boolean firstTitleScreenShown = false;
@@ -100,10 +101,10 @@ public class ModEvents {
             return;
         }
 
-        Minecraft minecraft = Minecraft.getInstance();
+        Minecraft client = Minecraft.getInstance();
 
         if (!RequiredMods.isAllLoaded()) {
-            minecraft.setScreen(new MissingModScreen(RequiredMods.getAllMissing(), screen));
+            ScreenUtils.openScreen(client, new MissingModScreen(RequiredMods.getAllMissing(), screen));
         }
 
         firstTitleScreenShown = true;

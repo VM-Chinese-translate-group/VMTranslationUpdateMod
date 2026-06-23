@@ -97,7 +97,7 @@ public class MissingModScreen extends Screen {
                 quitButton(quit);
             }
         } else {
-            this.minecraft.setScreen(parent);
+            ScreenUtils.openScreen(this.minecraft, parent);
         }
     }
 
@@ -108,7 +108,7 @@ public class MissingModScreen extends Screen {
 
     @Override
     public void onClose() {
-        this.minecraft.setScreen(parent);
+        ScreenUtils.openScreen(this.minecraft, parent);
     }
 
     //? if <21.6 {

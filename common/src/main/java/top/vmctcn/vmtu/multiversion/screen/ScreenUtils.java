@@ -87,12 +87,20 @@ public class ScreenUtils /*? if <=1.19.2 {*//*extends GuiComponent*//*?}*/ {
 
     public static void openUrlOnScreen(Minecraft client, Screen screen, String url) {
         if (StringUtils.isNotBlank(url) && client != null) {
-            client.setScreen(new ConfirmLinkScreen(yes -> {
+            openScreen(client, new ConfirmLinkScreen(yes -> {
                 if (yes) {
                     Util.getPlatform().openUri(url);
                 }
-                client.setScreen(screen);
+                openScreen(client, screen);
             }, url, true));
         }
+    }
+
+    public static void openScreen(Minecraft client, Screen screen) {
+        //? if <26.2 {
+        /*client.setScreen(screen);
+        *///?} else {
+        client.gui.setScreen(screen);
+        //?}
     }
 }
