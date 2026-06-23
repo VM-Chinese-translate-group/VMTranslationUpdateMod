@@ -80,22 +80,24 @@ public class VMTranslationUpdateMod {
         ModContexts.LOGGER.info("Meta Version: {}", metadata != null ? metadata.getMetaVersion() : null);
         ModContexts.LOGGER.info("Modpack Online Version: {}", vmMetadata != null ? vmMetadata.getModpackVersion() : null);
         ModContexts.LOGGER.info("Modpack Online Translation Version: {}", vmMetadata != null ? vmMetadata.getTranslationVersion() : null);
-
-        if (modpackMetadata == null) {
-            ModContexts.LOGGER.info("Modpack Metadata: null");
-        } else {
-            ModContexts.LOGGER.info("Modpack Metadata Type: {}", modpackMetadata.getMetadataType());
-            ModContexts.LOGGER.info("Modpack Metadata File Name: {}", modpackMetadata.getMetadataType().getMetadataFileName());
-            ModContexts.LOGGER.info("Modpack Metadata Version: {}", modpackMetadata.getModpackVersion());
-            ModContexts.LOGGER.info("Modpack Name in Metadata: {}", modpackMetadata.getModpackName());
-        }
-
+        modpackMetadataLogs(modpackMetadata);
         ModContexts.LOGGER.info("=====================================================");
     }
 
     private static void logIfPresent(String message, Object value) {
         if (value != null) {
             ModContexts.LOGGER.info(message, value);
+        }
+    }
+
+    private static void modpackMetadataLogs(ModpackMetadata metadata) {
+        if (metadata != null) {
+            ModContexts.LOGGER.info("Modpack Metadata Type: {}", metadata.getMetadataType());
+            ModContexts.LOGGER.info("Modpack Metadata File Name: {}", metadata.getMetadataType().getMetadataFileName());
+            ModContexts.LOGGER.info("Modpack Metadata Version: {}", metadata.getModpackVersion());
+            ModContexts.LOGGER.info("Modpack Name in Metadata: {}", metadata.getModpackName());
+        } else  {
+            ModContexts.LOGGER.info("Modpack Metadata: null");
         }
     }
 }

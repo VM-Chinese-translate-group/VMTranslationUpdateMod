@@ -38,9 +38,9 @@ loom {
     }
 
     runConfigs.all {
-        isIdeConfigGenerated = true
-        runDir = "../../../run"
-        vmArgs("-Dmixin.debug.export=true")
+        generateRunConfig.set(true)
+        runDirectory.set(project.file("../../../run"))
+        jvmArguments.addAll(listOf("-Dmixin.debug.export=true"))
     }
 
     runs {
