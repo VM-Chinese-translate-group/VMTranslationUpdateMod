@@ -18,7 +18,7 @@ public class ScreenUtils {
 
     public static void openUrlOnScreen(Minecraft client, Screen screen, String url) {
         if (StringUtils.isNotBlank(url) && client != null) {
-            client.openScreen(new ConfirmChatLinkScreen((yes, i) -> {
+            openScreen(client, new ConfirmChatLinkScreen((yes, i) -> {
                 if (yes) {
                     try {
                         Desktop.getDesktop().browse(URI.create(url));
@@ -29,5 +29,9 @@ public class ScreenUtils {
                 client.openScreen(screen);
             }, url , 0, true));
         }
+    }
+
+    public static void openScreen(Minecraft client, Screen screen) {
+        client.openScreen(screen);
     }
 }

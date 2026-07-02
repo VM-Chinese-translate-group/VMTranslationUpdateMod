@@ -33,17 +33,15 @@ unimined.minecraft {
     defaultRemapJar = true
 }
 
-configurations {
-    shade
-}
-
 repositories {
     maven { url = "https://jitpack.io" }
+    maven { url = 'https://repo.runelite.net/' }
 }
 
 dependencies {
-    implementation("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}")
-    shade("com.github.VM-Chinese-translate-group:VMTUCore:${project.core_version}")
+    implementation("com.github.VM-Chinese-translate-group:VMTULibraries:${project.core_version}")
+    shadow("com.github.VM-Chinese-translate-group:VMTULibraries:${project.core_version}")
+    shadow("net.runelite.archive-patcher:archive-patcher-applier:1.2")
 }
 
 processResources {
@@ -69,8 +67,8 @@ java {
 
 shadowJar {
     //relocate("top.vmctcn.vmtu.core", "vmtu.include.core")
+    relocate("com.google.archivepatcher", "include.com.google.archivepatcher")
 
-    configurations = [project.configurations.shade]
     archiveClassifier.set("dev-shadow")
 }
 

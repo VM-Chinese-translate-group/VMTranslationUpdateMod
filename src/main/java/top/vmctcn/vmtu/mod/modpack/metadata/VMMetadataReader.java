@@ -1,8 +1,8 @@
-package top.vmctcn.vmtu.mod.modpack.updater;
+package top.vmctcn.vmtu.mod.modpack.metadata;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import top.vmctcn.vmtu.core.util.AssetUtil;
+import top.vmctcn.vmtu.libraries.resourcepack.util.AssetUtil;
 import top.vmctcn.vmtu.mod.ModContexts;
 
 import java.io.IOException;

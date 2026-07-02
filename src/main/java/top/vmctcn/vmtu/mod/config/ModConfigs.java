@@ -1,7 +1,7 @@
 package top.vmctcn.vmtu.mod.config;
 
 import net.minecraftforge.common.config.Config;
-import top.vmctcn.vmtu.core.pack.ResourcePackIndex;
+import top.vmctcn.vmtu.libraries.resourcepack.pack.ResourcePackIndex;
 import top.vmctcn.vmtu.mod.ModContexts;
 
 @Config(modid = ModContexts.MOD_ID, category = ModContexts.MOD_ID)

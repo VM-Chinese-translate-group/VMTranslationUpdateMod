@@ -2,11 +2,11 @@ package top.vmctcn.vmtu.mod.utils;
 
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
-import top.vmctcn.vmtu.core.pack.GameOptionsWriter;
+import top.vmctcn.vmtu.libraries.modpack.info.api.ModpackInfoHelper;
+import top.vmctcn.vmtu.libraries.resourcepack.pack.GameOptionsWriter;
 import top.vmctcn.vmtu.mod.ModContexts;
 import top.vmctcn.vmtu.mod.ModPlatform;
 import top.vmctcn.vmtu.mod.config.ModConfigs;
-import top.vmctcn.vmtu.mod.modpack.info.ModpackInfoReader;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -57,14 +57,14 @@ public class LanguageUtils {
     }
 
     public static void autoSwitchLanguage() {
-        if (ModConfigs.misc.autoSwitchLanguage && ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
+        if (ModConfigs.misc.autoSwitchLanguage && ModpackInfoHelper.getModpackInfo().getModpack().getTranslation().getLanguage() != null) {
             try {
                 String language;
 
-                if (ModpackInfoReader.isExampleModpackInfo()) {
+                if (ModpackInfoHelper.isExampleModpackInfo()) {
                     language = (Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry()).toLowerCase();
                 } else {
-                    language = ModpackInfoReader.getModpackInfo().getModpack().getTranslation().getLanguage();
+                    language = ModpackInfoHelper.getModpackInfo().getModpack().getTranslation().getLanguage();
                 }
 
                 GameOptionsWriter writer = new GameOptionsWriter(ModPlatform.getGameDir().resolve("options.txt"));
