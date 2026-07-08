@@ -1,13 +1,13 @@
 [
   {
     "modid": "vmtranslationupdate",
-    "name": "VMTranslationUpdateMod",
+    "name": "VM Translation Utility",
     "description": "The VM Chinese translate Group mod is used to check Chinese localization patches and some other utility features.",
     "version": "${version}",
-    "mcversion": "${mc_version}",
-    "url": "https://github.com/VM-Chinese-translate-group/VMTranslationUpdateMod",
+    "mcversion": "1.12.2",
+    "url": "https://github.com/VM-Chinese-translate-group/VMTranslationUtilityMod",
     "updateUrl": "",
-    "authorList": ["VMChineseTranslateGroup", "Wulian233","TexTrue"],
+    "authorList": ["Wulian233","TexTrue"],
     "logoFile": "icon.png",
     "screenshots": [],
     "dependencies": []
