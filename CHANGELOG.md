@@ -1,5 +1,6 @@
 # 新功能
 
+* 支持26.1和26.2
 * 新增备选回退语言支持。
 
 针对部分中文语言进行了特殊的加载顺序处理，具体规则如下：
@@ -35,5 +36,5 @@
 # 代码调整
 
 * 将 `VMTUCore` 重命名为 `VMTULibraries`
-* 更新 `VMTULibraries`：`0.3.6` → `0.4.1`
+* 更新 `VMTULibraries`：`0.3.6` → `0.4.3`
 * 将 `modpackinfo` 相关代码拆分至 `VMTULibraries`，提升整体可维护性
