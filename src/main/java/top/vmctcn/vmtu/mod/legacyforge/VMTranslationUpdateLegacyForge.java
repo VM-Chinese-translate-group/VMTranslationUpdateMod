@@ -1,5 +1,6 @@
 package top.vmctcn.vmtu.mod.legacyforge;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -14,6 +15,7 @@ import top.vmctcn.vmtu.mod.command.ModCommand;
 public class VMTranslationUpdateLegacyForge {
     @Mod.EventHandler
     public void construct(FMLConstructionEvent event) {
+        VMTranslationUpdateMod.init();
         VMTranslationUpdateMod.autoDownloadAndLoadPack();
     }
 
@@ -21,12 +23,19 @@ public class VMTranslationUpdateLegacyForge {
     public void preInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new ModEventHandler());
         MinecraftForge.EVENT_BUS.register(this);
-
-        VMTranslationUpdateMod.init();
     }
 
     @Mod.EventHandler
     public static void onInit(FMLInitializationEvent event) {
         ClientCommandHandler.instance.register(new ModCommand());
+
+        Minecraft.getInstance().execute(() -> {
+            try {
+                Minecraft.getInstance().reloadResources();
+                ModContexts.LOGGER.info("Resources refreshed after loading translation pack");
+            } catch (Exception e) {
+                ModContexts.LOGGER.error("Failed to refresh resources", e);
+            }
+        });
     }
 }

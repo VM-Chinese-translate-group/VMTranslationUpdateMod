@@ -15,6 +15,6 @@ public class ModPlatform {
     }
 
     public static Path getGameDir() {
-        return getConfigDir().getParent().getParent();
+        return getConfigDir().getParent();
     }
 }

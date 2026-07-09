@@ -19,7 +19,7 @@ public class ModConfigs {
             "Resource pack settings",
             "资源包设置"
     })
-    @Config.Name("resourcePack")
+    @Config.Name("resourcepack")
     @Config.LangKey("text.autoconfig.vmtranslationupdate.option.resourcePack")
     public static final ResourcePack resourcePack = new ResourcePack();
 
@@ -27,7 +27,7 @@ public class ModConfigs {
             "Mod installation check",
             "模组安装检查"
     })
-    @Config.Name("modInstallCheck")
+    @Config.Name("modinstallcheck")
     @Config.LangKey("text.autoconfig.vmtranslationupdate.option.modInstallCheck")
     public static final ModInstallCheck modInstallCheck = new ModInstallCheck();
 
