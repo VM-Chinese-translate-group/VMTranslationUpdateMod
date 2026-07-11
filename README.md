@@ -2,10 +2,10 @@
    <img height="100px" width="100px" alt="logo" src="./common/src/main/resources/assets/vmtranslationupdate/icon.png"/> 
    <h1>VM Translation Utility</h1>
 
-<a href="https://modrinth.com/project/vmupdate/">
+<a href="https://modrinth.com/project/vmtu/">
 <img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg">
 </a>
-<a href="https://www.curseforge.com/minecraft/mc-mods/vmtranslationupdate">
+<a href="https://www.curseforge.com/minecraft/mc-mods/vmtu">
 <img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg">
 </a>
 <a href="https://www.mcmod.cn/class/11203.html">
