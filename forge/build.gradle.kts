@@ -25,9 +25,17 @@ val shadowBundle: Configuration by configurations.creating {
     isCanBeResolved = true
 }
 
+val library: Configuration by configurations.creating {
+    isCanBeConsumed = false
+    isCanBeResolved = true
+}
+
 configurations {
     compileClasspath.get().extendsFrom(commonBundle)
     runtimeClasspath.get().extendsFrom(commonBundle)
+
+    implementation.get().extendsFrom(library)
+    include.get().extendsFrom(library)
 }
 
 loom {
@@ -82,12 +90,11 @@ dependencies {
     modImplementation("me.shedaniel.cloth:cloth-config-forge:${common.mod.dep("cloth_config")}")
 
     if (stonecutter.current.parsed >= "1.18.2") {
-        include("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
-        include("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
-        include("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
-
+        library("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
+        library("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
+        library("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
         // MinecraftForge doesn't include MixinExtras
-        include("io.github.llamalad7:mixinextras-forge:0.5.4")?.let { implementation(it) }
+        library("io.github.llamalad7:mixinextras-forge:0.5.4")
     } else {
         // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
         shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}") { isTransitive = false }
@@ -96,9 +103,7 @@ dependencies {
         shadowBundle("io.github.llamalad7:mixinextras-forge:0.5.4")
     }
 
-    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
-    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
-    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
+
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 

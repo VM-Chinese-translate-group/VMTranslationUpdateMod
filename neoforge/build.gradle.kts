@@ -25,9 +25,17 @@ val shadowBundle: Configuration by configurations.creating {
     isCanBeResolved = true
 }
 
+val library: Configuration by configurations.creating {
+    isCanBeConsumed = false
+    isCanBeResolved = true
+}
+
 configurations {
     compileClasspath.get().extendsFrom(commonBundle)
     runtimeClasspath.get().extendsFrom(commonBundle)
+
+    implementation.get().extendsFrom(library)
+    include.get().extendsFrom(library)
 }
 
 loom {
@@ -74,9 +82,9 @@ dependencies {
 
     implementation("me.shedaniel.cloth:cloth-config-neoforge:${common.mod.dep("cloth_config")}")
 
-    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")?.let { include(it) }
-    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")?.let { include(it) }
-    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")?.let { include(it) }
+    library("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
+    library("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
+    library("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 
