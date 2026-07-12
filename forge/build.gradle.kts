@@ -25,6 +25,12 @@ val shadowBundle: Configuration by configurations.creating {
     isCanBeResolved = true
 }
 
+// 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
+val shadowLibrary: Configuration by configurations.creating {
+    isCanBeConsumed = false
+    isCanBeResolved = true
+}
+
 val library: Configuration by configurations.creating {
     isCanBeConsumed = false
     isCanBeResolved = true
@@ -36,6 +42,10 @@ configurations {
 
     implementation.get().extendsFrom(library)
     include.get().extendsFrom(library)
+
+    // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
+    implementation.get().extendsFrom(shadowLibrary)
+    shadow.get().extendsFrom(shadowLibrary)
 }
 
 loom {
@@ -97,10 +107,10 @@ dependencies {
         library("io.github.llamalad7:mixinextras-forge:0.5.4")
     } else {
         // 1.16.5 MinecraftForge's Jarjar doesn't work with 1.16.5, so we use shadow
-        shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}") { isTransitive = false }
-        shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}") { isTransitive = false }
-        shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}") { isTransitive = false }
-        shadowBundle("io.github.llamalad7:mixinextras-forge:0.5.4")
+        shadowLibrary("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}") { isTransitive = false }
+        shadowLibrary("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}") { isTransitive = false }
+        shadowLibrary("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}") { isTransitive = false }
+        shadowLibrary("io.github.llamalad7:mixinextras-forge:0.5.4")
     }
 
 
