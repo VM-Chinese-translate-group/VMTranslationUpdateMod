@@ -25,17 +25,9 @@ val shadowBundle: Configuration by configurations.creating {
     isCanBeResolved = true
 }
 
-val library: Configuration by configurations.creating {
-    isCanBeConsumed = false
-    isCanBeResolved = true
-}
-
 configurations {
     compileClasspath.get().extendsFrom(commonBundle)
     runtimeClasspath.get().extendsFrom(commonBundle)
-
-    implementation.get().extendsFrom(library)
-    include.get().extendsFrom(library)
 }
 
 loom {
@@ -88,9 +80,8 @@ dependencies {
         exclude("net.fabricmc.fabric-api")
     }
 
-    library("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
-    library("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
-    library("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group:VMTULibraries:${mod.dep("core_version")}")
+    include("com.github.VM-Chinese-translate-group:VMTULibraries:${mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 

@@ -111,9 +111,9 @@ tasks.jar {
     archiveClassifier = "raw"
 
     if (sc.current.parsed >= "1.20.6") {
-        exclude("META-INF/neoforge.mods.toml", "pack.mcmeta")
+        exclude("META-INF/mods.toml", "pack.mcmeta")
     } else {
-        exclude("META-INF/mods.toml")
+        exclude("META-INF/neoforge.mods.toml")
     }
 }
 
@@ -125,9 +125,9 @@ tasks.shadowJar {
     exclude("fabric.mod.json", "architectury.common.json")
 
     if (sc.current.parsed >= "1.20.6") {
-        exclude("META-INF/neoforge.mods.toml", "pack.mcmeta")
+        exclude("META-INF/mods.toml", "pack.mcmeta")
     } else {
-        exclude("META-INF/mods.toml")
+        exclude("META-INF/neoforge.mods.toml")
     }
 
     isZip64 = true

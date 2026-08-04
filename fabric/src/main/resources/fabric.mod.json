@@ -33,16 +33,5 @@
     "fabricloader": "*",
     "minecraft": "${minecraft}",
     "${clothconfig_id}": "*"
-  },
-  "jars": [
-    {
-      "file": "META-INF/jars/common-0.4.3.jar"
-    },
-    {
-      "file": "META-INF/jars/modpack-0.4.3.jar"
-    },
-    {
-      "file": "META-INF/jars/resourcespack-0.4.3.jar"
-    }
-  ]
+  }
 }
