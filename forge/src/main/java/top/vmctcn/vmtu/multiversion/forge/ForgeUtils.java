@@ -2,10 +2,10 @@ package top.vmctcn.vmtu.multiversion.forge;
 
 import net.minecraft.client.gui.screens.Screen;
 //? if >=1.19.2 {
-/*import net.minecraftforge.client.ConfigScreenHandler;
-*///?} else if 1.18.2 {
-import net.minecraftforge.client.ConfigGuiHandler;
-//?}
+import net.minecraftforge.client.ConfigScreenHandler;
+//?} else if 1.18.2 {
+/*import net.minecraftforge.client.ConfigGuiHandler;
+*///?}
 //? if >=1.18.2 {
 import net.minecraftforge.fml.IExtensionPoint;
 //?} else {
@@ -32,10 +32,10 @@ public class ForgeUtils {
         *///?}
 
         //? if >=1.19.2 {
-        /*modContainer.registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((client, screen) -> screenFunction.apply(screen)));
-        *///?} else if 1.18.2 {
-        modContainer.registerExtensionPoint(ConfigGuiHandler.ConfigGuiFactory.class, () -> new ConfigGuiHandler.ConfigGuiFactory((client, screen) -> screenFunction.apply(screen)));
-        //?} else {
+        modContainer.registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((client, screen) -> screenFunction.apply(screen)));
+        //?} else if 1.18.2 {
+        /*modContainer.registerExtensionPoint(ConfigGuiHandler.ConfigGuiFactory.class, () -> new ConfigGuiHandler.ConfigGuiFactory((client, screen) -> screenFunction.apply(screen)));
+        *///?} else {
         /*modContainer.registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> (client, screen) -> screenFunction.apply(screen));
         *///?}
     }

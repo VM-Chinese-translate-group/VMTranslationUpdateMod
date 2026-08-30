@@ -77,8 +77,12 @@ dependencies {
         exclude("net.fabricmc.fabric-api")
     }
 
-    implementation("com.github.VM-Chinese-translate-group:VMTULibraries:${mod.dep("core_version")}")
-    include("com.github.VM-Chinese-translate-group:VMTULibraries:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
+    implementation("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
+    shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:common:${mod.dep("core_version")}")
+    shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:modpack:${mod.dep("core_version")}")
+    shadowBundle("com.github.VM-Chinese-translate-group.VMTULibraries:resourcepack:${mod.dep("core_version")}")
     implementation("com.google.auto.service:auto-service-annotations:${mod.dep("auto_service")}")
     annotationProcessor("com.google.auto.service:auto-service:${mod.dep("auto_service")}")
 
@@ -90,7 +94,7 @@ java {
     withSourcesJar()
 
     val requiredJava = when {
-        stonecutter.current.parsed >= "26.1" -> JavaVersion.VERSION_25
+        stonecutter.current.parsed >= "26.1.2" -> JavaVersion.VERSION_25
         stonecutter.current.parsed >= "1.20.5" -> JavaVersion.VERSION_21
         stonecutter.current.parsed >= "1.18" -> JavaVersion.VERSION_17
         stonecutter.current.parsed >= "1.17" -> JavaVersion.VERSION_16

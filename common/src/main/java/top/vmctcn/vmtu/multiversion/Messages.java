@@ -5,7 +5,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class Messages {
     public static void displayClientMessage(Player player, Component message, boolean overlay) {
-        //? if >=26.1 {
+        //? if >=26.1.2 {
         if (overlay) {
             player.sendOverlayMessage(message);
         } else {

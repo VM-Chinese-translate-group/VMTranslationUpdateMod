@@ -21,7 +21,7 @@ pluginManagement {
 
 val currentStonecutterVersion = file("versions/currentVersion").readText().trim()
 val gradleJava = JavaVersion.current()
-val requiresJava25 = currentStonecutterVersion >= "26.1"
+val requiresJava25 = currentStonecutterVersion >= "26.1.2"
 
 if (requiresJava25 && !gradleJava.isCompatibleWith(JavaVersion.VERSION_25)) {
     error(

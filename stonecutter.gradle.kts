@@ -25,7 +25,7 @@ stonecutter parameters {
         replace("net.minecraft.Util", "net.minecraft.util.Util")
     }
 
-    replacements.string(current.parsed >= "26.1") {
+    replacements.string(current.parsed >= "26.1.2") {
         if (branch.id == "fabric") {
             replace("ClientCommandManager", "ClientCommands")
         }

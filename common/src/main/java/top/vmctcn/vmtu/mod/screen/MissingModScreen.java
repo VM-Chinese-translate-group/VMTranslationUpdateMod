@@ -2,9 +2,9 @@ package top.vmctcn.vmtu.mod.screen;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.ChatFormatting;
-//? if >=26.1 {
+//? if >=26.1.2 {
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-//?} else if >=1.20.1 && <26.1 {
+//?} else if >=1.20.1 && <26.1.2 {
 /*import net.minecraft.client.gui.GuiGraphics;
 *///?} else {
 /*import com.mojang.blaze3d.vertex.PoseStack;
@@ -132,7 +132,7 @@ public class MissingModScreen extends Screen {
         //?} else if <=1.19.2 {
         /^super.render(poseStack, mouseX, mouseY, delta);
          ^///?}
-    *///?} else if >=26.1 {
+    *///?} else if >=26.1.2 {
     @Override
     public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float delta) {
         super.extractRenderState(guiGraphics, mouseX, mouseY, delta);

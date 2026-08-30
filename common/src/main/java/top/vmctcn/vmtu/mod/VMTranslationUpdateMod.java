@@ -28,6 +28,7 @@ public class VMTranslationUpdateMod {
         CommonContexts.setGameInfo(gameVersion, gameDir);
 
         ModConfigs config = ModConfigHelper.getConfig();
+        ModpackInfoHelper.readModpackInfo(config.misc.generateExampleModpackInfo);
         ModpackInfo.Modpack modpack = ModpackInfoHelper.getModpackInfo().getModpack();
         ModpackMetadata modpackMetadata = ModpackMetadataReader.getMetadata();
 
@@ -37,6 +38,8 @@ public class VMTranslationUpdateMod {
         if (config.misc.devMode || ModPlatform.getInstance().isDevelopmentEnvironment()) {
             logDevInfo(modpack, modpackMetadata);
         }
+
+
     }
 
     public static void autoDownloadAndLoadPack() {

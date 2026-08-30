@@ -20,7 +20,7 @@ public class LanguageManagerMixin {
     private String currentCode;
 
     @Inject(method = "onResourceManagerReload", at = @At(value = "INVOKE", target = "Ljava/lang/String;equals(Ljava/lang/Object;)Z", shift = At.Shift.AFTER))
-    private void insertQueue(ResourceManager resourceManager, CallbackInfo ci, @Local(name = /*? if >= 26.1 {*/"languageStack"/*?} else {*//*"list"*//*?}*/) List<String> languageStack) {
+    private void insertQueue(ResourceManager resourceManager, CallbackInfo ci, @Local(name = /*? if >= 26.1.2 {*/"languageStack"/*?} else {*//*"list"*//*?}*/) List<String> languageStack) {
         Map<String, String[]> queues = LanguageUtils.getFallbackQueues();
         if (!queues.containsKey(currentCode)) return;
 
@@ -28,7 +28,7 @@ public class LanguageManagerMixin {
     }
 
     @Inject(method = "onResourceManagerReload", at = @At("TAIL"))
-    private void logLoadedQueue(ResourceManager resourceManager, CallbackInfo ci, @Local(name = /*? if >= 26.1 {*/"languageStack"/*?} else {*//*"list"*//*?}*/) List<String> languageStack) {
+    private void logLoadedQueue(ResourceManager resourceManager, CallbackInfo ci, @Local(name = /*? if >= 26.1.2 {*/"languageStack"/*?} else {*//*"list"*//*?}*/) List<String> languageStack) {
         ModContexts.LOGGER.info("Language Loading Order: {}(In reverse order)", languageStack);
     }
 }
