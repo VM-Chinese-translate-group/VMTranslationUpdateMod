@@ -1,4 +1,4 @@
 # 修复
 
-* [NeoForge] 修复打包了错误的mod metadata文件
-* [Fabric] 修复JiJ VMTULibraries的问题
+- 打开生成示例整合包信息不生成文件
+- Fabric版无法启动
