@@ -1,6 +1,9 @@
 package top.vmctcn.vmtu.mod.neoforge;
 
 import com.mojang.brigadier.Command;
+//? if >=26.1.2 {
+import net.minecraft.client.Minecraft;
+//?}
 import net.minecraft.commands.Commands;
 //? if >=1.20.6 {
 import net.neoforged.api.distmarker.Dist;
@@ -55,14 +58,14 @@ public class VMTranslationUpdateModClientNeoForge {
                 event.getDispatcher().register(
                         Commands.literal("vmtu")
                                 .then(Commands.literal("check").executes(context -> {
-                                    ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
-                                    ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
+                                    ModEvents.checkTranslationUpdateCommand(/*? if >=26.1.2 {*/Minecraft.getInstance().player/*?} else {*//*context.getSource().getPlayer()*//*?}*/);
+                                    ModEvents.checkModpackUpdateCommand(/*? if >=26.1.2 {*/Minecraft.getInstance().player/*?} else {*//*context.getSource().getPlayer()*//*?}*/);
                                     return Command.SINGLE_SUCCESS;
                                 }).then(Commands.literal("modpack").executes(context -> {
-                                    ModEvents.checkModpackUpdateCommand(context.getSource().getPlayer());
+                                    ModEvents.checkModpackUpdateCommand(/*? if >=26.1.2 {*/Minecraft.getInstance().player/*?} else {*//*context.getSource().getPlayer()*//*?}*/);
                                     return Command.SINGLE_SUCCESS;
                                 })).then(Commands.literal("translation").executes(context -> {
-                                    ModEvents.checkTranslationUpdateCommand(context.getSource().getPlayer());
+                                    ModEvents.checkTranslationUpdateCommand(/*? if >=26.1.2 {*/Minecraft.getInstance().player/*?} else {*//*context.getSource().getPlayer()*//*?}*/);
                                     return Command.SINGLE_SUCCESS;
                                 })))
                 );
